@@ -2,6 +2,7 @@
 
 #include "./sql/headers/SettingsQueries.h"
 #include "./models/SettingModel.h"
+#include "./subforms/CreateMetal.h"
 
 namespace MetalCalculator {
 
@@ -261,28 +262,28 @@ namespace MetalCalculator {
 			// mn95_l
 			// 
 			this->mn95_l->AutoSize = true;
-			this->mn95_l->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->mn95_l->Dock = System::Windows::Forms::DockStyle::Left;
 			this->mn95_l->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.3F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->mn95_l->Location = System::Drawing::Point(3, 0);
 			this->mn95_l->Name = L"mn95_l";
-			this->mn95_l->Size = System::Drawing::Size(388, 50);
+			this->mn95_l->Size = System::Drawing::Size(221, 50);
 			this->mn95_l->TabIndex = 4;
 			this->mn95_l->Text = L"Марганцю металічного Мн 95,% ";
-			this->mn95_l->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->mn95_l->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// carbon_l
 			// 
 			this->carbon_l->AutoSize = true;
-			this->carbon_l->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->carbon_l->Dock = System::Windows::Forms::DockStyle::Left;
 			this->carbon_l->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.3F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->carbon_l->Location = System::Drawing::Point(3, 50);
 			this->carbon_l->Name = L"carbon_l";
-			this->carbon_l->Size = System::Drawing::Size(388, 50);
+			this->carbon_l->Size = System::Drawing::Size(190, 50);
 			this->carbon_l->TabIndex = 5;
 			this->carbon_l->Text = L"Вуглевмісного матеріалу,% ";
-			this->carbon_l->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->carbon_l->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// fs45_input
 			// 
@@ -355,22 +356,23 @@ namespace MetalCalculator {
 			// 
 			this->add_mark_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->add_mark_btn->Dock = System::Windows::Forms::DockStyle::Top;
-			this->add_mark_btn->Location = System::Drawing::Point(30, 3);
+			this->add_mark_btn->Location = System::Drawing::Point(30, 13);
 			this->add_mark_btn->Margin = System::Windows::Forms::Padding(30, 3, 30, 3);
 			this->add_mark_btn->Name = L"add_mark_btn";
-			this->add_mark_btn->Size = System::Drawing::Size(203, 44);
+			this->add_mark_btn->Size = System::Drawing::Size(203, 39);
 			this->add_mark_btn->TabIndex = 14;
 			this->add_mark_btn->Text = L"Додати марку";
 			this->add_mark_btn->UseVisualStyleBackColor = true;
+			this->add_mark_btn->Click += gcnew System::EventHandler(this, &SettingsMenu::add_mark_btn_Click);
 			// 
 			// edit_mark_btn
 			// 
 			this->edit_mark_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->edit_mark_btn->Dock = System::Windows::Forms::DockStyle::Top;
-			this->edit_mark_btn->Location = System::Drawing::Point(293, 3);
+			this->edit_mark_btn->Location = System::Drawing::Point(293, 13);
 			this->edit_mark_btn->Margin = System::Windows::Forms::Padding(30, 3, 30, 3);
 			this->edit_mark_btn->Name = L"edit_mark_btn";
-			this->edit_mark_btn->Size = System::Drawing::Size(203, 44);
+			this->edit_mark_btn->Size = System::Drawing::Size(203, 39);
 			this->edit_mark_btn->TabIndex = 15;
 			this->edit_mark_btn->Text = L"Редагувати марку";
 			this->edit_mark_btn->UseVisualStyleBackColor = true;
@@ -379,10 +381,10 @@ namespace MetalCalculator {
 			// 
 			this->delete_mark_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->delete_mark_btn->Dock = System::Windows::Forms::DockStyle::Top;
-			this->delete_mark_btn->Location = System::Drawing::Point(556, 3);
+			this->delete_mark_btn->Location = System::Drawing::Point(556, 13);
 			this->delete_mark_btn->Margin = System::Windows::Forms::Padding(30, 3, 30, 3);
 			this->delete_mark_btn->Name = L"delete_mark_btn";
-			this->delete_mark_btn->Size = System::Drawing::Size(203, 44);
+			this->delete_mark_btn->Size = System::Drawing::Size(203, 39);
 			this->delete_mark_btn->TabIndex = 16;
 			this->delete_mark_btn->Text = L"Видалити марку";
 			this->delete_mark_btn->UseVisualStyleBackColor = true;
@@ -460,7 +462,8 @@ namespace MetalCalculator {
 			this->chemical_comp_label->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->chemical_comp_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.27F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-			this->chemical_comp_label->Location = System::Drawing::Point(3, 0);
+			this->chemical_comp_label->Location = System::Drawing::Point(3, 10);
+			this->chemical_comp_label->Margin = System::Windows::Forms::Padding(3, 10, 3, 10);
 			this->chemical_comp_label->Name = L"chemical_comp_label";
 			this->chemical_comp_label->Size = System::Drawing::Size(783, 30);
 			this->chemical_comp_label->TabIndex = 1;
@@ -479,7 +482,7 @@ namespace MetalCalculator {
 			this->tableLayoutPanel3->Name = L"tableLayoutPanel3";
 			this->tableLayoutPanel3->RowCount = 1;
 			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
-			this->tableLayoutPanel3->Size = System::Drawing::Size(789, 30);
+			this->tableLayoutPanel3->Size = System::Drawing::Size(789, 50);
 			this->tableLayoutPanel3->TabIndex = 17;
 			// 
 			// tableLayoutPanel4
@@ -496,7 +499,7 @@ namespace MetalCalculator {
 			this->tableLayoutPanel4->Controls->Add(this->fmn78_input_1, 1, 0);
 			this->tableLayoutPanel4->Controls->Add(this->fmn78_input_2, 2, 0);
 			this->tableLayoutPanel4->Dock = System::Windows::Forms::DockStyle::Top;
-			this->tableLayoutPanel4->Location = System::Drawing::Point(0, 87);
+			this->tableLayoutPanel4->Location = System::Drawing::Point(0, 107);
 			this->tableLayoutPanel4->Name = L"tableLayoutPanel4";
 			this->tableLayoutPanel4->RowCount = 1;
 			this->tableLayoutPanel4->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
@@ -514,7 +517,7 @@ namespace MetalCalculator {
 			this->tableLayoutPanel5->Controls->Add(this->fs45_l, 0, 0);
 			this->tableLayoutPanel5->Controls->Add(this->fs45_input, 1, 0);
 			this->tableLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Top;
-			this->tableLayoutPanel5->Location = System::Drawing::Point(0, 137);
+			this->tableLayoutPanel5->Location = System::Drawing::Point(0, 157);
 			this->tableLayoutPanel5->Name = L"tableLayoutPanel5";
 			this->tableLayoutPanel5->RowCount = 1;
 			this->tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
@@ -538,12 +541,13 @@ namespace MetalCalculator {
 			this->tableLayoutPanel6->Controls->Add(this->save_btn, 2, 0);
 			this->tableLayoutPanel6->Controls->Add(this->restore_btn, 2, 1);
 			this->tableLayoutPanel6->Dock = System::Windows::Forms::DockStyle::Top;
-			this->tableLayoutPanel6->Location = System::Drawing::Point(0, 187);
+			this->tableLayoutPanel6->Location = System::Drawing::Point(0, 207);
 			this->tableLayoutPanel6->Name = L"tableLayoutPanel6";
+			this->tableLayoutPanel6->Padding = System::Windows::Forms::Padding(0, 0, 0, 10);
 			this->tableLayoutPanel6->RowCount = 2;
 			this->tableLayoutPanel6->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
 			this->tableLayoutPanel6->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel6->Size = System::Drawing::Size(789, 100);
+			this->tableLayoutPanel6->Size = System::Drawing::Size(789, 110);
 			this->tableLayoutPanel6->TabIndex = 20;
 			// 
 			// tableLayoutPanel7
@@ -553,7 +557,7 @@ namespace MetalCalculator {
 				50)));
 			this->tableLayoutPanel7->Controls->Add(this->steel_marks_label, 0, 0);
 			this->tableLayoutPanel7->Dock = System::Windows::Forms::DockStyle::Top;
-			this->tableLayoutPanel7->Location = System::Drawing::Point(0, 287);
+			this->tableLayoutPanel7->Location = System::Drawing::Point(0, 317);
 			this->tableLayoutPanel7->Name = L"tableLayoutPanel7";
 			this->tableLayoutPanel7->RowCount = 1;
 			this->tableLayoutPanel7->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 51)));
@@ -573,8 +577,9 @@ namespace MetalCalculator {
 			this->tableLayoutPanel8->Controls->Add(this->edit_mark_btn, 1, 0);
 			this->tableLayoutPanel8->Controls->Add(this->delete_mark_btn, 2, 0);
 			this->tableLayoutPanel8->Dock = System::Windows::Forms::DockStyle::Top;
-			this->tableLayoutPanel8->Location = System::Drawing::Point(0, 317);
+			this->tableLayoutPanel8->Location = System::Drawing::Point(0, 347);
 			this->tableLayoutPanel8->Name = L"tableLayoutPanel8";
+			this->tableLayoutPanel8->Padding = System::Windows::Forms::Padding(0, 10, 0, 0);
 			this->tableLayoutPanel8->RowCount = 1;
 			this->tableLayoutPanel8->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
 			this->tableLayoutPanel8->Size = System::Drawing::Size(789, 55);
@@ -640,9 +645,14 @@ private:
 			);
 		}
 		catch (const System::FormatException^ e) {
-			MessageBox::Show("Not right format of input data", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+			MessageBox::Show("Невірний формат даних", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 		}
 		initWriteInputs();
+	}
+private: 
+	System::Void add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+		CreateMetal^ createMetalForm = gcnew CreateMetal();
+		createMetalForm->Show();
 	}
 };
 }

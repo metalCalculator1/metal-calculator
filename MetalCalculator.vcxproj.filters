@@ -24,13 +24,16 @@
     <ClCompile Include="sql\Database.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CredHandler.cpp">
+    <ClCompile Include="support\CredHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="models\SettingModel.h">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sql\SettingsQueries.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="subforms\CreateMetal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,10 +47,13 @@
     <ClInclude Include="sql\headers\Database.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CredHandler.h">
+    <ClInclude Include="support\headers\CredHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sql\headers\SettingsQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="subforms\CreateMetal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

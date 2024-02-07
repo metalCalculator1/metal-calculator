@@ -12,13 +12,8 @@ Database::Database() : conn(nullptr) {
 Database::~Database() {
     // TODO: define whats wrong here and replace with normal solution
     if (conn != nullptr) {
-        try {
-            PQfinish(conn);
-            conn = nullptr;
-        }
-        catch (...) {
-            // nothing
-        }
+         PQfinish(conn);
+         conn = nullptr;
     }
 }
 

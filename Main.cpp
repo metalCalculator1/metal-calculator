@@ -1,7 +1,7 @@
 #include "MainMenu.h"
 #include "SettingsMenu.h"
 #include ".\sql\headers\Database.h"
-#include "CredHandler.h"
+#include "./support/headers/CredHandler.h"
 
 #include <iostream>
 
@@ -13,12 +13,12 @@ using namespace System::Diagnostics;
 
 void main(array<String^>^ args) {
 	if (!CredHandler::parseCreds()) {
-		MessageBox::Show("Cannot read env variables", "Critical error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+		MessageBox::Show("Неможливо зчитати приховані змінні", "Critical error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 		return;
 	}
 
 	if (!Database::getInstance().connectToDB()) {
-		MessageBox::Show("Connection to database failed", "Critical error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+		MessageBox::Show("", "Critical error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 		return;
 	}
 

@@ -127,21 +127,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CredHandler.cpp" />
+    <ClCompile Include="support\CredHandler.cpp" />
     <ClCompile Include="models\SettingModel.h" />
     <ClCompile Include="sql\SettingsQueries.cpp" />
     <ClCompile Include="sql\Database.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="subforms\CreateMetal.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CredHandler.h" />
+    <ClInclude Include="support\headers\CredHandler.h" />
     <ClInclude Include="sql\headers\SettingsQueries.h" />
     <ClInclude Include="sql\headers\Database.h" />
     <ClInclude Include="MainMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SettingsMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="subforms\CreateMetal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -151,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsMenu.resx">
       <DependentUpon>SettingsMenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="subforms\CreateMetal.resx">
+      <DependentUpon>subforms\CreateMetal.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
