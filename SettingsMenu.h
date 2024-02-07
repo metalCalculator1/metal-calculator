@@ -1,5 +1,8 @@
 #pragma once
 
+#include "./sql/headers/SettingsQueries.h"
+#include "./models/SettingModel.h"
+
 namespace MetalCalculator {
 
 	using namespace System;
@@ -18,11 +21,24 @@ namespace MetalCalculator {
 		SettingsMenu(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
 
+			settings = new SettingsModel();
+			settingQueries = new SettingsQueries();
+			initWriteInputs();
+		}
+	private:
+		SettingsModel* settings;
+		SettingsQueries* settingQueries;
+
+		void initWriteInputs() {
+			*settings = settingQueries->getSettings();
+
+			this->fmn78_input_1->Text = settings->fmn_78_0.ToString();
+			this->fmn78_input_2->Text = settings->fmn_78_1.ToString();
+			this->fs45_input->Text = settings->fs_45.ToString();
+			this->mn95_input->Text = settings->mn_95.ToString();
+			this->carbon_input->Text = settings->carbon.ToString();
+		}
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -32,6 +48,16 @@ namespace MetalCalculator {
 			if (components)
 			{
 				delete components;
+			}
+
+			if (settings) {
+				delete settings;
+				settings = nullptr;
+			}
+
+			if (settingQueries) {
+				delete settingQueries;
+				settingQueries = nullptr;
 			}
 		}
 	private: System::Windows::Forms::Panel^ topPanel;
@@ -43,35 +69,19 @@ namespace MetalCalculator {
 	private: System::Windows::Forms::Label^ mainLabel;
 	private: System::Windows::Forms::Label^ settingsLabel;
 	private: System::Windows::Forms::Label^ historyLabel;
-
-
-
 	private: System::Windows::Forms::Label^ fs45_l;
-
 	private: System::Windows::Forms::Label^ mn95_l;
-
 	private: System::Windows::Forms::Label^ carbon_l;
-
 	private: System::Windows::Forms::TextBox^ fs45_input;
 	private: System::Windows::Forms::TextBox^ mn95_input;
 	private: System::Windows::Forms::TextBox^ carbon_input;
-
-
-
-
-
 	private: System::Windows::Forms::Button^ save_btn;
 	private: System::Windows::Forms::Button^ restore_btn;
-
-
 	private: System::Windows::Forms::Label^ steel_marks_label;
 	private: System::Windows::Forms::Button^ add_mark_btn;
 	private: System::Windows::Forms::Button^ edit_mark_btn;
 	private: System::Windows::Forms::Button^ delete_mark_btn;
-
-
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel1;
-
 	private: System::Windows::Forms::Label^ fmn78_l;
 	private: System::Windows::Forms::TextBox^ fmn78_input_2;
 	private: System::Windows::Forms::TextBox^ fmn78_input_1;
@@ -83,18 +93,6 @@ namespace MetalCalculator {
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel6;
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel7;
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel8;
-
-
-
-
-
-
-
-
-
-	protected:
-
-	protected:
 
 	private:
 		/// <summary>
@@ -328,6 +326,7 @@ namespace MetalCalculator {
 			this->save_btn->TabIndex = 11;
 			this->save_btn->Text = L"Зберегти";
 			this->save_btn->UseVisualStyleBackColor = true;
+			this->save_btn->Click += gcnew System::EventHandler(this, &SettingsMenu::save_btn_Click);
 			// 
 			// restore_btn
 			// 
@@ -337,6 +336,7 @@ namespace MetalCalculator {
 			this->restore_btn->TabIndex = 12;
 			this->restore_btn->Text = L"Скинути";
 			this->restore_btn->UseVisualStyleBackColor = true;
+			this->restore_btn->Click += gcnew System::EventHandler(this, &SettingsMenu::restore_btn_Click);
 			// 
 			// steel_marks_label
 			// 
@@ -358,7 +358,7 @@ namespace MetalCalculator {
 			this->add_mark_btn->Location = System::Drawing::Point(30, 3);
 			this->add_mark_btn->Margin = System::Windows::Forms::Padding(30, 3, 30, 3);
 			this->add_mark_btn->Name = L"add_mark_btn";
-			this->add_mark_btn->Size = System::Drawing::Size(202, 44);
+			this->add_mark_btn->Size = System::Drawing::Size(203, 44);
 			this->add_mark_btn->TabIndex = 14;
 			this->add_mark_btn->Text = L"Додати марку";
 			this->add_mark_btn->UseVisualStyleBackColor = true;
@@ -367,10 +367,10 @@ namespace MetalCalculator {
 			// 
 			this->edit_mark_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->edit_mark_btn->Dock = System::Windows::Forms::DockStyle::Top;
-			this->edit_mark_btn->Location = System::Drawing::Point(292, 3);
+			this->edit_mark_btn->Location = System::Drawing::Point(293, 3);
 			this->edit_mark_btn->Margin = System::Windows::Forms::Padding(30, 3, 30, 3);
 			this->edit_mark_btn->Name = L"edit_mark_btn";
-			this->edit_mark_btn->Size = System::Drawing::Size(202, 44);
+			this->edit_mark_btn->Size = System::Drawing::Size(203, 44);
 			this->edit_mark_btn->TabIndex = 15;
 			this->edit_mark_btn->Text = L"Редагувати марку";
 			this->edit_mark_btn->UseVisualStyleBackColor = true;
@@ -379,10 +379,10 @@ namespace MetalCalculator {
 			// 
 			this->delete_mark_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->delete_mark_btn->Dock = System::Windows::Forms::DockStyle::Top;
-			this->delete_mark_btn->Location = System::Drawing::Point(554, 3);
+			this->delete_mark_btn->Location = System::Drawing::Point(556, 3);
 			this->delete_mark_btn->Margin = System::Windows::Forms::Padding(30, 3, 30, 3);
 			this->delete_mark_btn->Name = L"delete_mark_btn";
-			this->delete_mark_btn->Size = System::Drawing::Size(205, 44);
+			this->delete_mark_btn->Size = System::Drawing::Size(203, 44);
 			this->delete_mark_btn->TabIndex = 16;
 			this->delete_mark_btn->Text = L"Видалити марку";
 			this->delete_mark_btn->UseVisualStyleBackColor = true;
@@ -619,11 +619,30 @@ namespace MetalCalculator {
 
 		}
 #pragma endregion
-//private: System::Void fmn78_input_1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-//}
 
-//private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-//}
+private: 
+	System::Void restore_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+		initWriteInputs();
+	}
+private: 
+	System::Void save_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Кароч тут якась хуйня з лібою, є спершу перевіряв чи коректно передача даних була, 
+		// але коли запит успішний(оновив дані) то ліба всеодно вертає поганий статус + не показує помилки
 
+		// можливо використати regex або більшу кількість валідацій, але як на мене то займе більше проц часу ніж просто відловити відповідну помилку
+		try {
+			settingQueries->updateSettings(
+				System::Convert::ToInt16(fmn78_input_1->Text),
+				System::Convert::ToInt16(fmn78_input_2->Text),
+				System::Convert::ToInt16(fs45_input->Text),
+				System::Convert::ToInt16(mn95_input->Text),
+				System::Convert::ToInt16(carbon_input->Text)
+			);
+		}
+		catch (const System::FormatException^ e) {
+			MessageBox::Show("Not right format of input data", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+		}
+		initWriteInputs();
+	}
 };
 }

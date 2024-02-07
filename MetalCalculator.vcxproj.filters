@@ -21,12 +21,33 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sql\Database.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CredHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\SettingModel.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sql\SettingsQueries.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SettingsMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sql\headers\Database.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CredHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sql\headers\SettingsQueries.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

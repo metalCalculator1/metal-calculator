@@ -127,10 +127,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CredHandler.cpp" />
+    <ClCompile Include="models\SettingModel.h" />
+    <ClCompile Include="sql\SettingsQueries.cpp" />
+    <ClCompile Include="sql\Database.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CredHandler.h" />
+    <ClInclude Include="sql\headers\SettingsQueries.h" />
+    <ClInclude Include="sql\headers\Database.h" />
     <ClInclude Include="MainMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
