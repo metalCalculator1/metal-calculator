@@ -27,14 +27,14 @@
     <ClCompile Include="support\CredHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="models\SettingModel.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sql\SettingsQueries.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="subforms\CreateMetal.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\SettingModel.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

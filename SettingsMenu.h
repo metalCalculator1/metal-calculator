@@ -1,8 +1,8 @@
 #pragma once
 
-#include "./sql/headers/SettingsQueries.h"
-#include "./models/SettingModel.h"
-#include "./subforms/CreateMetal.h"
+#include "SettingsQueries.h"
+#include "SettingModel.h"
+#include "CreateMetal.h"
 
 namespace MetalCalculator {
 

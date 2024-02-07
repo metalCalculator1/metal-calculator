@@ -1,4 +1,4 @@
-#include "./headers/SettingsQueries.h"
+#include "SettingsQueries.h"
 
 SettingsQueries::SettingsQueries() {
     conn = Database::getInstance().getConn();
