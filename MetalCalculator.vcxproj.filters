@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MainMenu.cpp">
+    <ClCompile Include="BaseMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
@@ -41,7 +41,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MainMenu.h">
+    <ClInclude Include="BaseMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SettingsMenu.h">

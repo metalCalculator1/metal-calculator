@@ -1,4 +1,4 @@
-#include "MainMenu.h"
+#include "BaseMenu.h"
 #include "SettingsMenu.h"
 #include "Database.h"
 #include "CredHandler.h"
@@ -28,12 +28,11 @@ void main(array<String^>^ args)
 	Application::SetCompatibleTextRenderingDefault(false);
 
 	WindowManager^ Manager = WindowManager::GetInstance();
-	Manager->RegisterFormType("MainMenu", MetalCalculator::MainMenu::typeid);
-	Manager->RegisterFormType("SettingsMenu", MetalCalculator::SettingsMenu::typeid);
 
-	// Application::Run();
-	// MetalCalculator::SettingsMenu^ SettingsForm = gcnew MetalCalculator::SettingsMenu();
-	Manager->ShowForm("SettingsMenu");
+	// TODO: Придумати кращий спосіб заповнити formTypes.
+	Manager->RegisterFormType(MetalCalculator::SettingsMenu::typeid->Name, MetalCalculator::SettingsMenu::typeid);
+	Manager->RegisterFormType(MetalCalculator::CreateMetal::typeid->Name, MetalCalculator::CreateMetal::typeid);
+	Manager->RegisterFormType(MetalCalculator::BaseMenu::typeid->Name, MetalCalculator::BaseMenu::typeid);
 
-	// SettingsForm->Show();
+	Manager->ShowForm("BaseMenu");
 }

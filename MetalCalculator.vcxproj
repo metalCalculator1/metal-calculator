@@ -135,7 +135,7 @@
     <ClCompile Include="sql\SettingsQueries.cpp" />
     <ClCompile Include="sql\Database.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="BaseMenu.cpp" />
     <ClCompile Include="subforms\CreateMetal.cpp" />
     <ClCompile Include="manager\WindowManager.cpp" />
   </ItemGroup>
@@ -143,7 +143,7 @@
     <ClInclude Include="support\headers\CredHandler.h" />
     <ClInclude Include="sql\headers\SettingsQueries.h" />
     <ClInclude Include="sql\headers\Database.h" />
-    <ClInclude Include="MainMenu.h">
+    <ClInclude Include="BaseMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SettingsMenu.h">
@@ -155,8 +155,8 @@
     <ClInclude Include="manager\WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainMenu.resx">
-      <DependentUpon>MainMenu.h</DependentUpon>
+    <EmbeddedResource Include="BaseMenu.resx">
+      <DependentUpon>BaseMenu.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsMenu.resx">
       <DependentUpon>SettingsMenu.h</DependentUpon>

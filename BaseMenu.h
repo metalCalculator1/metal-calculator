@@ -11,38 +11,35 @@ namespace MetalCalculator {
 	using namespace System::Drawing;
 
 
-	public ref class MainMenu : public System::Windows::Forms::Form
+	public ref class BaseMenu : public System::Windows::Forms::Form
 	{
-		WindowManager^ winManager;
-
 	public:
-		MainMenu(void)
+		BaseMenu(void)
 		{
 			InitializeComponent();
-			winManager = WindowManager::GetInstance();
 		}
 
 	protected:
-		~MainMenu()
+		~BaseMenu()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Panel^ topPanel;
-	private: System::Windows::Forms::Panel^ logoPanel;
-	private: System::Windows::Forms::Panel^ labelsPanel;
-	private: System::Windows::Forms::TableLayoutPanel^ labelLayout;
-	private: System::Windows::Forms::Label^ mainLabel;
-	private: System::Windows::Forms::Label^ settingsLabel;
-	private: System::Windows::Forms::Label^ historyLabel;
-	System::ComponentModel::Container^ components;
+		System::Windows::Forms::Panel^ topPanel;
+		System::Windows::Forms::Panel^ logoPanel;
+		System::Windows::Forms::Panel^ labelsPanel;
+		System::Windows::Forms::TableLayoutPanel^ labelLayout;
+		System::Windows::Forms::Label^ mainLabel;
+		System::Windows::Forms::Label^ settingsLabel;
+		System::Windows::Forms::Label^ historyLabel;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainMenu::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(BaseMenu::typeid));
 			this->topPanel = (gcnew System::Windows::Forms::Panel());
 			this->labelsPanel = (gcnew System::Windows::Forms::Panel());
 			this->labelLayout = (gcnew System::Windows::Forms::TableLayoutPanel());
@@ -64,7 +61,7 @@ namespace MetalCalculator {
 			this->topPanel->Location = System::Drawing::Point(0, 0);
 			this->topPanel->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->topPanel->Name = L"topPanel";
-			this->topPanel->Size = System::Drawing::Size(1132, 88);
+			this->topPanel->Size = System::Drawing::Size(1375, 88);
 			this->topPanel->TabIndex = 0;
 			// 
 			// labelsPanel
@@ -74,7 +71,7 @@ namespace MetalCalculator {
 			this->labelsPanel->Location = System::Drawing::Point(280, 0);
 			this->labelsPanel->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->labelsPanel->Name = L"labelsPanel";
-			this->labelsPanel->Size = System::Drawing::Size(852, 88);
+			this->labelsPanel->Size = System::Drawing::Size(1095, 88);
 			this->labelsPanel->TabIndex = 1;
 			// 
 			// labelLayout
@@ -83,7 +80,7 @@ namespace MetalCalculator {
 			this->labelLayout->ColumnCount = 3;
 			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent, 50)));
 			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 294)));
+			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 461)));
 			this->labelLayout->Controls->Add(this->mainLabel, 0, 0);
 			this->labelLayout->Controls->Add(this->settingsLabel, 1, 0);
 			this->labelLayout->Controls->Add(this->historyLabel, 2, 0);
@@ -94,7 +91,7 @@ namespace MetalCalculator {
 			this->labelLayout->RowCount = 1;
 			this->labelLayout->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
 			this->labelLayout->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->labelLayout->Size = System::Drawing::Size(852, 88);
+			this->labelLayout->Size = System::Drawing::Size(1095, 88);
 			this->labelLayout->TabIndex = 0;
 			// 
 			// mainLabel
@@ -105,11 +102,12 @@ namespace MetalCalculator {
 				static_cast<System::Byte>(0)));
 			this->mainLabel->Location = System::Drawing::Point(3, 0);
 			this->mainLabel->Name = L"mainLabel";
-			this->mainLabel->Size = System::Drawing::Size(273, 88);
+			this->mainLabel->Size = System::Drawing::Size(311, 88);
 			this->mainLabel->TabIndex = 0;
+			this->mainLabel->Tag = L"MainMenu";
 			this->mainLabel->Text = L"Головна";
-			this->mainLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->mainLabel->Click += gcnew System::EventHandler(this, &MainMenu::mainLabel_Click);
+			this->mainLabel->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			this->mainLabel->Click += gcnew System::EventHandler(this, &BaseMenu::onMenuLabelClicked);
 			// 
 			// settingsLabel
 			// 
@@ -117,13 +115,14 @@ namespace MetalCalculator {
 			this->settingsLabel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->settingsLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->settingsLabel->Location = System::Drawing::Point(282, 0);
+			this->settingsLabel->Location = System::Drawing::Point(320, 0);
 			this->settingsLabel->Name = L"settingsLabel";
-			this->settingsLabel->Size = System::Drawing::Size(273, 88);
+			this->settingsLabel->Size = System::Drawing::Size(311, 88);
 			this->settingsLabel->TabIndex = 1;
+			this->settingsLabel->Tag = L"SettingsMenu";
 			this->settingsLabel->Text = L"Налаштування";
 			this->settingsLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->settingsLabel->Click += gcnew System::EventHandler(this, &MainMenu::settingsLabel_Click);
+			this->settingsLabel->Click += gcnew System::EventHandler(this, &BaseMenu::onMenuLabelClicked);
 			// 
 			// historyLabel
 			// 
@@ -131,12 +130,14 @@ namespace MetalCalculator {
 			this->historyLabel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->historyLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->historyLabel->Location = System::Drawing::Point(561, 0);
+			this->historyLabel->Location = System::Drawing::Point(637, 0);
 			this->historyLabel->Name = L"historyLabel";
-			this->historyLabel->Size = System::Drawing::Size(288, 88);
+			this->historyLabel->Size = System::Drawing::Size(455, 88);
 			this->historyLabel->TabIndex = 2;
+			this->historyLabel->Tag = L"HistoryMenu";
 			this->historyLabel->Text = L"Історія";
-			this->historyLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->historyLabel->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->historyLabel->Click += gcnew System::EventHandler(this, &BaseMenu::onMenuLabelClicked);
 			// 
 			// logoPanel
 			// 
@@ -149,17 +150,18 @@ namespace MetalCalculator {
 			this->logoPanel->Size = System::Drawing::Size(280, 88);
 			this->logoPanel->TabIndex = 0;
 			// 
-			// MainMenu
+			// BaseMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveBorder;
-			this->ClientSize = System::Drawing::Size(1132, 901);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(231)), static_cast<System::Int32>(static_cast<System::Byte>(231)),
+				static_cast<System::Int32>(static_cast<System::Byte>(231)));
+			this->ClientSize = System::Drawing::Size(1375, 901);
 			this->Controls->Add(this->topPanel);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->MinimumSize = System::Drawing::Size(1150, 948);
-			this->Name = L"MainMenu";
+			this->Name = L"BaseMenu";
 			this->Text = L"MetalCalculator";
 			this->topPanel->ResumeLayout(false);
 			this->labelsPanel->ResumeLayout(false);
@@ -169,14 +171,17 @@ namespace MetalCalculator {
 
 		}
 #pragma endregion
-	private: System::Void mainLabel_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
-		// winManager->IsFormOpen<GetType()>();
-		winManager->ChangeForm(this->GetType()->Name, "MainMenu");
-	}
-private: System::Void settingsLabel_Click(System::Object^ sender, System::EventArgs^ e) 
-{
-	winManager->ChangeForm(this->GetType()->Name, "SettingsMenu");
-}
-};
+	private:
+		System::Void onMenuLabelClicked(System::Object^ sender, System::EventArgs^ e)
+		{
+			Label^ labelClicked = safe_cast<Label^>(sender);
+
+			if (labelClicked != nullptr)
+			{
+				String^ currentWindowName = GetType()->Name;
+				String^ newWindowName = labelClicked->Tag->ToString();
+				WindowManager::GetInstance()->ChangeForm(currentWindowName, newWindowName);
+			}
+		}
+	};
 }

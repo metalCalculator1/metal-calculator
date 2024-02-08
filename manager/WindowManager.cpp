@@ -23,13 +23,14 @@ void WindowManager::ShowForm(String^ name)
 	if (formTypes->ContainsKey(name))
 	{
 		Type^ formType = formTypes[name];
-		Form^ formInstance = safe_cast<Form^>(Activator::CreateInstance(formType));
+		Form^ newForm; 
 
 		// якщо 0 в≥дкритих форм - додаток запускаЇтьс€ вперше.
 		if (openedForms->Count == 0)
 		{
-			openedForms[name] = formInstance;
-			Application::Run(formInstance);
+			newForm = safe_cast<Form^>(Activator::CreateInstance(formType));
+			openedForms[name] = newForm;
+			Application::Run(newForm);
 		}
 		else
 		{
@@ -39,10 +40,10 @@ void WindowManager::ShowForm(String^ name)
 			}
 			else
 			{
-				openedForms[name] = formInstance;
+				openedForms[name] = newForm;
 			}
 
-			formInstance->Show();
+			newForm->Show();
 		}
 
 	}

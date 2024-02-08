@@ -1,6 +1,4 @@
 #pragma once
-// #include "MainMenu.h"
-// #include "SettingsMenu.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
