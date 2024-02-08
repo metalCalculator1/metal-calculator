@@ -75,7 +75,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./sql/headers;./support/headers;./models/headers;./subforms</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./sql/headers;./support/headers;./models;./subforms;./manager;./</IncludePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -137,6 +137,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="subforms\CreateMetal.cpp" />
+    <ClCompile Include="manager\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="support\headers\CredHandler.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="subforms\CreateMetal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="manager\WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainMenu.resx">
