@@ -672,7 +672,7 @@ namespace MetalCalculator {
 		}
 	private:
 		System::Void add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-			WindowManager::GetInstance()->ShowForm("CreateMetal");
+			WindowManager::GetInstance()->ShowForm(MetalCalculator::CreateMetal::typeid->Name);
 		}
 	private: System::Void mainLabel_Click(System::Object^ sender, System::EventArgs^ e)
 	{
