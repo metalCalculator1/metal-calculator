@@ -1,8 +1,10 @@
-#include "BaseMenu.h"
+#include "MainMenu.h"
 #include "SettingsMenu.h"
+#include "HistoryMenu.h"
 #include "Database.h"
 #include "CredHandler.h"
 #include "WindowManager.h"
+#include "template form/TemplateForm.h"
 
 #include <iostream>
 
@@ -30,9 +32,11 @@ void main(array<String^>^ args)
 	WindowManager^ Manager = WindowManager::GetInstance();
 
 	// TODO: Придумати кращий спосіб заповнити formTypes.
+	Manager->RegisterFormType(MetalCalculator::MainMenu::typeid->Name, MetalCalculator::MainMenu::typeid);
 	Manager->RegisterFormType(MetalCalculator::SettingsMenu::typeid->Name, MetalCalculator::SettingsMenu::typeid);
+	Manager->RegisterFormType(MetalCalculator::HistoryMenu::typeid->Name, MetalCalculator::HistoryMenu::typeid);
 	Manager->RegisterFormType(MetalCalculator::CreateMetal::typeid->Name, MetalCalculator::CreateMetal::typeid);
-	Manager->RegisterFormType(MetalCalculator::BaseMenu::typeid->Name, MetalCalculator::BaseMenu::typeid);
+	Manager->RegisterFormType(MetalCalculator::TemplateForm::typeid->Name, MetalCalculator::TemplateForm::typeid);
 
-	Manager->ShowForm("BaseMenu");
+	Manager->ShowForm(MetalCalculator::MainMenu::typeid->Name);
 }
