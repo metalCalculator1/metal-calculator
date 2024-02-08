@@ -43,8 +43,8 @@ void WindowManager::ShowForm(String^ name)
 				newForm = safe_cast<Form^>(Activator::CreateInstance(formType));
 				openedForms[name] = newForm;
 			}
+			newForm->Show();
 		}
-		newForm->Show();
 	}
 	else
 	{
