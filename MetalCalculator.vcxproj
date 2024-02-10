@@ -74,7 +74,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./sql/headers;./support/headers;./models;./subforms;./manager;./</IncludePath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -127,6 +130,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HistoryMenu.cpp" />
     <ClCompile Include="support\CredHandler.cpp" />
     <ClCompile Include="models\SettingModel.h" />
     <ClCompile Include="sql\SettingsQueries.cpp" />
@@ -134,8 +138,13 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="subforms\CreateMetal.cpp" />
+    <ClCompile Include="manager\WindowManager.cpp" />
+    <ClCompile Include="template form\TemplateForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HistoryMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="support\headers\CredHandler.h" />
     <ClInclude Include="sql\headers\SettingsQueries.h" />
     <ClInclude Include="sql\headers\Database.h" />
@@ -148,8 +157,15 @@
     <ClInclude Include="subforms\CreateMetal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="manager\WindowManager.h" />
+    <ClInclude Include="template form\TemplateForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="HistoryMenu.resx">
+      <DependentUpon>HistoryMenu.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.h</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="subforms\CreateMetal.resx">
       <DependentUpon>subforms\CreateMetal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="template form\TemplateForm.resx">
+      <DependentUpon>template form\TemplateForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

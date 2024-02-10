@@ -1,4 +1,4 @@
-#include "./headers/Database.h"
+#include "Database.h"
 
 Database& Database::getInstance() {
     static Database instance;

@@ -11,16 +11,16 @@ namespace MetalCalculator {
 	using namespace System::Drawing;
 
 
-	public ref class MainMenu : public System::Windows::Forms::Form
+	public ref class TemplateForm : public System::Windows::Forms::Form
 	{
 	public:
-		MainMenu(void)
+		TemplateForm(void)
 		{
 			InitializeComponent();
 		}
 
 	protected:
-		~MainMenu()
+		~TemplateForm()
 		{
 			if (components)
 			{
@@ -34,24 +34,27 @@ namespace MetalCalculator {
 		System::Windows::Forms::Label^ mainLabel;
 		System::Windows::Forms::Label^ settingsLabel;
 		System::Windows::Forms::Label^ historyLabel;
-		System::Windows::Forms::Panel^ exitPanel;
-		System::Windows::Forms::Button^ exitButton;
+	private: System::Windows::Forms::Panel^ exitPanel;
+	protected:
 
-		System::ComponentModel::Container^ components;
+	private: System::Windows::Forms::Button^ exitButton;
+	protected:
+
+		   System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainMenu::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(TemplateForm::typeid));
 			this->topPanel = (gcnew System::Windows::Forms::Panel());
 			this->labelsPanel = (gcnew System::Windows::Forms::Panel());
 			this->labelLayout = (gcnew System::Windows::Forms::TableLayoutPanel());
-			this->exitPanel = (gcnew System::Windows::Forms::Panel());
-			this->exitButton = (gcnew System::Windows::Forms::Button());
 			this->mainLabel = (gcnew System::Windows::Forms::Label());
 			this->settingsLabel = (gcnew System::Windows::Forms::Label());
 			this->historyLabel = (gcnew System::Windows::Forms::Label());
 			this->logoPanel = (gcnew System::Windows::Forms::Panel());
+			this->exitButton = (gcnew System::Windows::Forms::Button());
+			this->exitPanel = (gcnew System::Windows::Forms::Panel());
 			this->topPanel->SuspendLayout();
 			this->labelsPanel->SuspendLayout();
 			this->labelLayout->SuspendLayout();
@@ -102,28 +105,6 @@ namespace MetalCalculator {
 			this->labelLayout->Size = System::Drawing::Size(1095, 88);
 			this->labelLayout->TabIndex = 0;
 			// 
-			// exitPanel
-			// 
-			this->exitPanel->Controls->Add(this->exitButton);
-			this->exitPanel->Location = System::Drawing::Point(912, 3);
-			this->exitPanel->Name = L"exitPanel";
-			this->exitPanel->Size = System::Drawing::Size(180, 82);
-			this->exitPanel->TabIndex = 2;
-			// 
-			// exitButton
-			// 
-			this->exitButton->BackColor = System::Drawing::Color::DarkRed;
-			this->exitButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->exitButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->exitButton->ForeColor = System::Drawing::Color::Transparent;
-			this->exitButton->Location = System::Drawing::Point(131, 9);
-			this->exitButton->Name = L"exitButton";
-			this->exitButton->Size = System::Drawing::Size(40, 40);
-			this->exitButton->TabIndex = 1;
-			this->exitButton->Text = L"X";
-			this->exitButton->UseVisualStyleBackColor = false;
-			this->exitButton->Click += gcnew System::EventHandler(this, &MainMenu::exitButton_Click);
-			// 
 			// mainLabel
 			// 
 			this->mainLabel->AutoSize = true;
@@ -137,7 +118,7 @@ namespace MetalCalculator {
 			this->mainLabel->Tag = L"MainMenu";
 			this->mainLabel->Text = L"Головна";
 			this->mainLabel->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->mainLabel->Click += gcnew System::EventHandler(this, &MainMenu::onMenuLabelClicked);
+			this->mainLabel->Click += gcnew System::EventHandler(this, &TemplateForm::onMenuLabelClicked);
 			// 
 			// settingsLabel
 			// 
@@ -152,7 +133,7 @@ namespace MetalCalculator {
 			this->settingsLabel->Tag = L"SettingsMenu";
 			this->settingsLabel->Text = L"Налаштування";
 			this->settingsLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->settingsLabel->Click += gcnew System::EventHandler(this, &MainMenu::onMenuLabelClicked);
+			this->settingsLabel->Click += gcnew System::EventHandler(this, &TemplateForm::onMenuLabelClicked);
 			// 
 			// historyLabel
 			// 
@@ -167,7 +148,7 @@ namespace MetalCalculator {
 			this->historyLabel->Tag = L"HistoryMenu";
 			this->historyLabel->Text = L"Історія";
 			this->historyLabel->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->historyLabel->Click += gcnew System::EventHandler(this, &MainMenu::onMenuLabelClicked);
+			this->historyLabel->Click += gcnew System::EventHandler(this, &TemplateForm::onMenuLabelClicked);
 			// 
 			// logoPanel
 			// 
@@ -180,7 +161,28 @@ namespace MetalCalculator {
 			this->logoPanel->Size = System::Drawing::Size(280, 88);
 			this->logoPanel->TabIndex = 0;
 			// 
-			// MainMenu
+			// exitButton
+			// 
+			this->exitButton->BackColor = System::Drawing::Color::DarkRed;
+			this->exitButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->exitButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->exitButton->ForeColor = System::Drawing::Color::Transparent;
+			this->exitButton->Location = System::Drawing::Point(136, 9);
+			this->exitButton->Name = L"exitButton";
+			this->exitButton->Size = System::Drawing::Size(30, 30);
+			this->exitButton->TabIndex = 1;
+			this->exitButton->Text = L"X";
+			this->exitButton->UseVisualStyleBackColor = false;
+			// 
+			// exitPanel
+			// 
+			this->exitPanel->Controls->Add(this->exitButton);
+			this->exitPanel->Location = System::Drawing::Point(912, 3);
+			this->exitPanel->Name = L"exitPanel";
+			this->exitPanel->Size = System::Drawing::Size(180, 82);
+			this->exitPanel->TabIndex = 2;
+			// 
+			// TemplateForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -191,7 +193,7 @@ namespace MetalCalculator {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->MinimumSize = System::Drawing::Size(1150, 948);
-			this->Name = L"MainMenu";
+			this->Name = L"TemplateForm";
 			this->Text = L"MetalCalculator";
 			this->topPanel->ResumeLayout(false);
 			this->labelsPanel->ResumeLayout(false);
@@ -214,9 +216,5 @@ namespace MetalCalculator {
 				WindowManager::GetInstance()->ChangeForm(currentWindowName, newWindowName);
 			}
 		}
-	private: System::Void exitButton_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
-		Application::Exit();
-	}
-};
+	};
 }
