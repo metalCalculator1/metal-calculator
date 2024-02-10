@@ -4,6 +4,7 @@
 #include "Database.h"
 #include "CredHandler.h"
 #include "WindowManager.h"
+#include "template form/TemplateForm.h"
 
 #include <iostream>
 
@@ -35,6 +36,7 @@ void main(array<String^>^ args)
 	Manager->RegisterFormType(MetalCalculator::SettingsMenu::typeid->Name, MetalCalculator::SettingsMenu::typeid);
 	Manager->RegisterFormType(MetalCalculator::HistoryMenu::typeid->Name, MetalCalculator::HistoryMenu::typeid);
 	Manager->RegisterFormType(MetalCalculator::CreateMetal::typeid->Name, MetalCalculator::CreateMetal::typeid);
+	Manager->RegisterFormType(MetalCalculator::TemplateForm::typeid->Name, MetalCalculator::TemplateForm::typeid);
 
 	Manager->ShowForm(MetalCalculator::MainMenu::typeid->Name);
 }
