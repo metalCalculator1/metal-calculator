@@ -11,6 +11,7 @@ namespace MetalCalculator {
 	using namespace System::Drawing;
 
 
+	// Consider switching name to MainForm (or similar)
 	public ref class MainMenu : public System::Windows::Forms::Form
 	{
 	public:
@@ -33,6 +34,8 @@ namespace MetalCalculator {
 				delete components;
 			}
 		}
+
+		// TopPanel:
 		System::Windows::Forms::Panel^ topPanel;
 		System::Windows::Forms::Panel^ logoPanel;
 		System::Windows::Forms::Panel^ labelsPanel;
@@ -40,235 +43,81 @@ namespace MetalCalculator {
 		System::Windows::Forms::Label^ mainLabel;
 		System::Windows::Forms::Label^ settingsLabel;
 		System::Windows::Forms::Label^ historyLabel;
-
-
 		System::Windows::Forms::Panel^ parentPanel;
+
+		// MainMenu (variables start with mm_):
 		System::Windows::Forms::Panel^ mainPanel;
+		System::Windows::Forms::TableLayoutPanel^ mm_top_layout_panel;
+		System::Windows::Forms::Panel^ mm_panel1;
+		System::Windows::Forms::Label^ mm_chemicalComposition_lbl;
+		System::Windows::Forms::Panel^ mm_panel2;
+		System::Windows::Forms::Panel^ mm_panel3;
+		System::Windows::Forms::Label^ mm_chemicalCompositionGoal_lbl;
+		System::Windows::Forms::Panel^ mm_panel4;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel2;
+		System::Windows::Forms::Label^ mm_C_lbl_top;
+		System::Windows::Forms::TextBox^ mm_C_TB;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel3;
+		System::Windows::Forms::Label^ mm_Ni_lbl_top;
+		System::Windows::Forms::Label^ mm_Cr_lbl_top;
+		System::Windows::Forms::Label^ mm_Cu_lbl_top;
+		System::Windows::Forms::Label^ mm_S_lbl_top;
+		System::Windows::Forms::Label^ mm_P_lbl_top;
+		System::Windows::Forms::Label^ mm_Mn_lbl_top;
+		System::Windows::Forms::Label^ mm_Si_lbl_top;
+		System::Windows::Forms::Label^ mm_C_lbl_btm;
+		System::Windows::Forms::TextBox^ textBox9;
+		System::Windows::Forms::TextBox^ mm_Ni_TB;
+		System::Windows::Forms::TextBox^ mm_Cr_TB;
+		System::Windows::Forms::TextBox^ mm_Cu_TB;
+		System::Windows::Forms::TextBox^ mm_S_TB;
+		System::Windows::Forms::TextBox^ mm_P_TB;
+		System::Windows::Forms::TextBox^ mm_Mn_TB;
+		System::Windows::Forms::TextBox^ mm_Si_TB;
+		System::Windows::Forms::TextBox^ textBox16;
+		System::Windows::Forms::TextBox^ textBox15;
+		System::Windows::Forms::TextBox^ textBox14;
+		System::Windows::Forms::TextBox^ textBox13;
+		System::Windows::Forms::TextBox^ textBox12;
+		System::Windows::Forms::TextBox^ textBox11;
+		System::Windows::Forms::TextBox^ textBox10;
+		System::Windows::Forms::Label^ mm_Ni_lbl_btm;
+		System::Windows::Forms::Label^ mm_Cr_lbl_btm;
+		System::Windows::Forms::Label^ mm_Cu_lbl_btm;
+		System::Windows::Forms::Label^ mm_S_lbl_btm;
+		System::Windows::Forms::Label^ mm_P_lbl_btm;
+		System::Windows::Forms::Label^ mm_Mn_lbl_btm;
+		System::Windows::Forms::Label^ mm_Si_lbl_btm;
+		System::Windows::Forms::Panel^ mm_panel5;
+		System::Windows::Forms::Button^ mm_alloySelect_btn;
+		System::Windows::Forms::TableLayoutPanel^ mm_ferroIfno_TL;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel5;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel6;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel7;
+		System::Windows::Forms::TextBox^ mm_metalKG_TB;
+		System::Windows::Forms::Label^ mm_metalKG_lbl;
+		System::Windows::Forms::TableLayoutPanel^ mm_neededFerro_TL;
+		System::Windows::Forms::Label^ label1;
+		System::Windows::Forms::TableLayoutPanel^ mm_neededInfo_TL_btm;
+		System::Windows::Forms::Label^ mm_FC45_lbl;
+		System::Windows::Forms::Label^ mm_Mn95_lbl;
+		System::Windows::Forms::Label^ mm_FMn78_lbl;
+		System::Windows::Forms::Label^ mm_vuglecevm_lbl;
+		System::Windows::Forms::Button^ button1;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel8;
+		System::Windows::Forms::TextBox^ mm_meltingID_TB;
+		System::Windows::Forms::Label^ mm_meltingID_lbl;
+		System::Windows::Forms::Label^ mm_FC45_value_lbl;
+		System::Windows::Forms::Label^ mm_vulgecevm_value_lbl;
+		System::Windows::Forms::Label^ mm_FMn78_value_lbl;
+		System::Windows::Forms::Label^ mm_Mn95_value_lbl;
+
+
+		// SettingsMenu (variables start with sm_):
 		System::Windows::Forms::Panel^ settingsPanel;
+
+		// HistoryMenu (variables start with hm_):
 		System::Windows::Forms::Panel^ historyPanel;
-	private: System::Windows::Forms::TableLayoutPanel^ mm_top_layout_panel;
-	private: System::Windows::Forms::Panel^ mm_panel1;
-	protected:
-
-	protected:
-
-	private: System::Windows::Forms::Label^ mm_chemicalComposition_lbl;
-	private: System::Windows::Forms::Panel^ mm_panel2;
-	private: System::Windows::Forms::Panel^ mm_panel3;
-
-
-
-
-
-
-
-	private: System::Windows::Forms::Label^ mm_chemicalCompositionGoal_lbl;
-	private: System::Windows::Forms::Panel^ mm_panel4;
-
-
-	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel2;
-	private: System::Windows::Forms::Label^ mm_C_lbl_top;
-
-	private: System::Windows::Forms::TextBox^ mm_C_TB;
-
-
-
-
-
-
-
-
-	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel3;
-	private: System::Windows::Forms::Label^ mm_Ni_lbl_top;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	private: System::Windows::Forms::Label^ mm_Cr_lbl_top;
-
-	private: System::Windows::Forms::Label^ mm_Cu_lbl_top;
-
-	private: System::Windows::Forms::Label^ mm_S_lbl_top;
-
-	private: System::Windows::Forms::Label^ mm_P_lbl_top;
-
-	private: System::Windows::Forms::Label^ mm_Mn_lbl_top;
-
-	private: System::Windows::Forms::Label^ mm_Si_lbl_top;
-	private: System::Windows::Forms::Label^ mm_C_lbl_btm;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	private: System::Windows::Forms::TextBox^ textBox9;
-	private: System::Windows::Forms::TextBox^ mm_Ni_TB;
-
-	private: System::Windows::Forms::TextBox^ mm_Cr_TB;
-
-	private: System::Windows::Forms::TextBox^ mm_Cu_TB;
-
-	private: System::Windows::Forms::TextBox^ mm_S_TB;
-
-	private: System::Windows::Forms::TextBox^ mm_P_TB;
-
-	private: System::Windows::Forms::TextBox^ mm_Mn_TB;
-
-	private: System::Windows::Forms::TextBox^ mm_Si_TB;
-
-	private: System::Windows::Forms::TextBox^ textBox16;
-	private: System::Windows::Forms::TextBox^ textBox15;
-	private: System::Windows::Forms::TextBox^ textBox14;
-	private: System::Windows::Forms::TextBox^ textBox13;
-	private: System::Windows::Forms::TextBox^ textBox12;
-	private: System::Windows::Forms::TextBox^ textBox11;
-	private: System::Windows::Forms::TextBox^ textBox10;
-	private: System::Windows::Forms::Label^ mm_Ni_lbl_btm;
-
-	private: System::Windows::Forms::Label^ mm_Cr_lbl_btm;
-
-	private: System::Windows::Forms::Label^ mm_Cu_lbl_btm;
-
-	private: System::Windows::Forms::Label^ mm_S_lbl_btm;
-
-	private: System::Windows::Forms::Label^ mm_P_lbl_btm;
-
-	private: System::Windows::Forms::Label^ mm_Mn_lbl_btm;
-
-	private: System::Windows::Forms::Label^ mm_Si_lbl_btm;
-	private: System::Windows::Forms::Panel^ mm_panel5;
-
-
-	private: System::Windows::Forms::Button^ mm_alloySelect_btn;
-
-	private: System::Windows::Forms::TableLayoutPanel^ mm_ferroIfno_TL;
-	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel5;
-	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel6;
-	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel7;
-	private: System::Windows::Forms::TextBox^ mm_metalKG_TB;
-	private: System::Windows::Forms::Label^ mm_metalKG_lbl;
-
-
-
-	private: System::Windows::Forms::TableLayoutPanel^ mm_neededFerro_TL;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TableLayoutPanel^ mm_neededInfo_TL_btm;
-	private: System::Windows::Forms::Label^ mm_FC45_lbl;
-	private: System::Windows::Forms::Label^ mm_Mn95_lbl;
-	private: System::Windows::Forms::Label^ mm_FMn78_lbl;
-
-	private: System::Windows::Forms::Label^ mm_vuglecevm_lbl;
-
-
-
-
-
-
-
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel8;
-	private: System::Windows::Forms::TextBox^ mm_meltingID_TB;
-	private: System::Windows::Forms::Label^ mm_meltingID_lbl;
-
-
-
-	private: System::Windows::Forms::Label^ mm_FC45_value_lbl;
-private: System::Windows::Forms::Label^ mm_vulgecevm_value_lbl;
-
-private: System::Windows::Forms::Label^ mm_FMn78_value_lbl;
-
-private: System::Windows::Forms::Label^ mm_Mn95_value_lbl;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	protected:
-
-
-
-
-
-
-	protected:
-
-	protected:
-
-
-
-
-
-
-	protected:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		System::ComponentModel::Container^ components;
 
@@ -1498,43 +1347,14 @@ private: System::Windows::Forms::Label^ mm_Mn95_value_lbl;
 
 		}
 #pragma endregion
+
 	private:
-		System::Void onMenuLabelClicked(System::Object^ sender, System::EventArgs^ e)
-		{
-			ChangeLayout(sender);
-		}
+		// Events:
+		System::Void onMenuLabelClicked(System::Object^ sender, System::EventArgs^ e);
 
-		System::Void exitButton_Click(System::Object^ sender, System::EventArgs^ e)
-		{
-			Application::Exit();
-		}
 
-		System::Void ChangeLayout(System::Object^ sender)
-		{
-			Label^ label = safe_cast<Label^>(sender);
-			if (label == nullptr) return;
-
-			for each (Control ^ control in parentPanel->Controls)
-			{
-				// MessageBox::Show("HEY!");
-				if (dynamic_cast<Panel^>(control) != nullptr) // Check if the control is a Panel
-				{
-					Console::WriteLine(control->Name);
-
-					if (label->Tag == control->Tag)
-					{
-						BringPanelToFront(control);
-					}
-				}
-			}
-		}
-
-		System::Void BringPanelToFront(Control^ panel)
-		{
-			for (size_t i = 0; i < parentPanel->Controls->Count; i++)
-			{
-				panel->BringToFront();
-			}
-		}
+		// Functions:
+		System::Void ChangeLayout(System::Object^ sender);
+		System::Void BringPanelToFront(Control^ panel);
 	};
 }
