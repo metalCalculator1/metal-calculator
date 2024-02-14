@@ -33,13 +33,7 @@
     <ClCompile Include="models\SettingModel.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="manager\WindowManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HistoryMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
+    <ClCompile Include="MainForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="template form\TemplateForm.cpp">
@@ -62,13 +56,7 @@
     <ClInclude Include="subforms\CreateMetal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="manager\WindowManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HistoryMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
+    <ClInclude Include="MainForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="template form\TemplateForm.h">
