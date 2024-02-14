@@ -3,7 +3,6 @@
 #include "SettingsQueries.h"
 #include "SettingModel.h"
 #include "CreateMetal.h"
-#include "WindowManager.h"
 
 namespace MetalCalculator {
 
@@ -208,7 +207,6 @@ namespace MetalCalculator {
 			this->mainLabel->TabIndex = 0;
 			this->mainLabel->Text = L"Головна";
 			this->mainLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->mainLabel->Click += gcnew System::EventHandler(this, &SettingsMenu::mainLabel_Click);
 			// 
 			// settingsLabel
 			// 
@@ -373,7 +371,6 @@ namespace MetalCalculator {
 			this->add_mark_btn->TabIndex = 14;
 			this->add_mark_btn->Text = L"Додати марку";
 			this->add_mark_btn->UseVisualStyleBackColor = true;
-			this->add_mark_btn->Click += gcnew System::EventHandler(this, &SettingsMenu::add_mark_btn_Click);
 			// 
 			// edit_mark_btn
 			// 
@@ -670,13 +667,5 @@ namespace MetalCalculator {
 			}
 			initWriteInputs();
 		}
-	private:
-		System::Void add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-			WindowManager::GetInstance()->ShowForm(MetalCalculator::CreateMetal::typeid->Name);
-		}
-	private: System::Void mainLabel_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		WindowManager::GetInstance()->ChangeForm("SettingsMenu", "MainMenu");
-	}
 	};
 }
