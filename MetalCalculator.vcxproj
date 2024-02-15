@@ -137,7 +137,6 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="subforms\CreateMetal.cpp" />
-    <ClCompile Include="template form\TemplateForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="support\headers\CredHandler.h" />
@@ -146,13 +145,7 @@
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="SettingsMenu.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="subforms\CreateMetal.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="template form\TemplateForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -160,14 +153,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsMenu.resx">
-      <DependentUpon>SettingsMenu.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="subforms\CreateMetal.resx">
       <DependentUpon>subforms\CreateMetal.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="template form\TemplateForm.resx">
-      <DependentUpon>template form\TemplateForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

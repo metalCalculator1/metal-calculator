@@ -36,14 +36,8 @@
     <ClCompile Include="MainForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="template form\TemplateForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SettingsMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sql\headers\Database.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,9 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MainForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="template form\TemplateForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
