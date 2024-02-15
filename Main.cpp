@@ -1,8 +1,6 @@
 #include "MainForm.h"
-#include "SettingsMenu.h"
 #include "Database.h"
 #include "CredHandler.h"
-#include "template form/TemplateForm.h"
 
 #include <iostream>
 

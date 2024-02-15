@@ -37,9 +37,14 @@ namespace MetalCalculator {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(CreateMetal::typeid));
 			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
 			this->SuspendLayout();
+			// 
+			// imageList1
+			// 
+			this->imageList1->ColorDepth = System::Windows::Forms::ColorDepth::Depth8Bit;
+			this->imageList1->ImageSize = System::Drawing::Size(16, 16);
+			this->imageList1->TransparentColor = System::Drawing::Color::Transparent;
 			// 
 			// CreateMetal
 			// 
@@ -48,7 +53,9 @@ namespace MetalCalculator {
 			this->ClientSize = System::Drawing::Size(388, 261);
 			this->Name = L"CreateMetal";
 			this->Text = L"CreateMetal";
+			this->TopMost = true;
 			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	};
