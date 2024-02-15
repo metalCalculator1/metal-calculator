@@ -1,6 +1,6 @@
 #pragma once
 
-namespace MetaCalculator
+namespace MetalCalculator
 {
 	ref class Calculator
 	{
