@@ -155,5 +155,16 @@ namespace MetalCalculator
 		return HimSkladDic;
 	}
 
-
+	System::Void MainForm::onMetalKGLeave(System::Object^ sender, System::EventArgs^ e)
+	{
+		float value;
+		if (System::Single::TryParse(mm_metalKG_TB->Text, value))
+		{
+			metalMass = value;
+		}
+		else
+		{
+			MessageBox::Show("¬вед≥ть коректне число");
+		}
+	}
 };

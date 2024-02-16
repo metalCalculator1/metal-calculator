@@ -619,6 +619,9 @@ namespace MetalCalculator {
 			this->mm_metalKG_TB->Name = L"mm_metalKG_TB";
 			this->mm_metalKG_TB->Size = System::Drawing::Size(194, 26);
 			this->mm_metalKG_TB->TabIndex = 0;
+			this->mm_metalKG_TB->Leave += gcnew System::EventHandler(this, &MainForm::onMetalKGLeave);
+
+
 			// 
 			// mm_metalKG_lbl
 			// 
@@ -2211,5 +2214,6 @@ namespace MetalCalculator {
 
 		Dictionary<String^, TextBox^>^ GetHimSkladFromTablePanel(TableLayoutPanel^ tableLayoutPanel);
 		
+		System::Void onMetalKGLeave(System::Object^ sender, System::EventArgs^ e);
 	};
 }
