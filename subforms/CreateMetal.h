@@ -50,7 +50,7 @@ namespace MetalCalculator {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(388, 261);
+			this->ClientSize = System::Drawing::Size(774, 261);
 			this->Name = L"CreateMetal";
 			this->Text = L"CreateMetal";
 			this->TopMost = true;
