@@ -33,7 +33,8 @@ namespace MetalCalculator {
 			settings = new SettingsModel();
 			settingQueries = new SettingsQueries();
 			initWriteInputs();
-			FillGoalHimSklad();
+			// FillGoalHimSklad();
+			SelectElementsByName("default");
 		}
 
 	private:
@@ -981,7 +982,7 @@ namespace MetalCalculator {
 			this->mm_Ni_TB->Name = L"mm_Ni_TB";
 			this->mm_Ni_TB->Size = System::Drawing::Size(82, 71);
 			this->mm_Ni_TB->TabIndex = 29;
-			this->mm_Ni_TB->Text = L"0,1";
+			this->mm_Ni_TB->Text = L"0.1";
 			this->mm_Ni_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_Cr_TB
@@ -999,7 +1000,7 @@ namespace MetalCalculator {
 			this->mm_Cr_TB->Name = L"mm_Cr_TB";
 			this->mm_Cr_TB->Size = System::Drawing::Size(82, 71);
 			this->mm_Cr_TB->TabIndex = 28;
-			this->mm_Cr_TB->Text = L"0,1";
+			this->mm_Cr_TB->Text = L"0.1";
 			this->mm_Cr_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_Cu_TB
@@ -1017,7 +1018,7 @@ namespace MetalCalculator {
 			this->mm_Cu_TB->Name = L"mm_Cu_TB";
 			this->mm_Cu_TB->Size = System::Drawing::Size(82, 71);
 			this->mm_Cu_TB->TabIndex = 27;
-			this->mm_Cu_TB->Text = L"0,1";
+			this->mm_Cu_TB->Text = L"0.1";
 			this->mm_Cu_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_S_TB
@@ -1035,7 +1036,7 @@ namespace MetalCalculator {
 			this->mm_S_TB->Name = L"mm_S_TB";
 			this->mm_S_TB->Size = System::Drawing::Size(82, 71);
 			this->mm_S_TB->TabIndex = 26;
-			this->mm_S_TB->Text = L"0,030";
+			this->mm_S_TB->Text = L"0.030";
 			this->mm_S_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_P_TB
@@ -1053,7 +1054,7 @@ namespace MetalCalculator {
 			this->mm_P_TB->Name = L"mm_P_TB";
 			this->mm_P_TB->Size = System::Drawing::Size(82, 71);
 			this->mm_P_TB->TabIndex = 25;
-			this->mm_P_TB->Text = L"0,030";
+			this->mm_P_TB->Text = L"0.030";
 			this->mm_P_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_Mn_TB
@@ -1071,7 +1072,7 @@ namespace MetalCalculator {
 			this->mm_Mn_TB->Name = L"mm_Mn_TB";
 			this->mm_Mn_TB->Size = System::Drawing::Size(82, 71);
 			this->mm_Mn_TB->TabIndex = 24;
-			this->mm_Mn_TB->Text = L"0,45";
+			this->mm_Mn_TB->Text = L"0.45";
 			this->mm_Mn_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_Si_TB
@@ -1089,7 +1090,7 @@ namespace MetalCalculator {
 			this->mm_Si_TB->Name = L"mm_Si_TB";
 			this->mm_Si_TB->Size = System::Drawing::Size(82, 71);
 			this->mm_Si_TB->TabIndex = 23;
-			this->mm_Si_TB->Text = L"0,12";
+			this->mm_Si_TB->Text = L"0.12";
 			this->mm_Si_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_Ni_lbl_top
@@ -1179,7 +1180,7 @@ namespace MetalCalculator {
 			this->mm_C_TB->Name = L"mm_C_TB";
 			this->mm_C_TB->Size = System::Drawing::Size(82, 71);
 			this->mm_C_TB->TabIndex = 8;
-			this->mm_C_TB->Text = L"0,26";
+			this->mm_C_TB->Text = L"0.26";
 			this->mm_C_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_panel3
@@ -2228,18 +2229,54 @@ namespace MetalCalculator {
 			Dictionary<String^, TextBox^>^ HimSkladProbaDic = GetHimSkladFromTablePanel(HimSklad_Proba_Panel);
 			Dictionary<String^, TextBox^>^ HimSkladGoalDic = GetHimSkladFromTablePanel(HimSklad_Goal_TablePanel);
 
-			float Si_Proba = Single::Parse(HimSkladProbaDic["Si"]->Text);
-			float Mn_Proba = Single::Parse(HimSkladProbaDic["Mn"]->Text);
-			float C_Proba = Single::Parse(HimSkladProbaDic["C"]->Text);
-			
-			float Si_Goal = Single::Parse(HimSkladGoalDic["Si"]->Text);
-			float Mn_Goal = Single::Parse(HimSkladGoalDic["Mn"]->Text);
-			float C_Goal = Single::Parse(HimSkladGoalDic["C"]->Text);
+			float Si_Proba = Single::Parse(HimSkladProbaDic["Si"]->Text, Globalization::CultureInfo::InvariantCulture);
+			float Mn_Proba = Single::Parse(HimSkladProbaDic["Mn"]->Text, Globalization::CultureInfo::InvariantCulture);
+			float C_Proba = Single::Parse(HimSkladProbaDic["C"]->Text, Globalization::CultureInfo::InvariantCulture);
+
+			float Si_Goal = Single::Parse(HimSkladGoalDic["Si"]->Text, Globalization::CultureInfo::InvariantCulture);
+			float Mn_Goal = Single::Parse(HimSkladGoalDic["Mn"]->Text, Globalization::CultureInfo::InvariantCulture);
+			float C_Goal = Single::Parse(HimSkladGoalDic["C"]->Text, Globalization::CultureInfo::InvariantCulture);
 
 			mm_FC45_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFC95(metalMass, Si_Proba, Si_Goal));
 			mm_Mn95_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateMn95(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
 			mm_FMn78_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFMn78(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
 			mm_vulgecevm_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal));
+		}
+
+		void SelectElementsByName(String^ metalName)
+		{
+			String^ query = String::Format("SELECT c, si, mn, p, s, cu, cr, ni FROM metals WHERE name = '{0}'", metalName);
+
+			IntPtr ptrToNativeString = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(query);
+			char* nativeQuery = static_cast<char*>(ptrToNativeString.ToPointer());
+
+			PGconn* conn = Database::getInstance().getConn();
+			PGresult* res = PQexec(conn, nativeQuery);
+
+			if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+				Console::WriteLine("SELECT command did not return tuples properly: " + gcnew String(PQerrorMessage(conn)));
+				PQclear(res);
+				PQfinish(conn);
+				return;
+			}
+
+			if (PQntuples(res) <= 0)
+			{
+				return;
+			}
+
+			for (int col = 0; col < PQnfields(res); col++) 
+			{
+				TextBox^ textBox = dynamic_cast<TextBox^>(HimSklad_Goal_TablePanel->GetControlFromPosition(col, 1)); // 0 for the first row
+				if (textBox == nullptr)
+				{
+					break;
+				}
+
+				String^ value = gcnew String(PQgetvalue(res, 0, col));
+				Console::WriteLine(value);
+				textBox->Text = value;
+			}
 		}
 
 	};
