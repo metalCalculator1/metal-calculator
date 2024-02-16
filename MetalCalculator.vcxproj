@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Calculator.cpp" />
+    <ClCompile Include="sql\MainQueries.cpp" />
     <ClCompile Include="support\CredHandler.cpp" />
     <ClCompile Include="models\SettingModel.h" />
     <ClCompile Include="sql\SettingsQueries.cpp" />
@@ -141,6 +142,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
+    <ClInclude Include="models\MainModel.h" />
+    <ClInclude Include="sql\headers\MainQueries.h" />
     <ClInclude Include="support\headers\CredHandler.h" />
     <ClInclude Include="sql\headers\SettingsQueries.h" />
     <ClInclude Include="sql\headers\Database.h" />

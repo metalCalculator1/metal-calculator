@@ -1,6 +1,8 @@
 #pragma once
 
+#include "MainQueries.h"
 #include "SettingsQueries.h"
+#include "MainModel.h"
 #include "SettingModel.h"
 #include "CreateMetal.h"
 #include "Calculator.h"
@@ -22,6 +24,14 @@ namespace MetalCalculator {
 	public:
 		MainForm(void)
 		{
+			settings = new SettingsModel();
+			settingQueries = new SettingsQueries();
+
+			goalHimSkladModel = new MainModel();
+			mainQueries = new MainQueries();
+
+			Calculator^ Calc = gcnew Calculator();
+
 			InitializeComponent();
 
 			mainPanel->Tag = mainLabel->Tag;
@@ -30,16 +40,23 @@ namespace MetalCalculator {
 
 			BringPanelToFront(mainPanel);
 
-			settings = new SettingsModel();
-			settingQueries = new SettingsQueries();
+
 			initWriteInputs();
 			// FillGoalHimSklad();
-			SelectElementsByName("default");
+			// SelectElementsByName("default");
 		}
 
 	private:
 		SettingsModel* settings;
 		SettingsQueries* settingQueries;
+
+		MainModel* goalHimSkladModel;
+		MainQueries* mainQueries;
+
+		Calculator^ Calc;
+
+		float metalMass = 3120.f;
+
 
 		void initWriteInputs() {
 			*settings = settingQueries->getSettings();
@@ -59,9 +76,6 @@ namespace MetalCalculator {
 				delete components;
 			}
 		}
-
-		Calculator^ Calc = gcnew Calculator();
-		float metalMass = 3120.f;
 
 		// TopPanel:
 		System::Windows::Forms::Panel^ topPanel;
@@ -734,7 +748,7 @@ namespace MetalCalculator {
 			this->mm_vulgecevm_value_lbl->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->mm_vulgecevm_value_lbl->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_vulgecevm_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+			this->mm_vulgecevm_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->mm_vulgecevm_value_lbl->Location = System::Drawing::Point(411, 206);
 			this->mm_vulgecevm_value_lbl->Margin = System::Windows::Forms::Padding(3, 5, 3, 5);
@@ -749,8 +763,8 @@ namespace MetalCalculator {
 			this->mm_FMn78_value_lbl->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->mm_FMn78_value_lbl->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_FMn78_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->mm_FMn78_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->mm_FMn78_value_lbl->Location = System::Drawing::Point(411, 72);
 			this->mm_FMn78_value_lbl->Margin = System::Windows::Forms::Padding(3, 5, 3, 5);
 			this->mm_FMn78_value_lbl->Name = L"mm_FMn78_value_lbl";
@@ -764,8 +778,8 @@ namespace MetalCalculator {
 			this->mm_Mn95_value_lbl->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->mm_Mn95_value_lbl->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_Mn95_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->mm_Mn95_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->mm_Mn95_value_lbl->Location = System::Drawing::Point(411, 139);
 			this->mm_Mn95_value_lbl->Margin = System::Windows::Forms::Padding(3, 5, 3, 5);
 			this->mm_Mn95_value_lbl->Name = L"mm_Mn95_value_lbl";
@@ -824,8 +838,8 @@ namespace MetalCalculator {
 			this->mm_FC45_value_lbl->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->mm_FC45_value_lbl->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_FC45_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->mm_FC45_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->mm_FC45_value_lbl->Location = System::Drawing::Point(411, 5);
 			this->mm_FC45_value_lbl->Margin = System::Windows::Forms::Padding(3, 5, 3, 5);
 			this->mm_FC45_value_lbl->Name = L"mm_FC45_value_lbl";
@@ -2186,15 +2200,7 @@ namespace MetalCalculator {
 
 		void FillGoalHimSklad()
 		{
-			Dictionary<String^, TextBox^>^ HimSkladDic = GetHimSkladFromTablePanel(HimSklad_Goal_TablePanel);
-			HimSkladDic["C"]->Text = "0,23";
-			HimSkladDic["Si"]->Text = "0,38";
-			HimSkladDic["Mn"]->Text = "1,3";
-			HimSkladDic["P"]->Text = "0,030";
-			HimSkladDic["S"]->Text = "0,030";
-			HimSkladDic["Cu"]->Text = "0,1";
-			HimSkladDic["Cr"]->Text = "0,1";
-			HimSkladDic["Ni"]->Text = "0,1";
+			//
 		}
 
 		Dictionary<String^, TextBox^>^ GetHimSkladFromTablePanel(TableLayoutPanel^ tableLayoutPanel)
@@ -2245,38 +2251,8 @@ namespace MetalCalculator {
 
 		void SelectElementsByName(String^ metalName)
 		{
-			String^ query = String::Format("SELECT c, si, mn, p, s, cu, cr, ni FROM metals WHERE name = '{0}'", metalName);
-
-			IntPtr ptrToNativeString = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(query);
-			char* nativeQuery = static_cast<char*>(ptrToNativeString.ToPointer());
-
-			PGconn* conn = Database::getInstance().getConn();
-			PGresult* res = PQexec(conn, nativeQuery);
-
-			if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-				Console::WriteLine("SELECT command did not return tuples properly: " + gcnew String(PQerrorMessage(conn)));
-				PQclear(res);
-				PQfinish(conn);
-				return;
-			}
-
-			if (PQntuples(res) <= 0)
-			{
-				return;
-			}
-
-			for (int col = 0; col < PQnfields(res); col++) 
-			{
-				TextBox^ textBox = dynamic_cast<TextBox^>(HimSklad_Goal_TablePanel->GetControlFromPosition(col, 1)); // 0 for the first row
-				if (textBox == nullptr)
-				{
-					break;
-				}
-
-				String^ value = gcnew String(PQgetvalue(res, 0, col));
-				Console::WriteLine(value);
-				textBox->Text = value;
-			}
+			//*goalHimSkladModel = mainQueries->getElementByName(metalName);
+			//Console::WriteLine(goalHimSkladModel->c);
 		}
 
 	};
