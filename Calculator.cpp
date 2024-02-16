@@ -1,6 +1,6 @@
 #include "Calculator.h"
 
-namespace MetaCalculator
+namespace MetalCalculator
 {
 	float Calculator::CalculateFC95(float metalMass, float Si_Proba, float Si_Goal)
 	{
@@ -57,11 +57,13 @@ namespace MetaCalculator
 
 		float result;
 
-		if (((F17 * (M4 / 100) * (N20 / 100) / E11) * 100 + D4) == D9) {
+		if (((F17 * (M4 / 100.0) * (N20 / 100.0) / E11) * 100.0 + D4) == D9) {
 			result = 0;
 		}
-		else {
-			result = E11 * (D9 - ((((B9 - B4) * E11 / 100) / (L4 / 100)) * (M4 / 100) * (N20 / 100) / E11 * 100 + D4)) * 100 / L12 / N21;
+		else 
+		{
+			float calculationPart = (((B9 - B4) * E11 / 100.0) / (L4 / 100.0) * (M4 / 100.0) * (N20 / 100.0) / E11 * 100.0 + D4);
+			result = E11 * (D9 - calculationPart) * 100.0 / L12 / N21;
 		}
 
 		Mn95 = result;

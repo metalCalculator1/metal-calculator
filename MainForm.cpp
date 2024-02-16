@@ -7,6 +7,12 @@ namespace MetalCalculator
 	{
 		ChangeLayout(sender);
 	}
+	System::Void MainForm::onCalculateBtnClick(System::Object^ sender, System::EventArgs^ e)
+	{
+		CalculateNeededFerro();
+
+	}
+
 
 	// Functions:
 	System::Void MainForm::ChangeLayout(System::Object^ sender)
@@ -44,6 +50,7 @@ namespace MetalCalculator
 		}
 	}
 
+	
 	// Helper Functions:
 	bool MainForm::IsPanelOnFront(Control^ panel)
 	{

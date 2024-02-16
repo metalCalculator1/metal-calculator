@@ -9,10 +9,10 @@ namespace MetalCalculator
 		~Calculator() {};
 	private:
 		// Засвоєння хімічних елементів
-		const int N20 = 90; // Засвоєння хімічних елементів Mn з ФМн78
-		const int N21 = 90;
-		const int N22 = 90; // Засвоєння хімічних елементів Si з ФС45
-		const int N23 = 90;
+		const float N20 = 90.0; // Засвоєння хімічних елементів Mn з ФМн78
+		const float N21 = 90.0; // Засвоєння хімічних елементів Mn з Мн95
+		const float N22 = 90.0; // Засвоєння хімічних елементів Si з ФС45
+		const float N23 = 90.0;
 
 		// Хімічні склади
 		float HimSklad_C_FMn78 = 7.0;		// C  - Хімічний склад феромарганцю марки ФМн78, %
