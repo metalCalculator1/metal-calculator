@@ -53,34 +53,35 @@ namespace MetalCalculator
 		return index == 0;
 	}
 
-	//System::Void MainForm::sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e)
-	//{
-	//	try {
-	//		settingQueries->updateSettings(
-	//			System::Convert::ToInt16(sm_fmn78_input_1->Text),
-	//			System::Convert::ToInt16(sm_fmn78_input_2->Text),
-	//			System::Convert::ToInt16(sm_fs45_input->Text),
-	//			System::Convert::ToInt16(sm_mn95_input->Text),
-	//			System::Convert::ToInt16(sm_carbon_input->Text)
-	//		);
-	//	}
-	//	catch (const System::FormatException^ e) {
-	//		MessageBox::Show("Невірний формат даних", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-	//	}
-	//	initWriteInputs();
-	//}
+	System::Void MainForm::sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		try {
+			// Consider taking model object as a parameter.
+			settingQueries->updateSettings(
+				System::Convert::ToInt16(sm_fmn78_input_1->Text),
+				System::Convert::ToInt16(sm_fmn78_input_2->Text),
+				System::Convert::ToInt16(sm_fs45_input->Text),
+				System::Convert::ToInt16(sm_mn95_input->Text),
+				System::Convert::ToInt16(sm_carbon_input->Text)
+			);
+		}
+		catch (const System::FormatException^ e) {
+			MessageBox::Show("Невірний формат даних", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+		}
+		initWriteInputs();
+	}
 
 	System::Void MainForm::sm_restore_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		initWriteInputs();
 	}
 
-	//System::Void MainForm::sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e)
-	//{
-	//	CreateMetal^ secondForm = gcnew CreateMetal();
+	System::Void MainForm::sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		CreateMetal^ secondForm = gcnew CreateMetal();
 
-	//	secondForm->ShowDialog();
-	//}
+		secondForm->ShowDialog();
+	}
 
 	System::Void MainForm::sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -113,9 +114,9 @@ namespace MetalCalculator
 		float Mn_Proba = Single::Parse(HimSkladProbaDic["Mn"]->Text);
 		float C_Proba = Single::Parse(HimSkladProbaDic["C"]->Text);
 
-		float Si_Goal = Single::Parse(HimSkladGoalDic["Si"]->Text);
-		float Mn_Goal = Single::Parse(HimSkladGoalDic["Mn"]->Text);
-		float C_Goal = Single::Parse(HimSkladGoalDic["C"]->Text);
+		float Si_Goal = goalHimSkladModel->si;
+		float Mn_Goal = goalHimSkladModel->mn;
+		float C_Goal = goalHimSkladModel->c;
 
 		mm_FC45_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFC95(metalMass, Si_Proba, Si_Goal));
 		mm_Mn95_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateMn95(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));

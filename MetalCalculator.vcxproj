@@ -133,6 +133,7 @@
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="sql\MainQueries.cpp" />
     <ClCompile Include="StringConverter.cpp" />
+    <ClCompile Include="subforms\CreateMetal.cpp" />
     <ClCompile Include="support\CredHandler.cpp" />
     <ClCompile Include="models\SettingModel.h" />
     <ClCompile Include="sql\SettingsQueries.cpp" />
@@ -142,9 +143,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
-    <ClInclude Include="models\MainModel.h" />
+    <ClInclude Include="models\MetalModel.h" />
     <ClInclude Include="sql\headers\MainQueries.h" />
     <ClInclude Include="StringConverter.h" />
+    <ClInclude Include="subforms\CreateMetal.h" />
     <ClInclude Include="support\headers\CredHandler.h" />
     <ClInclude Include="sql\headers\SettingsQueries.h" />
     <ClInclude Include="sql\headers\Database.h" />
@@ -157,6 +159,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="subforms\CreateMetal.resx" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\logo.png" />

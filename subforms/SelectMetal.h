@@ -21,9 +21,7 @@ namespace MetalCalculator {
 		SelectMetal(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+
 			metalQueries = new MetalQueries();
 
 			std::vector<MetalModel> metalsStd = metalQueries->getMetals();
@@ -34,9 +32,6 @@ namespace MetalCalculator {
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~SelectMetal()
 		{
 			if (components)

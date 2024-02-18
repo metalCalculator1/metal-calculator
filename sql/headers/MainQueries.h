@@ -2,7 +2,7 @@
 
 #include <libpq-fe.h>
 #include "Database.h"
-#include "MainModel.h"
+#include "MetalModel.h"
 
 
 namespace MetalCalculator
@@ -13,14 +13,14 @@ namespace MetalCalculator
 	{
 	public:
 		MainQueries();
-		MainModel^ getElementByName(String^ metalName);
-		bool addMetal(const MainModel^ metal);
+		MetalModel^ getElementByName(String^ metalName);
+		bool addMetal(const MetalModel^ metal);
 
-		System::Collections::Generic::List<MainModel^>^ getMetals() {};
+		System::Collections::Generic::List<MetalModel^>^ getMetals() {};
 		// bool updateMetalById();
 		// bool dropMetalById();
 	private:
-		MainModel^ parseHimSklad(PGresult* result);
+		MetalModel^ parseHimSklad(PGresult* result);
 		PGconn* conn;
 	};
 }

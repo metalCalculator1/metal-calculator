@@ -3,8 +3,8 @@
 #include "SettingsQueries.h"
 #include "SettingModel.h"
 #include "MainQueries.h"
-#include "MainModel.h"
-// #include "CreateMetal.h"
+#include "MetalModel.h"
+#include "CreateMetal.h"
 #include "Calculator.h"
 
 namespace MetalCalculator {
@@ -29,7 +29,7 @@ namespace MetalCalculator {
 			settings = new SettingsModel();
 			settingQueries = new SettingsQueries();
 
-			goalHimSkladModel = gcnew MainModel();
+			goalHimSkladModel = gcnew MetalModel();
 			mainQueries = new MainQueries();
 
 			Calc = gcnew Calculator();
@@ -42,8 +42,6 @@ namespace MetalCalculator {
 			HimSkladGoalDic = GetHimSkladFromTablePanel(HimSklad_Goal_TablePanel);
 
 			BringPanelToFront(mainPanel);
-
-
 			initWriteInputs();
 
 			SelectElementsByName("default");
@@ -54,7 +52,7 @@ namespace MetalCalculator {
 		SettingsModel* settings;
 		SettingsQueries* settingQueries;
 
-		MainModel^ goalHimSkladModel;
+		MetalModel^ goalHimSkladModel;
 		MainQueries* mainQueries;
 
 		Calculator^ Calc;
@@ -103,161 +101,106 @@ namespace MetalCalculator {
 		System::Windows::Forms::Panel^ mm_panel3;
 		System::Windows::Forms::Label^ mm_chemicalCompositionGoal_lbl;
 		System::Windows::Forms::Panel^ mm_panel4;
-	protected: System::Windows::Forms::TableLayoutPanel^ HimSklad_Proba_Panel;
+		System::Windows::Forms::TableLayoutPanel^ HimSklad_Proba_Panel;
+		System::Windows::Forms::Label^ mm_C_lbl_top;
+		System::Windows::Forms::TextBox^ mm_C_TB;
+		System::Windows::Forms::TableLayoutPanel^ HimSklad_Goal_TablePanel;
+		System::Windows::Forms::Label^ mm_Ni_lbl_top;
+		System::Windows::Forms::Label^ mm_Cr_lbl_top;
+		System::Windows::Forms::Label^ mm_Cu_lbl_top;
+		System::Windows::Forms::Label^ mm_S_lbl_top;
+		System::Windows::Forms::Label^ mm_P_lbl_top;
+		System::Windows::Forms::Label^ mm_Mn_lbl_top;
+		System::Windows::Forms::Label^ mm_Si_lbl_top;
+		System::Windows::Forms::Label^ mm_C_lbl_btm;
+		System::Windows::Forms::TextBox^ C_Goal_TB;
+		System::Windows::Forms::TextBox^ mm_Ni_TB;
+		System::Windows::Forms::TextBox^ mm_Cr_TB;
+		System::Windows::Forms::TextBox^ mm_Cu_TB;
+		System::Windows::Forms::TextBox^ mm_S_TB;
+		System::Windows::Forms::TextBox^ mm_P_TB;
+		System::Windows::Forms::TextBox^ mm_Mn_TB;
+		System::Windows::Forms::TextBox^ mm_Si_TB;
+		System::Windows::Forms::TextBox^ Ni_Goal_TB;
+		System::Windows::Forms::TextBox^ Cr_Goal_TB;
+		System::Windows::Forms::TextBox^ Cu_Goal_TB;
+		System::Windows::Forms::TextBox^ S_Goal_TB;
+		System::Windows::Forms::TextBox^ P_Goal_TB;
+		System::Windows::Forms::TextBox^ Mn_Goal_TB;
+		System::Windows::Forms::TextBox^ Si_Goal_TB;
+		System::Windows::Forms::Label^ mm_Ni_lbl_btm;
+		System::Windows::Forms::Label^ mm_Cr_lbl_btm;
+		System::Windows::Forms::Label^ mm_Cu_lbl_btm;
+		System::Windows::Forms::Label^ mm_S_lbl_btm;
+		System::Windows::Forms::Label^ mm_P_lbl_btm;
+		System::Windows::Forms::Label^ mm_Mn_lbl_btm;
+		System::Windows::Forms::Label^ mm_Si_lbl_btm;
+		System::Windows::Forms::Panel^ mm_panel5;
+		System::Windows::Forms::Button^ mm_alloySelect_btn;
+		System::Windows::Forms::TableLayoutPanel^ mm_ferroIfno_TL;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel5;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel6;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel7;
+		System::Windows::Forms::TextBox^ mm_metalKG_TB;
+		System::Windows::Forms::Label^ mm_metalKG_lbl;
+		System::Windows::Forms::TableLayoutPanel^ mm_neededFerro_TL;
+		System::Windows::Forms::Label^ label1;
+		System::Windows::Forms::TableLayoutPanel^ mm_neededInfo_TL_btm;
+		System::Windows::Forms::Label^ mm_FC45_lbl;
+		System::Windows::Forms::Label^ mm_Mn95_lbl;
+		System::Windows::Forms::Label^ mm_FMn78_lbl;
+		System::Windows::Forms::Label^ mm_vuglecevm_lbl;
+		System::Windows::Forms::Button^ calculate_btn;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel8;
+		System::Windows::Forms::TextBox^ mm_meltingID_TB;
+		System::Windows::Forms::Label^ mm_meltingID_lbl;
+		System::Windows::Forms::Label^ mm_FC45_value_lbl;
+		System::Windows::Forms::Label^ mm_vulgecevm_value_lbl;
+		System::Windows::Forms::Label^ mm_FMn78_value_lbl;
+		System::Windows::Forms::Label^ mm_Mn95_value_lbl;
 
 
+		// SettingsMenu (variables start with sm_):
+		System::Windows::Forms::Panel^ settingsPanel;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel1;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel2;
+		System::Windows::Forms::Label^ sm_label3;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel3;
+		System::Windows::Forms::Label^ sm_label4;
+		System::Windows::Forms::TextBox^ sm_fmn78_input_1;
+		System::Windows::Forms::TextBox^ sm_fmn78_input_2;
+		System::Windows::Forms::Label^ sm_label5;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel17;
+		System::Windows::Forms::Label^ sm_label78;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel5;
+		System::Windows::Forms::Label^ sm_label8;
+		System::Windows::Forms::Label^ sm_label9;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel6;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel7;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel4;
+		System::Windows::Forms::Label^ sm_label7;
+		System::Windows::Forms::TextBox^ sm_fs45_input;
+		System::Windows::Forms::Label^ sm_label10;
+		System::Windows::Forms::TextBox^ sm_mn95_input;
+		System::Windows::Forms::Label^ sm_label11;
+		System::Windows::Forms::TextBox^ sm_carbon_input;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel8;
+		System::Windows::Forms::Button^ sm_save_btn;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel4;
+		System::Windows::Forms::Button^ sm_restore_btn;
+		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel9;
+		System::Windows::Forms::Label^ sm_label12;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel18;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel13;
+		System::Windows::Forms::Button^ sm_add_mark_btn;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel15;
+		System::Windows::Forms::Button^ sm_edit_btn;
+		System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel14;
+		System::Windows::Forms::Button^ sm_delete_btn;
+		System::Windows::Forms::Label^ sm_label2;
 
-
-			 System::Windows::Forms::Label^ mm_C_lbl_top;
-			 System::Windows::Forms::TextBox^ mm_C_TB;
-	protected: System::Windows::Forms::TableLayoutPanel^ HimSklad_Goal_TablePanel;
-
-			 System::Windows::Forms::Label^ mm_Ni_lbl_top;
-			 System::Windows::Forms::Label^ mm_Cr_lbl_top;
-			 System::Windows::Forms::Label^ mm_Cu_lbl_top;
-			 System::Windows::Forms::Label^ mm_S_lbl_top;
-			 System::Windows::Forms::Label^ mm_P_lbl_top;
-			 System::Windows::Forms::Label^ mm_Mn_lbl_top;
-			 System::Windows::Forms::Label^ mm_Si_lbl_top;
-			 System::Windows::Forms::Label^ mm_C_lbl_btm;
-	protected: System::Windows::Forms::TextBox^ C_Goal_TB;
-
-			 System::Windows::Forms::TextBox^ mm_Ni_TB;
-			 System::Windows::Forms::TextBox^ mm_Cr_TB;
-			 System::Windows::Forms::TextBox^ mm_Cu_TB;
-			 System::Windows::Forms::TextBox^ mm_S_TB;
-			 System::Windows::Forms::TextBox^ mm_P_TB;
-			 System::Windows::Forms::TextBox^ mm_Mn_TB;
-			 System::Windows::Forms::TextBox^ mm_Si_TB;
-	protected: System::Windows::Forms::TextBox^ Ni_Goal_TB;
-
-	protected: System::Windows::Forms::TextBox^ Cr_Goal_TB;
-
-	protected: System::Windows::Forms::TextBox^ Cu_Goal_TB;
-
-	protected: System::Windows::Forms::TextBox^ S_Goal_TB;
-
-	protected: System::Windows::Forms::TextBox^ P_Goal_TB;
-
-	protected: System::Windows::Forms::TextBox^ Mn_Goal_TB;
-
-	protected: System::Windows::Forms::TextBox^ Si_Goal_TB;
-
-			 System::Windows::Forms::Label^ mm_Ni_lbl_btm;
-			 System::Windows::Forms::Label^ mm_Cr_lbl_btm;
-			 System::Windows::Forms::Label^ mm_Cu_lbl_btm;
-			 System::Windows::Forms::Label^ mm_S_lbl_btm;
-			 System::Windows::Forms::Label^ mm_P_lbl_btm;
-			 System::Windows::Forms::Label^ mm_Mn_lbl_btm;
-			 System::Windows::Forms::Label^ mm_Si_lbl_btm;
-			 System::Windows::Forms::Panel^ mm_panel5;
-			 System::Windows::Forms::Button^ mm_alloySelect_btn;
-			 System::Windows::Forms::TableLayoutPanel^ mm_ferroIfno_TL;
-			 System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel5;
-			 System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel6;
-			 System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel7;
-			 System::Windows::Forms::TextBox^ mm_metalKG_TB;
-			 System::Windows::Forms::Label^ mm_metalKG_lbl;
-			 System::Windows::Forms::TableLayoutPanel^ mm_neededFerro_TL;
-			 System::Windows::Forms::Label^ label1;
-			 System::Windows::Forms::TableLayoutPanel^ mm_neededInfo_TL_btm;
-			 System::Windows::Forms::Label^ mm_FC45_lbl;
-			 System::Windows::Forms::Label^ mm_Mn95_lbl;
-			 System::Windows::Forms::Label^ mm_FMn78_lbl;
-			 System::Windows::Forms::Label^ mm_vuglecevm_lbl;
-	protected: System::Windows::Forms::Button^ calculate_btn;
-
-			 System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel8;
-			 System::Windows::Forms::TextBox^ mm_meltingID_TB;
-			 System::Windows::Forms::Label^ mm_meltingID_lbl;
-			 System::Windows::Forms::Label^ mm_FC45_value_lbl;
-			 System::Windows::Forms::Label^ mm_vulgecevm_value_lbl;
-			 System::Windows::Forms::Label^ mm_FMn78_value_lbl;
-			 System::Windows::Forms::Label^ mm_Mn95_value_lbl;
-
-
-			 // SettingsMenu (variables start with sm_):
-			 System::Windows::Forms::Panel^ settingsPanel;
-
-			 // HistoryMenu (variables start with hm_):
-			 System::Windows::Forms::Panel^ historyPanel;
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel1;
-
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel2;
-	private: System::Windows::Forms::Label^ sm_label3;
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel3;
-	private: System::Windows::Forms::Label^ sm_label4;
-	private: System::Windows::Forms::TextBox^ sm_fmn78_input_1;
-	private: System::Windows::Forms::TextBox^ sm_fmn78_input_2;
-
-
-	private: System::Windows::Forms::Label^ sm_label5;
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel17;
-
-	private: System::Windows::Forms::Label^ sm_label78;
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel5;
-	private: System::Windows::Forms::Label^ sm_label8;
-	private: System::Windows::Forms::Label^ sm_label9;
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel6;
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel7;
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel4;
-	private: System::Windows::Forms::Label^ sm_label7;
-	private: System::Windows::Forms::TextBox^ sm_fs45_input;
-
-	private: System::Windows::Forms::Label^ sm_label10;
-	private: System::Windows::Forms::TextBox^ sm_mn95_input;
-
-	private: System::Windows::Forms::Label^ sm_label11;
-	private: System::Windows::Forms::TextBox^ sm_carbon_input;
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel8;
-	private: System::Windows::Forms::Button^ sm_save_btn;
-
-	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel4;
-	private: System::Windows::Forms::Button^ sm_restore_btn;
-	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel9;
-	private: System::Windows::Forms::Label^ sm_label12;
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel18;
-
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel13;
-	private: System::Windows::Forms::Button^ sm_add_mark_btn;
-
-
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel15;
-	private: System::Windows::Forms::Button^ sm_edit_btn;
-
-	private: System::Windows::Forms::TableLayoutPanel^ sm_tableLayoutPanel14;
-	private: System::Windows::Forms::Button^ sm_delete_btn;
-
-	private: System::Windows::Forms::Label^ sm_label2;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	protected:
-
-	protected:
+		// HistoryMenu (variables start with hm_):
+		System::Windows::Forms::Panel^ historyPanel;
 
 		System::ComponentModel::Container^ components;
 
@@ -1565,7 +1508,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel18->Controls->Add(this->sm_tableLayoutPanel14, 2, 0);
 			this->sm_tableLayoutPanel18->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel18->Location = System::Drawing::Point(0, 385);
-			this->sm_tableLayoutPanel18->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel18->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel18->Name = L"sm_tableLayoutPanel18";
 			this->sm_tableLayoutPanel18->RowCount = 1;
 			this->sm_tableLayoutPanel18->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1597,7 +1540,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_add_mark_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_add_mark_btn->Location = System::Drawing::Point(64, 4);
-			this->sm_add_mark_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_add_mark_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_add_mark_btn->Name = L"sm_add_mark_btn";
 			this->sm_add_mark_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_add_mark_btn->TabIndex = 0;
@@ -1629,7 +1572,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_edit_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_edit_btn->Location = System::Drawing::Point(64, 4);
-			this->sm_edit_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_edit_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_edit_btn->Name = L"sm_edit_btn";
 			this->sm_edit_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_edit_btn->TabIndex = 0;
@@ -1661,7 +1604,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_delete_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_delete_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_delete_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_delete_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_delete_btn->Name = L"sm_delete_btn";
 			this->sm_delete_btn->Size = System::Drawing::Size(175, 41);
 			this->sm_delete_btn->TabIndex = 0;
@@ -1676,7 +1619,7 @@ namespace MetalCalculator {
 			this->tableLayoutPanel9->Controls->Add(this->sm_label12, 0, 0);
 			this->tableLayoutPanel9->Dock = System::Windows::Forms::DockStyle::Top;
 			this->tableLayoutPanel9->Location = System::Drawing::Point(0, 328);
-			this->tableLayoutPanel9->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tableLayoutPanel9->Margin = System::Windows::Forms::Padding(4);
 			this->tableLayoutPanel9->Name = L"tableLayoutPanel9";
 			this->tableLayoutPanel9->RowCount = 1;
 			this->tableLayoutPanel9->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
@@ -1710,7 +1653,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel5->Controls->Add(this->sm_tableLayoutPanel7, 1, 1);
 			this->sm_tableLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel5->Location = System::Drawing::Point(0, 193);
-			this->sm_tableLayoutPanel5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel5->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel5->Name = L"sm_tableLayoutPanel5";
 			this->sm_tableLayoutPanel5->RowCount = 2;
 			this->sm_tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1817,7 +1760,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_save_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_save_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_save_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_save_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_save_btn->Name = L"sm_save_btn";
 			this->sm_save_btn->Size = System::Drawing::Size(175, 39);
 			this->sm_save_btn->TabIndex = 0;
@@ -1893,7 +1836,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_restore_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_restore_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_restore_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_restore_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_restore_btn->Name = L"sm_restore_btn";
 			this->sm_restore_btn->Size = System::Drawing::Size(175, 40);
 			this->sm_restore_btn->TabIndex = 0;
@@ -1914,7 +1857,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel17->Controls->Add(this->sm_tableLayoutPanel4, 1, 0);
 			this->sm_tableLayoutPanel17->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel17->Location = System::Drawing::Point(0, 125);
-			this->sm_tableLayoutPanel17->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel17->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel17->Name = L"sm_tableLayoutPanel17";
 			this->sm_tableLayoutPanel17->RowCount = 1;
 			this->sm_tableLayoutPanel17->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1993,7 +1936,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel2->Controls->Add(this->sm_label3, 0, 0);
 			this->sm_tableLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel2->Location = System::Drawing::Point(0, 57);
-			this->sm_tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel2->Name = L"sm_tableLayoutPanel2";
 			this->sm_tableLayoutPanel2->RowCount = 1;
 			this->sm_tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -2096,7 +2039,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel1->Controls->Add(this->sm_label2, 0, 0);
 			this->sm_tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
-			this->sm_tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel1->Name = L"sm_tableLayoutPanel1";
 			this->sm_tableLayoutPanel1->RowCount = 1;
 			this->sm_tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -2199,9 +2142,9 @@ namespace MetalCalculator {
 
 		// Helper Functions:
 		bool IsPanelOnFront(Control^ panel);
-		System::Void sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e) {}
+		System::Void sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_restore_btn_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e) {}
+		System::Void sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
 		System::Void onCalculateBtnClick(System::Object^ sender, System::EventArgs^ e);
@@ -2211,7 +2154,7 @@ namespace MetalCalculator {
 		void SelectElementsByName(String^ metalName);
 
 		Dictionary<String^, TextBox^>^ GetHimSkladFromTablePanel(TableLayoutPanel^ tableLayoutPanel);
-		
+
 		System::Void onMetalKGLeave(System::Object^ sender, System::EventArgs^ e);
 	};
 }

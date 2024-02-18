@@ -11,9 +11,9 @@ namespace MetalCalculator
 		conn = Database::getInstance().getConn();
 	}
 
-	MainModel^ MainQueries::getElementByName(String^ metalName)
+	MetalModel^ MainQueries::getElementByName(String^ metalName)
 	{
-		MainModel^ himSkladGoalModel = gcnew MainModel;
+		MetalModel^ himSkladGoalModel = gcnew MetalModel;
 
 		String^ query = String::Format("SELECT name, c, si, mn, p, s, cu, cr, ni FROM metals WHERE name = '{0}'", metalName);
 
@@ -62,9 +62,9 @@ namespace MetalCalculator
 	//	return true;
 	//}
 
-	MainModel^ MainQueries::parseHimSklad(PGresult* res)
+	MetalModel^ MainQueries::parseHimSklad(PGresult* res)
 	{
-		MainModel^ model = gcnew MainModel;
+		MetalModel^ model = gcnew MetalModel;
 		char* cName = PQgetvalue(res, 0, 0);
 
 		System::String^ managedStrName = StringConverter::StdStringToSystemString(cName);

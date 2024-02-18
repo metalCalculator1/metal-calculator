@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string>
-
 public ref struct MetalModel
 {
 	unsigned int id;
