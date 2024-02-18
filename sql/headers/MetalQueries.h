@@ -8,6 +8,7 @@
 namespace MetalCalculator
 {
 	using namespace System;
+	using namespace System::Collections::Generic;
 
 	class MetalQueries
 	{
@@ -16,7 +17,7 @@ namespace MetalCalculator
 		MetalModel^ getElementByName(String^ metalName);
 		bool addMetal(const MetalModel^ metal) {};
 
-		System::Collections::Generic::List<MetalModel^>^ getMetals() {};
+		List<MetalModel^>^ getMetals();
 		// bool updateMetalById();
 		// bool dropMetalById();
 	private:

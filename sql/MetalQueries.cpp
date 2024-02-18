@@ -40,39 +40,43 @@ namespace MetalCalculator
 	}
 
 
-	//std::vector<MetalModel> MetalQueries::getMetals() {
-	//	std::vector<MetalModel> metals;
+	System::Collections::Generic::List<MetalModel^>^ MetalQueries::getMetals()
+	{
+		List<MetalModel^>^ metalsList = gcnew List<MetalModel^>;
 
-	//	std::string query = "SELECT id, name, c, si, mn, p, s, cu, cr, ni FROM metals";
-	//	PGresult* result = PQexec(conn, query.c_str());
+		std::string query = "SELECT id, name, c, si, mn, p, s, cu, cr, ni FROM metals";
+		PGresult* result = PQexec(conn, query.c_str());
 
-	//	if (PQresultStatus(result) == PGRES_TUPLES_OK) {
-	//		int rowCount = PQntuples(result);
+		if (PQresultStatus(result) == PGRES_TUPLES_OK) {
+			int rowCount = PQntuples(result);
 
-	//		metals.reserve(rowCount);
+			// metalsList.reserve(rowCount);
 
-	//		for (int i = 0; i < rowCount; ++i) {
-	//			MetalModel metal;
+			for (int i = 0; i < rowCount; ++i) 
+			{
+				MetalModel^ metal = gcnew MetalModel();
 
-	//			metal.id = std::stoi(PQgetvalue(result, i, 0));
-	//			metal.name = PQgetvalue(result, i, 1);
-	//			metal.c = std::stof(PQgetvalue(result, i, 2));
-	//			metal.si = std::stof(PQgetvalue(result, i, 3));
-	//			metal.mn = std::stof(PQgetvalue(result, i, 4));
-	//			metal.p = std::stof(PQgetvalue(result, i, 5));
-	//			metal.s = std::stof(PQgetvalue(result, i, 6));
-	//			metal.cu = std::stof(PQgetvalue(result, i, 7));
-	//			metal.cr = std::stof(PQgetvalue(result, i, 8));
-	//			metal.ni = std::stof(PQgetvalue(result, i, 9));
+				metal->id = std::stoi(PQgetvalue(result, i, 0));
 
-	//			metals.push_back(metal);
-	//		}
-	//	}
+				metal->name = StringConverter::StdStringToSystemString(PQgetvalue(result, i, 1));
 
-	//	PQclear(result);
+				metal->c = std::stof(PQgetvalue(result, i, 2));
+				metal->si = std::stof(PQgetvalue(result, i, 3));
+				metal->mn = std::stof(PQgetvalue(result, i, 4));
+				metal->p = std::stof(PQgetvalue(result, i, 5));
+				metal->s = std::stof(PQgetvalue(result, i, 6));
+				metal->cu = std::stof(PQgetvalue(result, i, 7));
+				metal->cr = std::stof(PQgetvalue(result, i, 8));
+				metal->ni = std::stof(PQgetvalue(result, i, 9));
 
-	//	return metals;
-	//}
+				metalsList->Add(metal);
+			}
+		}
+
+		PQclear(result);
+
+		return metalsList;
+	}
 
 	//bool MetalQueries::addMetal(const MainModel^ metal) 
 	//{

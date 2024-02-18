@@ -1,6 +1,7 @@
 #include "MainForm.h"
 #include "Database.h"
 #include "CredHandler.h"
+#include "SelectMetal.h"
 
 #include <windows.h>
 
@@ -10,7 +11,7 @@ using namespace System::Diagnostics;
 
 [STAThreadAttribute]
 
-void main(array<String^>^ args) 
+void main(array<String^>^ args)
 {
 	AllocConsole();
 
@@ -27,5 +28,6 @@ void main(array<String^>^ args)
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	Application::Run(gcnew MetalCalculator::MainForm);
+	// Application::Run(gcnew MetalCalculator::MainForm);
+	Application::Run(gcnew MetalCalculator::SelectMetal);
 }
