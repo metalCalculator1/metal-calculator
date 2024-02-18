@@ -1,17 +1,28 @@
 #pragma once
 
 #include <libpq-fe.h>
-#include <string>
-#include <vector>
-#include "../../models/MetalModel.h"
 #include "Database.h"
+#include "MetalModel.h"
 
-class MetalQueries {
-public:
-    MetalQueries();
-    std::vector<MetalModel> getMetals();
-    // bool updateMetalById();
-    // bool dropMetalById();
-private:
-    PGconn* conn;
-};
+
+namespace MetalCalculator
+{
+	using namespace System;
+
+	class MetalQueries
+	{
+	public:
+		MetalQueries();
+		MetalModel^ getElementByName(String^ metalName);
+		bool addMetal(const MetalModel^ metal) {};
+
+		System::Collections::Generic::List<MetalModel^>^ getMetals() {};
+		// bool updateMetalById();
+		// bool dropMetalById();
+	private:
+		MetalModel^ parseHimSklad(PGresult* result);
+		PGconn* conn;
+	};
+}
+
+
