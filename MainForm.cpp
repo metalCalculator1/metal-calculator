@@ -53,34 +53,34 @@ namespace MetalCalculator
 		return index == 0;
 	}
 
-	System::Void MainForm::sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		try {
-			settingQueries->updateSettings(
-				System::Convert::ToInt16(sm_fmn78_input_1->Text),
-				System::Convert::ToInt16(sm_fmn78_input_2->Text),
-				System::Convert::ToInt16(sm_fs45_input->Text),
-				System::Convert::ToInt16(sm_mn95_input->Text),
-				System::Convert::ToInt16(sm_carbon_input->Text)
-			);
-		}
-		catch (const System::FormatException^ e) {
-			MessageBox::Show("Невірний формат даних", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-		}
-		initWriteInputs();
-	}
+	//System::Void MainForm::sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	//{
+	//	try {
+	//		settingQueries->updateSettings(
+	//			System::Convert::ToInt16(sm_fmn78_input_1->Text),
+	//			System::Convert::ToInt16(sm_fmn78_input_2->Text),
+	//			System::Convert::ToInt16(sm_fs45_input->Text),
+	//			System::Convert::ToInt16(sm_mn95_input->Text),
+	//			System::Convert::ToInt16(sm_carbon_input->Text)
+	//		);
+	//	}
+	//	catch (const System::FormatException^ e) {
+	//		MessageBox::Show("Невірний формат даних", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+	//	}
+	//	initWriteInputs();
+	//}
 
 	System::Void MainForm::sm_restore_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		initWriteInputs();
 	}
 
-	System::Void MainForm::sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		CreateMetal^ secondForm = gcnew CreateMetal();
+	//System::Void MainForm::sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	//{
+	//	CreateMetal^ secondForm = gcnew CreateMetal();
 
-		secondForm->ShowDialog();
-	}
+	//	secondForm->ShowDialog();
+	//}
 
 	System::Void MainForm::sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
