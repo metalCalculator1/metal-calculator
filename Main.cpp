@@ -2,7 +2,7 @@
 #include "Database.h"
 #include "CredHandler.h"
 
-#include <iostream>
+#include <windows.h>
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -12,6 +12,8 @@ using namespace System::Diagnostics;
 
 void main(array<String^>^ args) 
 {
+	AllocConsole();
+
 	if (!CredHandler::parseCreds()) {
 		MessageBox::Show("Неможливо зчитати приховані змінні", "Critical error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 		return;

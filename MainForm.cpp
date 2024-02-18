@@ -8,6 +8,7 @@ namespace MetalCalculator
 		ChangeLayout(sender);
 	}
 
+
 	// Functions:
 	System::Void MainForm::ChangeLayout(System::Object^ sender)
 	{
@@ -43,6 +44,7 @@ namespace MetalCalculator
 			panel->BringToFront();
 		}
 	}
+
 
 	// Helper Functions:
 	bool MainForm::IsPanelOnFront(Control^ panel)
@@ -84,4 +86,85 @@ namespace MetalCalculator
 	{
 		return System::Void();
 	}
-}
+
+
+	System::Void MainForm::onCalculateBtnClick(System::Object^ sender, System::EventArgs^ e)
+	{
+		CalculateNeededFerro();
+
+	}
+
+	void MainForm::FillGoalHimSklad()
+	{
+		HimSkladGoalDic["C"]->Text = goalHimSkladModel->c.ToString();
+		HimSkladGoalDic["Si"]->Text = goalHimSkladModel->si.ToString();
+		HimSkladGoalDic["Mn"]->Text = goalHimSkladModel->mn.ToString();
+		HimSkladGoalDic["P"]->Text = goalHimSkladModel->p.ToString();
+		HimSkladGoalDic["S"]->Text = goalHimSkladModel->s.ToString();
+		HimSkladGoalDic["Cu"]->Text = goalHimSkladModel->cu.ToString();
+		HimSkladGoalDic["Cr"]->Text = goalHimSkladModel->cr.ToString();
+		HimSkladGoalDic["Ni"]->Text = goalHimSkladModel->ni.ToString();
+	}
+
+	void MainForm::CalculateNeededFerro()
+	{
+		//  Globalization::CultureInfo::InvariantCulture might be needed.
+		float Si_Proba = Single::Parse(HimSkladProbaDic["Si"]->Text);
+		float Mn_Proba = Single::Parse(HimSkladProbaDic["Mn"]->Text);
+		float C_Proba = Single::Parse(HimSkladProbaDic["C"]->Text);
+
+		float Si_Goal = Single::Parse(HimSkladGoalDic["Si"]->Text);
+		float Mn_Goal = Single::Parse(HimSkladGoalDic["Mn"]->Text);
+		float C_Goal = Single::Parse(HimSkladGoalDic["C"]->Text);
+
+		mm_FC45_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFC95(metalMass, Si_Proba, Si_Goal));
+		mm_Mn95_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateMn95(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
+		mm_FMn78_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFMn78(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
+		mm_vulgecevm_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal));
+	}
+
+	void MainForm::SelectElementsByName(String^ metalName)
+	{
+		*goalHimSkladModel = mainQueries->getElementByName(metalName);
+	}
+
+	Dictionary<String^, TextBox^>^ MainForm::GetHimSkladFromTablePanel(TableLayoutPanel^ tableLayoutPanel)
+	{
+		Dictionary<String^, TextBox^>^ HimSkladDic = gcnew Dictionary<String^, TextBox^>();
+
+		for each (Control ^ control in tableLayoutPanel->Controls) {
+			TableLayoutPanelCellPosition pos = tableLayoutPanel->GetPositionFromControl(control);
+
+			// Checking if the control is a label in the 0th row
+			if (pos.Row == 0 && dynamic_cast<Label^>(control) != nullptr)
+			{
+				// Checking the same column but 1 row below
+				TableLayoutPanelCellPosition textBoxPos(pos.Column, pos.Row + 1);
+
+				// Finding the textbox at the calculated position
+				Control^ textBoxControl = tableLayoutPanel->GetControlFromPosition(textBoxPos.Column, textBoxPos.Row);
+				TextBox^ textBox = dynamic_cast<TextBox^>(textBoxControl);
+
+				if (textBox != nullptr)
+				{
+					HimSkladDic->Add(control->Text, textBox);
+				}
+			}
+		}
+
+		return HimSkladDic;
+	}
+
+	System::Void MainForm::onMetalKGLeave(System::Object^ sender, System::EventArgs^ e)
+	{
+		float value;
+		if (System::Single::TryParse(mm_metalKG_TB->Text, value))
+		{
+			metalMass = value;
+		}
+		else
+		{
+			MessageBox::Show("¬вед≥ть коректне число");
+		}
+	}
+};
