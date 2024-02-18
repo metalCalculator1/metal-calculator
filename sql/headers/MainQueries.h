@@ -13,9 +13,14 @@ namespace MetalCalculator
 	{
 	public:
 		MainQueries();
-		MainModel getElementByName(String^ metalName);
+		MainModel^ getElementByName(String^ metalName);
+		bool addMetal(const MainModel^ metal);
+
+		System::Collections::Generic::List<MainModel^>^ getMetals() {};
+		// bool updateMetalById();
+		// bool dropMetalById();
 	private:
-		MainModel parseHimSklad(PGresult* result);
+		MainModel^ parseHimSklad(PGresult* result);
 		PGconn* conn;
 	};
 }

@@ -1,5 +1,8 @@
 #include "MainQueries.h"
+#include "StringConverter.h"
+
 #include <cstdlib>
+#include <msclr/marshal.h>
 
 namespace MetalCalculator
 {
@@ -8,11 +11,11 @@ namespace MetalCalculator
 		conn = Database::getInstance().getConn();
 	}
 
-	MainModel MainQueries::getElementByName(String^ metalName)
+	MainModel^ MainQueries::getElementByName(String^ metalName)
 	{
-		MainModel himSkladGoalModel;
+		MainModel^ himSkladGoalModel = gcnew MainModel;
 
-		String^ query = String::Format("SELECT c, si, mn, p, s, cu, cr, ni FROM metals WHERE name = '{0}'", metalName);
+		String^ query = String::Format("SELECT name, c, si, mn, p, s, cu, cr, ni FROM metals WHERE name = '{0}'", metalName);
 
 		IntPtr ptrToNativeString = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(query);
 		char* nativeQuery = static_cast<char*>(ptrToNativeString.ToPointer());
@@ -36,18 +39,45 @@ namespace MetalCalculator
 		return himSkladGoalModel;
 	}
 
-	MainModel MainQueries::parseHimSklad(PGresult* res)
-	{
-		MainModel model;
 
-		model.c = strtof(PQgetvalue(res, 0, 0), NULL);
-		model.si = strtof(PQgetvalue(res, 0, 1), NULL);
-		model.mn = strtof(PQgetvalue(res, 0, 2), NULL);
-		model.p = strtof(PQgetvalue(res, 0, 3), NULL);
-		model.s = strtof(PQgetvalue(res, 0, 4), NULL);
-		model.cu = strtof(PQgetvalue(res, 0, 5), NULL);
-		model.cr = strtof(PQgetvalue(res, 0, 6), NULL);
-		model.ni = strtof(PQgetvalue(res, 0, 7), NULL);
+	//bool MainQueries::addMetal(const MainModel^ metal) 
+	//{
+
+
+	//	std::string query = "INSERT INTO metals (name, c, si, mn, p, s, cu, cr, ni) VALUES ('"
+	//		+ metal->name + "', " + std::to_string(metal->c) + ", "
+	//		+ std::to_string(metal.si) + ", " + std::to_string(metal.mn) + ", "
+	//		+ std::to_string(metal.p) + ", " + std::to_string(metal.s) + ", "
+	//		+ std::to_string(metal.cu) + ", " + std::to_string(metal.cr) + ", "
+	//		+ std::to_string(metal.ni) + ");";
+
+	//	PGresult* result = PQexec(conn, query.c_str());
+
+	//	if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+	//		PQclear(result);
+	//		return false;
+	//	}
+
+	//	PQclear(result);
+	//	return true;
+	//}
+
+	MainModel^ MainQueries::parseHimSklad(PGresult* res)
+	{
+		MainModel^ model = gcnew MainModel;
+		char* cName = PQgetvalue(res, 0, 0);
+
+		System::String^ managedStrName = StringConverter::StdStringToSystemString(cName);
+
+		model->name = managedStrName;
+		model->c = strtof(PQgetvalue(res, 0, 1), NULL);
+		model->si = strtof(PQgetvalue(res, 0, 2), NULL);
+		model->mn = strtof(PQgetvalue(res, 0, 3), NULL);
+		model->p = strtof(PQgetvalue(res, 0, 4), NULL);
+		model->s = strtof(PQgetvalue(res, 0, 5), NULL);
+		model->cu = strtof(PQgetvalue(res, 0, 6), NULL);
+		model->cr = strtof(PQgetvalue(res, 0, 7), NULL);
+		model->ni = strtof(PQgetvalue(res, 0, 8), NULL);
 
 		return model;
 	}

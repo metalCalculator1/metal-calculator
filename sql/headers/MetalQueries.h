@@ -10,9 +10,8 @@ class MetalQueries {
 public:
     MetalQueries();
     std::vector<MetalModel> getMetals();
-    bool addMetal(const MetalModel& metal);
-    bool updateMetalById();
-    bool dropMetalById();
+    // bool updateMetalById();
+    // bool dropMetalById();
 private:
     PGconn* conn;
 };

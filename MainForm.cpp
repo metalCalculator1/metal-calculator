@@ -125,7 +125,7 @@ namespace MetalCalculator
 
 	void MainForm::SelectElementsByName(String^ metalName)
 	{
-		*goalHimSkladModel = mainQueries->getElementByName(metalName);
+		goalHimSkladModel = mainQueries->getElementByName(metalName);
 	}
 
 	Dictionary<String^, TextBox^>^ MainForm::GetHimSkladFromTablePanel(TableLayoutPanel^ tableLayoutPanel)

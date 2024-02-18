@@ -2,10 +2,10 @@
 
 #include <string>
 
-struct MetalModel
+public ref struct MetalModel
 {
 	unsigned int id;
-	std::string name;
+	System::String^ name;
 	float c;
 	float si;
 	float mn;
@@ -18,7 +18,7 @@ struct MetalModel
 	MetalModel() : c(0), si(0), mn(0), p(0), s(0), cu(0), cr(0), ni(0) {};
 
 	MetalModel(
-		std::string name_i,
+		System::String^ name_i,
 		float c_i,
 		float si_i,
 		float mn_i,

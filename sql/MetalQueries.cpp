@@ -37,22 +37,3 @@ std::vector<MetalModel> MetalQueries::getMetals() {
 
     return metals;
 }
-
-bool MetalQueries::addMetal(const MetalModel& metal) {
-    std::string query = "INSERT INTO metals (name, c, si, mn, p, s, cu, cr, ni) VALUES ('"
-        + metal.name + "', " + std::to_string(metal.c) + ", "
-        + std::to_string(metal.si) + ", " + std::to_string(metal.mn) + ", "
-        + std::to_string(metal.p) + ", " + std::to_string(metal.s) + ", "
-        + std::to_string(metal.cu) + ", " + std::to_string(metal.cr) + ", "
-        + std::to_string(metal.ni) + ");";
-
-    PGresult* result = PQexec(conn, query.c_str());
-
-    if (PQresultStatus(result) != PGRES_COMMAND_OK) {
-        PQclear(result);
-        return false;
-    }
-
-    PQclear(result);
-    return true;
-}
