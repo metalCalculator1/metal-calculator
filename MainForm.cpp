@@ -1,4 +1,5 @@
 #include "MainForm.h"
+#include "SelectMetal.h"
 
 namespace MetalCalculator
 {
@@ -167,5 +168,11 @@ namespace MetalCalculator
 		{
 			MessageBox::Show("¬вед≥ть коректне число");
 		}
+	}
+
+	System::Void MainForm::mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		SelectMetal^ selectForm = gcnew SelectMetal();
+		selectForm->ShowDialog();
 	}
 };

@@ -28,6 +28,6 @@ void main(array<String^>^ args)
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	// Application::Run(gcnew MetalCalculator::MainForm);
-	Application::Run(gcnew MetalCalculator::SelectMetal);
+	Application::Run(gcnew MetalCalculator::MainForm);
+	// Application::Run(gcnew MetalCalculator::SelectMetal);
 }

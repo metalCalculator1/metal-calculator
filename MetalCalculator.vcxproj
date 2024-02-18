@@ -147,7 +147,9 @@
     <ClInclude Include="models\MetalModel.h" />
     <ClInclude Include="sql\headers\MetalQueries.h" />
     <ClInclude Include="StringConverter.h" />
-    <ClInclude Include="subforms\CreateMetal.h" />
+    <ClInclude Include="subforms\CreateMetal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="subforms\SelectMetal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
