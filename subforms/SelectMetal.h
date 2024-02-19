@@ -2,6 +2,7 @@
 
 #include "MetalQueries.h"
 #include "MetalModel.h"
+#include "MainForm.h"
 
 namespace MetalCalculator 
 {
@@ -15,9 +16,11 @@ namespace MetalCalculator
 	public ref class SelectMetal : public System::Windows::Forms::Form
 	{
 	public:
-		SelectMetal(void)
+		SelectMetal(MainForm^ i_mainForm)
 		{
 			InitializeComponent();
+
+			this->mainForm = i_mainForm;
 
 			metalQueries = new MetalQueries();
 
@@ -42,6 +45,7 @@ namespace MetalCalculator
 
 	private:
 		// MEMBER VARIABLES
+		MainForm^ mainForm;
 		Generic::List<MetalModel^>^ metalsList;
 		MetalQueries* metalQueries;
 

@@ -28,10 +28,18 @@ namespace MetalCalculator
 	{
 		ListViewItem^ item;
 
+
 		if (MetalsListView->SelectedItems->Count > 0)
 		{
 			item = MetalsListView->SelectedItems[0];
 			showMetalOnConsole(item);
+
+			MetalModel^ metal = safe_cast<MetalModel^>(item->Tag);
+
+			if (mainForm)
+			{
+				mainForm->SetGoalHimSklad(metal);
+			}
 		}
 	}
 }

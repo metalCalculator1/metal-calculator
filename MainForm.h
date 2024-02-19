@@ -62,6 +62,11 @@ namespace MetalCalculator {
 
 		float metalMass = 3120.f;
 
+	public:
+		void setGoalHimSklad(MetalModel^ metal)
+		{
+			goalHimSkladModel = metal;
+		}
 
 		void initWriteInputs() {
 			*settings = settingQueries->getSettings();
@@ -1509,7 +1514,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel18->Controls->Add(this->sm_tableLayoutPanel14, 2, 0);
 			this->sm_tableLayoutPanel18->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel18->Location = System::Drawing::Point(0, 385);
-			this->sm_tableLayoutPanel18->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel18->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel18->Name = L"sm_tableLayoutPanel18";
 			this->sm_tableLayoutPanel18->RowCount = 1;
 			this->sm_tableLayoutPanel18->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1541,7 +1546,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_add_mark_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_add_mark_btn->Location = System::Drawing::Point(64, 4);
-			this->sm_add_mark_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_add_mark_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_add_mark_btn->Name = L"sm_add_mark_btn";
 			this->sm_add_mark_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_add_mark_btn->TabIndex = 0;
@@ -1573,7 +1578,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_edit_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_edit_btn->Location = System::Drawing::Point(64, 4);
-			this->sm_edit_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_edit_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_edit_btn->Name = L"sm_edit_btn";
 			this->sm_edit_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_edit_btn->TabIndex = 0;
@@ -1605,7 +1610,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_delete_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_delete_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_delete_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_delete_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_delete_btn->Name = L"sm_delete_btn";
 			this->sm_delete_btn->Size = System::Drawing::Size(175, 41);
 			this->sm_delete_btn->TabIndex = 0;
@@ -1620,7 +1625,7 @@ namespace MetalCalculator {
 			this->tableLayoutPanel9->Controls->Add(this->sm_label12, 0, 0);
 			this->tableLayoutPanel9->Dock = System::Windows::Forms::DockStyle::Top;
 			this->tableLayoutPanel9->Location = System::Drawing::Point(0, 328);
-			this->tableLayoutPanel9->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tableLayoutPanel9->Margin = System::Windows::Forms::Padding(4);
 			this->tableLayoutPanel9->Name = L"tableLayoutPanel9";
 			this->tableLayoutPanel9->RowCount = 1;
 			this->tableLayoutPanel9->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
@@ -1654,7 +1659,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel5->Controls->Add(this->sm_tableLayoutPanel7, 1, 1);
 			this->sm_tableLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel5->Location = System::Drawing::Point(0, 193);
-			this->sm_tableLayoutPanel5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel5->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel5->Name = L"sm_tableLayoutPanel5";
 			this->sm_tableLayoutPanel5->RowCount = 2;
 			this->sm_tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1761,7 +1766,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_save_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_save_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_save_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_save_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_save_btn->Name = L"sm_save_btn";
 			this->sm_save_btn->Size = System::Drawing::Size(175, 39);
 			this->sm_save_btn->TabIndex = 0;
@@ -1837,7 +1842,7 @@ namespace MetalCalculator {
 			// 
 			this->sm_restore_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_restore_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_restore_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_restore_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_restore_btn->Name = L"sm_restore_btn";
 			this->sm_restore_btn->Size = System::Drawing::Size(175, 40);
 			this->sm_restore_btn->TabIndex = 0;
@@ -1858,7 +1863,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel17->Controls->Add(this->sm_tableLayoutPanel4, 1, 0);
 			this->sm_tableLayoutPanel17->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel17->Location = System::Drawing::Point(0, 125);
-			this->sm_tableLayoutPanel17->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel17->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel17->Name = L"sm_tableLayoutPanel17";
 			this->sm_tableLayoutPanel17->RowCount = 1;
 			this->sm_tableLayoutPanel17->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1937,7 +1942,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel2->Controls->Add(this->sm_label3, 0, 0);
 			this->sm_tableLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel2->Location = System::Drawing::Point(0, 57);
-			this->sm_tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel2->Name = L"sm_tableLayoutPanel2";
 			this->sm_tableLayoutPanel2->RowCount = 1;
 			this->sm_tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -2040,7 +2045,7 @@ namespace MetalCalculator {
 			this->sm_tableLayoutPanel1->Controls->Add(this->sm_label2, 0, 0);
 			this->sm_tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
-			this->sm_tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel1->Name = L"sm_tableLayoutPanel1";
 			this->sm_tableLayoutPanel1->RowCount = 1;
 			this->sm_tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -2133,7 +2138,7 @@ namespace MetalCalculator {
 		}
 #pragma endregion
 
-	private:
+	public:
 		// Events:
 		System::Void onMenuLabelClicked(System::Object^ sender, System::EventArgs^ e);
 
@@ -2158,5 +2163,11 @@ namespace MetalCalculator {
 
 		System::Void onMetalKGLeave(System::Object^ sender, System::EventArgs^ e);
 		System::Void mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e);
+		
+		System::Void SetGoalHimSklad(MetalModel^ newMetal)
+		{
+			goalHimSkladModel = newMetal;
+			FillGoalHimSklad();
+		}
 };
 }

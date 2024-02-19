@@ -172,7 +172,7 @@ namespace MetalCalculator
 
 	System::Void MainForm::mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		SelectMetal^ selectForm = gcnew SelectMetal();
+		SelectMetal^ selectForm = gcnew SelectMetal(this);
 		selectForm->ShowDialog();
 	}
 };
