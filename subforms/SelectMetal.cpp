@@ -7,7 +7,7 @@ namespace MetalCalculator
 		for each (MetalModel^ metal in metalsList)
 		{
 			ListViewItem^ item = gcnew ListViewItem(metal->name);
-			item->SubItems->Add(metal->id.ToString());
+			item->SubItems->Add(metal->name);
 			item->Tag = metal;
 
 			MetalsListView->Items->Add(item);
@@ -18,8 +18,8 @@ namespace MetalCalculator
 	{
 		MetalModel^ metal = safe_cast<MetalModel^>(item->Tag);
 
-		String^ debugMessage = String::Format("ID: {0}, Name: {1}, C: {2}, Si: {3}, Mn: {4}, P: {5}, S: {6}, Cu: {7}, Cr: {8}, Ni: {9}",
-			metal->id, metal->name, metal->c, metal->si, metal->mn, metal->p, metal->s, metal->cu, metal->cr, metal->ni);
+		String^ debugMessage = String::Format("Name: {0}, C: {1}, Si: {2}, Mn: {3}, P: {4}, S: {5}, Cu: {6}, Cr: {7}, Ni: {8}",
+			metal->name, metal->c, metal->si, metal->mn, metal->p, metal->s, metal->cu, metal->cr, metal->ni);
 
 		Console::WriteLine(debugMessage);
 	}
@@ -28,18 +28,17 @@ namespace MetalCalculator
 	{
 		ListViewItem^ item;
 
+		item = MetalsListView->SelectedItems[0];
+		showMetalOnConsole(item);
 
-		if (MetalsListView->SelectedItems->Count > 0)
+		MetalModel^ metal = safe_cast<MetalModel^>(item->Tag);
+
+		if (mainForm)
 		{
-			item = MetalsListView->SelectedItems[0];
-			showMetalOnConsole(item);
-
-			MetalModel^ metal = safe_cast<MetalModel^>(item->Tag);
-
-			if (mainForm)
-			{
-				mainForm->SetGoalHimSklad(metal);
-			}
+			mainForm->SetGoalHimSklad(metal);
+		}
+		else {
+			Console::WriteLine("WE ARE IN DIFFERENT FORMS");
 		}
 	}
 }

@@ -1,8 +1,9 @@
 #include "MetalQueries.h"
-#include "StringConverter.h"
 
 #include <cstdlib>
 #include <msclr/marshal.h>
+#include <string>
+#include <support/StringConverter.h>
 
 namespace MetalCalculator
 {
@@ -44,30 +45,26 @@ namespace MetalCalculator
 	{
 		List<MetalModel^>^ metalsList = gcnew List<MetalModel^>;
 
-		std::string query = "SELECT id, name, c, si, mn, p, s, cu, cr, ni FROM metals";
+		std::string query = "SELECT name, c, si, mn, p, s, cu, cr, ni FROM metals";
 		PGresult* result = PQexec(conn, query.c_str());
 
 		if (PQresultStatus(result) == PGRES_TUPLES_OK) {
 			int rowCount = PQntuples(result);
 
-			// metalsList.reserve(rowCount);
-
 			for (int i = 0; i < rowCount; ++i) 
 			{
 				MetalModel^ metal = gcnew MetalModel();
 
-				metal->id = std::stoi(PQgetvalue(result, i, 0));
+				metal->name = StringConverter::StdStringToSystemString(PQgetvalue(result, i, 0));
 
-				metal->name = StringConverter::StdStringToSystemString(PQgetvalue(result, i, 1));
-
-				metal->c = std::stof(PQgetvalue(result, i, 2));
-				metal->si = std::stof(PQgetvalue(result, i, 3));
-				metal->mn = std::stof(PQgetvalue(result, i, 4));
-				metal->p = std::stof(PQgetvalue(result, i, 5));
-				metal->s = std::stof(PQgetvalue(result, i, 6));
-				metal->cu = std::stof(PQgetvalue(result, i, 7));
-				metal->cr = std::stof(PQgetvalue(result, i, 8));
-				metal->ni = std::stof(PQgetvalue(result, i, 9));
+				metal->c = std::stof(PQgetvalue(result, i, 1));
+				metal->si = std::stof(PQgetvalue(result, i, 2));
+				metal->mn = std::stof(PQgetvalue(result, i, 3));
+				metal->p = std::stof(PQgetvalue(result, i, 4));
+				metal->s = std::stof(PQgetvalue(result, i, 5));
+				metal->cu = std::stof(PQgetvalue(result, i, 6));
+				metal->cr = std::stof(PQgetvalue(result, i, 7));
+				metal->ni = std::stof(PQgetvalue(result, i, 8));
 
 				metalsList->Add(metal);
 			}
@@ -78,36 +75,62 @@ namespace MetalCalculator
 		return metalsList;
 	}
 
-	//bool MetalQueries::addMetal(const MainModel^ metal) 
-	//{
+	// TODO: make here to pass params as strings, too much actions
+	bool MetalQueries::addMetal(MetalModel^ metal)
+	{
+		std::string query = "INSERT INTO metals (name, c, si, mn, p, s, cu, cr, ni) VALUES ('"
+			+ StringConverter::SystemStringToStdString(metal->name) + "', " + std::to_string(metal->c) + ", "
+			+ std::to_string(metal->si) + ", " + std::to_string(metal->mn) + ", "
+			+ std::to_string(metal->p) + ", " + std::to_string(metal->s) + ", "
+			+ std::to_string(metal->cu) + ", " + std::to_string(metal->cr) + ", "
+			+ std::to_string(metal->ni) + ");";
 
+		PGresult* result = PQexec(conn, query.c_str());
 
-	//	std::string query = "INSERT INTO metals (name, c, si, mn, p, s, cu, cr, ni) VALUES ('"
-	//		+ metal->name + "', " + std::to_string(metal->c) + ", "
-	//		+ std::to_string(metal.si) + ", " + std::to_string(metal.mn) + ", "
-	//		+ std::to_string(metal.p) + ", " + std::to_string(metal.s) + ", "
-	//		+ std::to_string(metal.cu) + ", " + std::to_string(metal.cr) + ", "
-	//		+ std::to_string(metal.ni) + ");";
+		if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+			PQclear(result);
+			return false;
+		}
 
-	//	PGresult* result = PQexec(conn, query.c_str());
+		PQclear(result);
+		return true;
+	}
 
-	//	if (PQresultStatus(result) != PGRES_COMMAND_OK) {
-	//		PQclear(result);
-	//		return false;
-	//	}
+	bool MetalQueries::updateMetalByName(System::String^ name, MetalModel^ updatedMetal) {
+		//std::string query;
+		std::string query = "UPDATE metals SET c = " + std::to_string(updatedMetal->c) + ", ";
+			+ "si = " + std::to_string(updatedMetal->si) + ", "
+			+ "mn = " + std::to_string(updatedMetal->mn) + ", "
+			+ "p = " + std::to_string(updatedMetal->p) + ", "
+			+ "s = " + std::to_string(updatedMetal->s) + ", "
+			+ "cu = " + std::to_string(updatedMetal->cu) + ", "
+			+ "cr = " + std::to_string(updatedMetal->cr) + ", "
+			+ "ni = " + std::to_string(updatedMetal->ni) + " "
+			+ "WHERE name = '" + StringConverter::SystemStringToStdString(name) + "';";
 
-	//	PQclear(result);
-	//	return true;
-	//}
+		PGresult* result = PQexec(conn, query.c_str());
+
+		if (PQresultStatus(result) != PGRES_COMMAND_OK)
+		{
+			PQclear(result);
+			return false;
+		}
+
+		PQclear(result);
+		return true;
+	}
+
+	bool MetalQueries::dropMetalById()
+	{
+		return false;
+	}
 
 	MetalModel^ MetalQueries::parseHimSklad(PGresult* res)
 	{
 		MetalModel^ model = gcnew MetalModel;
 		char* cName = PQgetvalue(res, 0, 0);
 
-		System::String^ managedStrName = StringConverter::StdStringToSystemString(cName);
-
-		model->name = managedStrName;
+		model->name = StringConverter::StdStringToSystemString(cName);
 		model->c = strtof(PQgetvalue(res, 0, 1), NULL);
 		model->si = strtof(PQgetvalue(res, 0, 2), NULL);
 		model->mn = strtof(PQgetvalue(res, 0, 3), NULL);

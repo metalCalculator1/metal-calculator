@@ -79,14 +79,15 @@ namespace MetalCalculator
 
 	System::Void MainForm::sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		CreateMetal^ secondForm = gcnew CreateMetal();
+		CreateMetal^ addMetalForm = gcnew CreateMetal();
 
-		secondForm->ShowDialog();
+		addMetalForm->ShowDialog();
 	}
 
 	System::Void MainForm::sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		return System::Void();
+		UpdateMetal^ updateMetalForm = gcnew UpdateMetal();
+		updateMetalForm->ShowDialog();
 	}
 
 

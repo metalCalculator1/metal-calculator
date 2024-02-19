@@ -1,9 +1,9 @@
 #include "MainForm.h"
 #include "Database.h"
-#include "CredHandler.h"
 #include "SelectMetal.h"
 
 #include <windows.h>
+#include <support/CredHandler.h>
 
 using namespace System;
 using namespace System::Windows::Forms;

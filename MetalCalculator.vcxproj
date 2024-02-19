@@ -132,9 +132,9 @@
   <ItemGroup>
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="sql\MetalQueries.cpp" />
-    <ClCompile Include="utilities\StringConverter.cpp" />
     <ClCompile Include="subforms\CreateMetal.cpp" />
     <ClCompile Include="subforms\SelectMetal.cpp" />
+    <ClCompile Include="subforms\UpdateMetal.cpp" />
     <ClCompile Include="support\CredHandler.cpp" />
     <ClCompile Include="models\SettingModel.h" />
     <ClCompile Include="sql\SettingsQueries.cpp" />
@@ -146,20 +146,22 @@
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="models\MetalModel.h" />
     <ClInclude Include="sql\headers\MetalQueries.h" />
-    <ClInclude Include="utilities\StringConverter.h" />
+    <ClInclude Include="subforms\UpdateMetal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="support\StringConverter.h" />
     <ClInclude Include="subforms\CreateMetal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="subforms\SelectMetal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="support\headers\CredHandler.h" />
+    <ClInclude Include="support\CredHandler.h" />
     <ClInclude Include="sql\headers\SettingsQueries.h" />
     <ClInclude Include="sql\headers\Database.h" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="support\headers\MetalContainer.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
@@ -167,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="subforms\CreateMetal.resx" />
     <EmbeddedResource Include="subforms\SelectMetal.resx" />
+    <EmbeddedResource Include="subforms\UpdateMetal.resx">
+      <DependentUpon>subforms\UpdateMetal.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\logo.png" />

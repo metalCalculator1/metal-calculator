@@ -15,11 +15,11 @@ namespace MetalCalculator
 	public:
 		MetalQueries();
 		MetalModel^ getElementByName(String^ metalName);
-		bool addMetal(const MetalModel^ metal) {};
+		bool addMetal(MetalModel^ metal);
+		bool updateMetalByName(System::String^ name, MetalModel^ updatedMetal);
+		bool dropMetalById();
 
 		List<MetalModel^>^ getMetals();
-		// bool updateMetalById();
-		// bool dropMetalById();
 	private:
 		MetalModel^ parseHimSklad(PGresult* result);
 		PGconn* conn;

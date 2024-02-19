@@ -2,7 +2,6 @@
 
 public ref struct MetalModel
 {
-	unsigned int id;
 	System::String^ name;
 	float c;
 	float si;
@@ -25,5 +24,5 @@ public ref struct MetalModel
 		float cu_i,
 		float cr_i,
 		float ni_i
-	) : id(0), name(name_i), c(c_i), si(si_i), mn(mn_i), p(p_i), s(s_i), cu(cu_i), cr(cr_i), ni(ni_i) {};
+	) : name(name_i), c(c_i), si(si_i), mn(mn_i), p(p_i), s(s_i), cu(cu_i), cr(cr_i), ni(ni_i) {};
 };

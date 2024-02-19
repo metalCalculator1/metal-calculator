@@ -4,7 +4,7 @@
 #include "MetalModel.h"
 #include "MainForm.h"
 
-namespace MetalCalculator 
+namespace MetalCalculator
 {
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -26,7 +26,6 @@ namespace MetalCalculator
 
 			metalsList = metalQueries->getMetals();
 			populateMetalListView();
-			// CreatePanels();
 		}
 
 	protected:
@@ -98,30 +97,6 @@ namespace MetalCalculator
 			this->ResumeLayout(false);
 
 		}
-
-
-		//	public:
-		//void CreatePanels()
-		//{
-		//	for (size_t i = 0; i < metalsList->Count; ++i)
-		//	{
-		//		System::Windows::Forms::Panel^ panel = gcnew System::Windows::Forms::Panel();
-		//		panel->Dock = System::Windows::Forms::DockStyle::Top;
-		//		panel->Height = 50;
-
-		//		System::Windows::Forms::Button^ button = gcnew System::Windows::Forms::Button();
-
-		//		button->Text = metalsList[i]->name;
-
-		//		button->Size = System::Drawing::Size(100, 30);  // Set the desired size
-		//		button->Location = System::Drawing::Point((panel->Width - button->Width) / 2, (panel->Height - button->Height) / 2);
-
-		//		panel->Controls->Add(button);
-
-		//		this->Controls->Add(panel);
-		//	}
-		//}
-
 
 #pragma endregion
 	public:
