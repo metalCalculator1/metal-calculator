@@ -1,5 +1,7 @@
 #include "MainForm.h"
 #include "SelectMetal.h"
+#include "CreateMetal.h"
+#include "UpdateMetal.h"
 
 namespace MetalCalculator
 {
@@ -173,7 +175,7 @@ namespace MetalCalculator
 
 	System::Void MainForm::mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		SelectMetal^ selectForm = gcnew SelectMetal(this);
+		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr);
 		selectForm->ShowDialog();
 	}
 };

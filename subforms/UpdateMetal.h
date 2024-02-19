@@ -20,9 +20,8 @@ namespace MetalCalculator {
 		UpdateMetal(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			metalToUpdate = nullptr;
+			metalQueries = new MetalQueries();
 		}
 
 	protected:
@@ -36,6 +35,9 @@ namespace MetalCalculator {
 				delete components;
 			}
 		}
+
+		MetalQueries* metalQueries;
+		MetalModel^ metalToUpdate;
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel1;
 	protected:
 	private: System::Windows::Forms::Label^ label1;
@@ -71,7 +73,7 @@ namespace MetalCalculator {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -477,5 +479,7 @@ namespace MetalCalculator {
 #pragma endregion
 	private: System::Void save_btn_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e);
-};
+	public:
+		void UpdateMetalParameters(MetalModel^ metal);
+	};
 }

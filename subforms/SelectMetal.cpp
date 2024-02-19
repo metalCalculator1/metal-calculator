@@ -1,4 +1,6 @@
 #include "SelectMetal.h"
+#include "UpdateMetal.h"
+#include "MetalQueries.h"
 
 namespace MetalCalculator
 {
@@ -37,8 +39,9 @@ namespace MetalCalculator
 		{
 			mainForm->SetGoalHimSklad(metal);
 		}
-		else {
-			Console::WriteLine("WE ARE IN DIFFERENT FORMS");
+		else if (updateForm)
+		{
+			updateForm->UpdateMetalParameters(metal);
 		}
 	}
 }

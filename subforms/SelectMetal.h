@@ -16,11 +16,12 @@ namespace MetalCalculator
 	public ref class SelectMetal : public System::Windows::Forms::Form
 	{
 	public:
-		SelectMetal(MainForm^ i_mainForm)
+		SelectMetal(MainForm^ i_mainForm, ref class UpdateMetal^ i_updateForm)
 		{
 			InitializeComponent();
 
 			this->mainForm = i_mainForm;
+			this->updateForm = i_updateForm;
 
 			metalQueries = new MetalQueries();
 
@@ -45,6 +46,7 @@ namespace MetalCalculator
 	private:
 		// MEMBER VARIABLES
 		MainForm^ mainForm;
+		UpdateMetal^ updateForm;
 		Generic::List<MetalModel^>^ metalsList;
 		MetalQueries* metalQueries;
 

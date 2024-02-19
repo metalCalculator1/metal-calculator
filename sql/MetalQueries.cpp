@@ -96,9 +96,11 @@ namespace MetalCalculator
 		return true;
 	}
 
-	bool MetalQueries::updateMetalByName(System::String^ name, MetalModel^ updatedMetal) {
-		//std::string query;
-		std::string query = "UPDATE metals SET c = " + std::to_string(updatedMetal->c) + ", ";
+	bool MetalQueries::updateMetalByName(System::String^ name, MetalModel^ updatedMetal) 
+	{
+		Console::WriteLine(name);
+		Console::WriteLine(updatedMetal->name);
+		std::string query = "UPDATE metals SET c = " + std::to_string(updatedMetal->c) + ", "
 			+ "si = " + std::to_string(updatedMetal->si) + ", "
 			+ "mn = " + std::to_string(updatedMetal->mn) + ", "
 			+ "p = " + std::to_string(updatedMetal->p) + ", "
