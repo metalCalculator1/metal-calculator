@@ -75,7 +75,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./sql/headers;./support/headers;./models;./subforms;./manager;./;./global</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./sql/headers;./support/headers;./models;./subforms;./manager;./;./utilities</IncludePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,7 +132,7 @@
   <ItemGroup>
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="sql\MetalQueries.cpp" />
-    <ClCompile Include="StringConverter.cpp" />
+    <ClCompile Include="utilities\StringConverter.cpp" />
     <ClCompile Include="subforms\CreateMetal.cpp" />
     <ClCompile Include="subforms\SelectMetal.cpp" />
     <ClCompile Include="support\CredHandler.cpp" />
@@ -146,7 +146,7 @@
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="models\MetalModel.h" />
     <ClInclude Include="sql\headers\MetalQueries.h" />
-    <ClInclude Include="StringConverter.h" />
+    <ClInclude Include="utilities\StringConverter.h" />
     <ClInclude Include="subforms\CreateMetal.h">
       <FileType>CppForm</FileType>
     </ClInclude>

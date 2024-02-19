@@ -3,7 +3,7 @@
   <ItemGroup>
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="sql\MetalQueries.cpp" />
-    <ClCompile Include="StringConverter.cpp" />
+    <ClCompile Include="utilities\StringConverter.cpp" />
     <ClCompile Include="subforms\CreateMetal.cpp" />
     <ClCompile Include="support\CredHandler.cpp" />
     <ClCompile Include="models\SettingModel.h" />
@@ -11,24 +11,27 @@
     <ClCompile Include="sql\Database.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="subforms\SelectMetal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="models\MetalModel.h" />
     <ClInclude Include="sql\headers\MetalQueries.h" />
-    <ClInclude Include="StringConverter.h" />
+    <ClInclude Include="utilities\StringConverter.h" />
     <ClInclude Include="subforms\CreateMetal.h" />
     <ClInclude Include="support\headers\CredHandler.h" />
     <ClInclude Include="sql\headers\SettingsQueries.h" />
     <ClInclude Include="sql\headers\Database.h" />
     <ClInclude Include="MainForm.h" />
     <ClInclude Include="support\headers\MetalContainer.h" />
+    <ClInclude Include="subforms\SelectMetal.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="subforms\CreateMetal.resx" />
+    <EmbeddedResource Include="subforms\SelectMetal.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
