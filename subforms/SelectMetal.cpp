@@ -1,4 +1,5 @@
 #include "SelectMetal.h"
+#include "DeleteMetal.h"
 #include "UpdateMetal.h"
 #include "MetalQueries.h"
 
@@ -38,10 +39,19 @@ namespace MetalCalculator
 		if (mainForm)
 		{
 			mainForm->SetGoalHimSklad(metal);
+			mainForm->mm_alloySelect_btn->Text = metal->name;
+			this->Close();
 		}
 		else if (updateForm)
 		{
 			updateForm->UpdateMetalParameters(metal);
+			updateForm->alloySelect_btn->Text = metal->name;
+			this->Close();
+		}
+		else if (deleteForm) {
+			deleteForm->ShowMetalParameters(metal);
+			deleteForm->alloySelect_btn->Text = metal->name;
+			this->Close();
 		}
 	}
 }

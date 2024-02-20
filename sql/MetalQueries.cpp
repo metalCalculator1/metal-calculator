@@ -99,7 +99,8 @@ namespace MetalCalculator
 	bool MetalQueries::updateMetalByName(System::String^ name, MetalModel^ updatedMetal) 
 	{
 		Console::WriteLine(name);
-		Console::WriteLine(updatedMetal->name);
+		Console::WriteLine("Updating:" + name);
+		Console::WriteLine("TO: " + updatedMetal->name);
 		std::string query = "UPDATE metals SET c = " + std::to_string(updatedMetal->c) + ", "
 			+ "si = " + std::to_string(updatedMetal->si) + ", "
 			+ "mn = " + std::to_string(updatedMetal->mn) + ", "
@@ -107,7 +108,8 @@ namespace MetalCalculator
 			+ "s = " + std::to_string(updatedMetal->s) + ", "
 			+ "cu = " + std::to_string(updatedMetal->cu) + ", "
 			+ "cr = " + std::to_string(updatedMetal->cr) + ", "
-			+ "ni = " + std::to_string(updatedMetal->ni) + " "
+			+ "ni = " + std::to_string(updatedMetal->ni) + ", "
+			+ "name = '" + StringConverter::SystemStringToStdString(updatedMetal->name) + "' "
 			+ "WHERE name = '" + StringConverter::SystemStringToStdString(name) + "';";
 
 		PGresult* result = PQexec(conn, query.c_str());
@@ -122,9 +124,19 @@ namespace MetalCalculator
 		return true;
 	}
 
-	bool MetalQueries::dropMetalById()
+	bool MetalQueries::dropMetalByName(String^ nameOfMetalToDrop)
 	{
-		return false;
+		Console::WriteLine("Deleting: " + nameOfMetalToDrop);
+		std::string query = "DELETE FROM metals WHERE name = '" + StringConverter::SystemStringToStdString(nameOfMetalToDrop) + "';";
+
+		PGresult* result = PQexec(conn, query.c_str());
+
+		if (PQresultStatus(result) != PGRES_COMMAND_OK)
+		{
+			PQclear(result);
+			return false;
+		}
+		return true;
 	}
 
 	MetalModel^ MetalQueries::parseHimSklad(PGresult* res)

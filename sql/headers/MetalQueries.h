@@ -17,7 +17,7 @@ namespace MetalCalculator
 		MetalModel^ getElementByName(String^ metalName);
 		bool addMetal(MetalModel^ metal);
 		bool updateMetalByName(System::String^ name, MetalModel^ updatedMetal);
-		bool dropMetalById();
+		bool dropMetalByName(String^ nameOfMetalToDrop);
 
 		List<MetalModel^>^ getMetals();
 	private:

@@ -133,6 +133,7 @@
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="sql\MetalQueries.cpp" />
     <ClCompile Include="subforms\CreateMetal.cpp" />
+    <ClCompile Include="subforms\DeleteMetal.cpp" />
     <ClCompile Include="subforms\SelectMetal.cpp" />
     <ClCompile Include="subforms\UpdateMetal.cpp" />
     <ClCompile Include="support\CredHandler.cpp" />
@@ -146,6 +147,9 @@
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="models\MetalModel.h" />
     <ClInclude Include="sql\headers\MetalQueries.h" />
+    <ClInclude Include="subforms\DeleteMetal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="subforms\UpdateMetal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -168,6 +172,9 @@
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="subforms\CreateMetal.resx" />
+    <EmbeddedResource Include="subforms\DeleteMetal.resx">
+      <DependentUpon>subforms\DeleteMetal.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="subforms\SelectMetal.resx" />
     <EmbeddedResource Include="subforms\UpdateMetal.resx">
       <DependentUpon>subforms\UpdateMetal.h</DependentUpon>

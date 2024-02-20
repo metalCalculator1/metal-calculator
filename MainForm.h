@@ -140,7 +140,8 @@ namespace MetalCalculator {
 		System::Windows::Forms::Label^ mm_Mn_lbl_btm;
 		System::Windows::Forms::Label^ mm_Si_lbl_btm;
 		System::Windows::Forms::Panel^ mm_panel5;
-		System::Windows::Forms::Button^ mm_alloySelect_btn;
+		public: System::Windows::Forms::Button^ mm_alloySelect_btn;
+		protected:
 		System::Windows::Forms::TableLayoutPanel^ mm_ferroIfno_TL;
 		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel5;
 		System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel6;
@@ -1615,6 +1616,7 @@ namespace MetalCalculator {
 			this->sm_delete_btn->TabIndex = 0;
 			this->sm_delete_btn->Text = L"Видалити марку";
 			this->sm_delete_btn->UseVisualStyleBackColor = true;
+			this->sm_delete_btn->Click += gcnew System::EventHandler(this, &MainForm::sm_delete_btn_Click);
 			// 
 			// tableLayoutPanel9
 			// 
@@ -2151,6 +2153,7 @@ namespace MetalCalculator {
 		System::Void sm_restore_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void sm_delete_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
 		System::Void onCalculateBtnClick(System::Object^ sender, System::EventArgs^ e);
 

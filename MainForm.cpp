@@ -2,6 +2,7 @@
 #include "SelectMetal.h"
 #include "CreateMetal.h"
 #include "UpdateMetal.h"
+#include "DeleteMetal.h"
 
 namespace MetalCalculator
 {
@@ -84,6 +85,13 @@ namespace MetalCalculator
 		CreateMetal^ addMetalForm = gcnew CreateMetal();
 
 		addMetalForm->ShowDialog();
+	}
+
+	System::Void MainForm::sm_delete_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		DeleteMetal^ removeMetalForm = gcnew DeleteMetal();
+
+		removeMetalForm->ShowDialog();
 	}
 
 	System::Void MainForm::sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e)
@@ -175,7 +183,7 @@ namespace MetalCalculator
 
 	System::Void MainForm::mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr);
+		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
 		selectForm->ShowDialog();
 	}
 };
