@@ -1,8 +1,9 @@
 #include "MainForm.h"
 #include "Database.h"
-#include "CredHandler.h"
+#include "SelectMetal.h"
 
 #include <windows.h>
+#include <support/CredHandler.h>
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -10,7 +11,7 @@ using namespace System::Diagnostics;
 
 [STAThreadAttribute]
 
-void main(array<String^>^ args) 
+void main(array<String^>^ args)
 {
 	AllocConsole();
 
@@ -28,4 +29,5 @@ void main(array<String^>^ args)
 	Application::SetCompatibleTextRenderingDefault(false);
 
 	Application::Run(gcnew MetalCalculator::MainForm);
+	// Application::Run(gcnew MetalCalculator::SelectMetal);
 }

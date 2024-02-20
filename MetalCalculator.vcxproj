@@ -75,7 +75,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./sql/headers;./support/headers;./models;./subforms;./manager;./</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./sql/headers;./support/headers;./models;./subforms;./manager;./;./utilities</IncludePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -131,26 +131,39 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Calculator.cpp" />
-    <ClCompile Include="sql\MainQueries.cpp" />
+    <ClCompile Include="sql\MetalQueries.cpp" />
+    <ClCompile Include="subforms\CreateMetal.cpp" />
+    <ClCompile Include="subforms\DeleteMetal.cpp" />
+    <ClCompile Include="subforms\SelectMetal.cpp" />
+    <ClCompile Include="subforms\UpdateMetal.cpp" />
     <ClCompile Include="support\CredHandler.cpp" />
     <ClCompile Include="models\SettingModel.h" />
     <ClCompile Include="sql\SettingsQueries.cpp" />
     <ClCompile Include="sql\Database.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainForm.cpp" />
-    <ClCompile Include="subforms\CreateMetal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
-    <ClInclude Include="models\MainModel.h" />
-    <ClInclude Include="sql\headers\MainQueries.h" />
-    <ClInclude Include="support\headers\CredHandler.h" />
+    <ClInclude Include="models\MetalModel.h" />
+    <ClInclude Include="sql\headers\MetalQueries.h" />
+    <ClInclude Include="subforms\DeleteMetal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="subforms\UpdateMetal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="support\StringConverter.h" />
+    <ClInclude Include="subforms\CreateMetal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="subforms\SelectMetal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="support\CredHandler.h" />
     <ClInclude Include="sql\headers\SettingsQueries.h" />
     <ClInclude Include="sql\headers\Database.h" />
     <ClInclude Include="MainForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="subforms\CreateMetal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -158,8 +171,13 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="subforms\CreateMetal.resx">
-      <DependentUpon>subforms\CreateMetal.h</DependentUpon>
+    <EmbeddedResource Include="subforms\CreateMetal.resx" />
+    <EmbeddedResource Include="subforms\DeleteMetal.resx">
+      <DependentUpon>subforms\DeleteMetal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="subforms\SelectMetal.resx" />
+    <EmbeddedResource Include="subforms\UpdateMetal.resx">
+      <DependentUpon>subforms\UpdateMetal.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

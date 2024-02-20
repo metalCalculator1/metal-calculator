@@ -1,4 +1,8 @@
 #include "MainForm.h"
+#include "SelectMetal.h"
+#include "CreateMetal.h"
+#include "UpdateMetal.h"
+#include "DeleteMetal.h"
 
 namespace MetalCalculator
 {
@@ -56,6 +60,7 @@ namespace MetalCalculator
 	System::Void MainForm::sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		try {
+			// Consider taking model object as a parameter.
 			settingQueries->updateSettings(
 				System::Convert::ToInt16(sm_fmn78_input_1->Text),
 				System::Convert::ToInt16(sm_fmn78_input_2->Text),
@@ -77,14 +82,22 @@ namespace MetalCalculator
 
 	System::Void MainForm::sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		CreateMetal^ secondForm = gcnew CreateMetal();
+		CreateMetal^ addMetalForm = gcnew CreateMetal();
 
-		secondForm->ShowDialog();
+		addMetalForm->ShowDialog();
+	}
+
+	System::Void MainForm::sm_delete_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		DeleteMetal^ removeMetalForm = gcnew DeleteMetal();
+
+		removeMetalForm->ShowDialog();
 	}
 
 	System::Void MainForm::sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		return System::Void();
+		UpdateMetal^ updateMetalForm = gcnew UpdateMetal();
+		updateMetalForm->ShowDialog();
 	}
 
 
@@ -113,9 +126,9 @@ namespace MetalCalculator
 		float Mn_Proba = Single::Parse(HimSkladProbaDic["Mn"]->Text);
 		float C_Proba = Single::Parse(HimSkladProbaDic["C"]->Text);
 
-		float Si_Goal = Single::Parse(HimSkladGoalDic["Si"]->Text);
-		float Mn_Goal = Single::Parse(HimSkladGoalDic["Mn"]->Text);
-		float C_Goal = Single::Parse(HimSkladGoalDic["C"]->Text);
+		float Si_Goal = goalHimSkladModel->si;
+		float Mn_Goal = goalHimSkladModel->mn;
+		float C_Goal = goalHimSkladModel->c;
 
 		mm_FC45_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFC95(metalMass, Si_Proba, Si_Goal));
 		mm_Mn95_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateMn95(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
@@ -125,7 +138,7 @@ namespace MetalCalculator
 
 	void MainForm::SelectElementsByName(String^ metalName)
 	{
-		*goalHimSkladModel = mainQueries->getElementByName(metalName);
+		goalHimSkladModel = mainQueries->getElementByName(metalName);
 	}
 
 	Dictionary<String^, TextBox^>^ MainForm::GetHimSkladFromTablePanel(TableLayoutPanel^ tableLayoutPanel)
@@ -166,5 +179,11 @@ namespace MetalCalculator
 		{
 			MessageBox::Show("¬вед≥ть коректне число");
 		}
+	}
+
+	System::Void MainForm::mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
+		selectForm->ShowDialog();
 	}
 };
