@@ -121,7 +121,7 @@ namespace MetalCalculator
 
 	void MainForm::CalculateNeededFerro()
 	{
-		//  Globalization::CultureInfo::InvariantCulture might be needed.
+		// Globalization::CultureInfo::InvariantCulture might be needed.
 		float Si_Proba = Single::Parse(HimSkladProbaDic["Si"]->Text);
 		float Mn_Proba = Single::Parse(HimSkladProbaDic["Mn"]->Text);
 		float C_Proba = Single::Parse(HimSkladProbaDic["C"]->Text);
