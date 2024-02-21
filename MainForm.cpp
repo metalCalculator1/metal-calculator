@@ -182,11 +182,10 @@ namespace MetalCalculator
 			return;
 		}
 
-		DataTable^ table = nullptr;
 		try
 		{
-			table = ConvertToDataTable(res);
-			if (table == nullptr)
+			historyData = ConvertToDataTable(res);
+			if (historyData == nullptr)
 			{
 				throw gcnew System::Exception("Failed to convert query result to DataTable.");
 			}
@@ -199,7 +198,7 @@ namespace MetalCalculator
 			return;
 		}
 
-		gridView->DataSource = table;
+		gridView->DataSource = historyData;
 
 		PQclear(res);
 	}

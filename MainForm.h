@@ -36,6 +36,7 @@ namespace MetalCalculator
 			goalHimSkladModel = gcnew MetalModel();
 			mainQueries = new MetalQueries();
 
+			DataTable^ historyData = gcnew DataTable();
 			Calc = gcnew Calculator();
 
 			mainPanel->Tag = mainLabel->Tag;
@@ -52,6 +53,7 @@ namespace MetalCalculator
 			FillGoalHimSklad();
 
 			LoadData();
+			InitializePagination();
 		}
 
 	private:
@@ -67,6 +69,13 @@ namespace MetalCalculator
 
 		Dictionary<String^, TextBox^>^ HimSkladProbaDic;
 		Dictionary<String^, TextBox^>^ HimSkladGoalDic;
+
+		DataTable^ historyData;
+
+		int currentPageIndex = 0;
+		int pageSize = 50;
+		DataTable^ currentPageTable;
+
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::TableLayoutPanel^ hm_button_table_layout;
 	private: System::Windows::Forms::Panel^ hm_filters_panel;
@@ -77,6 +86,11 @@ namespace MetalCalculator
 	private: System::Windows::Forms::Button^ hm_plavka_id;
 	private: System::Windows::Forms::Button^ hm_alloy_select;
 	private: System::Windows::Forms::DataGridView^ hm_data_grid;
+	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Button^ hm_next_page;
+
+	private: System::Windows::Forms::Button^ hm_previous_page;
+
 
 
 
@@ -251,6 +265,9 @@ namespace MetalCalculator
 			this->hm_plavka_id = (gcnew System::Windows::Forms::Button());
 			this->hm_alloy_select = (gcnew System::Windows::Forms::Button());
 			this->hm_filters_panel = (gcnew System::Windows::Forms::Panel());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->hm_next_page = (gcnew System::Windows::Forms::Button());
+			this->hm_previous_page = (gcnew System::Windows::Forms::Button());
 			this->hm_filters_layout = (gcnew System::Windows::Forms::Label());
 			this->settingsPanel = (gcnew System::Windows::Forms::Panel());
 			this->sm_tableLayoutPanel18 = (gcnew System::Windows::Forms::TableLayoutPanel());
@@ -363,6 +380,7 @@ namespace MetalCalculator
 			this->panel2->SuspendLayout();
 			this->hm_button_table_layout->SuspendLayout();
 			this->hm_filters_panel->SuspendLayout();
+			this->panel1->SuspendLayout();
 			this->settingsPanel->SuspendLayout();
 			this->sm_tableLayoutPanel18->SuspendLayout();
 			this->sm_tableLayoutPanel13->SuspendLayout();
@@ -537,6 +555,7 @@ namespace MetalCalculator
 			this->hm_data_grid->RowTemplate->Height = 24;
 			this->hm_data_grid->Size = System::Drawing::Size(911, 420);
 			this->hm_data_grid->TabIndex = 3;
+			this->hm_data_grid->VirtualMode = true;
 			// 
 			// panel2
 			// 
@@ -621,12 +640,45 @@ namespace MetalCalculator
 			// 
 			// hm_filters_panel
 			// 
+			this->hm_filters_panel->Controls->Add(this->panel1);
 			this->hm_filters_panel->Controls->Add(this->hm_filters_layout);
 			this->hm_filters_panel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->hm_filters_panel->Location = System::Drawing::Point(0, 0);
 			this->hm_filters_panel->Name = L"hm_filters_panel";
 			this->hm_filters_panel->Size = System::Drawing::Size(911, 67);
 			this->hm_filters_panel->TabIndex = 0;
+			// 
+			// panel1
+			// 
+			this->panel1->Controls->Add(this->hm_next_page);
+			this->panel1->Controls->Add(this->hm_previous_page);
+			this->panel1->Location = System::Drawing::Point(684, 35);
+			this->panel1->Name = L"panel1";
+			this->panel1->Padding = System::Windows::Forms::Padding(3);
+			this->panel1->Size = System::Drawing::Size(223, 35);
+			this->panel1->TabIndex = 4;
+			// 
+			// hm_next_page
+			// 
+			this->hm_next_page->Dock = System::Windows::Forms::DockStyle::Right;
+			this->hm_next_page->Location = System::Drawing::Point(118, 3);
+			this->hm_next_page->Name = L"hm_next_page";
+			this->hm_next_page->Size = System::Drawing::Size(102, 29);
+			this->hm_next_page->TabIndex = 1;
+			this->hm_next_page->Text = L"Наступна";
+			this->hm_next_page->UseVisualStyleBackColor = true;
+			this->hm_next_page->Click += gcnew System::EventHandler(this, &MainForm::hm_next_page_Click);
+			// 
+			// hm_previous_page
+			// 
+			this->hm_previous_page->Dock = System::Windows::Forms::DockStyle::Left;
+			this->hm_previous_page->Location = System::Drawing::Point(3, 3);
+			this->hm_previous_page->Name = L"hm_previous_page";
+			this->hm_previous_page->Size = System::Drawing::Size(109, 29);
+			this->hm_previous_page->TabIndex = 0;
+			this->hm_previous_page->Text = L"Попередня";
+			this->hm_previous_page->UseVisualStyleBackColor = true;
+			this->hm_previous_page->Click += gcnew System::EventHandler(this, &MainForm::hm_previous_page_Click);
 			// 
 			// hm_filters_layout
 			// 
@@ -2248,6 +2300,7 @@ namespace MetalCalculator
 			this->panel2->ResumeLayout(false);
 			this->hm_button_table_layout->ResumeLayout(false);
 			this->hm_filters_panel->ResumeLayout(false);
+			this->panel1->ResumeLayout(false);
 			this->settingsPanel->ResumeLayout(false);
 			this->sm_tableLayoutPanel18->ResumeLayout(false);
 			this->sm_tableLayoutPanel13->ResumeLayout(false);
@@ -2327,5 +2380,51 @@ namespace MetalCalculator
 
 		// Helper Functions:
 		bool IsPanelOnFront(Control^ panel);
+
+		void InitializePagination()
+		{
+			currentPageTable = gcnew DataTable();
+			currentPageTable = historyData->Clone();
+
+			hm_data_grid->DataSource = nullptr;
+			hm_data_grid->Rows->Clear();
+			hm_data_grid->Columns->Clear();
+
+			LoadPage();
+		}
+
+		void LoadPage()
+		{
+			int startIndex = currentPageIndex * pageSize;
+			int endIndex = Math::Min(startIndex + pageSize - 1, historyData->Rows->Count - 1);
+
+			currentPageTable->Rows->Clear();
+
+			for (int i = startIndex; i <= endIndex; i++)
+			{
+				DataRow^ row = historyData->Rows[i];
+				currentPageTable->ImportRow(row);
+			}
+
+			hm_data_grid->DataSource = currentPageTable;
+		}
+
+		System::Void hm_previous_page_Click(System::Object^ sender, System::EventArgs^ e)
+		{
+			if (currentPageIndex > 0)
+			{
+				currentPageIndex--;
+				LoadPage();
+			}
+		}
+
+		System::Void hm_next_page_Click(System::Object^ sender, System::EventArgs^ e)
+		{
+			if ((currentPageIndex + 1) * pageSize < historyData->Rows->Count)
+			{
+				currentPageIndex++;
+				LoadPage();
+			}
+		}
 	};
 }
