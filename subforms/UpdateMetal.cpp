@@ -33,7 +33,7 @@ namespace MetalCalculator
 			return;
 		}
 
-		MetalModel^ metalToUpdate = gcnew MetalModel(name_input->Text, c, si, mn, p, s, cu, cr, ni);
+		MetalModel^ metalToUpdate = gcnew MetalModel(name_input->Text, c, si, mn, p, s, cu, cr, ni, metalTypeSelector->Text);
 		if (!metalQueries->updateMetalByName(alloySelect_btn->Text, metalToUpdate)) {
 			MessageBox::Show("Cannot be two same names", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
@@ -62,5 +62,6 @@ namespace MetalCalculator
 		p_input->Text = metal->p.ToString();
 		mn_input->Text = metal->mn.ToString();
 		si_input->Text = metal->si.ToString();
+		metalTypeSelector->SelectedIndex = (int) metal->metalType;
 	}
 }

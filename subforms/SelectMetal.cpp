@@ -21,8 +21,8 @@ namespace MetalCalculator
 	{
 		MetalModel^ metal = safe_cast<MetalModel^>(item->Tag);
 
-		String^ debugMessage = String::Format("Name: {0}, C: {1}, Si: {2}, Mn: {3}, P: {4}, S: {5}, Cu: {6}, Cr: {7}, Ni: {8}",
-			metal->name, metal->c, metal->si, metal->mn, metal->p, metal->s, metal->cu, metal->cr, metal->ni);
+		String^ debugMessage = String::Format("Name: {0}, C: {1}, Si: {2}, Mn: {3}, P: {4}, S: {5}, Cu: {6}, Cr: {7}, Ni: {8}, Metal_Type: {9}",
+			metal->name, metal->c, metal->si, metal->mn, metal->p, metal->s, metal->cu, metal->cr, metal->ni, metal->metalType);
 
 		Console::WriteLine(debugMessage);
 	}
