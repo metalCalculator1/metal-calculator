@@ -16,7 +16,9 @@ namespace MetalCalculator
 	{
 		MetalModel^ himSkladGoalModel = gcnew MetalModel;
 
-		String^ query = String::Format("SELECT name, c, si, mn, p, s, cu, cr, ni FROM metals WHERE name = '{0}'", metalName);
+		String^ query = String::Format(
+			"SELECT name, c, si, mn, p, s, cu, cr, ni, metal_type FROM metals WHERE name = '{0}'", metalName
+		);
 
 		IntPtr ptrToNativeString = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(query);
 		char* nativeQuery = static_cast<char*>(ptrToNativeString.ToPointer());
@@ -45,7 +47,7 @@ namespace MetalCalculator
 	{
 		List<MetalModel^>^ metalsList = gcnew List<MetalModel^>;
 
-		std::string query = "SELECT name, c, si, mn, p, s, cu, cr, ni FROM metals";
+		std::string query = "SELECT name, c, si, mn, p, s, cu, cr, ni, metal_type FROM metals";
 		PGresult* result = PQexec(conn, query.c_str());
 
 		if (PQresultStatus(result) == PGRES_TUPLES_OK) {
@@ -65,6 +67,7 @@ namespace MetalCalculator
 				metal->cu = std::stof(PQgetvalue(result, i, 6));
 				metal->cr = std::stof(PQgetvalue(result, i, 7));
 				metal->ni = std::stof(PQgetvalue(result, i, 8));
+				metal->metalType = metal->mapMetalType(PQgetvalue(result, i, 9));
 
 				metalsList->Add(metal);
 			}
@@ -78,12 +81,12 @@ namespace MetalCalculator
 	// TODO: make here to pass params as strings, too much actions
 	bool MetalQueries::addMetal(MetalModel^ metal)
 	{
-		std::string query = "INSERT INTO metals (name, c, si, mn, p, s, cu, cr, ni) VALUES ('"
+		std::string query = "INSERT INTO metals (name, c, si, mn, p, s, cu, cr, ni, metal_type) VALUES ('"
 			+ StringConverter::SystemStringToStdString(metal->name) + "', " + std::to_string(metal->c) + ", "
 			+ std::to_string(metal->si) + ", " + std::to_string(metal->mn) + ", "
 			+ std::to_string(metal->p) + ", " + std::to_string(metal->s) + ", "
 			+ std::to_string(metal->cu) + ", " + std::to_string(metal->cr) + ", "
-			+ std::to_string(metal->ni) + ");";
+			+ std::to_string(metal->ni) + ", '" + metal->metalTypeToString(metal->metalType) + "');";
 
 		PGresult* result = PQexec(conn, query.c_str());
 
@@ -109,6 +112,7 @@ namespace MetalCalculator
 			+ "cu = " + std::to_string(updatedMetal->cu) + ", "
 			+ "cr = " + std::to_string(updatedMetal->cr) + ", "
 			+ "ni = " + std::to_string(updatedMetal->ni) + ", "
+			+ "metal_type = '" + updatedMetal->metalTypeToString(updatedMetal->metalType) + "', "
 			+ "name = '" + StringConverter::SystemStringToStdString(updatedMetal->name) + "' "
 			+ "WHERE name = '" + StringConverter::SystemStringToStdString(name) + "';";
 
@@ -153,6 +157,7 @@ namespace MetalCalculator
 		model->cu = strtof(PQgetvalue(res, 0, 6), NULL);
 		model->cr = strtof(PQgetvalue(res, 0, 7), NULL);
 		model->ni = strtof(PQgetvalue(res, 0, 8), NULL);
+		model->metalType = model->mapMetalType(PQgetvalue(res, 0, 9));
 
 		return model;
 	}

@@ -72,6 +72,8 @@ namespace MetalCalculator {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ c_input;
+	private: System::Windows::Forms::ComboBox^ metalTypeSelector;
+
 	private:
 
 	private:
@@ -112,6 +114,7 @@ namespace MetalCalculator {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->c_input = (gcnew System::Windows::Forms::TextBox());
+			this->metalTypeSelector = (gcnew System::Windows::Forms::ComboBox());
 			this->tableLayoutPanel1->SuspendLayout();
 			this->tableLayoutPanel2->SuspendLayout();
 			this->tableLayoutPanel3->SuspendLayout();
@@ -186,14 +189,15 @@ namespace MetalCalculator {
 			this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
 				150)));
 			this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-				50)));
+				100)));
 			this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-				200)));
+				150)));
 			this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				50)));
 			this->tableLayoutPanel3->Controls->Add(this->label3, 1, 0);
 			this->tableLayoutPanel3->Controls->Add(this->save_btn, 3, 1);
 			this->tableLayoutPanel3->Controls->Add(this->name_input, 1, 1);
+			this->tableLayoutPanel3->Controls->Add(this->metalTypeSelector, 2, 1);
 			this->tableLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Top;
 			this->tableLayoutPanel3->Location = System::Drawing::Point(0, 205);
 			this->tableLayoutPanel3->Name = L"tableLayoutPanel3";
@@ -219,9 +223,9 @@ namespace MetalCalculator {
 			// save_btn
 			// 
 			this->save_btn->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->save_btn->Location = System::Drawing::Point(390, 54);
+			this->save_btn->Location = System::Drawing::Point(440, 54);
 			this->save_btn->Name = L"save_btn";
-			this->save_btn->Size = System::Drawing::Size(194, 29);
+			this->save_btn->Size = System::Drawing::Size(144, 29);
 			this->save_btn->TabIndex = 1;
 			this->save_btn->Text = L"Зберегти";
 			this->save_btn->UseVisualStyleBackColor = true;
@@ -459,6 +463,16 @@ namespace MetalCalculator {
 			this->c_input->Name = L"c_input";
 			this->c_input->Size = System::Drawing::Size(44, 47);
 			this->c_input->TabIndex = 9;
+			// 
+			// metalTypeSelector
+			// 
+			this->metalTypeSelector->FormattingEnabled = true;
+			this->metalTypeSelector->Location = System::Drawing::Point(340, 54);
+			this->metalTypeSelector->Name = L"metalTypeSelector";
+			this->metalTypeSelector->Size = System::Drawing::Size(94, 21);
+			this->metalTypeSelector->TabIndex = 3;
+			this->metalTypeSelector->Items->Add("Сталь");
+			this->metalTypeSelector->Items->Add("Чавун");
 			// 
 			// UpdateMetal
 			// 

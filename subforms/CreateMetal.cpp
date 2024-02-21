@@ -34,7 +34,7 @@ namespace MetalCalculator
         }
 
         // Create MetalModel instance
-        MetalModel^ metal = gcnew MetalModel(name_input->Text, c, si, mn, p, s, cu, cr, ni);
+        MetalModel^ metal = gcnew MetalModel(name_input->Text, c, si, mn, p, s, cu, cr, ni, metalTypeSelector->Text);
         
         if (!metalQueries->addMetal(metal)) {
             MessageBox::Show("Cannot be two same names", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
