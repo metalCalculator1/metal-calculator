@@ -71,6 +71,69 @@ namespace MetalCalculator
 		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
 		selectForm->ShowDialog();
 	}
+	System::Void MainForm::hm_previous_page_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (currentPageIndex > 0)
+		{
+			currentPageIndex--;
+			LoadPage();
+		}
+	}
+	System::Void MainForm::hm_next_page_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if ((currentPageIndex + 1) * pageSize < historyData->Rows->Count)
+		{
+			currentPageIndex++;
+			LoadPage();
+		}
+	}
+	System::Void MainForm::hm_plavka_id_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		int meltingID;
+		if (Int32::TryParse(hm_filter_field->Text, meltingID))
+		{
+			historyData->DefaultView->RowFilter = "[Номер Плавки] = " + meltingID;
+		}
+		else
+		{
+			MessageBox::Show("Введіть коректний номер плавки.");
+		}
+		LoadPage();
+	}
+	System::Void MainForm::hm_alloy_select_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		int metalID;
+		if (Int32::TryParse(hm_filter_field->Text, metalID))
+		{
+			historyData->DefaultView->RowFilter = "[ID Металу] = " + metalID;
+		}
+		else
+		{
+			MessageBox::Show("Введіть коректний номер металу.");
+		}
+		currentPageIndex = 0;
+		LoadPage();
+	}
+	System::Void MainForm::hm_date_select_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		DateTime dateValue;
+		if (DateTime::TryParse(hm_filter_field->Text, dateValue))
+		{
+			String^ formattedDate = dateValue.ToString("yyyy-MM-dd"); // Ensure format matches your DataTable
+			String^ filterExpression = "[Дата] LIKE '" + formattedDate + "%'";
+			historyData->DefaultView->RowFilter = filterExpression;
+		}
+		else
+		{
+			MessageBox::Show("Please enter a valid Date in format YYYY-MM-DD.");
+		}
+		currentPageIndex = 0; // Assuming you have implemented pagination
+		LoadPage(); // Reload the page view
+	}
+	System::Void MainForm::hm_filters_reset_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		ResetFilters();
+	}
 
 	
 	// Functions:
@@ -278,6 +341,39 @@ namespace MetalCalculator
 			}
 			table->Rows->Add(row);
 		}
+	}
+	void MainForm::InitializePagination()
+	{
+		currentPageTable = gcnew DataTable();
+		currentPageTable = historyData->Clone();
+
+		hm_data_grid->DataSource = nullptr;
+		hm_data_grid->Rows->Clear();
+		hm_data_grid->Columns->Clear();
+
+		LoadPage();
+	}
+	void MainForm::LoadPage()
+	{
+		int startIndex = currentPageIndex * pageSize;
+		int endIndex = Math::Min(startIndex + pageSize - 1, historyData->DefaultView->Count - 1);
+
+		currentPageTable->Rows->Clear();
+
+		for (int i = startIndex; i <= endIndex; i++)
+		{
+			DataRowView^ rowView = historyData->DefaultView[i];
+			currentPageTable->ImportRow(rowView->Row);
+		}
+
+		hm_data_grid->DataSource = currentPageTable;
+	}
+	void MainForm::ResetFilters()
+	{
+		historyData->DefaultView->RowFilter = "";
+		currentPageIndex = 0;
+		hm_data_grid->Refresh();
+		LoadPage();
 	}
 
 

@@ -8,6 +8,7 @@
 #include <libpq-fe.h>
 #include <msclr\marshal_cppstd.h>
 
+
 namespace MetalCalculator
 {
 
@@ -20,7 +21,6 @@ namespace MetalCalculator
 	using namespace System::Collections::Generic;
 	using namespace System::Globalization;
 	using namespace System::Runtime::InteropServices;
-
 
 	// Consider switching name to MainForm (or similar)
 	public ref class MainForm : public System::Windows::Forms::Form
@@ -90,6 +90,7 @@ namespace MetalCalculator
 	private: System::Windows::Forms::Button^ hm_next_page;
 
 	private: System::Windows::Forms::Button^ hm_previous_page;
+	private: System::Windows::Forms::TextBox^ hm_filter_field;
 
 
 
@@ -265,6 +266,7 @@ namespace MetalCalculator
 			this->hm_plavka_id = (gcnew System::Windows::Forms::Button());
 			this->hm_alloy_select = (gcnew System::Windows::Forms::Button());
 			this->hm_filters_panel = (gcnew System::Windows::Forms::Panel());
+			this->hm_filter_field = (gcnew System::Windows::Forms::TextBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->hm_next_page = (gcnew System::Windows::Forms::Button());
 			this->hm_previous_page = (gcnew System::Windows::Forms::Button());
@@ -601,6 +603,7 @@ namespace MetalCalculator
 			this->hm_filters_reset->TabIndex = 3;
 			this->hm_filters_reset->Text = L"Скинути Фільтри";
 			this->hm_filters_reset->UseVisualStyleBackColor = true;
+			this->hm_filters_reset->Click += gcnew System::EventHandler(this, &MainForm::hm_filters_reset_Click);
 			// 
 			// hm_date_select
 			// 
@@ -611,8 +614,9 @@ namespace MetalCalculator
 			this->hm_date_select->Name = L"hm_date_select";
 			this->hm_date_select->Size = System::Drawing::Size(221, 51);
 			this->hm_date_select->TabIndex = 2;
-			this->hm_date_select->Text = L"Виібр Дати";
+			this->hm_date_select->Text = L"Вибір Дати";
 			this->hm_date_select->UseVisualStyleBackColor = true;
+			this->hm_date_select->Click += gcnew System::EventHandler(this, &MainForm::hm_date_select_Click);
 			// 
 			// hm_plavka_id
 			// 
@@ -625,6 +629,7 @@ namespace MetalCalculator
 			this->hm_plavka_id->TabIndex = 0;
 			this->hm_plavka_id->Text = L"Номер Плавки";
 			this->hm_plavka_id->UseVisualStyleBackColor = true;
+			this->hm_plavka_id->Click += gcnew System::EventHandler(this, &MainForm::hm_plavka_id_Click);
 			// 
 			// hm_alloy_select
 			// 
@@ -637,9 +642,11 @@ namespace MetalCalculator
 			this->hm_alloy_select->TabIndex = 1;
 			this->hm_alloy_select->Text = L"Вибір Сплаву";
 			this->hm_alloy_select->UseVisualStyleBackColor = true;
+			this->hm_alloy_select->Click += gcnew System::EventHandler(this, &MainForm::hm_alloy_select_Click);
 			// 
 			// hm_filters_panel
 			// 
+			this->hm_filters_panel->Controls->Add(this->hm_filter_field);
 			this->hm_filters_panel->Controls->Add(this->panel1);
 			this->hm_filters_panel->Controls->Add(this->hm_filters_layout);
 			this->hm_filters_panel->Dock = System::Windows::Forms::DockStyle::Top;
@@ -647,6 +654,13 @@ namespace MetalCalculator
 			this->hm_filters_panel->Name = L"hm_filters_panel";
 			this->hm_filters_panel->Size = System::Drawing::Size(911, 67);
 			this->hm_filters_panel->TabIndex = 0;
+			// 
+			// hm_filter_field
+			// 
+			this->hm_filter_field->Location = System::Drawing::Point(4, 40);
+			this->hm_filter_field->Name = L"hm_filter_field";
+			this->hm_filter_field->Size = System::Drawing::Size(220, 22);
+			this->hm_filter_field->TabIndex = 5;
 			// 
 			// panel1
 			// 
@@ -2300,6 +2314,7 @@ namespace MetalCalculator
 			this->panel2->ResumeLayout(false);
 			this->hm_button_table_layout->ResumeLayout(false);
 			this->hm_filters_panel->ResumeLayout(false);
+			this->hm_filters_panel->PerformLayout();
 			this->panel1->ResumeLayout(false);
 			this->settingsPanel->ResumeLayout(false);
 			this->sm_tableLayoutPanel18->ResumeLayout(false);
@@ -2363,6 +2378,12 @@ namespace MetalCalculator
 		System::Void sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_delete_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void onCalculateBtnClick(System::Object^ sender, System::EventArgs^ e);
+		System::Void hm_previous_page_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void hm_next_page_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void hm_plavka_id_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void hm_alloy_select_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void hm_date_select_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void hm_filters_reset_Click(System::Object^ sender, System::EventArgs^ e);
 
 		// Functions:
 		System::Void ChangeLayout(System::Object^ sender);
@@ -2377,54 +2398,11 @@ namespace MetalCalculator
 		void CreateColumnsForHistoryDataTable(DataTable^ table);
 		DataTable^ ConvertToDataTable(PGresult* res);
 		void PopulateDataTableFromPGResult(DataTable^ table, PGresult* res);
+		void InitializePagination();
+		void LoadPage();
+		void ResetFilters();
 
 		// Helper Functions:
 		bool IsPanelOnFront(Control^ panel);
-
-		void InitializePagination()
-		{
-			currentPageTable = gcnew DataTable();
-			currentPageTable = historyData->Clone();
-
-			hm_data_grid->DataSource = nullptr;
-			hm_data_grid->Rows->Clear();
-			hm_data_grid->Columns->Clear();
-
-			LoadPage();
-		}
-
-		void LoadPage()
-		{
-			int startIndex = currentPageIndex * pageSize;
-			int endIndex = Math::Min(startIndex + pageSize - 1, historyData->Rows->Count - 1);
-
-			currentPageTable->Rows->Clear();
-
-			for (int i = startIndex; i <= endIndex; i++)
-			{
-				DataRow^ row = historyData->Rows[i];
-				currentPageTable->ImportRow(row);
-			}
-
-			hm_data_grid->DataSource = currentPageTable;
-		}
-
-		System::Void hm_previous_page_Click(System::Object^ sender, System::EventArgs^ e)
-		{
-			if (currentPageIndex > 0)
-			{
-				currentPageIndex--;
-				LoadPage();
-			}
-		}
-
-		System::Void hm_next_page_Click(System::Object^ sender, System::EventArgs^ e)
-		{
-			if ((currentPageIndex + 1) * pageSize < historyData->Rows->Count)
-			{
-				currentPageIndex++;
-				LoadPage();
-			}
-		}
 	};
 }
