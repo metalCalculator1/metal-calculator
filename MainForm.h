@@ -2302,127 +2302,30 @@ namespace MetalCalculator
 	public:
 		// Events:
 		System::Void onMenuLabelClicked(System::Object^ sender, System::EventArgs^ e);
-
-		// Functions:
-		System::Void ChangeLayout(System::Object^ sender);
-		System::Void BringPanelToFront(Control^ panel);
-
-		// Helper Functions:
-		bool IsPanelOnFront(Control^ panel);
+		System::Void onMetalKGLeave(System::Object^ sender, System::EventArgs^ e);
+		System::Void mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_restore_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void sm_delete_btn_Click(System::Object^ sender, System::EventArgs^ e);
-
 		System::Void onCalculateBtnClick(System::Object^ sender, System::EventArgs^ e);
 
+		// Functions:
+		System::Void ChangeLayout(System::Object^ sender);
+		System::Void BringPanelToFront(Control^ panel);
 		void FillGoalHimSklad();
 		void CalculateNeededFerro();
 		void SelectElementsByName(String^ metalName);
-
 		Dictionary<String^, TextBox^>^ GetHimSkladFromTablePanel(TableLayoutPanel^ tableLayoutPanel);
+		void SetGoalHimSklad(MetalModel^ newMetal);
+		void BindData(DataGridView^ gridView);
+		void LoadData();
+		void CreateColumnsForHistoryDataTable(DataTable^ table);
+		DataTable^ ConvertToDataTable(PGresult* res);
+		void PopulateDataTableFromPGResult(DataTable^ table, PGresult* res);
 
-		System::Void onMetalKGLeave(System::Object^ sender, System::EventArgs^ e);
-		System::Void mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e);
-
-		System::Void SetGoalHimSklad(MetalModel^ newMetal)
-		{
-			goalHimSkladModel = newMetal;
-			FillGoalHimSklad();
-		}
-
-		void BindData(DataGridView^ gridView)
-		{
-			PGconn* conn = Database::getInstance().getConn();
-			PGresult* res = PQexec(conn, "SELECT id, melting_number, metal_id, weight, required_metal_numbers, created_at FROM history");
-
-			if (PQresultStatus(res) != PGRES_TUPLES_OK)
-			{
-				MessageBox::Show("SELECT command did not return tuples properly: " + gcnew String(PQerrorMessage(conn)));
-				PQclear(res);
-				PQfinish(conn);
-				return;
-			}
-
-			DataTable^ table = nullptr;
-			try
-			{
-				table = ConvertToDataTable(res);
-				if (table == nullptr)
-				{
-					throw gcnew System::Exception("Failed to convert query result to DataTable.");
-				}
-			}
-			catch (System::Exception^ ex)
-			{
-				MessageBox::Show("Error processing data: " + ex->Message);
-				PQclear(res);
-				PQfinish(conn);
-				return;
-			}
-
-			gridView->DataSource = table;
-
-			PQclear(res);
-		}
-
-
-		void LoadData()
-		{
-			BindData(this->hm_data_grid);
-		}
-
-		void CreateColumnsForHistoryDataTable(DataTable^ table)
-		{
-			table->Columns->Add("ID", String::typeid);
-			table->Columns->Add("Номер Плавки", String::typeid);
-			table->Columns->Add("ID Металу", String::typeid);
-			table->Columns->Add("Вага", String::typeid);
-			table->Columns->Add("Необхідна к-сть феросплавів", String::typeid);
-			table->Columns->Add("Дата", String::typeid);
-		}
-
-		DataTable^ ConvertToDataTable(PGresult* res)
-		{
-			// Check if the PGresult pointer is null
-			if (res == nullptr)
-			{
-				throw gcnew ArgumentNullException("res", "PGresult pointer is null.");
-			}
-
-			DataTable^ table = gcnew DataTable("History");
-
-			CreateColumnsForHistoryDataTable(table);
-			PopulateDataTableFromPGResult(table, res);
-
-			return table;
-		}
-
-		void PopulateDataTableFromPGResult(DataTable^ table, PGresult* res)
-		{
-			int nFields = PQnfields(res);
-			int nRows = PQntuples(res);
-
-			for (int i = 0; i < nRows; i++) {
-				DataRow^ row = table->NewRow();
-
-				for (int j = 0; j < nFields; j++) {
-					char* val = PQgetvalue(res, i, j);
-
-					if (val == nullptr) 
-					{
-						row[j] = DBNull::Value;
-					}
-
-					else 
-					{
-						String^ value = Marshal::PtrToStringAnsi((IntPtr)val);
-						row[j] = value;
-					}
-				}
-				table->Rows->Add(row);
-			}
-		}
+		// Helper Functions:
+		bool IsPanelOnFront(Control^ panel);
 	};
 }

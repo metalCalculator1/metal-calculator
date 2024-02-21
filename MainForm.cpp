@@ -11,8 +11,68 @@ namespace MetalCalculator
 	{
 		ChangeLayout(sender);
 	}
+	System::Void MainForm::sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		try {
+			// Consider taking model object as a parameter.
+			settingQueries->updateSettings(
+				System::Convert::ToInt16(sm_fmn78_input_1->Text),
+				System::Convert::ToInt16(sm_fmn78_input_2->Text),
+				System::Convert::ToInt16(sm_fs45_input->Text),
+				System::Convert::ToInt16(sm_mn95_input->Text),
+				System::Convert::ToInt16(sm_carbon_input->Text)
+			);
+		}
+		catch (const System::FormatException^ e) {
+			MessageBox::Show("Невірний формат даних", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+		}
+		initWriteInputs();
+	}
+	System::Void MainForm::sm_restore_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		initWriteInputs();
+	}
+	System::Void MainForm::sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		CreateMetal^ addMetalForm = gcnew CreateMetal();
 
+		addMetalForm->ShowDialog();
+	}
+	System::Void MainForm::sm_delete_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		DeleteMetal^ removeMetalForm = gcnew DeleteMetal();
 
+		removeMetalForm->ShowDialog();
+	}
+	System::Void MainForm::sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		UpdateMetal^ updateMetalForm = gcnew UpdateMetal();
+		updateMetalForm->ShowDialog();
+	}
+	System::Void MainForm::onCalculateBtnClick(System::Object^ sender, System::EventArgs^ e)
+	{
+		CalculateNeededFerro();
+
+	}
+	System::Void MainForm::onMetalKGLeave(System::Object^ sender, System::EventArgs^ e)
+	{
+		float value;
+		if (System::Single::TryParse(mm_metalKG_TB->Text, value))
+		{
+			metalMass = value;
+		}
+		else
+		{
+			MessageBox::Show("Введіть коректне число");
+		}
+	}
+	System::Void MainForm::mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
+		selectForm->ShowDialog();
+	}
+
+	
 	// Functions:
 	System::Void MainForm::ChangeLayout(System::Object^ sender)
 	{
@@ -35,7 +95,6 @@ namespace MetalCalculator
 			}
 		}
 	}
-
 	System::Void MainForm::BringPanelToFront(Control^ panel)
 	{
 		if (IsPanelOnFront(panel))
@@ -48,65 +107,6 @@ namespace MetalCalculator
 			panel->BringToFront();
 		}
 	}
-
-
-	// Helper Functions:
-	bool MainForm::IsPanelOnFront(Control^ panel)
-	{
-		int index = panel->Parent->Controls->GetChildIndex(panel);
-		return index == 0;
-	}
-
-	System::Void MainForm::sm_save_btn_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		try {
-			// Consider taking model object as a parameter.
-			settingQueries->updateSettings(
-				System::Convert::ToInt16(sm_fmn78_input_1->Text),
-				System::Convert::ToInt16(sm_fmn78_input_2->Text),
-				System::Convert::ToInt16(sm_fs45_input->Text),
-				System::Convert::ToInt16(sm_mn95_input->Text),
-				System::Convert::ToInt16(sm_carbon_input->Text)
-			);
-		}
-		catch (const System::FormatException^ e) {
-			MessageBox::Show("Невірний формат даних", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-		}
-		initWriteInputs();
-	}
-
-	System::Void MainForm::sm_restore_btn_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		initWriteInputs();
-	}
-
-	System::Void MainForm::sm_add_mark_btn_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		CreateMetal^ addMetalForm = gcnew CreateMetal();
-
-		addMetalForm->ShowDialog();
-	}
-
-	System::Void MainForm::sm_delete_btn_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		DeleteMetal^ removeMetalForm = gcnew DeleteMetal();
-
-		removeMetalForm->ShowDialog();
-	}
-
-	System::Void MainForm::sm_edit_btn_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		UpdateMetal^ updateMetalForm = gcnew UpdateMetal();
-		updateMetalForm->ShowDialog();
-	}
-
-
-	System::Void MainForm::onCalculateBtnClick(System::Object^ sender, System::EventArgs^ e)
-	{
-		CalculateNeededFerro();
-
-	}
-
 	void MainForm::FillGoalHimSklad()
 	{
 		HimSkladGoalDic["C"]->Text = goalHimSkladModel->c.ToString();
@@ -118,7 +118,6 @@ namespace MetalCalculator
 		HimSkladGoalDic["Cr"]->Text = goalHimSkladModel->cr.ToString();
 		HimSkladGoalDic["Ni"]->Text = goalHimSkladModel->ni.ToString();
 	}
-
 	void MainForm::CalculateNeededFerro()
 	{
 		// Globalization::CultureInfo::InvariantCulture might be needed.
@@ -135,12 +134,10 @@ namespace MetalCalculator
 		mm_FMn78_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFMn78(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
 		mm_vulgecevm_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal));
 	}
-
 	void MainForm::SelectElementsByName(String^ metalName)
 	{
 		goalHimSkladModel = mainQueries->getElementByName(metalName);
 	}
-
 	Dictionary<String^, TextBox^>^ MainForm::GetHimSkladFromTablePanel(TableLayoutPanel^ tableLayoutPanel)
 	{
 		Dictionary<String^, TextBox^>^ HimSkladDic = gcnew Dictionary<String^, TextBox^>();
@@ -167,23 +164,128 @@ namespace MetalCalculator
 
 		return HimSkladDic;
 	}
-
-	System::Void MainForm::onMetalKGLeave(System::Object^ sender, System::EventArgs^ e)
+	System::Void MainForm::SetGoalHimSklad(MetalModel^ newMetal)
 	{
-		float value;
-		if (System::Single::TryParse(mm_metalKG_TB->Text, value))
+		goalHimSkladModel = newMetal;
+		FillGoalHimSklad();
+	}
+	void MainForm::BindData(DataGridView^ gridView)
+	{
+		PGconn* conn = Database::getInstance().getConn();
+		PGresult* res = PQexec(conn, "SELECT id, melting_number, metal_id, weight, required_metal_numbers, created_at FROM history");
+
+		if (PQresultStatus(res) != PGRES_TUPLES_OK)
 		{
-			metalMass = value;
+			MessageBox::Show("SELECT command did not return tuples properly: " + gcnew String(PQerrorMessage(conn)));
+			PQclear(res);
+			PQfinish(conn);
+			return;
 		}
-		else
+
+		DataTable^ table = nullptr;
+		try
 		{
-			MessageBox::Show("Введіть коректне число");
+			table = ConvertToDataTable(res);
+			if (table == nullptr)
+			{
+				throw gcnew System::Exception("Failed to convert query result to DataTable.");
+			}
+		}
+		catch (System::Exception^ ex)
+		{
+			MessageBox::Show("Error processing data: " + ex->Message);
+			PQclear(res);
+			PQfinish(conn);
+			return;
+		}
+
+		gridView->DataSource = table;
+
+		PQclear(res);
+	}
+	void MainForm::LoadData()
+	{
+		BindData(this->hm_data_grid);
+	}
+	void MainForm::CreateColumnsForHistoryDataTable(DataTable^ table)
+	{
+		table->Columns->Add("ID", int::typeid);
+		table->Columns->Add("Номер Плавки", String::typeid);
+		table->Columns->Add("ID Металу", String::typeid);
+		table->Columns->Add("Вага", String::typeid);
+		table->Columns->Add("Необхідна к-сть феросплавів", String::typeid);
+		table->Columns->Add("Дата", String::typeid);
+	}
+	DataTable^ MainForm::ConvertToDataTable(PGresult* res)
+	{
+		// Check if the PGresult pointer is null
+		if (res == nullptr)
+		{
+			throw gcnew ArgumentNullException("res", "PGresult pointer is null.");
+		}
+
+		DataTable^ table = gcnew DataTable("History");
+
+		CreateColumnsForHistoryDataTable(table);
+		PopulateDataTableFromPGResult(table, res);
+
+		return table;
+	}
+	void MainForm::PopulateDataTableFromPGResult(DataTable^ table, PGresult* res)
+	{
+		int nFields = PQnfields(res);
+		int nRows = PQntuples(res);
+
+		for (int i = 0; i < nRows; i++)
+		{
+			DataRow^ row = table->NewRow();
+
+			for (int j = 0; j < nFields; j++)
+			{
+				char* val = PQgetvalue(res, i, j);
+
+				if (val == nullptr)
+				{
+					row[j] = DBNull::Value;
+				}
+				else
+				{
+					// Get column type
+					DataColumn^ column = table->Columns[j];
+					Type^ columnType = column->DataType;
+
+					// Convert based on column type
+					if (columnType == int::typeid)
+					{
+						int intValue = atoi(val);
+						row[j] = intValue;
+					}
+					else if (columnType == String::typeid)
+					{
+						String^ value = Marshal::PtrToStringAnsi((IntPtr)val);
+						row[j] = value;
+					}
+					else if (columnType == Double::typeid)
+					{
+						double doubleValue = atof(val);
+						row[j] = doubleValue;
+					}
+					else
+					{
+						row[j] = DBNull::Value;
+						// log an arror or hande an exception
+					}
+				}
+			}
+			table->Rows->Add(row);
 		}
 	}
 
-	System::Void MainForm::mm_alloySelect_btn_Click(System::Object^ sender, System::EventArgs^ e)
+
+	// Helper Functions:
+	bool MainForm::IsPanelOnFront(Control^ panel)
 	{
-		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
-		selectForm->ShowDialog();
+		int index = panel->Parent->Controls->GetChildIndex(panel);
+		return index == 0;
 	}
 };
