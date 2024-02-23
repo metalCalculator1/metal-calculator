@@ -22,6 +22,8 @@ namespace MetalCalculator
 				System::Convert::ToInt16(sm_mn95_input->Text),
 				System::Convert::ToInt16(sm_carbon_input->Text)
 			);
+
+			Calculator::GetInstance()->SetZasvoyenia();
 		}
 		catch (const System::FormatException^ e) {
 			MessageBox::Show("Невірний формат даних", "Input error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);

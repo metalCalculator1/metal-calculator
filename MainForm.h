@@ -33,7 +33,7 @@ namespace MetalCalculator
 			mm_metalKG_TB->Text = metalMass.ToString();
 
 			settings = new SettingsModel();
-			settingQueries = new SettingsQueries();
+			settingQueries = &SettingsQueries::getInstance();
 
 			goalHimSkladModel = gcnew MetalModel();
 			mainQueries = new MetalQueries();

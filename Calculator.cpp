@@ -1,4 +1,6 @@
 #include "Calculator.h"
+#include "SettingModel.h"
+#include "SettingsQueries.h"
 
 namespace MetalCalculator
 {
@@ -60,7 +62,7 @@ namespace MetalCalculator
 		if (((F17 * (M4 / 100.0) * (N20 / 100.0) / E11) * 100.0 + D4) == D9) {
 			result = 0;
 		}
-		else 
+		else
 		{
 			float calculationPart = (((B9 - B4) * E11 / 100.0) / (L4 / 100.0) * (M4 / 100.0) * (N20 / 100.0) / E11 * 100.0 + D4);
 			result = E11 * (D9 - calculationPart) * 100.0 / L12 / N21;
@@ -82,17 +84,27 @@ namespace MetalCalculator
 
 		double result;
 
-		if (100 * (F17 * L4 / 100) / E11 + B4 < B9) 
+		if (100 * (F17 * L4 / 100) / E11 + B4 < B9)
 		{
 			result = E11 * (B9 - (100 * (F17 * L4 / 100) / E11 + B4)) * 100 / L16 / N23;
 		}
-		else 
+		else
 		{
 			result = 0;
 		}
 
 		Vuglecevm = result;
 		return Vuglecevm;
+	}
+	void Calculator::SetZasvoyenia()
+	{
+		SettingsModel model = SettingsQueries::getInstance().getSettings();
+
+		HimSklad_C_FMn78 = model.fmn_78_0;
+		HimSklad_Mn_FMn78 = model.fmn_78_1;
+		HimSklad_Si_FC45 = model.fs_45;
+		HimSklad_Mn_Mn95 = model.mn_95;
+		HimSklad_C_Vuglecevm = model.carbon;
 	}
 }
 
