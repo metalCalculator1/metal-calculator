@@ -7,11 +7,11 @@
 #include "Calculator.h"
 #include <libpq-fe.h>
 #include <msclr\marshal_cppstd.h>
+#include "StringConverter.h"
 
 
 namespace MetalCalculator
 {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -29,6 +29,8 @@ namespace MetalCalculator
 		MainForm(void)
 		{
 			InitializeComponent();
+
+			mm_metalKG_TB->Text = metalMass.ToString();
 
 			settings = new SettingsModel();
 			settingQueries = new SettingsQueries();
@@ -54,6 +56,12 @@ namespace MetalCalculator
 
 			LoadData();
 			InitializePagination();
+
+			hm_data_grid->Columns[0]->AutoSizeMode = DataGridViewAutoSizeColumnMode::ColumnHeader;
+			hm_data_grid->Columns[1]->AutoSizeMode = DataGridViewAutoSizeColumnMode::ColumnHeader;
+			hm_data_grid->Columns[2]->AutoSizeMode = DataGridViewAutoSizeColumnMode::ColumnHeader;
+
+			mm_meltingID_TB->Text = "0";
 		}
 
 	private:
@@ -91,9 +99,6 @@ namespace MetalCalculator
 
 	private: System::Windows::Forms::Button^ hm_previous_page;
 	private: System::Windows::Forms::TextBox^ hm_filter_field;
-
-
-
 
 		   float metalMass = 3120.f;
 
@@ -547,13 +552,14 @@ namespace MetalCalculator
 			this->hm_data_grid->AllowUserToAddRows = false;
 			this->hm_data_grid->AllowUserToDeleteRows = false;
 			this->hm_data_grid->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->hm_data_grid->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::DisplayedHeaders;
 			this->hm_data_grid->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->hm_data_grid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->hm_data_grid->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_data_grid->Location = System::Drawing::Point(0, 124);
 			this->hm_data_grid->Name = L"hm_data_grid";
-			this->hm_data_grid->RowHeadersWidth = 51;
+			this->hm_data_grid->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders;
 			this->hm_data_grid->RowTemplate->Height = 24;
 			this->hm_data_grid->Size = System::Drawing::Size(911, 420);
 			this->hm_data_grid->TabIndex = 3;
@@ -2388,6 +2394,8 @@ namespace MetalCalculator
 		// Functions:
 		System::Void ChangeLayout(System::Object^ sender);
 		System::Void BringPanelToFront(Control^ panel);
+
+		// Main Menu HimSklad functions
 		void FillGoalHimSklad();
 		void CalculateNeededFerro();
 		void SelectElementsByName(String^ metalName);
@@ -2404,5 +2412,55 @@ namespace MetalCalculator
 
 		// Helper Functions:
 		bool IsPanelOnFront(Control^ panel);
+
+		void InsertIntoDatabase(int meltingNumber, int metalId, float weight, String^ requiredMetalNumbers)
+		{
+			PGconn* conn = Database::getInstance().getConn();
+			std::string requiredFerro = StringConverterer::SystemStringToStdString(requiredMetalNumbers);
+
+			std::string query = "INSERT INTO history (melting_number, metal_id, weight, required_metal_numbers, created_at) VALUES (" +
+				std::to_string(meltingNumber) + ", " +
+				std::to_string(metalId) + ", " +
+				std::to_string(weight) + ", '" +
+				requiredFerro + "', NOW()) RETURNING id;";
+
+			PGresult* res = PQexec(conn, query.c_str());
+
+			if (PQresultStatus(res) == PGRES_TUPLES_OK && PQntuples(res) > 0)
+			{
+				int newId = std::stoi(PQgetvalue(res, 0, 0));
+
+				DateTime^ createdAt = DateTime::Now;
+				AddRowToDataTable(historyData, newId, meltingNumber, metalId, weight, requiredMetalNumbers, createdAt);
+			}
+			else
+			{
+				String^ errorMsg = gcnew String(PQerrorMessage(conn));
+				MessageBox::Show(errorMsg, "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+
+			PQclear(res);
+		}
+
+		void AddRowToDataTable(DataTable^ table, int id, int meltingNumber, int metalId, float weight, String^ requiredMetalNumbers, DateTime^ createdAt)
+		{
+			DataRow^ newRow = table->NewRow();
+			newRow["ID"] = id;
+			newRow["Номер Плавки"] = meltingNumber;
+			newRow["ID Металу"] = metalId;
+			newRow["Вага"] = weight;
+			newRow["Необхідна к-сть феросплавів"] = requiredMetalNumbers;
+			newRow["Дата"] = createdAt;
+
+			table->Rows->Add(newRow);
+
+			LoadPage();
+		}
+
+		String^ FormatNeededFerro(String^ FC95, String^ Mn95, String^ FMn78, String^ Vuglecevm) 
+		{
+			String^ result = String::Format("{0}/{1}/{2}/{3}", FC95, Mn95, FMn78, Vuglecevm);
+			return result;
+		}
 	};
 }

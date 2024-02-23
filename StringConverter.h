@@ -3,7 +3,7 @@
 #include <string>
 #include <msclr/marshal_cppstd.h>
 
-public ref class StringConverter 
+public ref class StringConverterer 
 {
 public:
 	static std::string SystemStringToStdString(System::String^ systemString) {

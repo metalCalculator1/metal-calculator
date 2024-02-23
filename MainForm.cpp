@@ -170,6 +170,9 @@ namespace MetalCalculator
 			panel->BringToFront();
 		}
 	}
+
+
+	// Main Menu HimSklad functions
 	void MainForm::FillGoalHimSklad()
 	{
 		HimSkladGoalDic["C"]->Text = goalHimSkladModel->c.ToString();
@@ -184,6 +187,7 @@ namespace MetalCalculator
 	void MainForm::CalculateNeededFerro()
 	{
 		// Globalization::CultureInfo::InvariantCulture might be needed.
+
 		float Si_Proba = Single::Parse(HimSkladProbaDic["Si"]->Text);
 		float Mn_Proba = Single::Parse(HimSkladProbaDic["Mn"]->Text);
 		float C_Proba = Single::Parse(HimSkladProbaDic["C"]->Text);
@@ -196,6 +200,11 @@ namespace MetalCalculator
 		mm_Mn95_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateMn95(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
 		mm_FMn78_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFMn78(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
 		mm_vulgecevm_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal));
+
+		String^ resultString = FormatNeededFerro(mm_FC45_value_lbl->Text, mm_Mn95_value_lbl->Text, mm_FMn78_value_lbl->Text, mm_vulgecevm_value_lbl->Text);
+		
+		int meltingID = Single::Parse(mm_meltingID_TB->Text);
+		InsertIntoDatabase(meltingID, 5, metalMass, resultString);
 	}
 	void MainForm::SelectElementsByName(String^ metalName)
 	{
@@ -232,6 +241,9 @@ namespace MetalCalculator
 		goalHimSkladModel = newMetal;
 		FillGoalHimSklad();
 	}
+	
+
+	// History Menu Data
 	void MainForm::BindData(DataGridView^ gridView)
 	{
 		PGconn* conn = Database::getInstance().getConn();
