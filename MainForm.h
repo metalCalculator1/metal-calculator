@@ -39,7 +39,7 @@ namespace MetalCalculator
 			mainQueries = new MetalQueries();
 
 			DataTable^ historyData = gcnew DataTable();
-			Calc = gcnew Calculator();
+			Calc = Calculator::GetInstance();
 
 			mainPanel->Tag = mainLabel->Tag;
 			settingsPanel->Tag = settingsLabel->Tag;

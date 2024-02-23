@@ -4,9 +4,21 @@ namespace MetalCalculator
 {
 	ref class Calculator
 	{
-	public:
+	private:
 		Calculator() {};
+		static Calculator^ instance = nullptr;
+
+	public:
 		~Calculator() {};
+
+		static Calculator^ GetInstance()
+		{
+			if (instance == nullptr)
+			{
+				instance = gcnew Calculator();
+			}
+			return instance;
+		}
 	private:
 		// Засвоєння хімічних елементів
 		const float N20 = 90.0; // Засвоєння хімічних елементів Mn з ФМн78
