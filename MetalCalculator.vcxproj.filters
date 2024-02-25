@@ -18,7 +18,7 @@
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="models\MetalModel.h" />
     <ClInclude Include="sql\headers\MetalQueries.h" />
-    <ClInclude Include="support\StringConverter.h" />
+    <ClInclude Include="StringConverter.h" />
     <ClInclude Include="subforms\CreateMetal.h" />
     <ClInclude Include="support\CredHandler.h" />
     <ClInclude Include="sql\headers\SettingsQueries.h" />

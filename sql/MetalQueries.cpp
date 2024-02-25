@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <msclr/marshal.h>
 #include <string>
-#include <support/StringConverter.h>
+#include "StringConverter.h"
 
 namespace MetalCalculator
 {
@@ -57,7 +57,7 @@ namespace MetalCalculator
 			{
 				MetalModel^ metal = gcnew MetalModel();
 
-				metal->name = StringConverter::StdStringToSystemString(PQgetvalue(result, i, 0));
+				metal->name = StringConverterer::StdStringToSystemString(PQgetvalue(result, i, 0));
 
 				metal->c = std::stof(PQgetvalue(result, i, 1));
 				metal->si = std::stof(PQgetvalue(result, i, 2));
@@ -82,7 +82,7 @@ namespace MetalCalculator
 	bool MetalQueries::addMetal(MetalModel^ metal)
 	{
 		std::string query = "INSERT INTO metals (name, c, si, mn, p, s, cu, cr, ni, metal_type) VALUES ('"
-			+ StringConverter::SystemStringToStdString(metal->name) + "', " + std::to_string(metal->c) + ", "
+			+ StringConverterer::SystemStringToStdString(metal->name) + "', " + std::to_string(metal->c) + ", "
 			+ std::to_string(metal->si) + ", " + std::to_string(metal->mn) + ", "
 			+ std::to_string(metal->p) + ", " + std::to_string(metal->s) + ", "
 			+ std::to_string(metal->cu) + ", " + std::to_string(metal->cr) + ", "
@@ -113,8 +113,8 @@ namespace MetalCalculator
 			+ "cr = " + std::to_string(updatedMetal->cr) + ", "
 			+ "ni = " + std::to_string(updatedMetal->ni) + ", "
 			+ "metal_type = '" + updatedMetal->metalTypeToString(updatedMetal->metalType) + "', "
-			+ "name = '" + StringConverter::SystemStringToStdString(updatedMetal->name) + "' "
-			+ "WHERE name = '" + StringConverter::SystemStringToStdString(name) + "';";
+			+ "name = '" + StringConverterer::SystemStringToStdString(updatedMetal->name) + "' "
+			+ "WHERE name = '" + StringConverterer::SystemStringToStdString(name) + "';";
 
 		PGresult* result = PQexec(conn, query.c_str());
 
@@ -131,7 +131,7 @@ namespace MetalCalculator
 	bool MetalQueries::dropMetalByName(String^ nameOfMetalToDrop)
 	{
 		Console::WriteLine("Deleting: " + nameOfMetalToDrop);
-		std::string query = "DELETE FROM metals WHERE name = '" + StringConverter::SystemStringToStdString(nameOfMetalToDrop) + "';";
+		std::string query = "DELETE FROM metals WHERE name = '" + StringConverterer::SystemStringToStdString(nameOfMetalToDrop) + "';";
 
 		PGresult* result = PQexec(conn, query.c_str());
 
@@ -148,7 +148,7 @@ namespace MetalCalculator
 		MetalModel^ model = gcnew MetalModel;
 		char* cName = PQgetvalue(res, 0, 0);
 
-		model->name = StringConverter::StdStringToSystemString(cName);
+		model->name = StringConverterer::StdStringToSystemString(cName);
 		model->c = strtof(PQgetvalue(res, 0, 1), NULL);
 		model->si = strtof(PQgetvalue(res, 0, 2), NULL);
 		model->mn = strtof(PQgetvalue(res, 0, 3), NULL);
