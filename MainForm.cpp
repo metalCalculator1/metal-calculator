@@ -118,6 +118,7 @@ namespace MetalCalculator
 	}
 	System::Void MainForm::hm_date_select_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		// TODO: make this button to actually change metal type
 		DateTime dateValue;
 		if (DateTime::TryParse(hm_filter_field->Text, dateValue))
 		{
@@ -132,6 +133,28 @@ namespace MetalCalculator
 		currentPageIndex = 0; // Assuming you have implemented pagination
 		LoadPage(); // Reload the page view
 	}
+
+	System::Void MainForm::dateTimePicker_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+		DateTime startDate = startDatePicker->Value.Date + startTimePicker->Value.TimeOfDay;
+		DateTime endDate = endDatePicker->Value.Date + endTimePicker->Value.TimeOfDay;
+
+		if (startDate <= endDate)
+		{
+			String^ formattedStartDate = startDate.ToString("yyyy-MM-dd HH:mm:ss");
+			String^ formattedEndDate = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+
+			String^ filterExpression = "[Дата] >= '" + formattedStartDate + "' AND [Дата] <= '" + formattedEndDate + "'";
+			historyData->DefaultView->RowFilter = filterExpression;
+		}
+		else
+		{
+			MessageBox::Show("End date must be equal to or later than start date.");
+		}
+
+		currentPageIndex = 0;
+		LoadPage();
+	}
+
 	System::Void MainForm::hm_filters_reset_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		ResetFilters();
