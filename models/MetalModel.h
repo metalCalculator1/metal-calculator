@@ -39,7 +39,7 @@ public ref struct MetalModel
 		metalType = mapMetalType(metalType_i);
 	};
 
-	MetalType mapMetalType(System::String^ metalType_i) {
+	static MetalType mapMetalType(System::String^ metalType_i) {
 		if (metalType_i == "steel" || metalType_i == "Сталь") {
 			return MetalType::steel;
 		}
@@ -47,7 +47,7 @@ public ref struct MetalModel
 		return MetalType::cast_iron;
 	}
 
-	MetalType mapMetalType(char* metalType_i) {
+	static MetalType mapMetalType(char* metalType_i) {
 		if (strcmp(metalType_i, "steel") == 0 || strcmp(metalType_i, "Сталь") == 0) {
 			return MetalType::steel;
 		}
@@ -55,7 +55,7 @@ public ref struct MetalModel
 		return MetalType::cast_iron;
 	}
 
-	std::string metalTypeToString(MetalType metalType)
+	static std::string metalTypeToString(MetalType metalType)
 	{
 		switch (metalType)
 		{

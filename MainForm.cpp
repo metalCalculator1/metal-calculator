@@ -116,23 +116,30 @@ namespace MetalCalculator
 		currentPageIndex = 0;
 		LoadPage();
 	}
-	System::Void MainForm::hm_date_select_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		// TODO: make this button to actually change metal type
-		DateTime dateValue;
-		if (DateTime::TryParse(hm_filter_field->Text, dateValue))
-		{
-			String^ formattedDate = dateValue.ToString("yyyy-MM-dd"); // Ensure format matches your DataTable
-			String^ filterExpression = "[Дата] LIKE '" + formattedDate + "%'";
-			historyData->DefaultView->RowFilter = filterExpression;
+
+	System::Void MainForm::hm_metal_type_selector_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (!historyData) {
+			return;
 		}
-		else
-		{
-			MessageBox::Show("Please enter a valid Date in format YYYY-MM-DD.");
+
+		if (hm_metal_type_selector->Text == "Всі") {
+			historyData->DefaultView->RowFilter = String::Empty;
 		}
-		currentPageIndex = 0; // Assuming you have implemented pagination
-		LoadPage(); // Reload the page view
+		else {
+			String^ text;
+			if (hm_metal_type_selector->Text == "Сталь") {
+				text = "steel";
+			}
+			else {
+				text = "cast_iron";
+			}
+			historyData->DefaultView->RowFilter = "[Тип Металу] LIKE '" + text + "%'";
+		}
+
+		currentPageIndex = 0;
+		LoadPage();
 	}
+
 
 	System::Void MainForm::dateTimePicker_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 		DateTime startDate = startDatePicker->Value.Date + startTimePicker->Value.TimeOfDay;
@@ -271,9 +278,21 @@ namespace MetalCalculator
 	// History Menu Data
 	void MainForm::BindData(DataGridView^ gridView)
 	{
+		// TODO throw this query to rest of them in file
 		PGconn* conn = Database::getInstance().getConn();
-		PGresult* res = PQexec(conn, "SELECT id, melting_number, metal_id, weight, required_metal_numbers, created_at FROM history");
+		PGresult* res = PQexec(conn, "\
+			SELECT h.id, \
+			h.melting_number, \
+			m.name AS metal_name, \
+			m.metal_type, \
+			h.weight, \
+			h.required_metal_numbers, \
+			h.created_at \
+			FROM history AS h \
+			JOIN metals AS m ON h.metal_id = m.id\
+		");
 
+			/*		h.metal_id, \*/
 		if (PQresultStatus(res) != PGRES_TUPLES_OK)
 		{
 			MessageBox::Show("SELECT command did not return tuples properly: " + gcnew String(PQerrorMessage(conn)));
@@ -310,7 +329,8 @@ namespace MetalCalculator
 	{
 		table->Columns->Add("ID", int::typeid);
 		table->Columns->Add("Номер Плавки", String::typeid);
-		table->Columns->Add("ID Металу", String::typeid);
+		table->Columns->Add("Назва Металу", String::typeid);
+		table->Columns->Add("Тип Металу", String::typeid);
 		table->Columns->Add("Вага", String::typeid);
 		table->Columns->Add("Необхідна к-сть феросплавів", String::typeid);
 		table->Columns->Add("Дата", String::typeid);

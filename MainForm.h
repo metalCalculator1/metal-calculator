@@ -90,7 +90,9 @@ namespace MetalCalculator
 
 	private: System::Windows::Forms::Label^ hm_filters_layout;
 	private: System::Windows::Forms::Button^ hm_filters_reset;
-	private: System::Windows::Forms::Button^ hm_date_select;
+
+
+
 	private: System::Windows::Forms::Button^ hm_plavka_id;
 	private: System::Windows::Forms::Button^ hm_alloy_select;
 	private: System::Windows::Forms::DataGridView^ hm_data_grid;
@@ -107,6 +109,9 @@ namespace MetalCalculator
 
 
 	private: System::Windows::Forms::DateTimePicker^ endDatePicker;
+	private: System::Windows::Forms::ComboBox^ hm_metal_type_selector;
+
+
 
 
 
@@ -277,14 +282,14 @@ namespace MetalCalculator
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->hm_button_table_layout = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->hm_filters_reset = (gcnew System::Windows::Forms::Button());
-			this->hm_date_select = (gcnew System::Windows::Forms::Button());
 			this->hm_plavka_id = (gcnew System::Windows::Forms::Button());
 			this->hm_alloy_select = (gcnew System::Windows::Forms::Button());
+			this->hm_metal_type_selector = (gcnew System::Windows::Forms::ComboBox());
 			this->hm_filters_panel = (gcnew System::Windows::Forms::Panel());
-			this->endTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
-			this->endDatePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->startTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
+			this->endTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->startDatePicker = (gcnew System::Windows::Forms::DateTimePicker());
+			this->endDatePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->hm_filter_field = (gcnew System::Windows::Forms::TextBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->hm_next_page = (gcnew System::Windows::Forms::Button());
@@ -605,9 +610,9 @@ namespace MetalCalculator
 			this->hm_button_table_layout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				25)));
 			this->hm_button_table_layout->Controls->Add(this->hm_filters_reset, 3, 0);
-			this->hm_button_table_layout->Controls->Add(this->hm_date_select, 2, 0);
 			this->hm_button_table_layout->Controls->Add(this->hm_plavka_id, 0, 0);
 			this->hm_button_table_layout->Controls->Add(this->hm_alloy_select, 1, 0);
+			this->hm_button_table_layout->Controls->Add(this->hm_metal_type_selector, 2, 0);
 			this->hm_button_table_layout->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_button_table_layout->Location = System::Drawing::Point(0, 0);
 			this->hm_button_table_layout->Margin = System::Windows::Forms::Padding(2);
@@ -631,20 +636,6 @@ namespace MetalCalculator
 			this->hm_filters_reset->Text = L"Скинути Фільтри";
 			this->hm_filters_reset->UseVisualStyleBackColor = true;
 			this->hm_filters_reset->Click += gcnew System::EventHandler(this, &MainForm::hm_filters_reset_Click);
-			// 
-			// hm_date_select
-			// 
-			this->hm_date_select->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->hm_date_select->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->hm_date_select->Location = System::Drawing::Point(342, 2);
-			this->hm_date_select->Margin = System::Windows::Forms::Padding(2);
-			this->hm_date_select->Name = L"hm_date_select";
-			this->hm_date_select->Size = System::Drawing::Size(166, 42);
-			this->hm_date_select->TabIndex = 2;
-			this->hm_date_select->Text = L"Вибір Дати";
-			this->hm_date_select->UseVisualStyleBackColor = true;
-			this->hm_date_select->Click += gcnew System::EventHandler(this, &MainForm::hm_date_select_Click);
 			// 
 			// hm_plavka_id
 			// 
@@ -674,6 +665,18 @@ namespace MetalCalculator
 			this->hm_alloy_select->UseVisualStyleBackColor = true;
 			this->hm_alloy_select->Click += gcnew System::EventHandler(this, &MainForm::hm_alloy_select_Click);
 			// 
+			// hm_metal_type_selector
+			// 
+			this->hm_metal_type_selector->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->hm_metal_type_selector->FormattingEnabled = true;
+			this->hm_metal_type_selector->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Всі", L"Сталь", L"Чавун" });
+			this->hm_metal_type_selector->Location = System::Drawing::Point(343, 3);
+			this->hm_metal_type_selector->Name = L"hm_metal_type_selector";
+			this->hm_metal_type_selector->Size = System::Drawing::Size(164, 21);
+			this->hm_metal_type_selector->TabIndex = 4;
+			this->hm_metal_type_selector->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::hm_metal_type_selector_SelectedIndexChanged);
+			this->hm_metal_type_selector->SelectedIndex = 0;
+			// 
 			// hm_filters_panel
 			// 
 			this->hm_filters_panel->Controls->Add(this->startTimePicker);
@@ -690,26 +693,6 @@ namespace MetalCalculator
 			this->hm_filters_panel->Size = System::Drawing::Size(683, 54);
 			this->hm_filters_panel->TabIndex = 0;
 			// 
-			// endTimePicker
-			// 
-			this->endTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Time;
-			this->endTimePicker->Location = System::Drawing::Point(570, 3);
-			this->endTimePicker->Name = L"endTimePicker";
-			this->endTimePicker->ShowUpDown = true;
-			this->endTimePicker->Size = System::Drawing::Size(113, 20);
-			this->endTimePicker->TabIndex = 9;
-			this->endTimePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
-			// 
-			// endDatePicker
-			// 
-			this->endDatePicker->Location = System::Drawing::Point(428, 2);
-			this->endDatePicker->MaxDate = System::DateTime(2024, 2, 25, 0, 0, 0, 0);
-			this->endDatePicker->Name = L"endDatePicker";
-			this->endDatePicker->Size = System::Drawing::Size(137, 20);
-			this->endDatePicker->TabIndex = 8;
-			this->endDatePicker->Value = System::DateTime(2024, 2, 25, 0, 0, 0, 0);
-			this->endDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
-			// 
 			// startTimePicker
 			// 
 			this->startTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Time;
@@ -720,6 +703,16 @@ namespace MetalCalculator
 			this->startTimePicker->TabIndex = 7;
 			this->startTimePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
+			// endTimePicker
+			// 
+			this->endTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Time;
+			this->endTimePicker->Location = System::Drawing::Point(570, 3);
+			this->endTimePicker->Name = L"endTimePicker";
+			this->endTimePicker->ShowUpDown = true;
+			this->endTimePicker->Size = System::Drawing::Size(113, 20);
+			this->endTimePicker->TabIndex = 9;
+			this->endTimePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
+			// 
 			// startDatePicker
 			// 
 			this->startDatePicker->Location = System::Drawing::Point(2, 2);
@@ -727,6 +720,16 @@ namespace MetalCalculator
 			this->startDatePicker->Size = System::Drawing::Size(137, 20);
 			this->startDatePicker->TabIndex = 6;
 			this->startDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
+			// 
+			// endDatePicker
+			// 
+			this->endDatePicker->Location = System::Drawing::Point(428, 2);
+			this->endDatePicker->MaxDate = System::DateTime(2024, 2, 25, 0, 0, 0, 0);
+			this->endDatePicker->Name = L"endDatePicker";
+			this->endDatePicker->Size = System::Drawing::Size(137, 20);
+			this->endDatePicker->TabIndex = 8;
+			this->endDatePicker->Value = System::DateTime(2024, 2, 25, 0, 0, 0, 0);
+			this->endDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
 			// hm_filter_field
 			// 
@@ -2463,7 +2466,6 @@ namespace MetalCalculator
 		System::Void hm_next_page_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void hm_plavka_id_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void hm_alloy_select_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void hm_date_select_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void hm_filters_reset_Click(System::Object^ sender, System::EventArgs^ e);
 
 		// Functions:
@@ -2538,5 +2540,6 @@ namespace MetalCalculator
 			return result;
 		}
 	private: System::Void dateTimePicker_ValueChanged(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void hm_metal_type_selector_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 };
 }
