@@ -8,6 +8,7 @@
 #include <libpq-fe.h>
 #include <msclr\marshal_cppstd.h>
 #include "StringConverter.h"
+#include "support/MetalManager.h"
 
 
 namespace MetalCalculator
@@ -62,6 +63,7 @@ namespace MetalCalculator
 			hm_data_grid->Columns[2]->AutoSizeMode = DataGridViewAutoSizeColumnMode::ColumnHeader;
 
 			mm_meltingID_TB->Text = "0";
+			hm_metal_type_selector->SelectedIndex = 0;
 		}
 
 	private:
@@ -665,7 +667,7 @@ namespace MetalCalculator
 			this->hm_alloy_select->UseVisualStyleBackColor = true;
 			this->hm_alloy_select->Click += gcnew System::EventHandler(this, &MainForm::hm_alloy_select_Click);
 			// 
-			// hm_metal_type_selector
+			//	
 			// 
 			this->hm_metal_type_selector->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_metal_type_selector->FormattingEnabled = true;
@@ -675,7 +677,6 @@ namespace MetalCalculator
 			this->hm_metal_type_selector->Size = System::Drawing::Size(164, 21);
 			this->hm_metal_type_selector->TabIndex = 4;
 			this->hm_metal_type_selector->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::hm_metal_type_selector_SelectedIndexChanged);
-			this->hm_metal_type_selector->SelectedIndex = 0;
 			// 
 			// hm_filters_panel
 			// 
@@ -716,19 +717,21 @@ namespace MetalCalculator
 			// startDatePicker
 			// 
 			this->startDatePicker->Location = System::Drawing::Point(2, 2);
+			this->startDatePicker->MaxDate = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
 			this->startDatePicker->Name = L"startDatePicker";
 			this->startDatePicker->Size = System::Drawing::Size(137, 20);
 			this->startDatePicker->TabIndex = 6;
+			this->startDatePicker->Value = System::DateTime(2024, 3, 1, 0, 0, 0, 0);
 			this->startDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
 			// endDatePicker
 			// 
 			this->endDatePicker->Location = System::Drawing::Point(428, 2);
-			this->endDatePicker->MaxDate = System::DateTime(2024, 2, 25, 0, 0, 0, 0);
+			this->endDatePicker->MaxDate = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
 			this->endDatePicker->Name = L"endDatePicker";
 			this->endDatePicker->Size = System::Drawing::Size(137, 20);
 			this->endDatePicker->TabIndex = 8;
-			this->endDatePicker->Value = System::DateTime(2024, 2, 25, 0, 0, 0, 0);
+			this->endDatePicker->Value = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
 			this->endDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
 			// hm_filter_field

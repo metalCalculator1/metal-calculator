@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
+    <ClInclude Include="support\MetalManager.h" />
     <ClInclude Include="models\MetalModel.h" />
     <ClInclude Include="sql\headers\MetalQueries.h" />
     <ClInclude Include="subforms\DeleteMetal.h">

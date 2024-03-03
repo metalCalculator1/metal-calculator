@@ -72,6 +72,7 @@ namespace MetalCalculator
 	{
 		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
 		selectForm->ShowDialog();
+
 	}
 	System::Void MainForm::hm_previous_page_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -104,15 +105,13 @@ namespace MetalCalculator
 	}
 	System::Void MainForm::hm_alloy_select_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		int metalID;
-		if (Int32::TryParse(hm_filter_field->Text, metalID))
-		{
-			historyData->DefaultView->RowFilter = "[ID Металу] = " + metalID;
-		}
-		else
-		{
-			MessageBox::Show("Введіть коректний номер металу.");
-		}
+		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
+		selectForm->ShowDialog();
+
+		hm_alloy_select->Text = MetalManager::metalModelInstance->name;
+		historyData->DefaultView->RowFilter = "[Назва Металу] LIKE '" + MetalManager::metalModelInstance->name + "%'";
+
+		MetalManager::ClearMetalModel();
 		currentPageIndex = 0;
 		LoadPage();
 	}
@@ -292,7 +291,6 @@ namespace MetalCalculator
 			JOIN metals AS m ON h.metal_id = m.id\
 		");
 
-			/*		h.metal_id, \*/
 		if (PQresultStatus(res) != PGRES_TUPLES_OK)
 		{
 			MessageBox::Show("SELECT command did not return tuples properly: " + gcnew String(PQerrorMessage(conn)));

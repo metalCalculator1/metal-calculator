@@ -35,6 +35,7 @@ namespace MetalCalculator
 		showMetalOnConsole(item);
 
 		MetalModel^ metal = safe_cast<MetalModel^>(item->Tag);
+		MetalManager::metalModelInstance = metal;
 
 		if (mainForm)
 		{

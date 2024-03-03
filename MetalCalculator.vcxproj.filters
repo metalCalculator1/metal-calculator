@@ -27,6 +27,7 @@
     <ClInclude Include="subforms\SelectMetal.h" />
     <ClInclude Include="subforms\UpdateMetal.h" />
     <ClInclude Include="subforms\DeleteMetal.h" />
+    <ClInclude Include="support\MetalManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\logo.png" />
