@@ -84,6 +84,7 @@ namespace MetalCalculator
 
 		int currentPageIndex = 0;
 		int pageSize = 50;
+
 		DataTable^ currentPageTable;
 
 	private: System::Windows::Forms::Panel^ panel2;
@@ -670,7 +671,7 @@ namespace MetalCalculator
 			this->hm_metal_type_selector->FormattingEnabled = true;
 			this->hm_metal_type_selector->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Всі", L"Сталь", L"Чавун" });
 			this->hm_metal_type_selector->Location = System::Drawing::Point(458, 4);
-			this->hm_metal_type_selector->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->hm_metal_type_selector->Margin = System::Windows::Forms::Padding(4);
 			this->hm_metal_type_selector->Name = L"hm_metal_type_selector";
 			this->hm_metal_type_selector->Size = System::Drawing::Size(219, 24);
 			this->hm_metal_type_selector->TabIndex = 4;
@@ -696,7 +697,7 @@ namespace MetalCalculator
 			// 
 			this->startTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Time;
 			this->startTimePicker->Location = System::Drawing::Point(193, 2);
-			this->startTimePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->startTimePicker->Margin = System::Windows::Forms::Padding(4);
 			this->startTimePicker->Name = L"startTimePicker";
 			this->startTimePicker->ShowUpDown = true;
 			this->startTimePicker->Size = System::Drawing::Size(149, 22);
@@ -707,7 +708,7 @@ namespace MetalCalculator
 			// 
 			this->endTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Time;
 			this->endTimePicker->Location = System::Drawing::Point(760, 4);
-			this->endTimePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->endTimePicker->Margin = System::Windows::Forms::Padding(4);
 			this->endTimePicker->Name = L"endTimePicker";
 			this->endTimePicker->ShowUpDown = true;
 			this->endTimePicker->Size = System::Drawing::Size(149, 22);
@@ -717,8 +718,7 @@ namespace MetalCalculator
 			// startDatePicker
 			// 
 			this->startDatePicker->Location = System::Drawing::Point(3, 2);
-			this->startDatePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->startDatePicker->MaxDate = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
+			this->startDatePicker->Margin = System::Windows::Forms::Padding(4);
 			this->startDatePicker->Name = L"startDatePicker";
 			this->startDatePicker->Size = System::Drawing::Size(181, 22);
 			this->startDatePicker->TabIndex = 6;
@@ -728,12 +728,11 @@ namespace MetalCalculator
 			// endDatePicker
 			// 
 			this->endDatePicker->Location = System::Drawing::Point(571, 2);
-			this->endDatePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->endDatePicker->MaxDate = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
+			this->endDatePicker->Margin = System::Windows::Forms::Padding(4);
 			this->endDatePicker->Name = L"endDatePicker";
 			this->endDatePicker->Size = System::Drawing::Size(181, 22);
 			this->endDatePicker->TabIndex = 8;
-			this->endDatePicker->Value = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
+			this->endDatePicker->Value = System::DateTime(2024, 3, 4, 0, 0, 0, 0);
 			this->endDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
 			// hm_filter_field
@@ -821,7 +820,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel18->Controls->Add(this->sm_tableLayoutPanel14, 2, 0);
 			this->sm_tableLayoutPanel18->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel18->Location = System::Drawing::Point(0, 385);
-			this->sm_tableLayoutPanel18->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel18->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel18->Name = L"sm_tableLayoutPanel18";
 			this->sm_tableLayoutPanel18->RowCount = 1;
 			this->sm_tableLayoutPanel18->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -853,7 +852,7 @@ namespace MetalCalculator
 			// 
 			this->sm_add_mark_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_add_mark_btn->Location = System::Drawing::Point(64, 4);
-			this->sm_add_mark_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_add_mark_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_add_mark_btn->Name = L"sm_add_mark_btn";
 			this->sm_add_mark_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_add_mark_btn->TabIndex = 0;
@@ -885,7 +884,7 @@ namespace MetalCalculator
 			// 
 			this->sm_edit_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_edit_btn->Location = System::Drawing::Point(64, 4);
-			this->sm_edit_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_edit_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_edit_btn->Name = L"sm_edit_btn";
 			this->sm_edit_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_edit_btn->TabIndex = 0;
@@ -917,7 +916,7 @@ namespace MetalCalculator
 			// 
 			this->sm_delete_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_delete_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_delete_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_delete_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_delete_btn->Name = L"sm_delete_btn";
 			this->sm_delete_btn->Size = System::Drawing::Size(175, 41);
 			this->sm_delete_btn->TabIndex = 0;
@@ -933,7 +932,7 @@ namespace MetalCalculator
 			this->tableLayoutPanel9->Controls->Add(this->sm_label12, 0, 0);
 			this->tableLayoutPanel9->Dock = System::Windows::Forms::DockStyle::Top;
 			this->tableLayoutPanel9->Location = System::Drawing::Point(0, 328);
-			this->tableLayoutPanel9->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tableLayoutPanel9->Margin = System::Windows::Forms::Padding(4);
 			this->tableLayoutPanel9->Name = L"tableLayoutPanel9";
 			this->tableLayoutPanel9->RowCount = 1;
 			this->tableLayoutPanel9->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
@@ -967,7 +966,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel5->Controls->Add(this->sm_tableLayoutPanel7, 1, 1);
 			this->sm_tableLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel5->Location = System::Drawing::Point(0, 193);
-			this->sm_tableLayoutPanel5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel5->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel5->Name = L"sm_tableLayoutPanel5";
 			this->sm_tableLayoutPanel5->RowCount = 2;
 			this->sm_tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1074,7 +1073,7 @@ namespace MetalCalculator
 			// 
 			this->sm_save_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_save_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_save_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_save_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_save_btn->Name = L"sm_save_btn";
 			this->sm_save_btn->Size = System::Drawing::Size(175, 39);
 			this->sm_save_btn->TabIndex = 0;
@@ -1150,7 +1149,7 @@ namespace MetalCalculator
 			// 
 			this->sm_restore_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_restore_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_restore_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_restore_btn->Margin = System::Windows::Forms::Padding(4);
 			this->sm_restore_btn->Name = L"sm_restore_btn";
 			this->sm_restore_btn->Size = System::Drawing::Size(175, 40);
 			this->sm_restore_btn->TabIndex = 0;
@@ -1171,7 +1170,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel17->Controls->Add(this->sm_tableLayoutPanel4, 1, 0);
 			this->sm_tableLayoutPanel17->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel17->Location = System::Drawing::Point(0, 125);
-			this->sm_tableLayoutPanel17->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel17->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel17->Name = L"sm_tableLayoutPanel17";
 			this->sm_tableLayoutPanel17->RowCount = 1;
 			this->sm_tableLayoutPanel17->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1250,7 +1249,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel2->Controls->Add(this->sm_label3, 0, 0);
 			this->sm_tableLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel2->Location = System::Drawing::Point(0, 57);
-			this->sm_tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel2->Name = L"sm_tableLayoutPanel2";
 			this->sm_tableLayoutPanel2->RowCount = 1;
 			this->sm_tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1353,7 +1352,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel1->Controls->Add(this->sm_label2, 0, 0);
 			this->sm_tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
-			this->sm_tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->sm_tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4);
 			this->sm_tableLayoutPanel1->Name = L"sm_tableLayoutPanel1";
 			this->sm_tableLayoutPanel1->RowCount = 1;
 			this->sm_tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -2491,15 +2490,15 @@ namespace MetalCalculator
 		// Helper Functions:
 		bool IsPanelOnFront(Control^ panel);
 
-		void InsertIntoDatabase(int meltingNumber, int metalId, float weight, String^ requiredMetalNumbers)
+		void InsertIntoDatabase(int meltingNumber, MetalModel^ metal, float metalMass, String^ requiredMetalNumbers)
 		{
 			PGconn* conn = Database::getInstance().getConn();
 			std::string requiredFerro = StringConverterer::SystemStringToStdString(requiredMetalNumbers);
 
 			std::string query = "INSERT INTO history (melting_number, metal_id, weight, required_metal_numbers, created_at) VALUES (" +
 				std::to_string(meltingNumber) + ", " +
-				std::to_string(metalId) + ", " +
-				std::to_string(weight) + ", '" +
+				std::to_string(metal->id) + ", " +
+				std::to_string(metalMass) + ", '" +
 				requiredFerro + "', NOW()) RETURNING id;";
 
 			PGresult* res = PQexec(conn, query.c_str());
@@ -2509,7 +2508,7 @@ namespace MetalCalculator
 				int newId = std::stoi(PQgetvalue(res, 0, 0));
 
 				DateTime^ createdAt = DateTime::Now;
-				AddRowToDataTable(historyData, newId, meltingNumber, metalId, weight, requiredMetalNumbers, createdAt);
+				AddRowToDataTable(historyData, newId, meltingNumber, metal->name, MetalModel ::metalTypeToManagedString(metal->metalType), metalMass, requiredMetalNumbers, createdAt);
 			}
 			else
 			{
@@ -2520,12 +2519,13 @@ namespace MetalCalculator
 			PQclear(res);
 		}
 
-		void AddRowToDataTable(DataTable^ table, int id, int meltingNumber, int metalId, float weight, String^ requiredMetalNumbers, DateTime^ createdAt)
+		void AddRowToDataTable(DataTable^ table, int id, int meltingNumber, String^ name, String^ type, float weight, String^ requiredMetalNumbers, DateTime^ createdAt)
 		{
 			DataRow^ newRow = table->NewRow();
 			newRow["ID"] = id;
 			newRow["Номер Плавки"] = meltingNumber;
-			newRow["ID Металу"] = metalId;
+			newRow["Назва металу"] = name;
+			newRow["Тип металу"] = type;
 			newRow["Вага"] = weight;
 			newRow["Необхідна к-сть феросплавів"] = requiredMetalNumbers;
 			newRow["Дата"] = createdAt;

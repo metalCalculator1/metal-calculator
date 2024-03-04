@@ -57,7 +57,7 @@ namespace MetalCalculator
 			{
 				MetalModel^ metal = gcnew MetalModel();
 
-				metal->c = std::stoi(PQgetvalue(result, i, 0));
+				metal->id = std::stoi(PQgetvalue(result, i, 0));
 
 				metal->name = StringConverterer::StdStringToSystemString(PQgetvalue(result, i, 1));
 

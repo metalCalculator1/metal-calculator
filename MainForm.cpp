@@ -235,8 +235,9 @@ namespace MetalCalculator
 		String^ resultString = FormatNeededFerro(mm_FC45_value_lbl->Text, mm_Mn95_value_lbl->Text, mm_FMn78_value_lbl->Text, mm_vulgecevm_value_lbl->Text);
 		
 		int meltingID = Single::Parse(mm_meltingID_TB->Text);
-		InsertIntoDatabase(meltingID, 5, metalMass, resultString);
+		InsertIntoDatabase(meltingID, goalHimSkladModel, metalMass, resultString);
 	}
+
 	void MainForm::SelectElementsByName(String^ metalName)
 	{
 		goalHimSkladModel = mainQueries->getElementByName(metalName);

@@ -68,4 +68,17 @@ public ref struct MetalModel
 			return "";
 		}
 	}
+
+	static System::String^ metalTypeToManagedString(MetalType metalType)
+	{
+		switch (metalType)
+		{
+		case MetalType::steel:
+			return "steel";
+		case MetalType::cast_iron:
+			return "cast_iron";
+		default:
+			return "";
+		}
+	}
 };
