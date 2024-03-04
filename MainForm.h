@@ -450,39 +450,39 @@ namespace MetalCalculator
 			this->topPanel->Controls->Add(this->logoPanel);
 			this->topPanel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->topPanel->Location = System::Drawing::Point(0, 0);
-			this->topPanel->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->topPanel->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->topPanel->Name = L"topPanel";
-			this->topPanel->Size = System::Drawing::Size(683, 57);
+			this->topPanel->Size = System::Drawing::Size(911, 70);
 			this->topPanel->TabIndex = 0;
 			// 
 			// labelsPanel
 			// 
 			this->labelsPanel->Controls->Add(this->labelLayout);
 			this->labelsPanel->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->labelsPanel->Location = System::Drawing::Point(187, 0);
-			this->labelsPanel->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->labelsPanel->Location = System::Drawing::Point(249, 0);
+			this->labelsPanel->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->labelsPanel->Name = L"labelsPanel";
-			this->labelsPanel->Size = System::Drawing::Size(496, 57);
+			this->labelsPanel->Size = System::Drawing::Size(662, 70);
 			this->labelsPanel->TabIndex = 1;
 			// 
 			// labelLayout
 			// 
 			this->labelLayout->BackColor = System::Drawing::SystemColors::Control;
 			this->labelLayout->ColumnCount = 3;
-			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 133)));
-			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 133)));
-			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 231)));
+			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 177)));
+			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 177)));
+			this->labelLayout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute, 308)));
 			this->labelLayout->Controls->Add(this->mainLabel, 0, 0);
 			this->labelLayout->Controls->Add(this->settingsLabel, 1, 0);
 			this->labelLayout->Controls->Add(this->historyLabel, 2, 0);
 			this->labelLayout->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->labelLayout->GrowStyle = System::Windows::Forms::TableLayoutPanelGrowStyle::FixedSize;
 			this->labelLayout->Location = System::Drawing::Point(0, 0);
-			this->labelLayout->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->labelLayout->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->labelLayout->Name = L"labelLayout";
 			this->labelLayout->RowCount = 1;
 			this->labelLayout->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
-			this->labelLayout->Size = System::Drawing::Size(496, 57);
+			this->labelLayout->Size = System::Drawing::Size(662, 70);
 			this->labelLayout->TabIndex = 0;
 			// 
 			// mainLabel
@@ -491,10 +491,9 @@ namespace MetalCalculator
 			this->mainLabel->Dock = System::Windows::Forms::DockStyle::Right;
 			this->mainLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->mainLabel->Location = System::Drawing::Point(50, 0);
-			this->mainLabel->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mainLabel->Location = System::Drawing::Point(78, 0);
 			this->mainLabel->Name = L"mainLabel";
-			this->mainLabel->Size = System::Drawing::Size(81, 57);
+			this->mainLabel->Size = System::Drawing::Size(96, 70);
 			this->mainLabel->TabIndex = 0;
 			this->mainLabel->Tag = L"MainMenu";
 			this->mainLabel->Text = L"Головна";
@@ -507,10 +506,9 @@ namespace MetalCalculator
 			this->settingsLabel->Dock = System::Windows::Forms::DockStyle::Left;
 			this->settingsLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->settingsLabel->Location = System::Drawing::Point(135, 0);
-			this->settingsLabel->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->settingsLabel->Location = System::Drawing::Point(180, 0);
 			this->settingsLabel->Name = L"settingsLabel";
-			this->settingsLabel->Size = System::Drawing::Size(124, 57);
+			this->settingsLabel->Size = System::Drawing::Size(136, 70);
 			this->settingsLabel->TabIndex = 1;
 			this->settingsLabel->Tag = L"SettingsMenu";
 			this->settingsLabel->Text = L"Налаштування";
@@ -523,10 +521,9 @@ namespace MetalCalculator
 			this->historyLabel->Dock = System::Windows::Forms::DockStyle::Left;
 			this->historyLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->historyLabel->Location = System::Drawing::Point(268, 0);
-			this->historyLabel->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->historyLabel->Location = System::Drawing::Point(357, 0);
 			this->historyLabel->Name = L"historyLabel";
-			this->historyLabel->Size = System::Drawing::Size(62, 57);
+			this->historyLabel->Size = System::Drawing::Size(67, 70);
 			this->historyLabel->TabIndex = 2;
 			this->historyLabel->Tag = L"HistoryMenu";
 			this->historyLabel->Text = L"Історія";
@@ -539,9 +536,9 @@ namespace MetalCalculator
 			this->logoPanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->logoPanel->Dock = System::Windows::Forms::DockStyle::Left;
 			this->logoPanel->Location = System::Drawing::Point(0, 0);
-			this->logoPanel->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->logoPanel->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->logoPanel->Name = L"logoPanel";
-			this->logoPanel->Size = System::Drawing::Size(187, 57);
+			this->logoPanel->Size = System::Drawing::Size(249, 70);
 			this->logoPanel->TabIndex = 0;
 			// 
 			// parentPanel
@@ -551,10 +548,10 @@ namespace MetalCalculator
 			this->parentPanel->Controls->Add(this->settingsPanel);
 			this->parentPanel->Controls->Add(this->mainPanel);
 			this->parentPanel->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->parentPanel->Location = System::Drawing::Point(0, 57);
-			this->parentPanel->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->parentPanel->Location = System::Drawing::Point(0, 70);
+			this->parentPanel->Margin = System::Windows::Forms::Padding(3, 1, 3, 1);
 			this->parentPanel->Name = L"parentPanel";
-			this->parentPanel->Size = System::Drawing::Size(683, 442);
+			this->parentPanel->Size = System::Drawing::Size(911, 544);
 			this->parentPanel->TabIndex = 1;
 			// 
 			// historyPanel
@@ -566,9 +563,9 @@ namespace MetalCalculator
 			this->historyPanel->Controls->Add(this->hm_filters_panel);
 			this->historyPanel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->historyPanel->Location = System::Drawing::Point(0, 0);
-			this->historyPanel->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->historyPanel->Margin = System::Windows::Forms::Padding(3, 1, 3, 1);
 			this->historyPanel->Name = L"historyPanel";
-			this->historyPanel->Size = System::Drawing::Size(683, 442);
+			this->historyPanel->Size = System::Drawing::Size(911, 544);
 			this->historyPanel->TabIndex = 0;
 			// 
 			// hm_data_grid
@@ -581,12 +578,12 @@ namespace MetalCalculator
 				static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->hm_data_grid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->hm_data_grid->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->hm_data_grid->Location = System::Drawing::Point(0, 100);
-			this->hm_data_grid->Margin = System::Windows::Forms::Padding(2);
+			this->hm_data_grid->Location = System::Drawing::Point(0, 123);
+			this->hm_data_grid->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_data_grid->Name = L"hm_data_grid";
 			this->hm_data_grid->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders;
 			this->hm_data_grid->RowTemplate->Height = 24;
-			this->hm_data_grid->Size = System::Drawing::Size(683, 342);
+			this->hm_data_grid->Size = System::Drawing::Size(911, 421);
 			this->hm_data_grid->TabIndex = 3;
 			this->hm_data_grid->VirtualMode = true;
 			// 
@@ -594,10 +591,10 @@ namespace MetalCalculator
 			// 
 			this->panel2->Controls->Add(this->hm_button_table_layout);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panel2->Location = System::Drawing::Point(0, 54);
-			this->panel2->Margin = System::Windows::Forms::Padding(2);
+			this->panel2->Location = System::Drawing::Point(0, 66);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(683, 46);
+			this->panel2->Size = System::Drawing::Size(911, 57);
 			this->panel2->TabIndex = 1;
 			// 
 			// hm_button_table_layout
@@ -617,12 +614,12 @@ namespace MetalCalculator
 			this->hm_button_table_layout->Controls->Add(this->hm_metal_type_selector, 2, 0);
 			this->hm_button_table_layout->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_button_table_layout->Location = System::Drawing::Point(0, 0);
-			this->hm_button_table_layout->Margin = System::Windows::Forms::Padding(2);
+			this->hm_button_table_layout->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_button_table_layout->Name = L"hm_button_table_layout";
 			this->hm_button_table_layout->RowCount = 1;
 			this->hm_button_table_layout->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
-			this->hm_button_table_layout->Size = System::Drawing::Size(683, 46);
+			this->hm_button_table_layout->Size = System::Drawing::Size(911, 57);
 			this->hm_button_table_layout->TabIndex = 0;
 			// 
 			// hm_filters_reset
@@ -630,10 +627,10 @@ namespace MetalCalculator
 			this->hm_filters_reset->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_filters_reset->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->hm_filters_reset->Location = System::Drawing::Point(512, 2);
-			this->hm_filters_reset->Margin = System::Windows::Forms::Padding(2);
+			this->hm_filters_reset->Location = System::Drawing::Point(684, 2);
+			this->hm_filters_reset->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_filters_reset->Name = L"hm_filters_reset";
-			this->hm_filters_reset->Size = System::Drawing::Size(169, 42);
+			this->hm_filters_reset->Size = System::Drawing::Size(224, 53);
 			this->hm_filters_reset->TabIndex = 3;
 			this->hm_filters_reset->Text = L"Скинути Фільтри";
 			this->hm_filters_reset->UseVisualStyleBackColor = true;
@@ -644,10 +641,10 @@ namespace MetalCalculator
 			this->hm_plavka_id->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_plavka_id->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->hm_plavka_id->Location = System::Drawing::Point(2, 2);
-			this->hm_plavka_id->Margin = System::Windows::Forms::Padding(2);
+			this->hm_plavka_id->Location = System::Drawing::Point(3, 2);
+			this->hm_plavka_id->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_plavka_id->Name = L"hm_plavka_id";
-			this->hm_plavka_id->Size = System::Drawing::Size(166, 42);
+			this->hm_plavka_id->Size = System::Drawing::Size(221, 53);
 			this->hm_plavka_id->TabIndex = 0;
 			this->hm_plavka_id->Text = L"Номер Плавки";
 			this->hm_plavka_id->UseVisualStyleBackColor = true;
@@ -658,23 +655,24 @@ namespace MetalCalculator
 			this->hm_alloy_select->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_alloy_select->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->hm_alloy_select->Location = System::Drawing::Point(172, 2);
-			this->hm_alloy_select->Margin = System::Windows::Forms::Padding(2);
+			this->hm_alloy_select->Location = System::Drawing::Point(230, 2);
+			this->hm_alloy_select->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_alloy_select->Name = L"hm_alloy_select";
-			this->hm_alloy_select->Size = System::Drawing::Size(166, 42);
+			this->hm_alloy_select->Size = System::Drawing::Size(221, 53);
 			this->hm_alloy_select->TabIndex = 1;
 			this->hm_alloy_select->Text = L"Вибір Сплаву";
 			this->hm_alloy_select->UseVisualStyleBackColor = true;
 			this->hm_alloy_select->Click += gcnew System::EventHandler(this, &MainForm::hm_alloy_select_Click);
 			// 
-			//	
+			// hm_metal_type_selector
 			// 
 			this->hm_metal_type_selector->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_metal_type_selector->FormattingEnabled = true;
 			this->hm_metal_type_selector->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Всі", L"Сталь", L"Чавун" });
-			this->hm_metal_type_selector->Location = System::Drawing::Point(343, 3);
+			this->hm_metal_type_selector->Location = System::Drawing::Point(458, 4);
+			this->hm_metal_type_selector->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->hm_metal_type_selector->Name = L"hm_metal_type_selector";
-			this->hm_metal_type_selector->Size = System::Drawing::Size(164, 21);
+			this->hm_metal_type_selector->Size = System::Drawing::Size(219, 24);
 			this->hm_metal_type_selector->TabIndex = 4;
 			this->hm_metal_type_selector->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::hm_metal_type_selector_SelectedIndexChanged);
 			// 
@@ -689,77 +687,81 @@ namespace MetalCalculator
 			this->hm_filters_panel->Controls->Add(this->hm_filters_layout);
 			this->hm_filters_panel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->hm_filters_panel->Location = System::Drawing::Point(0, 0);
-			this->hm_filters_panel->Margin = System::Windows::Forms::Padding(2);
+			this->hm_filters_panel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_filters_panel->Name = L"hm_filters_panel";
-			this->hm_filters_panel->Size = System::Drawing::Size(683, 54);
+			this->hm_filters_panel->Size = System::Drawing::Size(911, 66);
 			this->hm_filters_panel->TabIndex = 0;
 			// 
 			// startTimePicker
 			// 
 			this->startTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Time;
-			this->startTimePicker->Location = System::Drawing::Point(145, 2);
+			this->startTimePicker->Location = System::Drawing::Point(193, 2);
+			this->startTimePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->startTimePicker->Name = L"startTimePicker";
 			this->startTimePicker->ShowUpDown = true;
-			this->startTimePicker->Size = System::Drawing::Size(113, 20);
+			this->startTimePicker->Size = System::Drawing::Size(149, 22);
 			this->startTimePicker->TabIndex = 7;
 			this->startTimePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
 			// endTimePicker
 			// 
 			this->endTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Time;
-			this->endTimePicker->Location = System::Drawing::Point(570, 3);
+			this->endTimePicker->Location = System::Drawing::Point(760, 4);
+			this->endTimePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->endTimePicker->Name = L"endTimePicker";
 			this->endTimePicker->ShowUpDown = true;
-			this->endTimePicker->Size = System::Drawing::Size(113, 20);
+			this->endTimePicker->Size = System::Drawing::Size(149, 22);
 			this->endTimePicker->TabIndex = 9;
 			this->endTimePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
 			// startDatePicker
 			// 
-			this->startDatePicker->Location = System::Drawing::Point(2, 2);
+			this->startDatePicker->Location = System::Drawing::Point(3, 2);
+			this->startDatePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->startDatePicker->MaxDate = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
 			this->startDatePicker->Name = L"startDatePicker";
-			this->startDatePicker->Size = System::Drawing::Size(137, 20);
+			this->startDatePicker->Size = System::Drawing::Size(181, 22);
 			this->startDatePicker->TabIndex = 6;
 			this->startDatePicker->Value = System::DateTime(2024, 3, 1, 0, 0, 0, 0);
 			this->startDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
 			// endDatePicker
 			// 
-			this->endDatePicker->Location = System::Drawing::Point(428, 2);
+			this->endDatePicker->Location = System::Drawing::Point(571, 2);
+			this->endDatePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->endDatePicker->MaxDate = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
 			this->endDatePicker->Name = L"endDatePicker";
-			this->endDatePicker->Size = System::Drawing::Size(137, 20);
+			this->endDatePicker->Size = System::Drawing::Size(181, 22);
 			this->endDatePicker->TabIndex = 8;
 			this->endDatePicker->Value = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
 			this->endDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
 			// hm_filter_field
 			// 
-			this->hm_filter_field->Location = System::Drawing::Point(3, 32);
-			this->hm_filter_field->Margin = System::Windows::Forms::Padding(2);
+			this->hm_filter_field->Location = System::Drawing::Point(4, 39);
+			this->hm_filter_field->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_filter_field->Name = L"hm_filter_field";
-			this->hm_filter_field->Size = System::Drawing::Size(166, 20);
+			this->hm_filter_field->Size = System::Drawing::Size(220, 22);
 			this->hm_filter_field->TabIndex = 5;
 			// 
 			// panel1
 			// 
 			this->panel1->Controls->Add(this->hm_next_page);
 			this->panel1->Controls->Add(this->hm_previous_page);
-			this->panel1->Location = System::Drawing::Point(513, 28);
-			this->panel1->Margin = System::Windows::Forms::Padding(2);
+			this->panel1->Location = System::Drawing::Point(684, 34);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Padding = System::Windows::Forms::Padding(2);
-			this->panel1->Size = System::Drawing::Size(167, 28);
+			this->panel1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel1->Size = System::Drawing::Size(223, 34);
 			this->panel1->TabIndex = 4;
 			// 
 			// hm_next_page
 			// 
 			this->hm_next_page->Dock = System::Windows::Forms::DockStyle::Right;
-			this->hm_next_page->Location = System::Drawing::Point(89, 2);
-			this->hm_next_page->Margin = System::Windows::Forms::Padding(2);
+			this->hm_next_page->Location = System::Drawing::Point(119, 2);
+			this->hm_next_page->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_next_page->Name = L"hm_next_page";
-			this->hm_next_page->Size = System::Drawing::Size(76, 24);
+			this->hm_next_page->Size = System::Drawing::Size(101, 30);
 			this->hm_next_page->TabIndex = 1;
 			this->hm_next_page->Text = L"Наступна";
 			this->hm_next_page->UseVisualStyleBackColor = true;
@@ -768,10 +770,10 @@ namespace MetalCalculator
 			// hm_previous_page
 			// 
 			this->hm_previous_page->Dock = System::Windows::Forms::DockStyle::Left;
-			this->hm_previous_page->Location = System::Drawing::Point(2, 2);
-			this->hm_previous_page->Margin = System::Windows::Forms::Padding(2);
+			this->hm_previous_page->Location = System::Drawing::Point(3, 2);
+			this->hm_previous_page->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_previous_page->Name = L"hm_previous_page";
-			this->hm_previous_page->Size = System::Drawing::Size(82, 24);
+			this->hm_previous_page->Size = System::Drawing::Size(109, 30);
 			this->hm_previous_page->TabIndex = 0;
 			this->hm_previous_page->Text = L"Попередня";
 			this->hm_previous_page->UseVisualStyleBackColor = true;
@@ -782,9 +784,8 @@ namespace MetalCalculator
 			this->hm_filters_layout->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->hm_filters_layout->Location = System::Drawing::Point(-1, 1);
-			this->hm_filters_layout->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->hm_filters_layout->Name = L"hm_filters_layout";
-			this->hm_filters_layout->Size = System::Drawing::Size(684, 46);
+			this->hm_filters_layout->Size = System::Drawing::Size(912, 57);
 			this->hm_filters_layout->TabIndex = 0;
 			this->hm_filters_layout->Text = L"Фільтри";
 			this->hm_filters_layout->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -801,9 +802,9 @@ namespace MetalCalculator
 			this->settingsPanel->Controls->Add(this->sm_tableLayoutPanel1);
 			this->settingsPanel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->settingsPanel->Location = System::Drawing::Point(0, 0);
-			this->settingsPanel->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->settingsPanel->Margin = System::Windows::Forms::Padding(3, 1, 3, 1);
 			this->settingsPanel->Name = L"settingsPanel";
-			this->settingsPanel->Size = System::Drawing::Size(683, 442);
+			this->settingsPanel->Size = System::Drawing::Size(911, 544);
 			this->settingsPanel->TabIndex = 0;
 			// 
 			// sm_tableLayoutPanel18
@@ -819,12 +820,13 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel18->Controls->Add(this->sm_tableLayoutPanel15, 1, 0);
 			this->sm_tableLayoutPanel18->Controls->Add(this->sm_tableLayoutPanel14, 2, 0);
 			this->sm_tableLayoutPanel18->Dock = System::Windows::Forms::DockStyle::Top;
-			this->sm_tableLayoutPanel18->Location = System::Drawing::Point(0, 312);
+			this->sm_tableLayoutPanel18->Location = System::Drawing::Point(0, 385);
+			this->sm_tableLayoutPanel18->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel18->Name = L"sm_tableLayoutPanel18";
 			this->sm_tableLayoutPanel18->RowCount = 1;
 			this->sm_tableLayoutPanel18->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
-			this->sm_tableLayoutPanel18->Size = System::Drawing::Size(683, 40);
+			this->sm_tableLayoutPanel18->Size = System::Drawing::Size(911, 49);
 			this->sm_tableLayoutPanel18->TabIndex = 5;
 			// 
 			// sm_tableLayoutPanel13
@@ -844,15 +846,16 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel13->RowCount = 1;
 			this->sm_tableLayoutPanel13->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
-			this->sm_tableLayoutPanel13->Size = System::Drawing::Size(227, 40);
+			this->sm_tableLayoutPanel13->Size = System::Drawing::Size(303, 49);
 			this->sm_tableLayoutPanel13->TabIndex = 0;
 			// 
 			// sm_add_mark_btn
 			// 
 			this->sm_add_mark_btn->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_add_mark_btn->Location = System::Drawing::Point(48, 3);
+			this->sm_add_mark_btn->Location = System::Drawing::Point(64, 4);
+			this->sm_add_mark_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_add_mark_btn->Name = L"sm_add_mark_btn";
-			this->sm_add_mark_btn->Size = System::Drawing::Size(130, 34);
+			this->sm_add_mark_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_add_mark_btn->TabIndex = 0;
 			this->sm_add_mark_btn->Text = L"Додати марку";
 			this->sm_add_mark_btn->UseVisualStyleBackColor = true;
@@ -869,21 +872,22 @@ namespace MetalCalculator
 				20)));
 			this->sm_tableLayoutPanel15->Controls->Add(this->sm_edit_btn, 1, 0);
 			this->sm_tableLayoutPanel15->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_tableLayoutPanel15->Location = System::Drawing::Point(227, 0);
+			this->sm_tableLayoutPanel15->Location = System::Drawing::Point(303, 0);
 			this->sm_tableLayoutPanel15->Margin = System::Windows::Forms::Padding(0);
 			this->sm_tableLayoutPanel15->Name = L"sm_tableLayoutPanel15";
 			this->sm_tableLayoutPanel15->RowCount = 1;
 			this->sm_tableLayoutPanel15->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
-			this->sm_tableLayoutPanel15->Size = System::Drawing::Size(227, 40);
+			this->sm_tableLayoutPanel15->Size = System::Drawing::Size(303, 49);
 			this->sm_tableLayoutPanel15->TabIndex = 1;
 			// 
 			// sm_edit_btn
 			// 
 			this->sm_edit_btn->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_edit_btn->Location = System::Drawing::Point(48, 3);
+			this->sm_edit_btn->Location = System::Drawing::Point(64, 4);
+			this->sm_edit_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_edit_btn->Name = L"sm_edit_btn";
-			this->sm_edit_btn->Size = System::Drawing::Size(130, 34);
+			this->sm_edit_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_edit_btn->TabIndex = 0;
 			this->sm_edit_btn->Text = L"Редагувати марку";
 			this->sm_edit_btn->UseVisualStyleBackColor = true;
@@ -900,21 +904,22 @@ namespace MetalCalculator
 				20)));
 			this->sm_tableLayoutPanel14->Controls->Add(this->sm_delete_btn, 1, 0);
 			this->sm_tableLayoutPanel14->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_tableLayoutPanel14->Location = System::Drawing::Point(454, 0);
+			this->sm_tableLayoutPanel14->Location = System::Drawing::Point(606, 0);
 			this->sm_tableLayoutPanel14->Margin = System::Windows::Forms::Padding(0);
 			this->sm_tableLayoutPanel14->Name = L"sm_tableLayoutPanel14";
 			this->sm_tableLayoutPanel14->RowCount = 1;
 			this->sm_tableLayoutPanel14->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
-			this->sm_tableLayoutPanel14->Size = System::Drawing::Size(229, 40);
+			this->sm_tableLayoutPanel14->Size = System::Drawing::Size(305, 49);
 			this->sm_tableLayoutPanel14->TabIndex = 2;
 			// 
 			// sm_delete_btn
 			// 
 			this->sm_delete_btn->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_delete_btn->Location = System::Drawing::Point(48, 3);
+			this->sm_delete_btn->Location = System::Drawing::Point(65, 4);
+			this->sm_delete_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_delete_btn->Name = L"sm_delete_btn";
-			this->sm_delete_btn->Size = System::Drawing::Size(131, 34);
+			this->sm_delete_btn->Size = System::Drawing::Size(175, 41);
 			this->sm_delete_btn->TabIndex = 0;
 			this->sm_delete_btn->Text = L"Видалити марку";
 			this->sm_delete_btn->UseVisualStyleBackColor = true;
@@ -927,11 +932,12 @@ namespace MetalCalculator
 				50)));
 			this->tableLayoutPanel9->Controls->Add(this->sm_label12, 0, 0);
 			this->tableLayoutPanel9->Dock = System::Windows::Forms::DockStyle::Top;
-			this->tableLayoutPanel9->Location = System::Drawing::Point(0, 266);
+			this->tableLayoutPanel9->Location = System::Drawing::Point(0, 328);
+			this->tableLayoutPanel9->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tableLayoutPanel9->Name = L"tableLayoutPanel9";
 			this->tableLayoutPanel9->RowCount = 1;
 			this->tableLayoutPanel9->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel9->Size = System::Drawing::Size(683, 46);
+			this->tableLayoutPanel9->Size = System::Drawing::Size(911, 57);
 			this->tableLayoutPanel9->TabIndex = 4;
 			// 
 			// sm_label12
@@ -940,9 +946,10 @@ namespace MetalCalculator
 			this->sm_label12->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->sm_label12->Location = System::Drawing::Point(3, 0);
+			this->sm_label12->Location = System::Drawing::Point(4, 0);
+			this->sm_label12->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label12->Name = L"sm_label12";
-			this->sm_label12->Size = System::Drawing::Size(677, 46);
+			this->sm_label12->Size = System::Drawing::Size(903, 57);
 			this->sm_label12->TabIndex = 0;
 			this->sm_label12->Text = L"Марки сталі";
 			this->sm_label12->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -959,14 +966,15 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel5->Controls->Add(this->sm_tableLayoutPanel6, 1, 0);
 			this->sm_tableLayoutPanel5->Controls->Add(this->sm_tableLayoutPanel7, 1, 1);
 			this->sm_tableLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Top;
-			this->sm_tableLayoutPanel5->Location = System::Drawing::Point(0, 156);
+			this->sm_tableLayoutPanel5->Location = System::Drawing::Point(0, 193);
+			this->sm_tableLayoutPanel5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel5->Name = L"sm_tableLayoutPanel5";
 			this->sm_tableLayoutPanel5->RowCount = 2;
 			this->sm_tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				50)));
 			this->sm_tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				50)));
-			this->sm_tableLayoutPanel5->Size = System::Drawing::Size(683, 110);
+			this->sm_tableLayoutPanel5->Size = System::Drawing::Size(911, 135);
 			this->sm_tableLayoutPanel5->TabIndex = 3;
 			// 
 			// sm_label8
@@ -975,9 +983,10 @@ namespace MetalCalculator
 			this->sm_label8->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->sm_label8->Location = System::Drawing::Point(3, 0);
+			this->sm_label8->Location = System::Drawing::Point(4, 0);
+			this->sm_label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label8->Name = L"sm_label8";
-			this->sm_label8->Size = System::Drawing::Size(335, 55);
+			this->sm_label8->Size = System::Drawing::Size(447, 67);
 			this->sm_label8->TabIndex = 0;
 			this->sm_label8->Text = L"Марганцю металічного Мн95, %";
 			this->sm_label8->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -988,9 +997,10 @@ namespace MetalCalculator
 			this->sm_label9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->sm_label9->Location = System::Drawing::Point(3, 55);
+			this->sm_label9->Location = System::Drawing::Point(4, 67);
+			this->sm_label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label9->Name = L"sm_label9";
-			this->sm_label9->Size = System::Drawing::Size(335, 55);
+			this->sm_label9->Size = System::Drawing::Size(447, 68);
 			this->sm_label9->TabIndex = 1;
 			this->sm_label9->Text = L"Вуглевмісного матеріалу, %";
 			this->sm_label9->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1006,7 +1016,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel6->Controls->Add(this->sm_mn95_input, 0, 1);
 			this->sm_tableLayoutPanel6->Controls->Add(this->sm_tableLayoutPanel8, 1, 1);
 			this->sm_tableLayoutPanel6->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_tableLayoutPanel6->Location = System::Drawing::Point(341, 0);
+			this->sm_tableLayoutPanel6->Location = System::Drawing::Point(455, 0);
 			this->sm_tableLayoutPanel6->Margin = System::Windows::Forms::Padding(0);
 			this->sm_tableLayoutPanel6->Name = L"sm_tableLayoutPanel6";
 			this->sm_tableLayoutPanel6->RowCount = 2;
@@ -1014,16 +1024,17 @@ namespace MetalCalculator
 				30)));
 			this->sm_tableLayoutPanel6->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				70)));
-			this->sm_tableLayoutPanel6->Size = System::Drawing::Size(342, 55);
+			this->sm_tableLayoutPanel6->Size = System::Drawing::Size(456, 67);
 			this->sm_tableLayoutPanel6->TabIndex = 2;
 			// 
 			// sm_label10
 			// 
 			this->sm_label10->AutoSize = true;
 			this->sm_label10->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_label10->Location = System::Drawing::Point(3, 0);
+			this->sm_label10->Location = System::Drawing::Point(4, 0);
+			this->sm_label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label10->Name = L"sm_label10";
-			this->sm_label10->Size = System::Drawing::Size(107, 16);
+			this->sm_label10->Size = System::Drawing::Size(143, 20);
 			this->sm_label10->TabIndex = 0;
 			this->sm_label10->Text = L"Mn";
 			this->sm_label10->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -1031,11 +1042,11 @@ namespace MetalCalculator
 			// sm_mn95_input
 			// 
 			this->sm_mn95_input->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_mn95_input->Location = System::Drawing::Point(5, 16);
-			this->sm_mn95_input->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->sm_mn95_input->Location = System::Drawing::Point(7, 20);
+			this->sm_mn95_input->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->sm_mn95_input->Multiline = true;
 			this->sm_mn95_input->Name = L"sm_mn95_input";
-			this->sm_mn95_input->Size = System::Drawing::Size(103, 39);
+			this->sm_mn95_input->Size = System::Drawing::Size(137, 47);
 			this->sm_mn95_input->TabIndex = 1;
 			this->sm_mn95_input->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -1050,21 +1061,22 @@ namespace MetalCalculator
 				20)));
 			this->sm_tableLayoutPanel8->Controls->Add(this->sm_save_btn, 1, 0);
 			this->sm_tableLayoutPanel8->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_tableLayoutPanel8->Location = System::Drawing::Point(113, 16);
+			this->sm_tableLayoutPanel8->Location = System::Drawing::Point(151, 20);
 			this->sm_tableLayoutPanel8->Margin = System::Windows::Forms::Padding(0);
 			this->sm_tableLayoutPanel8->Name = L"sm_tableLayoutPanel8";
 			this->sm_tableLayoutPanel8->RowCount = 1;
 			this->sm_tableLayoutPanel8->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
-			this->sm_tableLayoutPanel8->Size = System::Drawing::Size(229, 39);
+			this->sm_tableLayoutPanel8->Size = System::Drawing::Size(305, 47);
 			this->sm_tableLayoutPanel8->TabIndex = 2;
 			// 
 			// sm_save_btn
 			// 
 			this->sm_save_btn->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_save_btn->Location = System::Drawing::Point(48, 3);
+			this->sm_save_btn->Location = System::Drawing::Point(65, 4);
+			this->sm_save_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_save_btn->Name = L"sm_save_btn";
-			this->sm_save_btn->Size = System::Drawing::Size(131, 33);
+			this->sm_save_btn->Size = System::Drawing::Size(175, 39);
 			this->sm_save_btn->TabIndex = 0;
 			this->sm_save_btn->Text = L"Зберегти";
 			this->sm_save_btn->UseVisualStyleBackColor = true;
@@ -1081,7 +1093,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel7->Controls->Add(this->sm_carbon_input, 0, 1);
 			this->sm_tableLayoutPanel7->Controls->Add(this->tableLayoutPanel4, 1, 1);
 			this->sm_tableLayoutPanel7->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_tableLayoutPanel7->Location = System::Drawing::Point(341, 55);
+			this->sm_tableLayoutPanel7->Location = System::Drawing::Point(455, 67);
 			this->sm_tableLayoutPanel7->Margin = System::Windows::Forms::Padding(0);
 			this->sm_tableLayoutPanel7->Name = L"sm_tableLayoutPanel7";
 			this->sm_tableLayoutPanel7->RowCount = 2;
@@ -1089,16 +1101,17 @@ namespace MetalCalculator
 				30)));
 			this->sm_tableLayoutPanel7->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				70)));
-			this->sm_tableLayoutPanel7->Size = System::Drawing::Size(342, 55);
+			this->sm_tableLayoutPanel7->Size = System::Drawing::Size(456, 68);
 			this->sm_tableLayoutPanel7->TabIndex = 3;
 			// 
 			// sm_label11
 			// 
 			this->sm_label11->AutoSize = true;
 			this->sm_label11->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_label11->Location = System::Drawing::Point(3, 0);
+			this->sm_label11->Location = System::Drawing::Point(4, 0);
+			this->sm_label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label11->Name = L"sm_label11";
-			this->sm_label11->Size = System::Drawing::Size(107, 16);
+			this->sm_label11->Size = System::Drawing::Size(143, 20);
 			this->sm_label11->TabIndex = 0;
 			this->sm_label11->Text = L"C";
 			this->sm_label11->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -1106,11 +1119,11 @@ namespace MetalCalculator
 			// sm_carbon_input
 			// 
 			this->sm_carbon_input->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_carbon_input->Location = System::Drawing::Point(5, 16);
-			this->sm_carbon_input->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->sm_carbon_input->Location = System::Drawing::Point(7, 20);
+			this->sm_carbon_input->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->sm_carbon_input->Multiline = true;
 			this->sm_carbon_input->Name = L"sm_carbon_input";
-			this->sm_carbon_input->Size = System::Drawing::Size(103, 39);
+			this->sm_carbon_input->Size = System::Drawing::Size(137, 48);
 			this->sm_carbon_input->TabIndex = 1;
 			this->sm_carbon_input->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -1125,20 +1138,21 @@ namespace MetalCalculator
 				20)));
 			this->tableLayoutPanel4->Controls->Add(this->sm_restore_btn, 1, 0);
 			this->tableLayoutPanel4->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->tableLayoutPanel4->Location = System::Drawing::Point(113, 16);
+			this->tableLayoutPanel4->Location = System::Drawing::Point(151, 20);
 			this->tableLayoutPanel4->Margin = System::Windows::Forms::Padding(0);
 			this->tableLayoutPanel4->Name = L"tableLayoutPanel4";
 			this->tableLayoutPanel4->RowCount = 1;
 			this->tableLayoutPanel4->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
-			this->tableLayoutPanel4->Size = System::Drawing::Size(229, 39);
+			this->tableLayoutPanel4->Size = System::Drawing::Size(305, 48);
 			this->tableLayoutPanel4->TabIndex = 2;
 			// 
 			// sm_restore_btn
 			// 
 			this->sm_restore_btn->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_restore_btn->Location = System::Drawing::Point(48, 3);
+			this->sm_restore_btn->Location = System::Drawing::Point(65, 4);
+			this->sm_restore_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_restore_btn->Name = L"sm_restore_btn";
-			this->sm_restore_btn->Size = System::Drawing::Size(131, 33);
+			this->sm_restore_btn->Size = System::Drawing::Size(175, 40);
 			this->sm_restore_btn->TabIndex = 0;
 			this->sm_restore_btn->Text = L"Скинути";
 			this->sm_restore_btn->UseVisualStyleBackColor = true;
@@ -1156,12 +1170,13 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel17->Controls->Add(this->sm_label78, 0, 0);
 			this->sm_tableLayoutPanel17->Controls->Add(this->sm_tableLayoutPanel4, 1, 0);
 			this->sm_tableLayoutPanel17->Dock = System::Windows::Forms::DockStyle::Top;
-			this->sm_tableLayoutPanel17->Location = System::Drawing::Point(0, 101);
+			this->sm_tableLayoutPanel17->Location = System::Drawing::Point(0, 125);
+			this->sm_tableLayoutPanel17->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel17->Name = L"sm_tableLayoutPanel17";
 			this->sm_tableLayoutPanel17->RowCount = 1;
 			this->sm_tableLayoutPanel17->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
-			this->sm_tableLayoutPanel17->Size = System::Drawing::Size(683, 55);
+			this->sm_tableLayoutPanel17->Size = System::Drawing::Size(911, 68);
 			this->sm_tableLayoutPanel17->TabIndex = 2;
 			// 
 			// sm_label78
@@ -1170,9 +1185,10 @@ namespace MetalCalculator
 			this->sm_label78->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_label78->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->sm_label78->Location = System::Drawing::Point(3, 0);
+			this->sm_label78->Location = System::Drawing::Point(4, 0);
+			this->sm_label78->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label78->Name = L"sm_label78";
-			this->sm_label78->Size = System::Drawing::Size(335, 55);
+			this->sm_label78->Size = System::Drawing::Size(447, 68);
 			this->sm_label78->TabIndex = 0;
 			this->sm_label78->Text = L"Феросиліцію ФС45, %";
 			this->sm_label78->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1189,7 +1205,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel4->Controls->Add(this->sm_label7, 0, 0);
 			this->sm_tableLayoutPanel4->Controls->Add(this->sm_fs45_input, 0, 1);
 			this->sm_tableLayoutPanel4->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_tableLayoutPanel4->Location = System::Drawing::Point(341, 0);
+			this->sm_tableLayoutPanel4->Location = System::Drawing::Point(455, 0);
 			this->sm_tableLayoutPanel4->Margin = System::Windows::Forms::Padding(0);
 			this->sm_tableLayoutPanel4->Name = L"sm_tableLayoutPanel4";
 			this->sm_tableLayoutPanel4->RowCount = 2;
@@ -1197,16 +1213,17 @@ namespace MetalCalculator
 				30)));
 			this->sm_tableLayoutPanel4->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				70)));
-			this->sm_tableLayoutPanel4->Size = System::Drawing::Size(342, 55);
+			this->sm_tableLayoutPanel4->Size = System::Drawing::Size(456, 68);
 			this->sm_tableLayoutPanel4->TabIndex = 1;
 			// 
 			// sm_label7
 			// 
 			this->sm_label7->AutoSize = true;
 			this->sm_label7->Dock = System::Windows::Forms::DockStyle::Top;
-			this->sm_label7->Location = System::Drawing::Point(3, 0);
+			this->sm_label7->Location = System::Drawing::Point(4, 0);
+			this->sm_label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label7->Name = L"sm_label7";
-			this->sm_label7->Size = System::Drawing::Size(107, 13);
+			this->sm_label7->Size = System::Drawing::Size(143, 16);
 			this->sm_label7->TabIndex = 0;
 			this->sm_label7->Text = L"Si";
 			this->sm_label7->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -1214,11 +1231,11 @@ namespace MetalCalculator
 			// sm_fs45_input
 			// 
 			this->sm_fs45_input->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_fs45_input->Location = System::Drawing::Point(5, 16);
-			this->sm_fs45_input->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->sm_fs45_input->Location = System::Drawing::Point(7, 20);
+			this->sm_fs45_input->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->sm_fs45_input->Multiline = true;
 			this->sm_fs45_input->Name = L"sm_fs45_input";
-			this->sm_fs45_input->Size = System::Drawing::Size(103, 39);
+			this->sm_fs45_input->Size = System::Drawing::Size(137, 48);
 			this->sm_fs45_input->TabIndex = 1;
 			this->sm_fs45_input->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -1232,14 +1249,15 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel2->Controls->Add(this->sm_tableLayoutPanel3, 1, 0);
 			this->sm_tableLayoutPanel2->Controls->Add(this->sm_label3, 0, 0);
 			this->sm_tableLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Top;
-			this->sm_tableLayoutPanel2->Location = System::Drawing::Point(0, 46);
+			this->sm_tableLayoutPanel2->Location = System::Drawing::Point(0, 57);
+			this->sm_tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel2->Name = L"sm_tableLayoutPanel2";
 			this->sm_tableLayoutPanel2->RowCount = 1;
 			this->sm_tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
 			this->sm_tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute,
-				55)));
-			this->sm_tableLayoutPanel2->Size = System::Drawing::Size(683, 55);
+				68)));
+			this->sm_tableLayoutPanel2->Size = System::Drawing::Size(911, 68);
 			this->sm_tableLayoutPanel2->TabIndex = 1;
 			// 
 			// sm_tableLayoutPanel3
@@ -1256,7 +1274,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel3->Controls->Add(this->sm_fmn78_input_2, 1, 1);
 			this->sm_tableLayoutPanel3->Controls->Add(this->sm_label5, 1, 0);
 			this->sm_tableLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_tableLayoutPanel3->Location = System::Drawing::Point(341, 0);
+			this->sm_tableLayoutPanel3->Location = System::Drawing::Point(455, 0);
 			this->sm_tableLayoutPanel3->Margin = System::Windows::Forms::Padding(0);
 			this->sm_tableLayoutPanel3->Name = L"sm_tableLayoutPanel3";
 			this->sm_tableLayoutPanel3->RowCount = 2;
@@ -1264,16 +1282,17 @@ namespace MetalCalculator
 				30)));
 			this->sm_tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				70)));
-			this->sm_tableLayoutPanel3->Size = System::Drawing::Size(342, 55);
+			this->sm_tableLayoutPanel3->Size = System::Drawing::Size(456, 68);
 			this->sm_tableLayoutPanel3->TabIndex = 1;
 			// 
 			// sm_label4
 			// 
 			this->sm_label4->AutoSize = true;
 			this->sm_label4->Dock = System::Windows::Forms::DockStyle::Top;
-			this->sm_label4->Location = System::Drawing::Point(3, 0);
+			this->sm_label4->Location = System::Drawing::Point(4, 0);
+			this->sm_label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label4->Name = L"sm_label4";
-			this->sm_label4->Size = System::Drawing::Size(107, 13);
+			this->sm_label4->Size = System::Drawing::Size(143, 16);
 			this->sm_label4->TabIndex = 0;
 			this->sm_label4->Text = L"C";
 			this->sm_label4->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -1281,22 +1300,22 @@ namespace MetalCalculator
 			// sm_fmn78_input_1
 			// 
 			this->sm_fmn78_input_1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_fmn78_input_1->Location = System::Drawing::Point(5, 16);
-			this->sm_fmn78_input_1->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->sm_fmn78_input_1->Location = System::Drawing::Point(7, 20);
+			this->sm_fmn78_input_1->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->sm_fmn78_input_1->Multiline = true;
 			this->sm_fmn78_input_1->Name = L"sm_fmn78_input_1";
-			this->sm_fmn78_input_1->Size = System::Drawing::Size(103, 39);
+			this->sm_fmn78_input_1->Size = System::Drawing::Size(137, 48);
 			this->sm_fmn78_input_1->TabIndex = 1;
 			this->sm_fmn78_input_1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// sm_fmn78_input_2
 			// 
 			this->sm_fmn78_input_2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->sm_fmn78_input_2->Location = System::Drawing::Point(118, 16);
-			this->sm_fmn78_input_2->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->sm_fmn78_input_2->Location = System::Drawing::Point(158, 20);
+			this->sm_fmn78_input_2->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->sm_fmn78_input_2->Multiline = true;
 			this->sm_fmn78_input_2->Name = L"sm_fmn78_input_2";
-			this->sm_fmn78_input_2->Size = System::Drawing::Size(104, 39);
+			this->sm_fmn78_input_2->Size = System::Drawing::Size(138, 48);
 			this->sm_fmn78_input_2->TabIndex = 2;
 			this->sm_fmn78_input_2->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -1304,9 +1323,10 @@ namespace MetalCalculator
 			// 
 			this->sm_label5->AutoSize = true;
 			this->sm_label5->Dock = System::Windows::Forms::DockStyle::Top;
-			this->sm_label5->Location = System::Drawing::Point(116, 0);
+			this->sm_label5->Location = System::Drawing::Point(155, 0);
+			this->sm_label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label5->Name = L"sm_label5";
-			this->sm_label5->Size = System::Drawing::Size(108, 13);
+			this->sm_label5->Size = System::Drawing::Size(144, 16);
 			this->sm_label5->TabIndex = 3;
 			this->sm_label5->Text = L"Mn";
 			this->sm_label5->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -1317,9 +1337,10 @@ namespace MetalCalculator
 			this->sm_label3->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->sm_label3->Location = System::Drawing::Point(3, 0);
+			this->sm_label3->Location = System::Drawing::Point(4, 0);
+			this->sm_label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label3->Name = L"sm_label3";
-			this->sm_label3->Size = System::Drawing::Size(335, 55);
+			this->sm_label3->Size = System::Drawing::Size(447, 68);
 			this->sm_label3->TabIndex = 0;
 			this->sm_label3->Text = L"Феромарганцю марки ФМн 78, %";
 			this->sm_label3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1332,11 +1353,12 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel1->Controls->Add(this->sm_label2, 0, 0);
 			this->sm_tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
+			this->sm_tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel1->Name = L"sm_tableLayoutPanel1";
 			this->sm_tableLayoutPanel1->RowCount = 1;
 			this->sm_tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				50)));
-			this->sm_tableLayoutPanel1->Size = System::Drawing::Size(683, 46);
+			this->sm_tableLayoutPanel1->Size = System::Drawing::Size(911, 57);
 			this->sm_tableLayoutPanel1->TabIndex = 0;
 			// 
 			// sm_label2
@@ -1345,9 +1367,10 @@ namespace MetalCalculator
 			this->sm_label2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->sm_label2->Location = System::Drawing::Point(3, 0);
+			this->sm_label2->Location = System::Drawing::Point(4, 0);
+			this->sm_label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->sm_label2->Name = L"sm_label2";
-			this->sm_label2->Size = System::Drawing::Size(677, 46);
+			this->sm_label2->Size = System::Drawing::Size(903, 57);
 			this->sm_label2->TabIndex = 0;
 			this->sm_label2->Text = L"Хімічний склад";
 			this->sm_label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -1361,9 +1384,9 @@ namespace MetalCalculator
 			this->mainPanel->Controls->Add(this->mm_top_layout_panel);
 			this->mainPanel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->mainPanel->Location = System::Drawing::Point(0, 0);
-			this->mainPanel->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->mainPanel->Margin = System::Windows::Forms::Padding(3, 1, 3, 1);
 			this->mainPanel->Name = L"mainPanel";
-			this->mainPanel->Size = System::Drawing::Size(683, 442);
+			this->mainPanel->Size = System::Drawing::Size(911, 544);
 			this->mainPanel->TabIndex = 0;
 			// 
 			// mm_ferroIfno_TL
@@ -1376,12 +1399,12 @@ namespace MetalCalculator
 			this->mm_ferroIfno_TL->Controls->Add(this->tableLayoutPanel5, 1, 0);
 			this->mm_ferroIfno_TL->Controls->Add(this->mm_neededFerro_TL, 0, 0);
 			this->mm_ferroIfno_TL->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_ferroIfno_TL->Location = System::Drawing::Point(0, 197);
-			this->mm_ferroIfno_TL->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_ferroIfno_TL->Location = System::Drawing::Point(0, 243);
+			this->mm_ferroIfno_TL->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_ferroIfno_TL->Name = L"mm_ferroIfno_TL";
 			this->mm_ferroIfno_TL->RowCount = 1;
 			this->mm_ferroIfno_TL->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->mm_ferroIfno_TL->Size = System::Drawing::Size(683, 245);
+			this->mm_ferroIfno_TL->Size = System::Drawing::Size(911, 301);
 			this->mm_ferroIfno_TL->TabIndex = 2;
 			// 
 			// tableLayoutPanel5
@@ -1392,13 +1415,13 @@ namespace MetalCalculator
 			this->tableLayoutPanel5->Controls->Add(this->tableLayoutPanel6, 0, 0);
 			this->tableLayoutPanel5->Controls->Add(this->calculate_btn, 0, 1);
 			this->tableLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->tableLayoutPanel5->Location = System::Drawing::Point(326, 3);
-			this->tableLayoutPanel5->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->tableLayoutPanel5->Location = System::Drawing::Point(435, 4);
+			this->tableLayoutPanel5->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->tableLayoutPanel5->Name = L"tableLayoutPanel5";
 			this->tableLayoutPanel5->RowCount = 2;
 			this->tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 33.44595F)));
 			this->tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 66.55405F)));
-			this->tableLayoutPanel5->Size = System::Drawing::Size(355, 239);
+			this->tableLayoutPanel5->Size = System::Drawing::Size(473, 293);
 			this->tableLayoutPanel5->TabIndex = 0;
 			// 
 			// tableLayoutPanel6
@@ -1411,12 +1434,12 @@ namespace MetalCalculator
 			this->tableLayoutPanel6->Controls->Add(this->tableLayoutPanel7, 1, 0);
 			this->tableLayoutPanel6->Controls->Add(this->tableLayoutPanel8, 0, 0);
 			this->tableLayoutPanel6->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->tableLayoutPanel6->Location = System::Drawing::Point(2, 3);
-			this->tableLayoutPanel6->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->tableLayoutPanel6->Location = System::Drawing::Point(3, 4);
+			this->tableLayoutPanel6->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->tableLayoutPanel6->Name = L"tableLayoutPanel6";
 			this->tableLayoutPanel6->RowCount = 1;
 			this->tableLayoutPanel6->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
-			this->tableLayoutPanel6->Size = System::Drawing::Size(351, 73);
+			this->tableLayoutPanel6->Size = System::Drawing::Size(467, 89);
 			this->tableLayoutPanel6->TabIndex = 0;
 			// 
 			// tableLayoutPanel7
@@ -1427,13 +1450,13 @@ namespace MetalCalculator
 			this->tableLayoutPanel7->Controls->Add(this->mm_metalKG_TB, 0, 1);
 			this->tableLayoutPanel7->Controls->Add(this->mm_metalKG_lbl, 0, 0);
 			this->tableLayoutPanel7->Dock = System::Windows::Forms::DockStyle::Right;
-			this->tableLayoutPanel7->Location = System::Drawing::Point(179, 3);
-			this->tableLayoutPanel7->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->tableLayoutPanel7->Location = System::Drawing::Point(237, 4);
+			this->tableLayoutPanel7->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->tableLayoutPanel7->Name = L"tableLayoutPanel7";
 			this->tableLayoutPanel7->RowCount = 2;
 			this->tableLayoutPanel7->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
 			this->tableLayoutPanel7->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel7->Size = System::Drawing::Size(170, 67);
+			this->tableLayoutPanel7->Size = System::Drawing::Size(227, 81);
 			this->tableLayoutPanel7->TabIndex = 0;
 			// 
 			// mm_metalKG_TB
@@ -1441,10 +1464,10 @@ namespace MetalCalculator
 			this->mm_metalKG_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->mm_metalKG_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_metalKG_TB->Location = System::Drawing::Point(2, 36);
-			this->mm_metalKG_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_metalKG_TB->Location = System::Drawing::Point(3, 44);
+			this->mm_metalKG_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_metalKG_TB->Name = L"mm_metalKG_TB";
-			this->mm_metalKG_TB->Size = System::Drawing::Size(130, 20);
+			this->mm_metalKG_TB->Size = System::Drawing::Size(173, 22);
 			this->mm_metalKG_TB->TabIndex = 0;
 			this->mm_metalKG_TB->Leave += gcnew System::EventHandler(this, &MainForm::onMetalKGLeave);
 			// 
@@ -1452,10 +1475,9 @@ namespace MetalCalculator
 			// 
 			this->mm_metalKG_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_metalKG_lbl->Location = System::Drawing::Point(2, 0);
-			this->mm_metalKG_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_metalKG_lbl->Location = System::Drawing::Point(3, 0);
 			this->mm_metalKG_lbl->Name = L"mm_metalKG_lbl";
-			this->mm_metalKG_lbl->Size = System::Drawing::Size(127, 32);
+			this->mm_metalKG_lbl->Size = System::Drawing::Size(169, 39);
 			this->mm_metalKG_lbl->TabIndex = 1;
 			this->mm_metalKG_lbl->Text = L"Маса Металу";
 			this->mm_metalKG_lbl->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
@@ -1468,13 +1490,13 @@ namespace MetalCalculator
 			this->tableLayoutPanel8->Controls->Add(this->mm_meltingID_TB, 0, 1);
 			this->tableLayoutPanel8->Controls->Add(this->mm_meltingID_lbl, 0, 0);
 			this->tableLayoutPanel8->Dock = System::Windows::Forms::DockStyle::Left;
-			this->tableLayoutPanel8->Location = System::Drawing::Point(2, 3);
-			this->tableLayoutPanel8->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->tableLayoutPanel8->Location = System::Drawing::Point(3, 4);
+			this->tableLayoutPanel8->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->tableLayoutPanel8->Name = L"tableLayoutPanel8";
 			this->tableLayoutPanel8->RowCount = 2;
 			this->tableLayoutPanel8->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
 			this->tableLayoutPanel8->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel8->Size = System::Drawing::Size(170, 67);
+			this->tableLayoutPanel8->Size = System::Drawing::Size(227, 81);
 			this->tableLayoutPanel8->TabIndex = 2;
 			// 
 			// mm_meltingID_TB
@@ -1483,10 +1505,10 @@ namespace MetalCalculator
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->mm_meltingID_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->mm_meltingID_TB->Dock = System::Windows::Forms::DockStyle::Right;
-			this->mm_meltingID_TB->Location = System::Drawing::Point(40, 36);
-			this->mm_meltingID_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_meltingID_TB->Location = System::Drawing::Point(54, 44);
+			this->mm_meltingID_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_meltingID_TB->Name = L"mm_meltingID_TB";
-			this->mm_meltingID_TB->Size = System::Drawing::Size(128, 20);
+			this->mm_meltingID_TB->Size = System::Drawing::Size(170, 22);
 			this->mm_meltingID_TB->TabIndex = 0;
 			// 
 			// mm_meltingID_lbl
@@ -1494,10 +1516,9 @@ namespace MetalCalculator
 			this->mm_meltingID_lbl->Dock = System::Windows::Forms::DockStyle::Right;
 			this->mm_meltingID_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_meltingID_lbl->Location = System::Drawing::Point(41, 0);
-			this->mm_meltingID_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_meltingID_lbl->Location = System::Drawing::Point(55, 0);
 			this->mm_meltingID_lbl->Name = L"mm_meltingID_lbl";
-			this->mm_meltingID_lbl->Size = System::Drawing::Size(127, 33);
+			this->mm_meltingID_lbl->Size = System::Drawing::Size(169, 40);
 			this->mm_meltingID_lbl->TabIndex = 1;
 			this->mm_meltingID_lbl->Text = L"Номер Плавки";
 			this->mm_meltingID_lbl->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
@@ -1510,10 +1531,10 @@ namespace MetalCalculator
 			this->calculate_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->calculate_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->calculate_btn->Location = System::Drawing::Point(45, 82);
-			this->calculate_btn->Margin = System::Windows::Forms::Padding(45, 3, 45, 3);
+			this->calculate_btn->Location = System::Drawing::Point(60, 101);
+			this->calculate_btn->Margin = System::Windows::Forms::Padding(60, 4, 60, 4);
 			this->calculate_btn->Name = L"calculate_btn";
-			this->calculate_btn->Size = System::Drawing::Size(265, 53);
+			this->calculate_btn->Size = System::Drawing::Size(353, 65);
 			this->calculate_btn->TabIndex = 1;
 			this->calculate_btn->Text = L"РОЗРАХУВАТИ";
 			this->calculate_btn->UseVisualStyleBackColor = false;
@@ -1527,23 +1548,22 @@ namespace MetalCalculator
 			this->mm_neededFerro_TL->Controls->Add(this->label1, 0, 0);
 			this->mm_neededFerro_TL->Controls->Add(this->mm_neededInfo_TL_btm, 0, 1);
 			this->mm_neededFerro_TL->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_neededFerro_TL->Location = System::Drawing::Point(2, 3);
-			this->mm_neededFerro_TL->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_neededFerro_TL->Location = System::Drawing::Point(3, 4);
+			this->mm_neededFerro_TL->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_neededFerro_TL->Name = L"mm_neededFerro_TL";
 			this->mm_neededFerro_TL->RowCount = 2;
 			this->mm_neededFerro_TL->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->mm_neededFerro_TL->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 181)));
-			this->mm_neededFerro_TL->Size = System::Drawing::Size(320, 239);
+			this->mm_neededFerro_TL->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 223)));
+			this->mm_neededFerro_TL->Size = System::Drawing::Size(426, 293);
 			this->mm_neededFerro_TL->TabIndex = 1;
 			// 
 			// label1
 			// 
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(2, 0);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(3, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(315, 57);
+			this->label1->Size = System::Drawing::Size(420, 70);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Необхідна кількість феросплавів: ";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::BottomLeft;
@@ -1564,8 +1584,8 @@ namespace MetalCalculator
 			this->mm_neededInfo_TL_btm->Controls->Add(this->mm_vuglecevm_lbl, 0, 3);
 			this->mm_neededInfo_TL_btm->Controls->Add(this->mm_FC45_value_lbl, 1, 0);
 			this->mm_neededInfo_TL_btm->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_neededInfo_TL_btm->Location = System::Drawing::Point(2, 61);
-			this->mm_neededInfo_TL_btm->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_neededInfo_TL_btm->Location = System::Drawing::Point(3, 74);
+			this->mm_neededInfo_TL_btm->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_neededInfo_TL_btm->Name = L"mm_neededInfo_TL_btm";
 			this->mm_neededInfo_TL_btm->RowCount = 4;
 			this->mm_neededInfo_TL_btm->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1577,8 +1597,8 @@ namespace MetalCalculator
 			this->mm_neededInfo_TL_btm->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				25)));
 			this->mm_neededInfo_TL_btm->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute,
-				13)));
-			this->mm_neededInfo_TL_btm->Size = System::Drawing::Size(316, 175);
+				16)));
+			this->mm_neededInfo_TL_btm->Size = System::Drawing::Size(420, 215);
 			this->mm_neededInfo_TL_btm->TabIndex = 1;
 			// 
 			// mm_vulgecevm_value_lbl
@@ -1588,10 +1608,10 @@ namespace MetalCalculator
 			this->mm_vulgecevm_value_lbl->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->mm_vulgecevm_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-			this->mm_vulgecevm_value_lbl->Location = System::Drawing::Point(274, 132);
-			this->mm_vulgecevm_value_lbl->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_vulgecevm_value_lbl->Location = System::Drawing::Point(365, 163);
+			this->mm_vulgecevm_value_lbl->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_vulgecevm_value_lbl->Name = L"mm_vulgecevm_value_lbl";
-			this->mm_vulgecevm_value_lbl->Size = System::Drawing::Size(40, 40);
+			this->mm_vulgecevm_value_lbl->Size = System::Drawing::Size(52, 48);
 			this->mm_vulgecevm_value_lbl->TabIndex = 7;
 			this->mm_vulgecevm_value_lbl->Text = L"10";
 			this->mm_vulgecevm_value_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -1603,10 +1623,10 @@ namespace MetalCalculator
 			this->mm_FMn78_value_lbl->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->mm_FMn78_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_FMn78_value_lbl->Location = System::Drawing::Point(274, 46);
-			this->mm_FMn78_value_lbl->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_FMn78_value_lbl->Location = System::Drawing::Point(365, 57);
+			this->mm_FMn78_value_lbl->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_FMn78_value_lbl->Name = L"mm_FMn78_value_lbl";
-			this->mm_FMn78_value_lbl->Size = System::Drawing::Size(40, 37);
+			this->mm_FMn78_value_lbl->Size = System::Drawing::Size(52, 45);
 			this->mm_FMn78_value_lbl->TabIndex = 6;
 			this->mm_FMn78_value_lbl->Text = L"10";
 			this->mm_FMn78_value_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -1618,10 +1638,10 @@ namespace MetalCalculator
 			this->mm_Mn95_value_lbl->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->mm_Mn95_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_Mn95_value_lbl->Location = System::Drawing::Point(274, 89);
-			this->mm_Mn95_value_lbl->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_Mn95_value_lbl->Location = System::Drawing::Point(365, 110);
+			this->mm_Mn95_value_lbl->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_Mn95_value_lbl->Name = L"mm_Mn95_value_lbl";
-			this->mm_Mn95_value_lbl->Size = System::Drawing::Size(40, 37);
+			this->mm_Mn95_value_lbl->Size = System::Drawing::Size(52, 45);
 			this->mm_Mn95_value_lbl->TabIndex = 5;
 			this->mm_Mn95_value_lbl->Text = L"10";
 			this->mm_Mn95_value_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -1631,10 +1651,9 @@ namespace MetalCalculator
 			this->mm_FC45_lbl->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->mm_FC45_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_FC45_lbl->Location = System::Drawing::Point(2, 0);
-			this->mm_FC45_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_FC45_lbl->Location = System::Drawing::Point(3, 0);
 			this->mm_FC45_lbl->Name = L"mm_FC45_lbl";
-			this->mm_FC45_lbl->Size = System::Drawing::Size(268, 43);
+			this->mm_FC45_lbl->Size = System::Drawing::Size(356, 53);
 			this->mm_FC45_lbl->TabIndex = 0;
 			this->mm_FC45_lbl->Text = L"Феросиліцій, ФС45, кг";
 			this->mm_FC45_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1643,10 +1662,9 @@ namespace MetalCalculator
 			// 
 			this->mm_Mn95_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_Mn95_lbl->Location = System::Drawing::Point(2, 86);
-			this->mm_Mn95_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Mn95_lbl->Location = System::Drawing::Point(3, 106);
 			this->mm_Mn95_lbl->Name = L"mm_Mn95_lbl";
-			this->mm_Mn95_lbl->Size = System::Drawing::Size(267, 43);
+			this->mm_Mn95_lbl->Size = System::Drawing::Size(356, 53);
 			this->mm_Mn95_lbl->TabIndex = 1;
 			this->mm_Mn95_lbl->Text = L"Марганець Мн95, кг";
 			this->mm_Mn95_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1655,10 +1673,9 @@ namespace MetalCalculator
 			// 
 			this->mm_FMn78_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_FMn78_lbl->Location = System::Drawing::Point(2, 43);
-			this->mm_FMn78_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_FMn78_lbl->Location = System::Drawing::Point(3, 53);
 			this->mm_FMn78_lbl->Name = L"mm_FMn78_lbl";
-			this->mm_FMn78_lbl->Size = System::Drawing::Size(267, 43);
+			this->mm_FMn78_lbl->Size = System::Drawing::Size(356, 53);
 			this->mm_FMn78_lbl->TabIndex = 2;
 			this->mm_FMn78_lbl->Text = L"Феромарганець ФМн78, кг";
 			this->mm_FMn78_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1667,10 +1684,9 @@ namespace MetalCalculator
 			// 
 			this->mm_vuglecevm_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_vuglecevm_lbl->Location = System::Drawing::Point(2, 129);
-			this->mm_vuglecevm_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_vuglecevm_lbl->Location = System::Drawing::Point(3, 159);
 			this->mm_vuglecevm_lbl->Name = L"mm_vuglecevm_lbl";
-			this->mm_vuglecevm_lbl->Size = System::Drawing::Size(267, 44);
+			this->mm_vuglecevm_lbl->Size = System::Drawing::Size(356, 54);
 			this->mm_vuglecevm_lbl->TabIndex = 3;
 			this->mm_vuglecevm_lbl->Text = L"Вуглецевмісний матеріал, кг";
 			this->mm_vuglecevm_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1682,10 +1698,10 @@ namespace MetalCalculator
 			this->mm_FC45_value_lbl->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->mm_FC45_value_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_FC45_value_lbl->Location = System::Drawing::Point(274, 3);
-			this->mm_FC45_value_lbl->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_FC45_value_lbl->Location = System::Drawing::Point(365, 4);
+			this->mm_FC45_value_lbl->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_FC45_value_lbl->Name = L"mm_FC45_value_lbl";
-			this->mm_FC45_value_lbl->Size = System::Drawing::Size(40, 37);
+			this->mm_FC45_value_lbl->Size = System::Drawing::Size(52, 45);
 			this->mm_FC45_value_lbl->TabIndex = 4;
 			this->mm_FC45_value_lbl->Text = L"10";
 			this->mm_FC45_value_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -1694,20 +1710,20 @@ namespace MetalCalculator
 			// 
 			this->mm_panel5->Controls->Add(this->mm_alloySelect_btn);
 			this->mm_panel5->Dock = System::Windows::Forms::DockStyle::Top;
-			this->mm_panel5->Location = System::Drawing::Point(0, 159);
-			this->mm_panel5->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_panel5->Location = System::Drawing::Point(0, 196);
+			this->mm_panel5->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_panel5->Name = L"mm_panel5";
-			this->mm_panel5->Size = System::Drawing::Size(683, 38);
+			this->mm_panel5->Size = System::Drawing::Size(911, 47);
 			this->mm_panel5->TabIndex = 1;
 			// 
 			// mm_alloySelect_btn
 			// 
 			this->mm_alloySelect_btn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->mm_alloySelect_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->mm_alloySelect_btn->Location = System::Drawing::Point(563, 3);
-			this->mm_alloySelect_btn->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->mm_alloySelect_btn->Location = System::Drawing::Point(751, 4);
+			this->mm_alloySelect_btn->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_alloySelect_btn->Name = L"mm_alloySelect_btn";
-			this->mm_alloySelect_btn->Size = System::Drawing::Size(111, 32);
+			this->mm_alloySelect_btn->Size = System::Drawing::Size(148, 39);
 			this->mm_alloySelect_btn->TabIndex = 0;
 			this->mm_alloySelect_btn->Text = L"Вибір Сплаву";
 			this->mm_alloySelect_btn->UseVisualStyleBackColor = true;
@@ -1726,14 +1742,14 @@ namespace MetalCalculator
 			this->mm_top_layout_panel->Controls->Add(this->mm_panel4, 1, 1);
 			this->mm_top_layout_panel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->mm_top_layout_panel->Location = System::Drawing::Point(0, 0);
-			this->mm_top_layout_panel->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->mm_top_layout_panel->Margin = System::Windows::Forms::Padding(3, 1, 3, 1);
 			this->mm_top_layout_panel->Name = L"mm_top_layout_panel";
 			this->mm_top_layout_panel->RowCount = 2;
 			this->mm_top_layout_panel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				50)));
 			this->mm_top_layout_panel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				50)));
-			this->mm_top_layout_panel->Size = System::Drawing::Size(683, 159);
+			this->mm_top_layout_panel->Size = System::Drawing::Size(911, 196);
 			this->mm_top_layout_panel->TabIndex = 0;
 			// 
 			// mm_panel1
@@ -1741,10 +1757,10 @@ namespace MetalCalculator
 			this->mm_panel1->BackColor = System::Drawing::Color::Maroon;
 			this->mm_panel1->Controls->Add(this->mm_chemicalComposition_lbl);
 			this->mm_panel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_panel1->Location = System::Drawing::Point(2, 1);
-			this->mm_panel1->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->mm_panel1->Location = System::Drawing::Point(3, 1);
+			this->mm_panel1->Margin = System::Windows::Forms::Padding(3, 1, 3, 1);
 			this->mm_panel1->Name = L"mm_panel1";
-			this->mm_panel1->Size = System::Drawing::Size(198, 77);
+			this->mm_panel1->Size = System::Drawing::Size(264, 96);
 			this->mm_panel1->TabIndex = 0;
 			// 
 			// mm_chemicalComposition_lbl
@@ -1757,9 +1773,8 @@ namespace MetalCalculator
 			this->mm_chemicalComposition_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->mm_chemicalComposition_lbl->Location = System::Drawing::Point(0, 0);
-			this->mm_chemicalComposition_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->mm_chemicalComposition_lbl->Name = L"mm_chemicalComposition_lbl";
-			this->mm_chemicalComposition_lbl->Size = System::Drawing::Size(198, 79);
+			this->mm_chemicalComposition_lbl->Size = System::Drawing::Size(264, 98);
 			this->mm_chemicalComposition_lbl->TabIndex = 0;
 			this->mm_chemicalComposition_lbl->Text = L"Хімічний склад \nметалу проби з печі, %";
 			this->mm_chemicalComposition_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -1770,10 +1785,10 @@ namespace MetalCalculator
 				static_cast<System::Int32>(static_cast<System::Byte>(231)));
 			this->mm_panel2->Controls->Add(this->HimSklad_Proba_Panel);
 			this->mm_panel2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_panel2->Location = System::Drawing::Point(204, 1);
-			this->mm_panel2->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->mm_panel2->Location = System::Drawing::Point(273, 1);
+			this->mm_panel2->Margin = System::Windows::Forms::Padding(3, 1, 3, 1);
 			this->mm_panel2->Name = L"mm_panel2";
-			this->mm_panel2->Size = System::Drawing::Size(477, 77);
+			this->mm_panel2->Size = System::Drawing::Size(635, 96);
 			this->mm_panel2->TabIndex = 1;
 			// 
 			// HimSklad_Proba_Panel
@@ -1813,16 +1828,16 @@ namespace MetalCalculator
 			this->HimSklad_Proba_Panel->Controls->Add(this->mm_C_TB, 0, 1);
 			this->HimSklad_Proba_Panel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->HimSklad_Proba_Panel->Location = System::Drawing::Point(0, 0);
-			this->HimSklad_Proba_Panel->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->HimSklad_Proba_Panel->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->HimSklad_Proba_Panel->Name = L"HimSklad_Proba_Panel";
 			this->HimSklad_Proba_Panel->RowCount = 2;
 			this->HimSklad_Proba_Panel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
 			this->HimSklad_Proba_Panel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute,
-				51)));
+				63)));
 			this->HimSklad_Proba_Panel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute,
-				16)));
-			this->HimSklad_Proba_Panel->Size = System::Drawing::Size(477, 77);
+				20)));
+			this->HimSklad_Proba_Panel->Size = System::Drawing::Size(635, 96);
 			this->HimSklad_Proba_Panel->TabIndex = 0;
 			// 
 			// mm_Ni_TB
@@ -1831,14 +1846,14 @@ namespace MetalCalculator
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->mm_Ni_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_Ni_TB->Location = System::Drawing::Point(415, 29);
-			this->mm_Ni_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->mm_Ni_TB->MaximumSize = System::Drawing::Size(55, 47);
+			this->mm_Ni_TB->Location = System::Drawing::Point(556, 37);
+			this->mm_Ni_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_Ni_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->mm_Ni_TB->MaxLength = 10;
-			this->mm_Ni_TB->MinimumSize = System::Drawing::Size(55, 47);
+			this->mm_Ni_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->mm_Ni_TB->Multiline = true;
 			this->mm_Ni_TB->Name = L"mm_Ni_TB";
-			this->mm_Ni_TB->Size = System::Drawing::Size(55, 47);
+			this->mm_Ni_TB->Size = System::Drawing::Size(73, 57);
 			this->mm_Ni_TB->TabIndex = 29;
 			this->mm_Ni_TB->Text = L"0,1";
 			this->mm_Ni_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -1849,14 +1864,14 @@ namespace MetalCalculator
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->mm_Cr_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_Cr_TB->Location = System::Drawing::Point(356, 29);
-			this->mm_Cr_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->mm_Cr_TB->MaximumSize = System::Drawing::Size(55, 47);
+			this->mm_Cr_TB->Location = System::Drawing::Point(477, 37);
+			this->mm_Cr_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_Cr_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->mm_Cr_TB->MaxLength = 10;
-			this->mm_Cr_TB->MinimumSize = System::Drawing::Size(55, 47);
+			this->mm_Cr_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->mm_Cr_TB->Multiline = true;
 			this->mm_Cr_TB->Name = L"mm_Cr_TB";
-			this->mm_Cr_TB->Size = System::Drawing::Size(55, 47);
+			this->mm_Cr_TB->Size = System::Drawing::Size(73, 57);
 			this->mm_Cr_TB->TabIndex = 28;
 			this->mm_Cr_TB->Text = L"0,1";
 			this->mm_Cr_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -1867,14 +1882,14 @@ namespace MetalCalculator
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->mm_Cu_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_Cu_TB->Location = System::Drawing::Point(297, 29);
-			this->mm_Cu_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->mm_Cu_TB->MaximumSize = System::Drawing::Size(55, 47);
+			this->mm_Cu_TB->Location = System::Drawing::Point(398, 37);
+			this->mm_Cu_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_Cu_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->mm_Cu_TB->MaxLength = 10;
-			this->mm_Cu_TB->MinimumSize = System::Drawing::Size(55, 47);
+			this->mm_Cu_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->mm_Cu_TB->Multiline = true;
 			this->mm_Cu_TB->Name = L"mm_Cu_TB";
-			this->mm_Cu_TB->Size = System::Drawing::Size(55, 47);
+			this->mm_Cu_TB->Size = System::Drawing::Size(73, 57);
 			this->mm_Cu_TB->TabIndex = 27;
 			this->mm_Cu_TB->Text = L"0,1";
 			this->mm_Cu_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -1885,14 +1900,14 @@ namespace MetalCalculator
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->mm_S_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_S_TB->Location = System::Drawing::Point(238, 29);
-			this->mm_S_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->mm_S_TB->MaximumSize = System::Drawing::Size(55, 47);
+			this->mm_S_TB->Location = System::Drawing::Point(319, 37);
+			this->mm_S_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_S_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->mm_S_TB->MaxLength = 10;
-			this->mm_S_TB->MinimumSize = System::Drawing::Size(55, 47);
+			this->mm_S_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->mm_S_TB->Multiline = true;
 			this->mm_S_TB->Name = L"mm_S_TB";
-			this->mm_S_TB->Size = System::Drawing::Size(55, 47);
+			this->mm_S_TB->Size = System::Drawing::Size(73, 57);
 			this->mm_S_TB->TabIndex = 26;
 			this->mm_S_TB->Text = L"0,030";
 			this->mm_S_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -1903,14 +1918,14 @@ namespace MetalCalculator
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->mm_P_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_P_TB->Location = System::Drawing::Point(179, 29);
-			this->mm_P_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->mm_P_TB->MaximumSize = System::Drawing::Size(55, 47);
+			this->mm_P_TB->Location = System::Drawing::Point(240, 37);
+			this->mm_P_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_P_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->mm_P_TB->MaxLength = 10;
-			this->mm_P_TB->MinimumSize = System::Drawing::Size(55, 47);
+			this->mm_P_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->mm_P_TB->Multiline = true;
 			this->mm_P_TB->Name = L"mm_P_TB";
-			this->mm_P_TB->Size = System::Drawing::Size(55, 47);
+			this->mm_P_TB->Size = System::Drawing::Size(73, 57);
 			this->mm_P_TB->TabIndex = 25;
 			this->mm_P_TB->Text = L"0,030";
 			this->mm_P_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -1921,14 +1936,14 @@ namespace MetalCalculator
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->mm_Mn_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_Mn_TB->Location = System::Drawing::Point(120, 29);
-			this->mm_Mn_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->mm_Mn_TB->MaximumSize = System::Drawing::Size(55, 47);
+			this->mm_Mn_TB->Location = System::Drawing::Point(161, 37);
+			this->mm_Mn_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_Mn_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->mm_Mn_TB->MaxLength = 10;
-			this->mm_Mn_TB->MinimumSize = System::Drawing::Size(55, 47);
+			this->mm_Mn_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->mm_Mn_TB->Multiline = true;
 			this->mm_Mn_TB->Name = L"mm_Mn_TB";
-			this->mm_Mn_TB->Size = System::Drawing::Size(55, 47);
+			this->mm_Mn_TB->Size = System::Drawing::Size(73, 57);
 			this->mm_Mn_TB->TabIndex = 24;
 			this->mm_Mn_TB->Text = L"0,45";
 			this->mm_Mn_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -1939,94 +1954,86 @@ namespace MetalCalculator
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->mm_Si_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_Si_TB->Location = System::Drawing::Point(61, 29);
-			this->mm_Si_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->mm_Si_TB->MaximumSize = System::Drawing::Size(55, 47);
+			this->mm_Si_TB->Location = System::Drawing::Point(82, 37);
+			this->mm_Si_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_Si_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->mm_Si_TB->MaxLength = 10;
-			this->mm_Si_TB->MinimumSize = System::Drawing::Size(55, 47);
+			this->mm_Si_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->mm_Si_TB->Multiline = true;
 			this->mm_Si_TB->Name = L"mm_Si_TB";
-			this->mm_Si_TB->Size = System::Drawing::Size(55, 47);
+			this->mm_Si_TB->Size = System::Drawing::Size(73, 57);
 			this->mm_Si_TB->TabIndex = 23;
 			this->mm_Si_TB->Text = L"0,12";
 			this->mm_Si_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_Ni_lbl_top
 			// 
-			this->mm_Ni_lbl_top->Location = System::Drawing::Point(415, 0);
-			this->mm_Ni_lbl_top->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Ni_lbl_top->Location = System::Drawing::Point(556, 0);
 			this->mm_Ni_lbl_top->Name = L"mm_Ni_lbl_top";
-			this->mm_Ni_lbl_top->Size = System::Drawing::Size(55, 25);
+			this->mm_Ni_lbl_top->Size = System::Drawing::Size(73, 31);
 			this->mm_Ni_lbl_top->TabIndex = 22;
 			this->mm_Ni_lbl_top->Text = L"Ni";
 			this->mm_Ni_lbl_top->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_Cr_lbl_top
 			// 
-			this->mm_Cr_lbl_top->Location = System::Drawing::Point(356, 0);
-			this->mm_Cr_lbl_top->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Cr_lbl_top->Location = System::Drawing::Point(477, 0);
 			this->mm_Cr_lbl_top->Name = L"mm_Cr_lbl_top";
-			this->mm_Cr_lbl_top->Size = System::Drawing::Size(55, 25);
+			this->mm_Cr_lbl_top->Size = System::Drawing::Size(73, 31);
 			this->mm_Cr_lbl_top->TabIndex = 21;
 			this->mm_Cr_lbl_top->Text = L"Cr";
 			this->mm_Cr_lbl_top->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_Cu_lbl_top
 			// 
-			this->mm_Cu_lbl_top->Location = System::Drawing::Point(297, 0);
-			this->mm_Cu_lbl_top->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Cu_lbl_top->Location = System::Drawing::Point(398, 0);
 			this->mm_Cu_lbl_top->Name = L"mm_Cu_lbl_top";
-			this->mm_Cu_lbl_top->Size = System::Drawing::Size(55, 25);
+			this->mm_Cu_lbl_top->Size = System::Drawing::Size(73, 31);
 			this->mm_Cu_lbl_top->TabIndex = 20;
 			this->mm_Cu_lbl_top->Text = L"Cu";
 			this->mm_Cu_lbl_top->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_S_lbl_top
 			// 
-			this->mm_S_lbl_top->Location = System::Drawing::Point(238, 0);
-			this->mm_S_lbl_top->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_S_lbl_top->Location = System::Drawing::Point(319, 0);
 			this->mm_S_lbl_top->Name = L"mm_S_lbl_top";
-			this->mm_S_lbl_top->Size = System::Drawing::Size(55, 25);
+			this->mm_S_lbl_top->Size = System::Drawing::Size(73, 31);
 			this->mm_S_lbl_top->TabIndex = 19;
 			this->mm_S_lbl_top->Text = L"S";
 			this->mm_S_lbl_top->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_P_lbl_top
 			// 
-			this->mm_P_lbl_top->Location = System::Drawing::Point(179, 0);
-			this->mm_P_lbl_top->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_P_lbl_top->Location = System::Drawing::Point(240, 0);
 			this->mm_P_lbl_top->Name = L"mm_P_lbl_top";
-			this->mm_P_lbl_top->Size = System::Drawing::Size(55, 25);
+			this->mm_P_lbl_top->Size = System::Drawing::Size(73, 31);
 			this->mm_P_lbl_top->TabIndex = 18;
 			this->mm_P_lbl_top->Text = L"P";
 			this->mm_P_lbl_top->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_Mn_lbl_top
 			// 
-			this->mm_Mn_lbl_top->Location = System::Drawing::Point(120, 0);
-			this->mm_Mn_lbl_top->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Mn_lbl_top->Location = System::Drawing::Point(161, 0);
 			this->mm_Mn_lbl_top->Name = L"mm_Mn_lbl_top";
-			this->mm_Mn_lbl_top->Size = System::Drawing::Size(55, 25);
+			this->mm_Mn_lbl_top->Size = System::Drawing::Size(73, 31);
 			this->mm_Mn_lbl_top->TabIndex = 17;
 			this->mm_Mn_lbl_top->Text = L"Mn";
 			this->mm_Mn_lbl_top->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_Si_lbl_top
 			// 
-			this->mm_Si_lbl_top->Location = System::Drawing::Point(61, 0);
-			this->mm_Si_lbl_top->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Si_lbl_top->Location = System::Drawing::Point(82, 0);
 			this->mm_Si_lbl_top->Name = L"mm_Si_lbl_top";
-			this->mm_Si_lbl_top->Size = System::Drawing::Size(55, 25);
+			this->mm_Si_lbl_top->Size = System::Drawing::Size(73, 31);
 			this->mm_Si_lbl_top->TabIndex = 16;
 			this->mm_Si_lbl_top->Text = L"Si";
 			this->mm_Si_lbl_top->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_C_lbl_top
 			// 
-			this->mm_C_lbl_top->Location = System::Drawing::Point(2, 0);
-			this->mm_C_lbl_top->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_C_lbl_top->Location = System::Drawing::Point(3, 0);
 			this->mm_C_lbl_top->Name = L"mm_C_lbl_top";
-			this->mm_C_lbl_top->Size = System::Drawing::Size(55, 25);
+			this->mm_C_lbl_top->Size = System::Drawing::Size(73, 31);
 			this->mm_C_lbl_top->TabIndex = 0;
 			this->mm_C_lbl_top->Text = L"C";
 			this->mm_C_lbl_top->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -2037,14 +2044,14 @@ namespace MetalCalculator
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->mm_C_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_C_TB->Location = System::Drawing::Point(2, 29);
-			this->mm_C_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->mm_C_TB->MaximumSize = System::Drawing::Size(55, 47);
+			this->mm_C_TB->Location = System::Drawing::Point(3, 37);
+			this->mm_C_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_C_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->mm_C_TB->MaxLength = 10;
-			this->mm_C_TB->MinimumSize = System::Drawing::Size(55, 47);
+			this->mm_C_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->mm_C_TB->Multiline = true;
 			this->mm_C_TB->Name = L"mm_C_TB";
-			this->mm_C_TB->Size = System::Drawing::Size(55, 47);
+			this->mm_C_TB->Size = System::Drawing::Size(73, 57);
 			this->mm_C_TB->TabIndex = 8;
 			this->mm_C_TB->Text = L"0,26";
 			this->mm_C_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -2054,10 +2061,10 @@ namespace MetalCalculator
 			this->mm_panel3->BackColor = System::Drawing::Color::Maroon;
 			this->mm_panel3->Controls->Add(this->mm_chemicalCompositionGoal_lbl);
 			this->mm_panel3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_panel3->Location = System::Drawing::Point(2, 80);
-			this->mm_panel3->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->mm_panel3->Location = System::Drawing::Point(3, 99);
+			this->mm_panel3->Margin = System::Windows::Forms::Padding(3, 1, 3, 1);
 			this->mm_panel3->Name = L"mm_panel3";
-			this->mm_panel3->Size = System::Drawing::Size(198, 78);
+			this->mm_panel3->Size = System::Drawing::Size(264, 96);
 			this->mm_panel3->TabIndex = 2;
 			// 
 			// mm_chemicalCompositionGoal_lbl
@@ -2070,9 +2077,8 @@ namespace MetalCalculator
 			this->mm_chemicalCompositionGoal_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->mm_chemicalCompositionGoal_lbl->Location = System::Drawing::Point(0, 0);
-			this->mm_chemicalCompositionGoal_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->mm_chemicalCompositionGoal_lbl->Name = L"mm_chemicalCompositionGoal_lbl";
-			this->mm_chemicalCompositionGoal_lbl->Size = System::Drawing::Size(198, 78);
+			this->mm_chemicalCompositionGoal_lbl->Size = System::Drawing::Size(264, 96);
 			this->mm_chemicalCompositionGoal_lbl->TabIndex = 0;
 			this->mm_chemicalCompositionGoal_lbl->Text = L"Цільовий хімічний \nсклад металу, %";
 			this->mm_chemicalCompositionGoal_lbl->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -2083,10 +2089,10 @@ namespace MetalCalculator
 				static_cast<System::Int32>(static_cast<System::Byte>(231)));
 			this->mm_panel4->Controls->Add(this->HimSklad_Goal_TablePanel);
 			this->mm_panel4->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_panel4->Location = System::Drawing::Point(204, 80);
-			this->mm_panel4->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->mm_panel4->Location = System::Drawing::Point(273, 99);
+			this->mm_panel4->Margin = System::Windows::Forms::Padding(3, 1, 3, 1);
 			this->mm_panel4->Name = L"mm_panel4";
-			this->mm_panel4->Size = System::Drawing::Size(477, 78);
+			this->mm_panel4->Size = System::Drawing::Size(635, 96);
 			this->mm_panel4->TabIndex = 3;
 			// 
 			// HimSklad_Goal_TablePanel
@@ -2126,14 +2132,14 @@ namespace MetalCalculator
 			this->HimSklad_Goal_TablePanel->Controls->Add(this->mm_C_lbl_btm, 0, 0);
 			this->HimSklad_Goal_TablePanel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->HimSklad_Goal_TablePanel->Location = System::Drawing::Point(0, 0);
-			this->HimSklad_Goal_TablePanel->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->HimSklad_Goal_TablePanel->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->HimSklad_Goal_TablePanel->Name = L"HimSklad_Goal_TablePanel";
 			this->HimSklad_Goal_TablePanel->RowCount = 2;
 			this->HimSklad_Goal_TablePanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
 				100)));
 			this->HimSklad_Goal_TablePanel->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute,
-				52)));
-			this->HimSklad_Goal_TablePanel->Size = System::Drawing::Size(477, 78);
+				64)));
+			this->HimSklad_Goal_TablePanel->Size = System::Drawing::Size(635, 96);
 			this->HimSklad_Goal_TablePanel->TabIndex = 0;
 			// 
 			// Ni_Goal_TB
@@ -2144,15 +2150,15 @@ namespace MetalCalculator
 			this->Ni_Goal_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->Ni_Goal_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->Ni_Goal_TB->Location = System::Drawing::Point(415, 29);
-			this->Ni_Goal_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->Ni_Goal_TB->MaximumSize = System::Drawing::Size(55, 46);
+			this->Ni_Goal_TB->Location = System::Drawing::Point(556, 36);
+			this->Ni_Goal_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->Ni_Goal_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->Ni_Goal_TB->MaxLength = 10;
-			this->Ni_Goal_TB->MinimumSize = System::Drawing::Size(55, 46);
+			this->Ni_Goal_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->Ni_Goal_TB->Multiline = true;
 			this->Ni_Goal_TB->Name = L"Ni_Goal_TB";
 			this->Ni_Goal_TB->ReadOnly = true;
-			this->Ni_Goal_TB->Size = System::Drawing::Size(55, 46);
+			this->Ni_Goal_TB->Size = System::Drawing::Size(73, 57);
 			this->Ni_Goal_TB->TabIndex = 30;
 			this->Ni_Goal_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -2164,15 +2170,15 @@ namespace MetalCalculator
 			this->Cr_Goal_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->Cr_Goal_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->Cr_Goal_TB->Location = System::Drawing::Point(356, 29);
-			this->Cr_Goal_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->Cr_Goal_TB->MaximumSize = System::Drawing::Size(55, 46);
+			this->Cr_Goal_TB->Location = System::Drawing::Point(477, 36);
+			this->Cr_Goal_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->Cr_Goal_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->Cr_Goal_TB->MaxLength = 10;
-			this->Cr_Goal_TB->MinimumSize = System::Drawing::Size(55, 46);
+			this->Cr_Goal_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->Cr_Goal_TB->Multiline = true;
 			this->Cr_Goal_TB->Name = L"Cr_Goal_TB";
 			this->Cr_Goal_TB->ReadOnly = true;
-			this->Cr_Goal_TB->Size = System::Drawing::Size(55, 46);
+			this->Cr_Goal_TB->Size = System::Drawing::Size(73, 57);
 			this->Cr_Goal_TB->TabIndex = 29;
 			this->Cr_Goal_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -2184,15 +2190,15 @@ namespace MetalCalculator
 			this->Cu_Goal_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->Cu_Goal_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->Cu_Goal_TB->Location = System::Drawing::Point(297, 29);
-			this->Cu_Goal_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->Cu_Goal_TB->MaximumSize = System::Drawing::Size(55, 46);
+			this->Cu_Goal_TB->Location = System::Drawing::Point(398, 36);
+			this->Cu_Goal_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->Cu_Goal_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->Cu_Goal_TB->MaxLength = 10;
-			this->Cu_Goal_TB->MinimumSize = System::Drawing::Size(55, 46);
+			this->Cu_Goal_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->Cu_Goal_TB->Multiline = true;
 			this->Cu_Goal_TB->Name = L"Cu_Goal_TB";
 			this->Cu_Goal_TB->ReadOnly = true;
-			this->Cu_Goal_TB->Size = System::Drawing::Size(55, 46);
+			this->Cu_Goal_TB->Size = System::Drawing::Size(73, 57);
 			this->Cu_Goal_TB->TabIndex = 28;
 			this->Cu_Goal_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -2204,15 +2210,15 @@ namespace MetalCalculator
 			this->S_Goal_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->S_Goal_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->S_Goal_TB->Location = System::Drawing::Point(238, 29);
-			this->S_Goal_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->S_Goal_TB->MaximumSize = System::Drawing::Size(55, 46);
+			this->S_Goal_TB->Location = System::Drawing::Point(319, 36);
+			this->S_Goal_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->S_Goal_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->S_Goal_TB->MaxLength = 10;
-			this->S_Goal_TB->MinimumSize = System::Drawing::Size(55, 46);
+			this->S_Goal_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->S_Goal_TB->Multiline = true;
 			this->S_Goal_TB->Name = L"S_Goal_TB";
 			this->S_Goal_TB->ReadOnly = true;
-			this->S_Goal_TB->Size = System::Drawing::Size(55, 46);
+			this->S_Goal_TB->Size = System::Drawing::Size(73, 57);
 			this->S_Goal_TB->TabIndex = 27;
 			this->S_Goal_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -2224,15 +2230,15 @@ namespace MetalCalculator
 			this->P_Goal_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->P_Goal_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->P_Goal_TB->Location = System::Drawing::Point(179, 29);
-			this->P_Goal_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->P_Goal_TB->MaximumSize = System::Drawing::Size(55, 46);
+			this->P_Goal_TB->Location = System::Drawing::Point(240, 36);
+			this->P_Goal_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->P_Goal_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->P_Goal_TB->MaxLength = 10;
-			this->P_Goal_TB->MinimumSize = System::Drawing::Size(55, 46);
+			this->P_Goal_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->P_Goal_TB->Multiline = true;
 			this->P_Goal_TB->Name = L"P_Goal_TB";
 			this->P_Goal_TB->ReadOnly = true;
-			this->P_Goal_TB->Size = System::Drawing::Size(55, 46);
+			this->P_Goal_TB->Size = System::Drawing::Size(73, 57);
 			this->P_Goal_TB->TabIndex = 26;
 			this->P_Goal_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -2244,15 +2250,15 @@ namespace MetalCalculator
 			this->Mn_Goal_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->Mn_Goal_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->Mn_Goal_TB->Location = System::Drawing::Point(120, 29);
-			this->Mn_Goal_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->Mn_Goal_TB->MaximumSize = System::Drawing::Size(55, 46);
+			this->Mn_Goal_TB->Location = System::Drawing::Point(161, 36);
+			this->Mn_Goal_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->Mn_Goal_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->Mn_Goal_TB->MaxLength = 10;
-			this->Mn_Goal_TB->MinimumSize = System::Drawing::Size(55, 46);
+			this->Mn_Goal_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->Mn_Goal_TB->Multiline = true;
 			this->Mn_Goal_TB->Name = L"Mn_Goal_TB";
 			this->Mn_Goal_TB->ReadOnly = true;
-			this->Mn_Goal_TB->Size = System::Drawing::Size(55, 46);
+			this->Mn_Goal_TB->Size = System::Drawing::Size(73, 57);
 			this->Mn_Goal_TB->TabIndex = 25;
 			this->Mn_Goal_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
@@ -2264,84 +2270,77 @@ namespace MetalCalculator
 			this->Si_Goal_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->Si_Goal_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->Si_Goal_TB->Location = System::Drawing::Point(61, 29);
-			this->Si_Goal_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->Si_Goal_TB->MaximumSize = System::Drawing::Size(55, 46);
+			this->Si_Goal_TB->Location = System::Drawing::Point(82, 36);
+			this->Si_Goal_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->Si_Goal_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->Si_Goal_TB->MaxLength = 10;
-			this->Si_Goal_TB->MinimumSize = System::Drawing::Size(55, 46);
+			this->Si_Goal_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->Si_Goal_TB->Multiline = true;
 			this->Si_Goal_TB->Name = L"Si_Goal_TB";
 			this->Si_Goal_TB->ReadOnly = true;
-			this->Si_Goal_TB->Size = System::Drawing::Size(55, 46);
+			this->Si_Goal_TB->Size = System::Drawing::Size(73, 57);
 			this->Si_Goal_TB->TabIndex = 24;
 			this->Si_Goal_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_Ni_lbl_btm
 			// 
-			this->mm_Ni_lbl_btm->Location = System::Drawing::Point(415, 0);
-			this->mm_Ni_lbl_btm->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Ni_lbl_btm->Location = System::Drawing::Point(556, 0);
 			this->mm_Ni_lbl_btm->Name = L"mm_Ni_lbl_btm";
-			this->mm_Ni_lbl_btm->Size = System::Drawing::Size(55, 25);
+			this->mm_Ni_lbl_btm->Size = System::Drawing::Size(73, 31);
 			this->mm_Ni_lbl_btm->TabIndex = 23;
 			this->mm_Ni_lbl_btm->Text = L"Ni";
 			this->mm_Ni_lbl_btm->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_Cr_lbl_btm
 			// 
-			this->mm_Cr_lbl_btm->Location = System::Drawing::Point(356, 0);
-			this->mm_Cr_lbl_btm->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Cr_lbl_btm->Location = System::Drawing::Point(477, 0);
 			this->mm_Cr_lbl_btm->Name = L"mm_Cr_lbl_btm";
-			this->mm_Cr_lbl_btm->Size = System::Drawing::Size(55, 25);
+			this->mm_Cr_lbl_btm->Size = System::Drawing::Size(73, 31);
 			this->mm_Cr_lbl_btm->TabIndex = 22;
 			this->mm_Cr_lbl_btm->Text = L"Cr";
 			this->mm_Cr_lbl_btm->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_Cu_lbl_btm
 			// 
-			this->mm_Cu_lbl_btm->Location = System::Drawing::Point(297, 0);
-			this->mm_Cu_lbl_btm->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Cu_lbl_btm->Location = System::Drawing::Point(398, 0);
 			this->mm_Cu_lbl_btm->Name = L"mm_Cu_lbl_btm";
-			this->mm_Cu_lbl_btm->Size = System::Drawing::Size(55, 25);
+			this->mm_Cu_lbl_btm->Size = System::Drawing::Size(73, 31);
 			this->mm_Cu_lbl_btm->TabIndex = 21;
 			this->mm_Cu_lbl_btm->Text = L"Cu";
 			this->mm_Cu_lbl_btm->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_S_lbl_btm
 			// 
-			this->mm_S_lbl_btm->Location = System::Drawing::Point(238, 0);
-			this->mm_S_lbl_btm->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_S_lbl_btm->Location = System::Drawing::Point(319, 0);
 			this->mm_S_lbl_btm->Name = L"mm_S_lbl_btm";
-			this->mm_S_lbl_btm->Size = System::Drawing::Size(55, 25);
+			this->mm_S_lbl_btm->Size = System::Drawing::Size(73, 31);
 			this->mm_S_lbl_btm->TabIndex = 20;
 			this->mm_S_lbl_btm->Text = L"S";
 			this->mm_S_lbl_btm->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_P_lbl_btm
 			// 
-			this->mm_P_lbl_btm->Location = System::Drawing::Point(179, 0);
-			this->mm_P_lbl_btm->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_P_lbl_btm->Location = System::Drawing::Point(240, 0);
 			this->mm_P_lbl_btm->Name = L"mm_P_lbl_btm";
-			this->mm_P_lbl_btm->Size = System::Drawing::Size(55, 25);
+			this->mm_P_lbl_btm->Size = System::Drawing::Size(73, 31);
 			this->mm_P_lbl_btm->TabIndex = 19;
 			this->mm_P_lbl_btm->Text = L"P";
 			this->mm_P_lbl_btm->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_Mn_lbl_btm
 			// 
-			this->mm_Mn_lbl_btm->Location = System::Drawing::Point(120, 0);
-			this->mm_Mn_lbl_btm->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Mn_lbl_btm->Location = System::Drawing::Point(161, 0);
 			this->mm_Mn_lbl_btm->Name = L"mm_Mn_lbl_btm";
-			this->mm_Mn_lbl_btm->Size = System::Drawing::Size(55, 25);
+			this->mm_Mn_lbl_btm->Size = System::Drawing::Size(73, 31);
 			this->mm_Mn_lbl_btm->TabIndex = 18;
 			this->mm_Mn_lbl_btm->Text = L"Mn";
 			this->mm_Mn_lbl_btm->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_Si_lbl_btm
 			// 
-			this->mm_Si_lbl_btm->Location = System::Drawing::Point(61, 0);
-			this->mm_Si_lbl_btm->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_Si_lbl_btm->Location = System::Drawing::Point(82, 0);
 			this->mm_Si_lbl_btm->Name = L"mm_Si_lbl_btm";
-			this->mm_Si_lbl_btm->Size = System::Drawing::Size(55, 25);
+			this->mm_Si_lbl_btm->Size = System::Drawing::Size(73, 31);
 			this->mm_Si_lbl_btm->TabIndex = 17;
 			this->mm_Si_lbl_btm->Text = L"Si";
 			this->mm_Si_lbl_btm->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -2354,41 +2353,40 @@ namespace MetalCalculator
 			this->C_Goal_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
 				static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->C_Goal_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->C_Goal_TB->Location = System::Drawing::Point(2, 29);
-			this->C_Goal_TB->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->C_Goal_TB->MaximumSize = System::Drawing::Size(55, 46);
+			this->C_Goal_TB->Location = System::Drawing::Point(3, 36);
+			this->C_Goal_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->C_Goal_TB->MaximumSize = System::Drawing::Size(73, 57);
 			this->C_Goal_TB->MaxLength = 10;
-			this->C_Goal_TB->MinimumSize = System::Drawing::Size(55, 46);
+			this->C_Goal_TB->MinimumSize = System::Drawing::Size(73, 57);
 			this->C_Goal_TB->Multiline = true;
 			this->C_Goal_TB->Name = L"C_Goal_TB";
 			this->C_Goal_TB->ReadOnly = true;
-			this->C_Goal_TB->Size = System::Drawing::Size(55, 46);
+			this->C_Goal_TB->Size = System::Drawing::Size(73, 57);
 			this->C_Goal_TB->TabIndex = 9;
 			this->C_Goal_TB->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// mm_C_lbl_btm
 			// 
-			this->mm_C_lbl_btm->Location = System::Drawing::Point(2, 0);
-			this->mm_C_lbl_btm->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->mm_C_lbl_btm->Location = System::Drawing::Point(3, 0);
 			this->mm_C_lbl_btm->Name = L"mm_C_lbl_btm";
-			this->mm_C_lbl_btm->Size = System::Drawing::Size(55, 25);
+			this->mm_C_lbl_btm->Size = System::Drawing::Size(73, 31);
 			this->mm_C_lbl_btm->TabIndex = 1;
 			this->mm_C_lbl_btm->Text = L"C";
 			this->mm_C_lbl_btm->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// MainForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(231)), static_cast<System::Int32>(static_cast<System::Byte>(231)),
 				static_cast<System::Int32>(static_cast<System::Byte>(231)));
-			this->ClientSize = System::Drawing::Size(683, 499);
+			this->ClientSize = System::Drawing::Size(911, 614);
 			this->Controls->Add(this->parentPanel);
 			this->Controls->Add(this->topPanel);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
-			this->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->MinimumSize = System::Drawing::Size(688, 513);
+			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->MinimumSize = System::Drawing::Size(910, 620);
 			this->Name = L"MainForm";
 			this->Text = L"MetalCalculator";
 			this->topPanel->ResumeLayout(false);

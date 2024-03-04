@@ -31,9 +31,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\logo.png" />
+    <Image Include="panel1.BackgroundImage.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="subforms\CreateMetal.resx" />
     <EmbeddedResource Include="subforms\SelectMetal.resx" />
   </ItemGroup>
   <ItemGroup>

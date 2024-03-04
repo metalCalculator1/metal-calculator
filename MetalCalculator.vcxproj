@@ -172,7 +172,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="subforms\CreateMetal.resx" />
+    <EmbeddedResource Include="subforms\CreateMetal.resx">
+      <DependentUpon>subforms\CreateMetal.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="subforms\DeleteMetal.resx">
       <DependentUpon>subforms\DeleteMetal.h</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +184,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="panel1.BackgroundImage.png" />
     <Image Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
