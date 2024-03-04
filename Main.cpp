@@ -29,5 +29,4 @@ void main(array<String^>^ args)
 	Application::SetCompatibleTextRenderingDefault(false);
 
 	Application::Run(gcnew MetalCalculator::MainForm);
-	// Application::Run(gcnew MetalCalculator::SelectMetal);
 }

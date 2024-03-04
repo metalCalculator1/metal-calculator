@@ -8,6 +8,7 @@
 #include <libpq-fe.h>
 #include <msclr\marshal_cppstd.h>
 #include "StringConverter.h"
+#include "support/MetalManager.h"
 
 
 namespace MetalCalculator
@@ -62,6 +63,7 @@ namespace MetalCalculator
 			hm_data_grid->Columns[2]->AutoSizeMode = DataGridViewAutoSizeColumnMode::ColumnHeader;
 
 			mm_meltingID_TB->Text = "0";
+			hm_metal_type_selector->SelectedIndex = 0;
 		}
 
 	private:
@@ -90,7 +92,9 @@ namespace MetalCalculator
 
 	private: System::Windows::Forms::Label^ hm_filters_layout;
 	private: System::Windows::Forms::Button^ hm_filters_reset;
-	private: System::Windows::Forms::Button^ hm_date_select;
+
+
+
 	private: System::Windows::Forms::Button^ hm_plavka_id;
 	private: System::Windows::Forms::Button^ hm_alloy_select;
 	private: System::Windows::Forms::DataGridView^ hm_data_grid;
@@ -99,6 +103,19 @@ namespace MetalCalculator
 
 	private: System::Windows::Forms::Button^ hm_previous_page;
 	private: System::Windows::Forms::TextBox^ hm_filter_field;
+	private: System::Windows::Forms::DateTimePicker^ startDatePicker;
+	private: System::Windows::Forms::DateTimePicker^ startTimePicker;
+	private: System::Windows::Forms::DateTimePicker^ endTimePicker;
+
+
+
+
+	private: System::Windows::Forms::DateTimePicker^ endDatePicker;
+	private: System::Windows::Forms::ComboBox^ hm_metal_type_selector;
+
+
+
+
 
 		   float metalMass = 3120.f;
 
@@ -267,10 +284,14 @@ namespace MetalCalculator
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->hm_button_table_layout = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->hm_filters_reset = (gcnew System::Windows::Forms::Button());
-			this->hm_date_select = (gcnew System::Windows::Forms::Button());
 			this->hm_plavka_id = (gcnew System::Windows::Forms::Button());
 			this->hm_alloy_select = (gcnew System::Windows::Forms::Button());
+			this->hm_metal_type_selector = (gcnew System::Windows::Forms::ComboBox());
 			this->hm_filters_panel = (gcnew System::Windows::Forms::Panel());
+			this->startTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
+			this->endTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
+			this->startDatePicker = (gcnew System::Windows::Forms::DateTimePicker());
+			this->endDatePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->hm_filter_field = (gcnew System::Windows::Forms::TextBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->hm_next_page = (gcnew System::Windows::Forms::Button());
@@ -557,11 +578,12 @@ namespace MetalCalculator
 				static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)));
 			this->hm_data_grid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->hm_data_grid->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->hm_data_grid->Location = System::Drawing::Point(0, 124);
+			this->hm_data_grid->Location = System::Drawing::Point(0, 123);
+			this->hm_data_grid->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_data_grid->Name = L"hm_data_grid";
 			this->hm_data_grid->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders;
 			this->hm_data_grid->RowTemplate->Height = 24;
-			this->hm_data_grid->Size = System::Drawing::Size(911, 420);
+			this->hm_data_grid->Size = System::Drawing::Size(911, 421);
 			this->hm_data_grid->TabIndex = 3;
 			this->hm_data_grid->VirtualMode = true;
 			// 
@@ -569,7 +591,8 @@ namespace MetalCalculator
 			// 
 			this->panel2->Controls->Add(this->hm_button_table_layout);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panel2->Location = System::Drawing::Point(0, 67);
+			this->panel2->Location = System::Drawing::Point(0, 66);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(911, 57);
 			this->panel2->TabIndex = 1;
@@ -586,11 +609,12 @@ namespace MetalCalculator
 			this->hm_button_table_layout->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				25)));
 			this->hm_button_table_layout->Controls->Add(this->hm_filters_reset, 3, 0);
-			this->hm_button_table_layout->Controls->Add(this->hm_date_select, 2, 0);
 			this->hm_button_table_layout->Controls->Add(this->hm_plavka_id, 0, 0);
 			this->hm_button_table_layout->Controls->Add(this->hm_alloy_select, 1, 0);
+			this->hm_button_table_layout->Controls->Add(this->hm_metal_type_selector, 2, 0);
 			this->hm_button_table_layout->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_button_table_layout->Location = System::Drawing::Point(0, 0);
+			this->hm_button_table_layout->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_button_table_layout->Name = L"hm_button_table_layout";
 			this->hm_button_table_layout->RowCount = 1;
 			this->hm_button_table_layout->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -603,35 +627,24 @@ namespace MetalCalculator
 			this->hm_filters_reset->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_filters_reset->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->hm_filters_reset->Location = System::Drawing::Point(684, 3);
+			this->hm_filters_reset->Location = System::Drawing::Point(684, 2);
+			this->hm_filters_reset->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_filters_reset->Name = L"hm_filters_reset";
-			this->hm_filters_reset->Size = System::Drawing::Size(224, 51);
+			this->hm_filters_reset->Size = System::Drawing::Size(224, 53);
 			this->hm_filters_reset->TabIndex = 3;
 			this->hm_filters_reset->Text = L"Скинути Фільтри";
 			this->hm_filters_reset->UseVisualStyleBackColor = true;
 			this->hm_filters_reset->Click += gcnew System::EventHandler(this, &MainForm::hm_filters_reset_Click);
-			// 
-			// hm_date_select
-			// 
-			this->hm_date_select->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->hm_date_select->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->hm_date_select->Location = System::Drawing::Point(457, 3);
-			this->hm_date_select->Name = L"hm_date_select";
-			this->hm_date_select->Size = System::Drawing::Size(221, 51);
-			this->hm_date_select->TabIndex = 2;
-			this->hm_date_select->Text = L"Вибір Дати";
-			this->hm_date_select->UseVisualStyleBackColor = true;
-			this->hm_date_select->Click += gcnew System::EventHandler(this, &MainForm::hm_date_select_Click);
 			// 
 			// hm_plavka_id
 			// 
 			this->hm_plavka_id->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_plavka_id->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->hm_plavka_id->Location = System::Drawing::Point(3, 3);
+			this->hm_plavka_id->Location = System::Drawing::Point(3, 2);
+			this->hm_plavka_id->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_plavka_id->Name = L"hm_plavka_id";
-			this->hm_plavka_id->Size = System::Drawing::Size(221, 51);
+			this->hm_plavka_id->Size = System::Drawing::Size(221, 53);
 			this->hm_plavka_id->TabIndex = 0;
 			this->hm_plavka_id->Text = L"Номер Плавки";
 			this->hm_plavka_id->UseVisualStyleBackColor = true;
@@ -642,28 +655,91 @@ namespace MetalCalculator
 			this->hm_alloy_select->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->hm_alloy_select->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->hm_alloy_select->Location = System::Drawing::Point(230, 3);
+			this->hm_alloy_select->Location = System::Drawing::Point(230, 2);
+			this->hm_alloy_select->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_alloy_select->Name = L"hm_alloy_select";
-			this->hm_alloy_select->Size = System::Drawing::Size(221, 51);
+			this->hm_alloy_select->Size = System::Drawing::Size(221, 53);
 			this->hm_alloy_select->TabIndex = 1;
 			this->hm_alloy_select->Text = L"Вибір Сплаву";
 			this->hm_alloy_select->UseVisualStyleBackColor = true;
 			this->hm_alloy_select->Click += gcnew System::EventHandler(this, &MainForm::hm_alloy_select_Click);
 			// 
+			// hm_metal_type_selector
+			// 
+			this->hm_metal_type_selector->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->hm_metal_type_selector->FormattingEnabled = true;
+			this->hm_metal_type_selector->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Всі", L"Сталь", L"Чавун" });
+			this->hm_metal_type_selector->Location = System::Drawing::Point(458, 4);
+			this->hm_metal_type_selector->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->hm_metal_type_selector->Name = L"hm_metal_type_selector";
+			this->hm_metal_type_selector->Size = System::Drawing::Size(219, 24);
+			this->hm_metal_type_selector->TabIndex = 4;
+			this->hm_metal_type_selector->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::hm_metal_type_selector_SelectedIndexChanged);
+			// 
 			// hm_filters_panel
 			// 
+			this->hm_filters_panel->Controls->Add(this->startTimePicker);
+			this->hm_filters_panel->Controls->Add(this->endTimePicker);
+			this->hm_filters_panel->Controls->Add(this->startDatePicker);
+			this->hm_filters_panel->Controls->Add(this->endDatePicker);
 			this->hm_filters_panel->Controls->Add(this->hm_filter_field);
 			this->hm_filters_panel->Controls->Add(this->panel1);
 			this->hm_filters_panel->Controls->Add(this->hm_filters_layout);
 			this->hm_filters_panel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->hm_filters_panel->Location = System::Drawing::Point(0, 0);
+			this->hm_filters_panel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_filters_panel->Name = L"hm_filters_panel";
-			this->hm_filters_panel->Size = System::Drawing::Size(911, 67);
+			this->hm_filters_panel->Size = System::Drawing::Size(911, 66);
 			this->hm_filters_panel->TabIndex = 0;
+			// 
+			// startTimePicker
+			// 
+			this->startTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Time;
+			this->startTimePicker->Location = System::Drawing::Point(193, 2);
+			this->startTimePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->startTimePicker->Name = L"startTimePicker";
+			this->startTimePicker->ShowUpDown = true;
+			this->startTimePicker->Size = System::Drawing::Size(149, 22);
+			this->startTimePicker->TabIndex = 7;
+			this->startTimePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
+			// 
+			// endTimePicker
+			// 
+			this->endTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Time;
+			this->endTimePicker->Location = System::Drawing::Point(760, 4);
+			this->endTimePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->endTimePicker->Name = L"endTimePicker";
+			this->endTimePicker->ShowUpDown = true;
+			this->endTimePicker->Size = System::Drawing::Size(149, 22);
+			this->endTimePicker->TabIndex = 9;
+			this->endTimePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
+			// 
+			// startDatePicker
+			// 
+			this->startDatePicker->Location = System::Drawing::Point(3, 2);
+			this->startDatePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->startDatePicker->MaxDate = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
+			this->startDatePicker->Name = L"startDatePicker";
+			this->startDatePicker->Size = System::Drawing::Size(181, 22);
+			this->startDatePicker->TabIndex = 6;
+			this->startDatePicker->Value = System::DateTime(2024, 3, 1, 0, 0, 0, 0);
+			this->startDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
+			// 
+			// endDatePicker
+			// 
+			this->endDatePicker->Location = System::Drawing::Point(571, 2);
+			this->endDatePicker->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->endDatePicker->MaxDate = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
+			this->endDatePicker->Name = L"endDatePicker";
+			this->endDatePicker->Size = System::Drawing::Size(181, 22);
+			this->endDatePicker->TabIndex = 8;
+			this->endDatePicker->Value = System::DateTime(2024, 3, 2, 0, 0, 0, 0);
+			this->endDatePicker->ValueChanged += gcnew System::EventHandler(this, &MainForm::dateTimePicker_ValueChanged);
 			// 
 			// hm_filter_field
 			// 
-			this->hm_filter_field->Location = System::Drawing::Point(4, 40);
+			this->hm_filter_field->Location = System::Drawing::Point(4, 39);
+			this->hm_filter_field->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_filter_field->Name = L"hm_filter_field";
 			this->hm_filter_field->Size = System::Drawing::Size(220, 22);
 			this->hm_filter_field->TabIndex = 5;
@@ -672,18 +748,20 @@ namespace MetalCalculator
 			// 
 			this->panel1->Controls->Add(this->hm_next_page);
 			this->panel1->Controls->Add(this->hm_previous_page);
-			this->panel1->Location = System::Drawing::Point(684, 35);
+			this->panel1->Location = System::Drawing::Point(684, 34);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Padding = System::Windows::Forms::Padding(3);
-			this->panel1->Size = System::Drawing::Size(223, 35);
+			this->panel1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel1->Size = System::Drawing::Size(223, 34);
 			this->panel1->TabIndex = 4;
 			// 
 			// hm_next_page
 			// 
 			this->hm_next_page->Dock = System::Windows::Forms::DockStyle::Right;
-			this->hm_next_page->Location = System::Drawing::Point(118, 3);
+			this->hm_next_page->Location = System::Drawing::Point(119, 2);
+			this->hm_next_page->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_next_page->Name = L"hm_next_page";
-			this->hm_next_page->Size = System::Drawing::Size(102, 29);
+			this->hm_next_page->Size = System::Drawing::Size(101, 30);
 			this->hm_next_page->TabIndex = 1;
 			this->hm_next_page->Text = L"Наступна";
 			this->hm_next_page->UseVisualStyleBackColor = true;
@@ -692,9 +770,10 @@ namespace MetalCalculator
 			// hm_previous_page
 			// 
 			this->hm_previous_page->Dock = System::Windows::Forms::DockStyle::Left;
-			this->hm_previous_page->Location = System::Drawing::Point(3, 3);
+			this->hm_previous_page->Location = System::Drawing::Point(3, 2);
+			this->hm_previous_page->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->hm_previous_page->Name = L"hm_previous_page";
-			this->hm_previous_page->Size = System::Drawing::Size(109, 29);
+			this->hm_previous_page->Size = System::Drawing::Size(109, 30);
 			this->hm_previous_page->TabIndex = 0;
 			this->hm_previous_page->Text = L"Попередня";
 			this->hm_previous_page->UseVisualStyleBackColor = true;
@@ -706,7 +785,7 @@ namespace MetalCalculator
 				static_cast<System::Byte>(204)));
 			this->hm_filters_layout->Location = System::Drawing::Point(-1, 1);
 			this->hm_filters_layout->Name = L"hm_filters_layout";
-			this->hm_filters_layout->Size = System::Drawing::Size(912, 56);
+			this->hm_filters_layout->Size = System::Drawing::Size(912, 57);
 			this->hm_filters_layout->TabIndex = 0;
 			this->hm_filters_layout->Text = L"Фільтри";
 			this->hm_filters_layout->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -742,7 +821,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel18->Controls->Add(this->sm_tableLayoutPanel14, 2, 0);
 			this->sm_tableLayoutPanel18->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel18->Location = System::Drawing::Point(0, 385);
-			this->sm_tableLayoutPanel18->Margin = System::Windows::Forms::Padding(4);
+			this->sm_tableLayoutPanel18->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel18->Name = L"sm_tableLayoutPanel18";
 			this->sm_tableLayoutPanel18->RowCount = 1;
 			this->sm_tableLayoutPanel18->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -774,7 +853,7 @@ namespace MetalCalculator
 			// 
 			this->sm_add_mark_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_add_mark_btn->Location = System::Drawing::Point(64, 4);
-			this->sm_add_mark_btn->Margin = System::Windows::Forms::Padding(4);
+			this->sm_add_mark_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_add_mark_btn->Name = L"sm_add_mark_btn";
 			this->sm_add_mark_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_add_mark_btn->TabIndex = 0;
@@ -806,7 +885,7 @@ namespace MetalCalculator
 			// 
 			this->sm_edit_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_edit_btn->Location = System::Drawing::Point(64, 4);
-			this->sm_edit_btn->Margin = System::Windows::Forms::Padding(4);
+			this->sm_edit_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_edit_btn->Name = L"sm_edit_btn";
 			this->sm_edit_btn->Size = System::Drawing::Size(173, 41);
 			this->sm_edit_btn->TabIndex = 0;
@@ -838,7 +917,7 @@ namespace MetalCalculator
 			// 
 			this->sm_delete_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_delete_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_delete_btn->Margin = System::Windows::Forms::Padding(4);
+			this->sm_delete_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_delete_btn->Name = L"sm_delete_btn";
 			this->sm_delete_btn->Size = System::Drawing::Size(175, 41);
 			this->sm_delete_btn->TabIndex = 0;
@@ -854,7 +933,7 @@ namespace MetalCalculator
 			this->tableLayoutPanel9->Controls->Add(this->sm_label12, 0, 0);
 			this->tableLayoutPanel9->Dock = System::Windows::Forms::DockStyle::Top;
 			this->tableLayoutPanel9->Location = System::Drawing::Point(0, 328);
-			this->tableLayoutPanel9->Margin = System::Windows::Forms::Padding(4);
+			this->tableLayoutPanel9->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tableLayoutPanel9->Name = L"tableLayoutPanel9";
 			this->tableLayoutPanel9->RowCount = 1;
 			this->tableLayoutPanel9->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
@@ -888,7 +967,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel5->Controls->Add(this->sm_tableLayoutPanel7, 1, 1);
 			this->sm_tableLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel5->Location = System::Drawing::Point(0, 193);
-			this->sm_tableLayoutPanel5->Margin = System::Windows::Forms::Padding(4);
+			this->sm_tableLayoutPanel5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel5->Name = L"sm_tableLayoutPanel5";
 			this->sm_tableLayoutPanel5->RowCount = 2;
 			this->sm_tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -995,7 +1074,7 @@ namespace MetalCalculator
 			// 
 			this->sm_save_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_save_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_save_btn->Margin = System::Windows::Forms::Padding(4);
+			this->sm_save_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_save_btn->Name = L"sm_save_btn";
 			this->sm_save_btn->Size = System::Drawing::Size(175, 39);
 			this->sm_save_btn->TabIndex = 0;
@@ -1071,7 +1150,7 @@ namespace MetalCalculator
 			// 
 			this->sm_restore_btn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->sm_restore_btn->Location = System::Drawing::Point(65, 4);
-			this->sm_restore_btn->Margin = System::Windows::Forms::Padding(4);
+			this->sm_restore_btn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_restore_btn->Name = L"sm_restore_btn";
 			this->sm_restore_btn->Size = System::Drawing::Size(175, 40);
 			this->sm_restore_btn->TabIndex = 0;
@@ -1092,7 +1171,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel17->Controls->Add(this->sm_tableLayoutPanel4, 1, 0);
 			this->sm_tableLayoutPanel17->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel17->Location = System::Drawing::Point(0, 125);
-			this->sm_tableLayoutPanel17->Margin = System::Windows::Forms::Padding(4);
+			this->sm_tableLayoutPanel17->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel17->Name = L"sm_tableLayoutPanel17";
 			this->sm_tableLayoutPanel17->RowCount = 1;
 			this->sm_tableLayoutPanel17->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1171,7 +1250,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel2->Controls->Add(this->sm_label3, 0, 0);
 			this->sm_tableLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel2->Location = System::Drawing::Point(0, 57);
-			this->sm_tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4);
+			this->sm_tableLayoutPanel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel2->Name = L"sm_tableLayoutPanel2";
 			this->sm_tableLayoutPanel2->RowCount = 1;
 			this->sm_tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1274,7 +1353,7 @@ namespace MetalCalculator
 			this->sm_tableLayoutPanel1->Controls->Add(this->sm_label2, 0, 0);
 			this->sm_tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->sm_tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
-			this->sm_tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4);
+			this->sm_tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->sm_tableLayoutPanel1->Name = L"sm_tableLayoutPanel1";
 			this->sm_tableLayoutPanel1->RowCount = 1;
 			this->sm_tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent,
@@ -1398,7 +1477,7 @@ namespace MetalCalculator
 				static_cast<System::Byte>(204)));
 			this->mm_metalKG_lbl->Location = System::Drawing::Point(3, 0);
 			this->mm_metalKG_lbl->Name = L"mm_metalKG_lbl";
-			this->mm_metalKG_lbl->Size = System::Drawing::Size(169, 40);
+			this->mm_metalKG_lbl->Size = System::Drawing::Size(169, 39);
 			this->mm_metalKG_lbl->TabIndex = 1;
 			this->mm_metalKG_lbl->Text = L"Маса Металу";
 			this->mm_metalKG_lbl->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
@@ -2307,7 +2386,7 @@ namespace MetalCalculator
 			this->Controls->Add(this->topPanel);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
-			this->MinimumSize = System::Drawing::Size(911, 621);
+			this->MinimumSize = System::Drawing::Size(910, 620);
 			this->Name = L"MainForm";
 			this->Text = L"MetalCalculator";
 			this->topPanel->ResumeLayout(false);
@@ -2388,7 +2467,6 @@ namespace MetalCalculator
 		System::Void hm_next_page_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void hm_plavka_id_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void hm_alloy_select_Click(System::Object^ sender, System::EventArgs^ e);
-		System::Void hm_date_select_Click(System::Object^ sender, System::EventArgs^ e);
 		System::Void hm_filters_reset_Click(System::Object^ sender, System::EventArgs^ e);
 
 		// Functions:
@@ -2462,5 +2540,7 @@ namespace MetalCalculator
 			String^ result = String::Format("{0}/{1}/{2}/{3}", FC95, Mn95, FMn78, Vuglecevm);
 			return result;
 		}
-	};
+	private: System::Void dateTimePicker_ValueChanged(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void hm_metal_type_selector_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+};
 }

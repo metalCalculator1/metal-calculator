@@ -72,6 +72,7 @@ namespace MetalCalculator
 	{
 		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
 		selectForm->ShowDialog();
+
 	}
 	System::Void MainForm::hm_previous_page_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -104,34 +105,62 @@ namespace MetalCalculator
 	}
 	System::Void MainForm::hm_alloy_select_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		int metalID;
-		if (Int32::TryParse(hm_filter_field->Text, metalID))
-		{
-			historyData->DefaultView->RowFilter = "[ID Металу] = " + metalID;
-		}
-		else
-		{
-			MessageBox::Show("Введіть коректний номер металу.");
-		}
+		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
+		selectForm->ShowDialog();
+
+		hm_alloy_select->Text = MetalManager::metalModelInstance->name;
+		historyData->DefaultView->RowFilter = "[Назва Металу] LIKE '" + MetalManager::metalModelInstance->name + "%'";
+
+		MetalManager::ClearMetalModel();
 		currentPageIndex = 0;
 		LoadPage();
 	}
-	System::Void MainForm::hm_date_select_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		DateTime dateValue;
-		if (DateTime::TryParse(hm_filter_field->Text, dateValue))
+
+	System::Void MainForm::hm_metal_type_selector_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (!historyData) {
+			return;
+		}
+
+		if (hm_metal_type_selector->Text == "Всі") {
+			historyData->DefaultView->RowFilter = String::Empty;
+		}
+		else {
+			String^ text;
+			if (hm_metal_type_selector->Text == "Сталь") {
+				text = "steel";
+			}
+			else {
+				text = "cast_iron";
+			}
+			historyData->DefaultView->RowFilter = "[Тип Металу] LIKE '" + text + "%'";
+		}
+
+		currentPageIndex = 0;
+		LoadPage();
+	}
+
+
+	System::Void MainForm::dateTimePicker_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+		DateTime startDate = startDatePicker->Value.Date + startTimePicker->Value.TimeOfDay;
+		DateTime endDate = endDatePicker->Value.Date + endTimePicker->Value.TimeOfDay;
+
+		if (startDate <= endDate)
 		{
-			String^ formattedDate = dateValue.ToString("yyyy-MM-dd"); // Ensure format matches your DataTable
-			String^ filterExpression = "[Дата] LIKE '" + formattedDate + "%'";
+			String^ formattedStartDate = startDate.ToString("yyyy-MM-dd HH:mm:ss");
+			String^ formattedEndDate = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+
+			String^ filterExpression = "[Дата] >= '" + formattedStartDate + "' AND [Дата] <= '" + formattedEndDate + "'";
 			historyData->DefaultView->RowFilter = filterExpression;
 		}
 		else
 		{
-			MessageBox::Show("Please enter a valid Date in format YYYY-MM-DD.");
+			MessageBox::Show("End date must be equal to or later than start date.");
 		}
-		currentPageIndex = 0; // Assuming you have implemented pagination
-		LoadPage(); // Reload the page view
+
+		currentPageIndex = 0;
+		LoadPage();
 	}
+
 	System::Void MainForm::hm_filters_reset_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		ResetFilters();
@@ -248,8 +277,19 @@ namespace MetalCalculator
 	// History Menu Data
 	void MainForm::BindData(DataGridView^ gridView)
 	{
+		// TODO throw this query to rest of them in file
 		PGconn* conn = Database::getInstance().getConn();
-		PGresult* res = PQexec(conn, "SELECT id, melting_number, metal_id, weight, required_metal_numbers, created_at FROM history");
+		PGresult* res = PQexec(conn, "\
+			SELECT h.id, \
+			h.melting_number, \
+			m.name AS metal_name, \
+			m.metal_type, \
+			h.weight, \
+			h.required_metal_numbers, \
+			h.created_at \
+			FROM history AS h \
+			JOIN metals AS m ON h.metal_id = m.id\
+		");
 
 		if (PQresultStatus(res) != PGRES_TUPLES_OK)
 		{
@@ -287,7 +327,8 @@ namespace MetalCalculator
 	{
 		table->Columns->Add("ID", int::typeid);
 		table->Columns->Add("Номер Плавки", String::typeid);
-		table->Columns->Add("ID Металу", String::typeid);
+		table->Columns->Add("Назва Металу", String::typeid);
+		table->Columns->Add("Тип Металу", String::typeid);
 		table->Columns->Add("Вага", String::typeid);
 		table->Columns->Add("Необхідна к-сть феросплавів", String::typeid);
 		table->Columns->Add("Дата", String::typeid);

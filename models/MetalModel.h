@@ -10,6 +10,7 @@ public enum class MetalType
 
 public ref struct MetalModel
 {
+	int id;
 	System::String^ name;
 	float c;
 	float si;
@@ -21,7 +22,7 @@ public ref struct MetalModel
 	float ni;
 	MetalType metalType;
 
-	MetalModel() : c(0), si(0), mn(0), p(0), s(0), cu(0), cr(0), ni(0), metalType(MetalType::cast_iron) {};
+	MetalModel() : id(0), c(0), si(0), mn(0), p(0), s(0), cu(0), cr(0), ni(0), metalType(MetalType::cast_iron) {};
 
 	MetalModel(
 		System::String^ name_i,
@@ -34,12 +35,12 @@ public ref struct MetalModel
 		float cr_i,
 		float ni_i,
 		System::String^ metalType_i
-	) : name(name_i), c(c_i), si(si_i), mn(mn_i), p(p_i), s(s_i), cu(cu_i), cr(cr_i), ni(ni_i)
+	) : id(0), name(name_i), c(c_i), si(si_i), mn(mn_i), p(p_i), s(s_i), cu(cu_i), cr(cr_i), ni(ni_i)
 	{
 		metalType = mapMetalType(metalType_i);
 	};
 
-	MetalType mapMetalType(System::String^ metalType_i) {
+	static MetalType mapMetalType(System::String^ metalType_i) {
 		if (metalType_i == "steel" || metalType_i == "Сталь") {
 			return MetalType::steel;
 		}
@@ -47,7 +48,7 @@ public ref struct MetalModel
 		return MetalType::cast_iron;
 	}
 
-	MetalType mapMetalType(char* metalType_i) {
+	static MetalType mapMetalType(char* metalType_i) {
 		if (strcmp(metalType_i, "steel") == 0 || strcmp(metalType_i, "Сталь") == 0) {
 			return MetalType::steel;
 		}
@@ -55,7 +56,7 @@ public ref struct MetalModel
 		return MetalType::cast_iron;
 	}
 
-	std::string metalTypeToString(MetalType metalType)
+	static std::string metalTypeToString(MetalType metalType)
 	{
 		switch (metalType)
 		{

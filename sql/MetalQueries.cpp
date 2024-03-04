@@ -17,7 +17,7 @@ namespace MetalCalculator
 		MetalModel^ himSkladGoalModel = gcnew MetalModel;
 
 		String^ query = String::Format(
-			"SELECT name, c, si, mn, p, s, cu, cr, ni, metal_type FROM metals WHERE name = '{0}'", metalName
+			"SELECT id, name, c, si, mn, p, s, cu, cr, ni, metal_type FROM metals WHERE name = '{0}'", metalName
 		);
 
 		IntPtr ptrToNativeString = System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(query);
@@ -47,7 +47,7 @@ namespace MetalCalculator
 	{
 		List<MetalModel^>^ metalsList = gcnew List<MetalModel^>;
 
-		std::string query = "SELECT name, c, si, mn, p, s, cu, cr, ni, metal_type FROM metals";
+		std::string query = "SELECT id, name, c, si, mn, p, s, cu, cr, ni, metal_type FROM metals";
 		PGresult* result = PQexec(conn, query.c_str());
 
 		if (PQresultStatus(result) == PGRES_TUPLES_OK) {
@@ -57,17 +57,19 @@ namespace MetalCalculator
 			{
 				MetalModel^ metal = gcnew MetalModel();
 
-				metal->name = StringConverterer::StdStringToSystemString(PQgetvalue(result, i, 0));
+				metal->c = std::stoi(PQgetvalue(result, i, 0));
 
-				metal->c = std::stof(PQgetvalue(result, i, 1));
-				metal->si = std::stof(PQgetvalue(result, i, 2));
-				metal->mn = std::stof(PQgetvalue(result, i, 3));
-				metal->p = std::stof(PQgetvalue(result, i, 4));
-				metal->s = std::stof(PQgetvalue(result, i, 5));
-				metal->cu = std::stof(PQgetvalue(result, i, 6));
-				metal->cr = std::stof(PQgetvalue(result, i, 7));
-				metal->ni = std::stof(PQgetvalue(result, i, 8));
-				metal->metalType = metal->mapMetalType(PQgetvalue(result, i, 9));
+				metal->name = StringConverterer::StdStringToSystemString(PQgetvalue(result, i, 1));
+
+				metal->c = std::stof(PQgetvalue(result, i, 2));
+				metal->si = std::stof(PQgetvalue(result, i, 3));
+				metal->mn = std::stof(PQgetvalue(result, i, 4));
+				metal->p = std::stof(PQgetvalue(result, i, 5));
+				metal->s = std::stof(PQgetvalue(result, i, 6));
+				metal->cu = std::stof(PQgetvalue(result, i, 7));
+				metal->cr = std::stof(PQgetvalue(result, i, 8));
+				metal->ni = std::stof(PQgetvalue(result, i, 9));
+				metal->metalType = metal->mapMetalType(PQgetvalue(result, i, 10));
 
 				metalsList->Add(metal);
 			}
@@ -146,18 +148,20 @@ namespace MetalCalculator
 	MetalModel^ MetalQueries::parseHimSklad(PGresult* res)
 	{
 		MetalModel^ model = gcnew MetalModel;
-		char* cName = PQgetvalue(res, 0, 0);
+		model->id = std::stoi(PQgetvalue(res, 0, 0));
+
+		char* cName = PQgetvalue(res, 0, 1);
 
 		model->name = StringConverterer::StdStringToSystemString(cName);
-		model->c = strtof(PQgetvalue(res, 0, 1), NULL);
-		model->si = strtof(PQgetvalue(res, 0, 2), NULL);
-		model->mn = strtof(PQgetvalue(res, 0, 3), NULL);
-		model->p = strtof(PQgetvalue(res, 0, 4), NULL);
-		model->s = strtof(PQgetvalue(res, 0, 5), NULL);
-		model->cu = strtof(PQgetvalue(res, 0, 6), NULL);
-		model->cr = strtof(PQgetvalue(res, 0, 7), NULL);
-		model->ni = strtof(PQgetvalue(res, 0, 8), NULL);
-		model->metalType = model->mapMetalType(PQgetvalue(res, 0, 9));
+		model->c = strtof(PQgetvalue(res, 0, 2), NULL);
+		model->si = strtof(PQgetvalue(res, 0, 3), NULL);
+		model->mn = strtof(PQgetvalue(res, 0, 4), NULL);
+		model->p = strtof(PQgetvalue(res, 0, 5), NULL);
+		model->s = strtof(PQgetvalue(res, 0, 6), NULL);
+		model->cu = strtof(PQgetvalue(res, 0, 7), NULL);
+		model->cr = strtof(PQgetvalue(res, 0, 8), NULL);
+		model->ni = strtof(PQgetvalue(res, 0, 9), NULL);
+		model->metalType = model->mapMetalType(PQgetvalue(res, 0, 10));
 
 		return model;
 	}

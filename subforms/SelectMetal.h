@@ -3,6 +3,7 @@
 #include "MetalQueries.h"
 #include "MetalModel.h"
 #include "MainForm.h"
+#include "../support/MetalManager.h"
 
 namespace MetalCalculator
 {
