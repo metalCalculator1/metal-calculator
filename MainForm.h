@@ -2805,7 +2805,7 @@ public:
 			PGconn* conn = Database::getInstance().getConn();
 			std::string requiredFerro = StringConverterer::SystemStringToStdString(requiredMetalNumbers);
 
-			std::string probaNumberUtf8 = ConvertStringToUtf8(probaNumber);
+			std::string probaNumberUtf8 = StringConverterer::ConvertStringToUtf8(probaNumber);
 
 			probaNumberUtf8 = "'" + probaNumberUtf8 + "'";
 
@@ -2866,21 +2866,5 @@ public:
 		System::Void ResizeForm(System::Object^ sender, System::EventArgs^ e);
 		void StoreOriginalFontSizes(Control^ control);
 		void AdjustFontSizeDynamicallyRecursive(Control^ control, bool isMaximizing);
-
-		std::string ConvertStringToUtf8(System::String^ managedString) {
-			// Check for nullptr
-			if (managedString == nullptr) return std::string();
-
-			// Convert System::String to std::string using UTF8 encoding
-			array<unsigned char>^ bytes = System::Text::Encoding::UTF8->GetBytes(managedString);
-
-			// Create a pin_ptr to pin the bytes in memory so that the GC doesn't move them
-			pin_ptr<unsigned char> pinnedBytes = &bytes[0];
-
-			// Create a std::string from the pinned bytes
-			std::string unmanagedString(reinterpret_cast<char*>(pinnedBytes), bytes->Length);
-
-			return unmanagedString;
-		}
 	};
 }
