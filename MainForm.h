@@ -61,6 +61,7 @@ namespace MetalCalculator
 			hm_data_grid->Columns[0]->AutoSizeMode = DataGridViewAutoSizeColumnMode::ColumnHeader;
 			hm_data_grid->Columns[1]->AutoSizeMode = DataGridViewAutoSizeColumnMode::ColumnHeader;
 			hm_data_grid->Columns[2]->AutoSizeMode = DataGridViewAutoSizeColumnMode::ColumnHeader;
+			hm_data_grid->Columns[3]->AutoSizeMode = DataGridViewAutoSizeColumnMode::ColumnHeader;
 
 			mm_meltingID_TB->Text = "0";
 			hm_metal_type_selector->SelectedIndex = 0;
@@ -200,7 +201,7 @@ namespace MetalCalculator
 	protected: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel7;
 	protected: System::Windows::Forms::TextBox^ mm_metalKG_TB;
 	protected: System::Windows::Forms::Label^ mm_metalKG_lbl;
-	protected: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel8;
+
 	protected: System::Windows::Forms::TextBox^ mm_meltingID_TB;
 	protected: System::Windows::Forms::Label^ mm_meltingID_lbl;
 	protected: System::Windows::Forms::Button^ calculate_btn;
@@ -222,14 +223,17 @@ namespace MetalCalculator
 	protected: System::Windows::Forms::Panel^ mm_panel5;
 	public: System::Windows::Forms::Button^ mm_alloySelect_btn;
 private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel2;
-private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel3;
 
-private: System::Windows::Forms::SplitContainer^ splitContainer2;
-protected: System::Windows::Forms::Label^ label2;
-protected: System::Windows::Forms::TextBox^ mm_proba_TB;
+
+
+protected: System::Windows::Forms::Label^ mm_probaNum_TL;
 private:
 
-protected: System::Windows::Forms::Label^ label3;
+protected: System::Windows::Forms::TextBox^ mm_proba_TB;
+protected: System::Windows::Forms::Label^ mm_stanokNum_TL;
+private:
+
+
 protected: System::Windows::Forms::TextBox^ mm_stanok_TB;
 private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel10;
 protected:
@@ -542,7 +546,11 @@ public:
 			this->tableLayoutPanel7 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->mm_metalKG_TB = (gcnew System::Windows::Forms::TextBox());
 			this->mm_metalKG_lbl = (gcnew System::Windows::Forms::Label());
-			this->tableLayoutPanel8 = (gcnew System::Windows::Forms::TableLayoutPanel());
+			this->tableLayoutPanel10 = (gcnew System::Windows::Forms::TableLayoutPanel());
+			this->mm_stanok_TB = (gcnew System::Windows::Forms::TextBox());
+			this->mm_stanokNum_TL = (gcnew System::Windows::Forms::Label());
+			this->mm_proba_TB = (gcnew System::Windows::Forms::TextBox());
+			this->mm_probaNum_TL = (gcnew System::Windows::Forms::Label());
 			this->mm_meltingID_TB = (gcnew System::Windows::Forms::TextBox());
 			this->mm_meltingID_lbl = (gcnew System::Windows::Forms::Label());
 			this->calculate_btn = (gcnew System::Windows::Forms::Button());
@@ -558,15 +566,8 @@ public:
 			this->mm_vuglecevm_lbl = (gcnew System::Windows::Forms::Label());
 			this->mm_FC45_value_lbl = (gcnew System::Windows::Forms::Label());
 			this->mm_panel5 = (gcnew System::Windows::Forms::Panel());
-			this->tableLayoutPanel3 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->mm_alloySelect_btn = (gcnew System::Windows::Forms::Button());
 			this->parentPanel = (gcnew System::Windows::Forms::Panel());
-			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->mm_proba_TB = (gcnew System::Windows::Forms::TextBox());
-			this->mm_stanok_TB = (gcnew System::Windows::Forms::TextBox());
-			this->tableLayoutPanel10 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->topPanel->SuspendLayout();
 			this->labelsPanel->SuspendLayout();
 			this->labelLayout->SuspendLayout();
@@ -605,14 +606,11 @@ public:
 			this->tableLayoutPanel5->SuspendLayout();
 			this->tableLayoutPanel6->SuspendLayout();
 			this->tableLayoutPanel7->SuspendLayout();
-			this->tableLayoutPanel8->SuspendLayout();
+			this->tableLayoutPanel10->SuspendLayout();
 			this->mm_neededFerro_TL->SuspendLayout();
 			this->mm_neededInfo_TL_btm->SuspendLayout();
 			this->mm_panel5->SuspendLayout();
 			this->parentPanel->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->BeginInit();
-			this->splitContainer2->SuspendLayout();
-			this->tableLayoutPanel10->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// topPanel
@@ -2313,13 +2311,13 @@ public:
 			this->tableLayoutPanel7->Controls->Add(this->mm_metalKG_TB, 0, 1);
 			this->tableLayoutPanel7->Controls->Add(this->mm_metalKG_lbl, 0, 0);
 			this->tableLayoutPanel7->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->tableLayoutPanel7->Location = System::Drawing::Point(280, 4);
+			this->tableLayoutPanel7->Location = System::Drawing::Point(279, 4);
 			this->tableLayoutPanel7->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->tableLayoutPanel7->Name = L"tableLayoutPanel7";
 			this->tableLayoutPanel7->RowCount = 2;
 			this->tableLayoutPanel7->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 67.05202F)));
 			this->tableLayoutPanel7->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 32.94798F)));
-			this->tableLayoutPanel7->Size = System::Drawing::Size(182, 173);
+			this->tableLayoutPanel7->Size = System::Drawing::Size(183, 173);
 			this->tableLayoutPanel7->TabIndex = 0;
 			// 
 			// mm_metalKG_TB
@@ -2330,10 +2328,10 @@ public:
 			this->mm_metalKG_TB->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->mm_metalKG_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->mm_metalKG_TB->Location = System::Drawing::Point(3, 120);
+			this->mm_metalKG_TB->Location = System::Drawing::Point(3, 119);
 			this->mm_metalKG_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_metalKG_TB->Name = L"mm_metalKG_TB";
-			this->mm_metalKG_TB->Size = System::Drawing::Size(176, 45);
+			this->mm_metalKG_TB->Size = System::Drawing::Size(177, 45);
 			this->mm_metalKG_TB->TabIndex = 0;
 			this->mm_metalKG_TB->Leave += gcnew System::EventHandler(this, &MainForm::onMetalKGLeave);
 			// 
@@ -2345,25 +2343,85 @@ public:
 				static_cast<System::Byte>(204)));
 			this->mm_metalKG_lbl->Location = System::Drawing::Point(3, 0);
 			this->mm_metalKG_lbl->Name = L"mm_metalKG_lbl";
-			this->mm_metalKG_lbl->Size = System::Drawing::Size(176, 116);
+			this->mm_metalKG_lbl->Size = System::Drawing::Size(177, 115);
 			this->mm_metalKG_lbl->TabIndex = 1;
 			this->mm_metalKG_lbl->Text = L"Маса Металу";
 			this->mm_metalKG_lbl->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
 			// 
-			// tableLayoutPanel8
+			// tableLayoutPanel10
 			// 
-			this->tableLayoutPanel8->ColumnCount = 1;
-			this->tableLayoutPanel8->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				100)));
-			this->tableLayoutPanel8->Controls->Add(this->splitContainer2, 0, 0);
-			this->tableLayoutPanel8->Location = System::Drawing::Point(632, 3);
-			this->tableLayoutPanel8->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
-			this->tableLayoutPanel8->Name = L"tableLayoutPanel8";
-			this->tableLayoutPanel8->RowCount = 1;
-			this->tableLayoutPanel8->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
-			this->tableLayoutPanel8->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel8->Size = System::Drawing::Size(226, 158);
-			this->tableLayoutPanel8->TabIndex = 2;
+			this->tableLayoutPanel10->ColumnCount = 2;
+			this->tableLayoutPanel10->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
+				50)));
+			this->tableLayoutPanel10->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
+				50)));
+			this->tableLayoutPanel10->Controls->Add(this->mm_stanok_TB, 1, 2);
+			this->tableLayoutPanel10->Controls->Add(this->mm_stanokNum_TL, 0, 2);
+			this->tableLayoutPanel10->Controls->Add(this->mm_proba_TB, 1, 1);
+			this->tableLayoutPanel10->Controls->Add(this->mm_probaNum_TL, 0, 1);
+			this->tableLayoutPanel10->Controls->Add(this->mm_meltingID_TB, 1, 0);
+			this->tableLayoutPanel10->Controls->Add(this->mm_meltingID_lbl, 0, 0);
+			this->tableLayoutPanel10->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tableLayoutPanel10->Location = System::Drawing::Point(3, 3);
+			this->tableLayoutPanel10->Name = L"tableLayoutPanel10";
+			this->tableLayoutPanel10->RowCount = 3;
+			this->tableLayoutPanel10->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 33.98693F)));
+			this->tableLayoutPanel10->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 33.33333F)));
+			this->tableLayoutPanel10->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 32.67974F)));
+			this->tableLayoutPanel10->Size = System::Drawing::Size(270, 175);
+			this->tableLayoutPanel10->TabIndex = 1;
+			// 
+			// mm_stanok_TB
+			// 
+			this->mm_stanok_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
+				static_cast<System::Int32>(static_cast<System::Byte>(217)));
+			this->mm_stanok_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->mm_stanok_TB->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->mm_stanok_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->mm_stanok_TB->Location = System::Drawing::Point(138, 121);
+			this->mm_stanok_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_stanok_TB->Name = L"mm_stanok_TB";
+			this->mm_stanok_TB->Size = System::Drawing::Size(129, 45);
+			this->mm_stanok_TB->TabIndex = 1;
+			// 
+			// mm_stanokNum_TL
+			// 
+			this->mm_stanokNum_TL->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->mm_stanokNum_TL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->mm_stanokNum_TL->Location = System::Drawing::Point(3, 117);
+			this->mm_stanokNum_TL->Name = L"mm_stanokNum_TL";
+			this->mm_stanokNum_TL->Size = System::Drawing::Size(129, 58);
+			this->mm_stanokNum_TL->TabIndex = 3;
+			this->mm_stanokNum_TL->Text = L"№ Станка";
+			this->mm_stanokNum_TL->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// mm_proba_TB
+			// 
+			this->mm_proba_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
+				static_cast<System::Int32>(static_cast<System::Byte>(217)));
+			this->mm_proba_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->mm_proba_TB->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->mm_proba_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->mm_proba_TB->Location = System::Drawing::Point(138, 63);
+			this->mm_proba_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->mm_proba_TB->Name = L"mm_proba_TB";
+			this->mm_proba_TB->Size = System::Drawing::Size(129, 45);
+			this->mm_proba_TB->TabIndex = 1;
+			// 
+			// mm_probaNum_TL
+			// 
+			this->mm_probaNum_TL->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->mm_probaNum_TL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->mm_probaNum_TL->Location = System::Drawing::Point(3, 59);
+			this->mm_probaNum_TL->Name = L"mm_probaNum_TL";
+			this->mm_probaNum_TL->Size = System::Drawing::Size(129, 58);
+			this->mm_probaNum_TL->TabIndex = 2;
+			this->mm_probaNum_TL->Text = L"№ Проби";
+			this->mm_probaNum_TL->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// mm_meltingID_TB
 			// 
@@ -2376,9 +2434,8 @@ public:
 			this->mm_meltingID_TB->Location = System::Drawing::Point(138, 4);
 			this->mm_meltingID_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->mm_meltingID_TB->Name = L"mm_meltingID_TB";
-			this->mm_meltingID_TB->Size = System::Drawing::Size(130, 45);
+			this->mm_meltingID_TB->Size = System::Drawing::Size(129, 45);
 			this->mm_meltingID_TB->TabIndex = 0;
-			this->mm_meltingID_TB->Resize += gcnew System::EventHandler(this, &MainForm::ResizeForm);
 			// 
 			// mm_meltingID_lbl
 			// 
@@ -2583,8 +2640,6 @@ public:
 			// 
 			// mm_panel5
 			// 
-			this->mm_panel5->Controls->Add(this->tableLayoutPanel3);
-			this->mm_panel5->Controls->Add(this->tableLayoutPanel8);
 			this->mm_panel5->Controls->Add(this->mm_alloySelect_btn);
 			this->mm_panel5->Dock = System::Windows::Forms::DockStyle::Top;
 			this->mm_panel5->Location = System::Drawing::Point(3, 216);
@@ -2593,21 +2648,6 @@ public:
 			this->mm_panel5->Padding = System::Windows::Forms::Padding(0, 0, 10, 0);
 			this->mm_panel5->Size = System::Drawing::Size(905, 53);
 			this->mm_panel5->TabIndex = 1;
-			// 
-			// tableLayoutPanel3
-			// 
-			this->tableLayoutPanel3->ColumnCount = 2;
-			this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
-			this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
-			this->tableLayoutPanel3->Location = System::Drawing::Point(337, 12);
-			this->tableLayoutPanel3->Name = L"tableLayoutPanel3";
-			this->tableLayoutPanel3->RowCount = 2;
-			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel3->Size = System::Drawing::Size(200, 100);
-			this->tableLayoutPanel3->TabIndex = 2;
 			// 
 			// mm_alloySelect_btn
 			// 
@@ -2637,90 +2677,6 @@ public:
 			this->parentPanel->Name = L"parentPanel";
 			this->parentPanel->Size = System::Drawing::Size(911, 550);
 			this->parentPanel->TabIndex = 1;
-			// 
-			// splitContainer2
-			// 
-			this->splitContainer2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->splitContainer2->Location = System::Drawing::Point(3, 3);
-			this->splitContainer2->Name = L"splitContainer2";
-			this->splitContainer2->Size = System::Drawing::Size(220, 152);
-			this->splitContainer2->SplitterDistance = 113;
-			this->splitContainer2->TabIndex = 3;
-			// 
-			// label2
-			// 
-			this->label2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(3, 59);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(129, 58);
-			this->label2->TabIndex = 2;
-			this->label2->Text = L"№ Проби";
-			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// label3
-			// 
-			this->label3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(3, 117);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(129, 58);
-			this->label3->TabIndex = 3;
-			this->label3->Text = L"№ Станка";
-			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// mm_proba_TB
-			// 
-			this->mm_proba_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
-				static_cast<System::Int32>(static_cast<System::Byte>(217)));
-			this->mm_proba_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_proba_TB->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_proba_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->mm_proba_TB->Location = System::Drawing::Point(138, 63);
-			this->mm_proba_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
-			this->mm_proba_TB->Name = L"mm_proba_TB";
-			this->mm_proba_TB->Size = System::Drawing::Size(130, 45);
-			this->mm_proba_TB->TabIndex = 1;
-			// 
-			// mm_stanok_TB
-			// 
-			this->mm_stanok_TB->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(217)),
-				static_cast<System::Int32>(static_cast<System::Byte>(217)));
-			this->mm_stanok_TB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->mm_stanok_TB->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->mm_stanok_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->mm_stanok_TB->Location = System::Drawing::Point(138, 121);
-			this->mm_stanok_TB->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
-			this->mm_stanok_TB->Name = L"mm_stanok_TB";
-			this->mm_stanok_TB->Size = System::Drawing::Size(130, 45);
-			this->mm_stanok_TB->TabIndex = 1;
-			// 
-			// tableLayoutPanel10
-			// 
-			this->tableLayoutPanel10->ColumnCount = 2;
-			this->tableLayoutPanel10->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
-			this->tableLayoutPanel10->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
-			this->tableLayoutPanel10->Controls->Add(this->mm_stanok_TB, 1, 2);
-			this->tableLayoutPanel10->Controls->Add(this->label3, 0, 2);
-			this->tableLayoutPanel10->Controls->Add(this->mm_proba_TB, 1, 1);
-			this->tableLayoutPanel10->Controls->Add(this->label2, 0, 1);
-			this->tableLayoutPanel10->Controls->Add(this->mm_meltingID_TB, 1, 0);
-			this->tableLayoutPanel10->Controls->Add(this->mm_meltingID_lbl, 0, 0);
-			this->tableLayoutPanel10->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->tableLayoutPanel10->Location = System::Drawing::Point(3, 3);
-			this->tableLayoutPanel10->Name = L"tableLayoutPanel10";
-			this->tableLayoutPanel10->RowCount = 3;
-			this->tableLayoutPanel10->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 33.98693F)));
-			this->tableLayoutPanel10->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 33.33333F)));
-			this->tableLayoutPanel10->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 32.67974F)));
-			this->tableLayoutPanel10->Size = System::Drawing::Size(271, 175);
-			this->tableLayoutPanel10->TabIndex = 1;
 			// 
 			// MainForm
 			// 
@@ -2791,17 +2747,14 @@ public:
 			this->tableLayoutPanel6->ResumeLayout(false);
 			this->tableLayoutPanel7->ResumeLayout(false);
 			this->tableLayoutPanel7->PerformLayout();
-			this->tableLayoutPanel8->ResumeLayout(false);
+			this->tableLayoutPanel10->ResumeLayout(false);
+			this->tableLayoutPanel10->PerformLayout();
 			this->mm_neededFerro_TL->ResumeLayout(false);
 			this->mm_neededFerro_TL->PerformLayout();
 			this->mm_neededInfo_TL_btm->ResumeLayout(false);
 			this->mm_panel5->ResumeLayout(false);
 			this->mm_panel5->PerformLayout();
 			this->parentPanel->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->EndInit();
-			this->splitContainer2->ResumeLayout(false);
-			this->tableLayoutPanel10->ResumeLayout(false);
-			this->tableLayoutPanel10->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -2847,13 +2800,19 @@ public:
 		// Helper Functions:
 		bool IsPanelOnFront(Control^ panel);
 
-		void InsertIntoDatabase(int meltingNumber, MetalModel^ metal, float metalMass, String^ requiredMetalNumbers)
+		void InsertIntoDatabase(int meltingNumber, MetalModel^ metal, String^ probaNumber, int stanokNumber, float metalMass, String^ requiredMetalNumbers)
 		{
 			PGconn* conn = Database::getInstance().getConn();
 			std::string requiredFerro = StringConverterer::SystemStringToStdString(requiredMetalNumbers);
 
-			std::string query = "INSERT INTO history (melting_number, metal_id, weight, required_metal_numbers, created_at) VALUES (" +
+			std::string probaNumberUtf8 = ConvertStringToUtf8(probaNumber);
+
+			probaNumberUtf8 = "'" + probaNumberUtf8 + "'";
+
+			std::string query = "INSERT INTO history (melting_number, proba_number, stanok_number, metal_id, weight, required_metal_numbers, created_at) VALUES (" +
 				std::to_string(meltingNumber) + ", " +
+				probaNumberUtf8 + ", " +
+				std::to_string(stanokNumber) + ", " +
 				std::to_string(metal->id) + ", " +
 				std::to_string(metalMass) + ", '" +
 				requiredFerro + "', NOW()) RETURNING id;";
@@ -2865,7 +2824,7 @@ public:
 				int newId = std::stoi(PQgetvalue(res, 0, 0));
 
 				DateTime^ createdAt = DateTime::Now;
-				AddRowToDataTable(historyData, newId, meltingNumber, metal->name, MetalModel::metalTypeToManagedString(metal->metalType), metalMass, requiredMetalNumbers, createdAt);
+				AddRowToDataTable(historyData, newId, meltingNumber, probaNumber, stanokNumber, metal->name, MetalModel::metalTypeToManagedString(metal->metalType), metalMass, requiredMetalNumbers, createdAt);
 			}
 			else
 			{
@@ -2876,11 +2835,14 @@ public:
 			PQclear(res);
 		}
 
-		void AddRowToDataTable(DataTable^ table, int id, int meltingNumber, String^ name, String^ type, float weight, String^ requiredMetalNumbers, DateTime^ createdAt)
+
+		void AddRowToDataTable(DataTable^ table, int id, int meltingNumber, String^ probaNumber, int stanokNumber, String^ name, String^ type, float weight, String^ requiredMetalNumbers, DateTime^ createdAt)
 		{
 			DataRow^ newRow = table->NewRow();
 			newRow["ID"] = id;
-			newRow["Номер Плавки"] = meltingNumber;
+			newRow["№ Плавки"] = meltingNumber;
+			newRow["№ Проби"] = probaNumber;
+			newRow["№ Станка"] = stanokNumber;
 			newRow["Назва металу"] = name;
 			newRow["Тип металу"] = type;
 			newRow["Вага"] = weight;
@@ -2904,5 +2866,21 @@ public:
 		System::Void ResizeForm(System::Object^ sender, System::EventArgs^ e);
 		void StoreOriginalFontSizes(Control^ control);
 		void AdjustFontSizeDynamicallyRecursive(Control^ control, bool isMaximizing);
+
+		std::string ConvertStringToUtf8(System::String^ managedString) {
+			// Check for nullptr
+			if (managedString == nullptr) return std::string();
+
+			// Convert System::String to std::string using UTF8 encoding
+			array<unsigned char>^ bytes = System::Text::Encoding::UTF8->GetBytes(managedString);
+
+			// Create a pin_ptr to pin the bytes in memory so that the GC doesn't move them
+			pin_ptr<unsigned char> pinnedBytes = &bytes[0];
+
+			// Create a std::string from the pinned bytes
+			std::string unmanagedString(reinterpret_cast<char*>(pinnedBytes), bytes->Length);
+
+			return unmanagedString;
+		}
 	};
 }
