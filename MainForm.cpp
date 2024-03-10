@@ -166,7 +166,7 @@ namespace MetalCalculator
 		ResetFilters();
 	}
 
-	
+
 	// Functions:
 	System::Void MainForm::ChangeLayout(System::Object^ sender)
 	{
@@ -233,7 +233,7 @@ namespace MetalCalculator
 		mm_vulgecevm_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal));
 
 		String^ resultString = FormatNeededFerro(mm_FC45_value_lbl->Text, mm_Mn95_value_lbl->Text, mm_FMn78_value_lbl->Text, mm_vulgecevm_value_lbl->Text);
-		
+
 		int meltingID = Single::Parse(mm_meltingID_TB->Text);
 		InsertIntoDatabase(meltingID, goalHimSkladModel, metalMass, resultString);
 	}
@@ -273,7 +273,7 @@ namespace MetalCalculator
 		goalHimSkladModel = newMetal;
 		FillGoalHimSklad();
 	}
-	
+
 
 	// History Menu Data
 	void MainForm::BindData(DataGridView^ gridView)
@@ -438,5 +438,49 @@ namespace MetalCalculator
 	{
 		int index = panel->Parent->Controls->GetChildIndex(panel);
 		return index == 0;
+	}
+
+	System::Void MainForm::ResizeForm(System::Object^ sender, System::EventArgs^ e)
+	{
+		bool isMaximizing = this->WindowState == FormWindowState::Maximized;
+
+		AdjustFontSizeDynamicallyRecursive(this->mainPanel, isMaximizing);
+	}
+
+
+	void MainForm::StoreOriginalFontSizes(Control^ control)
+	{
+		for each (Control ^ childControl in control->Controls)
+		{
+			originalFontSizes[childControl] = childControl->Font->Size;
+
+			if (childControl->HasChildren)
+			{
+				StoreOriginalFontSizes(childControl);
+			}
+		}
+	}
+
+	void MainForm::AdjustFontSizeDynamicallyRecursive(Control^ control, bool isMaximizing)
+	{
+		float adjustmentFactor = isMaximizing ? 4.0f : 0.0f;
+
+		for each (Control ^ childControl in control->Controls)
+		{
+			float originalFontSize;
+			if (originalFontSizes->TryGetValue(childControl, originalFontSize))
+			{
+				float newFontSize = Math::Max(originalFontSize + adjustmentFactor, 1.0f);
+
+				System::Drawing::Font^ newFont = gcnew System::Drawing::Font(childControl->Font->FontFamily, newFontSize, childControl->Font->Style);
+
+				childControl->Font = newFont;
+			}
+
+			if (childControl->HasChildren)
+			{
+				AdjustFontSizeDynamicallyRecursive(childControl, isMaximizing);
+			}
+		}
 	}
 };
