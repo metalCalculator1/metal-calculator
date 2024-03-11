@@ -115,7 +115,6 @@ namespace MetalCalculator
 		currentPageIndex = 0;
 		LoadPage();
 	}
-
 	System::Void MainForm::hm_metal_type_selector_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (!historyData) {
 			return;
@@ -138,8 +137,6 @@ namespace MetalCalculator
 		currentPageIndex = 0;
 		LoadPage();
 	}
-
-
 	System::Void MainForm::dateTimePicker_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 		DateTime startDate = startDatePicker->Value.Date + startTimePicker->Value.TimeOfDay;
 		DateTime endDate = endDatePicker->Value.Date + endTimePicker->Value.TimeOfDay;
@@ -160,13 +157,12 @@ namespace MetalCalculator
 		currentPageIndex = 0;
 		LoadPage();
 	}
-
 	System::Void MainForm::hm_filters_reset_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		ResetFilters();
 	}
 
-	
+
 	// Functions:
 	System::Void MainForm::ChangeLayout(System::Object^ sender)
 	{
@@ -217,6 +213,15 @@ namespace MetalCalculator
 	}
 	void MainForm::CalculateNeededFerro()
 	{
+		// Check if any of the required TextBoxes are empty
+		if (String::IsNullOrWhiteSpace(mm_meltingID_TB->Text) ||
+			String::IsNullOrWhiteSpace(mm_proba_TB->Text) ||
+			String::IsNullOrWhiteSpace(mm_stanok_TB->Text))
+		{
+			MessageBox::Show("Заповніть поля: № Плавки, № Проби та № Станка", "Увага!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return; // Exit the function early as required fields are missing
+		}
+
 		// Globalization::CultureInfo::InvariantCulture might be needed.
 
 		float Si_Proba = Single::Parse(HimSkladProbaDic["Si"]->Text);
@@ -233,9 +238,16 @@ namespace MetalCalculator
 		mm_vulgecevm_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal));
 
 		String^ resultString = FormatNeededFerro(mm_FC45_value_lbl->Text, mm_Mn95_value_lbl->Text, mm_FMn78_value_lbl->Text, mm_vulgecevm_value_lbl->Text);
-		
+
 		int meltingID = Single::Parse(mm_meltingID_TB->Text);
-		InsertIntoDatabase(meltingID, goalHimSkladModel, metalMass, resultString);
+
+		// Assuming these TextBoxes are System::Windows::Forms::TextBox^
+		int meltingNumber = Int32::Parse(mm_meltingID_TB->Text);
+		String^ probaNumber = mm_proba_TB->Text; // Adjust based on actual TextBox for proba_number
+		int stanokNumber = Int32::Parse(mm_stanok_TB->Text); // Adjust based on actual TextBox for stanok_number
+
+		// Then call your function with these parameters
+		InsertIntoDatabase(meltingNumber, goalHimSkladModel, probaNumber, stanokNumber, metalMass, resultString);
 	}
 
 	void MainForm::SelectElementsByName(String^ metalName)
@@ -273,7 +285,7 @@ namespace MetalCalculator
 		goalHimSkladModel = newMetal;
 		FillGoalHimSklad();
 	}
-	
+
 
 	// History Menu Data
 	void MainForm::BindData(DataGridView^ gridView)
@@ -283,6 +295,8 @@ namespace MetalCalculator
 		PGresult* res = PQexec(conn, "\
 			SELECT h.id, \
 			h.melting_number, \
+			h.proba_number, \
+			h.stanok_number, \
 			m.name AS metal_name, \
 			m.metal_type, \
 			h.weight, \
@@ -327,12 +341,15 @@ namespace MetalCalculator
 	void MainForm::CreateColumnsForHistoryDataTable(DataTable^ table)
 	{
 		table->Columns->Add("ID", int::typeid);
-		table->Columns->Add("Номер Плавки", String::typeid);
+		table->Columns->Add("№ Плавки", String::typeid);
+		table->Columns->Add("№ Проби", String::typeid);
+		table->Columns->Add("№ Станка", String::typeid);
 		table->Columns->Add("Назва Металу", String::typeid);
 		table->Columns->Add("Тип Металу", String::typeid);
 		table->Columns->Add("Вага", String::typeid);
 		table->Columns->Add("Необхідна к-сть феросплавів", String::typeid);
 		table->Columns->Add("Дата", String::typeid);
+
 	}
 	DataTable^ MainForm::ConvertToDataTable(PGresult* res)
 	{
@@ -438,5 +455,49 @@ namespace MetalCalculator
 	{
 		int index = panel->Parent->Controls->GetChildIndex(panel);
 		return index == 0;
+	}
+
+	System::Void MainForm::ResizeForm(System::Object^ sender, System::EventArgs^ e)
+	{
+		bool isMaximizing = this->WindowState == FormWindowState::Maximized;
+
+		AdjustFontSizeDynamicallyRecursive(this->mainPanel, isMaximizing);
+	}
+
+
+	void MainForm::StoreOriginalFontSizes(Control^ control)
+	{
+		for each (Control ^ childControl in control->Controls)
+		{
+			originalFontSizes[childControl] = childControl->Font->Size;
+
+			if (childControl->HasChildren)
+			{
+				StoreOriginalFontSizes(childControl);
+			}
+		}
+	}
+
+	void MainForm::AdjustFontSizeDynamicallyRecursive(Control^ control, bool isMaximizing)
+	{
+		float adjustmentFactor = isMaximizing ? 4.0f : 0.0f;
+
+		for each (Control ^ childControl in control->Controls)
+		{
+			float originalFontSize;
+			if (originalFontSizes->TryGetValue(childControl, originalFontSize))
+			{
+				float newFontSize = Math::Max(originalFontSize + adjustmentFactor, 1.0f);
+
+				System::Drawing::Font^ newFont = gcnew System::Drawing::Font(childControl->Font->FontFamily, newFontSize, childControl->Font->Style);
+
+				childControl->Font = newFont;
+			}
+
+			if (childControl->HasChildren)
+			{
+				AdjustFontSizeDynamicallyRecursive(childControl, isMaximizing);
+			}
+		}
 	}
 };
