@@ -20,7 +20,11 @@ namespace MetalCalculator
 				System::Convert::ToInt16(sm_fmn78_input_2->Text),
 				System::Convert::ToInt16(sm_fs45_input->Text),
 				System::Convert::ToInt16(sm_mn95_input->Text),
-				System::Convert::ToInt16(sm_carbon_input->Text)
+				System::Convert::ToInt16(sm_carbon_input->Text),
+				System::Convert::ToInt16(sm_mn_fmn78_input->Text),
+				System::Convert::ToInt16(sm_mn_mn95_input->Text),
+				System::Convert::ToInt16(sm_si_fs45_input->Text),
+				System::Convert::ToInt16(sm_c_carbon_input->Text)
 			);
 
 			Calculator::GetInstance()->SetZasvoyenia();
