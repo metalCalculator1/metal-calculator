@@ -105,6 +105,11 @@ namespace MetalCalculator
 		HimSklad_Si_FC45 = model.fs_45;
 		HimSklad_Mn_Mn95 = model.mn_95;
 		HimSklad_C_Vuglecevm = model.carbon;
+
+		N20 = model.mn_fmn78;
+		N21 = model.mn_mn95;
+		N22 = model.si_fs45;
+		N23 = model.c_carbon;
 	}
 }
 

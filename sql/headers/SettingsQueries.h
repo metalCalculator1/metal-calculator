@@ -19,7 +19,8 @@ public:
 	}
 
 	SettingsModel getSettings();
-	void updateSettings(short fmn_78_0, short fmn_78_1, short fs_45, short mn_95, short carbon);
+	void updateSettings(short fmn_78_0, short fmn_78_1, short fs_45, short mn_95, short carbon,
+		short mn_fmn78, short mn_mn95, short si_fs45, short c_carbon);
 
 private:
 	SettingsQueries();
