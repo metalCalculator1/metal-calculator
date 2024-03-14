@@ -99,7 +99,7 @@ namespace MetalCalculator
 		int meltingID;
 		if (Int32::TryParse(hm_filter_field->Text, meltingID))
 		{
-			historyData->DefaultView->RowFilter = "[Номер Плавки] = " + meltingID;
+			historyData->DefaultView->RowFilter = "[№ Плавки] = " + meltingID;
 		}
 		else
 		{
@@ -111,6 +111,12 @@ namespace MetalCalculator
 	{
 		SelectMetal^ selectForm = gcnew SelectMetal(this, nullptr, nullptr);
 		selectForm->ShowDialog();
+
+		if (MetalManager::metalModelInstance == nullptr)
+		{
+			MessageBox::Show("Виберіть метал для фільтрування!", "Увага!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
 
 		hm_alloy_select->Text = MetalManager::metalModelInstance->name;
 		historyData->DefaultView->RowFilter = "[Назва Металу] LIKE '" + MetalManager::metalModelInstance->name + "%'";
@@ -217,13 +223,21 @@ namespace MetalCalculator
 	}
 	void MainForm::CalculateNeededFerro()
 	{
+		MessageBox::Show("Here");
+
 		// Check if any of the required TextBoxes are empty
 		if (String::IsNullOrWhiteSpace(mm_meltingID_TB->Text) ||
 			String::IsNullOrWhiteSpace(mm_proba_TB->Text) ||
 			String::IsNullOrWhiteSpace(mm_stanok_TB->Text))
 		{
 			MessageBox::Show("Заповніть поля: № Плавки, № Проби та № Станка", "Увага!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			return; // Exit the function early as required fields are missing
+			return;
+		}
+
+		if (goalHimSkladModel == nullptr)
+		{
+			MessageBox::Show("Виберіть метал для хімічного цільового складу!", "Увага!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
 		}
 
 		// Globalization::CultureInfo::InvariantCulture might be needed.
@@ -258,6 +272,7 @@ namespace MetalCalculator
 	{
 		goalHimSkladModel = mainQueries->getElementByName(metalName);
 	}
+
 	Dictionary<String^, TextBox^>^ MainForm::GetHimSkladFromTablePanel(TableLayoutPanel^ tableLayoutPanel)
 	{
 		Dictionary<String^, TextBox^>^ HimSkladDic = gcnew Dictionary<String^, TextBox^>();

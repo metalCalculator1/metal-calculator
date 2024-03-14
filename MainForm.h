@@ -36,7 +36,7 @@ namespace MetalCalculator
 			settings = new SettingsModel();
 			settingQueries = &SettingsQueries::getInstance();
 
-			goalHimSkladModel = gcnew MetalModel();
+			// goalHimSkladModel = gcnew MetalModel();
 			mainQueries = new MetalQueries();
 
 			DataTable^ historyData = gcnew DataTable();
@@ -52,8 +52,7 @@ namespace MetalCalculator
 			BringPanelToFront(mainPanel);
 			initWriteInputs();
 
-			SelectElementsByName("default");
-			FillGoalHimSklad();
+			// FillGoalHimSklad();
 
 			LoadData();
 			InitializePagination();
