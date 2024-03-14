@@ -223,8 +223,6 @@ namespace MetalCalculator
 	}
 	void MainForm::CalculateNeededFerro()
 	{
-		MessageBox::Show("Here");
-
 		// Check if any of the required TextBoxes are empty
 		if (String::IsNullOrWhiteSpace(mm_meltingID_TB->Text) ||
 			String::IsNullOrWhiteSpace(mm_proba_TB->Text) ||
