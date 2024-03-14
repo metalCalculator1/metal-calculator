@@ -1,6 +1,6 @@
 #pragma once
 
-#include "support/CredHandler.h"
+#include "CredHandler.h"
 
 #include <libpq-fe.h>
 #include <iostream>
