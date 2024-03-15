@@ -499,15 +499,17 @@ namespace MetalCalculator {
 #pragma endregion
 	private: System::Void add_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-		   Bitmap^ LoadImageFromProjectFolder(String^ relativePathFromProjectRoot)
+		   Bitmap^ LoadImageFromProjectFolder(String^ relativePath)
 		   {
-			   String^ basePath = AppDomain::CurrentDomain->BaseDirectory;
+			   String^ exePath = System::Reflection::Assembly::GetExecutingAssembly()->Location;
+			   String^ exeDir = System::IO::Path::GetDirectoryName(exePath);
 
-			   String^ projectRootPath = IO::Directory::GetParent(basePath)->Parent->Parent->FullName;
+			   // Combine the directory of the executable with the relative path to the image.
+			   String^ imagePath = System::IO::Path::Combine(exeDir, relativePath);
 
-			   String^ fullPath = IO::Path::Combine(projectRootPath, relativePathFromProjectRoot);
+			   //Console::WriteLine(fullPath);
 
-			   Bitmap^ image = gcnew Bitmap(fullPath);
+			   Bitmap^ image = gcnew Bitmap(imagePath);
 			   return image;
 		   }
 
