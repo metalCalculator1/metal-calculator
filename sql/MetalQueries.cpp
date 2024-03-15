@@ -42,7 +42,6 @@ namespace MetalCalculator
 		return himSkladGoalModel;
 	}
 
-
 	System::Collections::Generic::List<MetalModel^>^ MetalQueries::getMetals()
 	{
 		List<MetalModel^>^ metalsList = gcnew List<MetalModel^>;
@@ -58,8 +57,10 @@ namespace MetalCalculator
 				MetalModel^ metal = gcnew MetalModel();
 
 				metal->id = std::stoi(PQgetvalue(result, i, 0));
-
-				metal->name = StringConverterer::StdStringToSystemString(PQgetvalue(result, i, 1));
+				
+				metal->name = StringConverterer::StdStringToSystemString(
+					StringConverterer::convertToAnsi(PQgetvalue(result, i, 1))
+				);
 
 				metal->c = std::stof(PQgetvalue(result, i, 2));
 				metal->si = std::stof(PQgetvalue(result, i, 3));
@@ -83,8 +84,10 @@ namespace MetalCalculator
 	// TODO: make here to pass params as strings, too much actions
 	bool MetalQueries::addMetal(MetalModel^ metal)
 	{
+		std::string utf8Name = StringConverterer::convertToUtf8(StringConverterer::SystemStringToStdString(metal->name));
+
 		std::string query = "INSERT INTO metals (name, c, si, mn, p, s, cu, cr, ni, metal_type) VALUES ('"
-			+ StringConverterer::SystemStringToStdString(metal->name) + "', " + std::to_string(metal->c) + ", "
+			+ utf8Name + "', " + std::to_string(metal->c) + ", "
 			+ std::to_string(metal->si) + ", " + std::to_string(metal->mn) + ", "
 			+ std::to_string(metal->p) + ", " + std::to_string(metal->s) + ", "
 			+ std::to_string(metal->cu) + ", " + std::to_string(metal->cr) + ", "
@@ -106,6 +109,8 @@ namespace MetalCalculator
 		Console::WriteLine(name);
 		Console::WriteLine("Updating:" + name);
 		Console::WriteLine("TO: " + updatedMetal->name);
+		std::string utf8BaseName = StringConverterer::convertToUtf8(StringConverterer::SystemStringToStdString(name));
+		std::string utf8Name = StringConverterer::convertToUtf8(StringConverterer::SystemStringToStdString(updatedMetal->name));
 		std::string query = "UPDATE metals SET c = " + std::to_string(updatedMetal->c) + ", "
 			+ "si = " + std::to_string(updatedMetal->si) + ", "
 			+ "mn = " + std::to_string(updatedMetal->mn) + ", "
@@ -115,8 +120,8 @@ namespace MetalCalculator
 			+ "cr = " + std::to_string(updatedMetal->cr) + ", "
 			+ "ni = " + std::to_string(updatedMetal->ni) + ", "
 			+ "metal_type = '" + updatedMetal->metalTypeToString(updatedMetal->metalType) + "', "
-			+ "name = '" + StringConverterer::SystemStringToStdString(updatedMetal->name) + "' "
-			+ "WHERE name = '" + StringConverterer::SystemStringToStdString(name) + "';";
+			+ "name = '" + utf8Name + "' "
+			+ "WHERE name = '" + utf8BaseName + "';";
 
 		PGresult* result = PQexec(conn, query.c_str());
 
@@ -133,7 +138,9 @@ namespace MetalCalculator
 	bool MetalQueries::dropMetalByName(String^ nameOfMetalToDrop)
 	{
 		Console::WriteLine("Deleting: " + nameOfMetalToDrop);
-		std::string query = "DELETE FROM metals WHERE name = '" + StringConverterer::SystemStringToStdString(nameOfMetalToDrop) + "';";
+		std::string utf8Name = StringConverterer::convertToUtf8(StringConverterer::SystemStringToStdString(nameOfMetalToDrop));
+
+		std::string query = "DELETE FROM metals WHERE name = '" + utf8Name + "';";
 
 		PGresult* result = PQexec(conn, query.c_str());
 
@@ -150,7 +157,7 @@ namespace MetalCalculator
 		MetalModel^ model = gcnew MetalModel;
 		model->id = std::stoi(PQgetvalue(res, 0, 0));
 
-		char* cName = PQgetvalue(res, 0, 1);
+		char* cName = StringConverterer::convertToAnsi(PQgetvalue(res, 0, 1));;
 
 		model->name = StringConverterer::StdStringToSystemString(cName);
 		model->c = strtof(PQgetvalue(res, 0, 2), NULL);

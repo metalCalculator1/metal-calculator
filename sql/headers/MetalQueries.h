@@ -3,7 +3,7 @@
 #include <libpq-fe.h>
 #include "Database.h"
 #include "MetalModel.h"
-
+#include <windows.h>
 
 namespace MetalCalculator
 {

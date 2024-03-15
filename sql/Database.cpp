@@ -28,7 +28,7 @@ bool Database::connectToDB() {
     }
 
     std::string conn_params = "host=" + CredHandler::ENV["host"] + " dbname=" + CredHandler::ENV["dbname"] + " user=" + CredHandler::ENV["user"] +
-        " password=" + CredHandler::ENV["password"] + " sslmode=" + CredHandler::ENV["sslmode"];
+        " password=" + CredHandler::ENV["password"] + " sslmode=" + CredHandler::ENV["sslmode"] + " client_encoding=UTF8";
 
     conn = PQconnectdb(conn_params.c_str());
 
