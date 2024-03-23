@@ -22,7 +22,7 @@ namespace MetalCalculator
 	private:
 		// Засвоєння хімічних елементів
 		float N20 = 90.0; // Засвоєння хімічних елементів Mn з ФМн78
-		float N21 = 90.0; // Засвоєння хімічних елементів Mn з Мн95
+		float N21 = 95.0; // Засвоєння хімічних елементів Mn з Мн95
 		float N22 = 90.0; // Засвоєння хімічних елементів Si з ФС45
 		float N23 = 90.0;
 
@@ -44,7 +44,9 @@ namespace MetalCalculator
 		float CalculateFMn78(float metalMass, float Mn_Proba, float Mn_Goal, float C_Proba, float C_Goal);
 		float CalculateMn95(float metalMass, float Mn_Proba, float Mn_Goal, float C_Proba, float C_Goal);
 		float CalculateVuglecevm(float metalMass, float C_Proba, float C_Goal);
+
 		void SetZasvoyenia();
+
 	};
 }
 

@@ -238,6 +238,8 @@ namespace MetalCalculator
 			return;
 		}
 
+		Calc->SetZasvoyenia();
+
 		// Globalization::CultureInfo::InvariantCulture might be needed.
 
 		float Si_Proba = Single::Parse(HimSkladProbaDic["Si"]->Text);
@@ -248,10 +250,15 @@ namespace MetalCalculator
 		float Mn_Goal = goalHimSkladModel->mn;
 		float C_Goal = goalHimSkladModel->c;
 
-		mm_FC45_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFC95(metalMass, Si_Proba, Si_Goal));
-		mm_Mn95_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateMn95(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
-		mm_FMn78_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateFMn78(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal));
-		mm_vulgecevm_value_lbl->Text = String::Format("{0:F1}", Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal));
+		float FC45 = Calc->CalculateFC95(metalMass, Si_Proba, Si_Goal);
+		float FMn78 = Calc->CalculateFMn78(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal);
+		float Mn95 = Calc->CalculateMn95(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal);
+		float Vuglecevm = Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal);
+
+		mm_FC45_value_lbl->Text = String::Format("{0:F2}", FC45);
+		mm_FMn78_value_lbl->Text = String::Format("{0:F2}", FMn78);
+		mm_Mn95_value_lbl->Text = String::Format("{0:F2}", Mn95);
+		mm_vulgecevm_value_lbl->Text = String::Format("{0:F2}", Vuglecevm);
 
 		String^ resultString = FormatNeededFerro(mm_FC45_value_lbl->Text, mm_Mn95_value_lbl->Text, mm_FMn78_value_lbl->Text, mm_vulgecevm_value_lbl->Text);
 

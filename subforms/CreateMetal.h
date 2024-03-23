@@ -18,7 +18,7 @@ namespace MetalCalculator {
 		CreateMetal(void)
 		{
 			InitializeComponent();
-			LoadLogo();
+			//LoadLogo();
 
 			metalQueries = new MetalQueries();
 		}

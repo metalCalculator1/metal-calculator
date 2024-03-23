@@ -20,7 +20,7 @@ namespace MetalCalculator {
 		UpdateMetal(void)
 		{
 			InitializeComponent();
-			LoadLogo();
+			//LoadLogo();
 
 			metalToUpdate = nullptr;
 			metalQueries = new MetalQueries();

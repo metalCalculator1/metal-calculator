@@ -14,6 +14,11 @@ namespace MetalCalculator
 
 		float result = E11 * (C9 - C4) * 100 / L8 / N22;
 
+		if (result <= 0)
+		{
+			result = 0;
+		}
+
 		FC45 = result;
 		return FC45;
 	}
@@ -40,6 +45,11 @@ namespace MetalCalculator
 			result = E11 * (D9 - D4) * 100 / M4 / N20;
 		}
 
+		if (result <= 0)
+		{
+			result = 0;
+		}
+
 		FMn78 = result;
 		return FMn78;
 	}
@@ -47,7 +57,7 @@ namespace MetalCalculator
 	float Calculator::CalculateMn95(float metalMass, float Mn_Proba, float Mn_Goal, float C_Proba, float C_Goal)
 	{
 		const float
-			F17 = FC45,					// Феромарганець ФМн78, кг
+			F17 = FMn78,					// Феромарганець ФМн78, кг
 			M4 = HimSklad_Mn_FMn78,		// Mn (Хімічний склад феромарганцю марки ФМн78, %)
 			E11 = metalMass,			// Маса Металу
 			D4 = Mn_Proba,				// Mn (проба з печі)
@@ -66,6 +76,10 @@ namespace MetalCalculator
 		{
 			float calculationPart = (((B9 - B4) * E11 / 100.0) / (L4 / 100.0) * (M4 / 100.0) * (N20 / 100.0) / E11 * 100.0 + D4);
 			result = E11 * (D9 - calculationPart) * 100.0 / L12 / N21;
+			if (result <= 0)
+			{
+				result = 0;
+			}
 		}
 
 		Mn95 = result;
@@ -75,7 +89,7 @@ namespace MetalCalculator
 	float Calculator::CalculateVuglecevm(float metalMass, float C_Proba, float C_Goal)
 	{
 		const float
-			F17 = FC45,						// Феромарганець ФМн78, кг
+			F17 = FMn78,						// Феромарганець ФМн78, кг
 			L4 = HimSklad_C_FMn78,			// C (Хімічний склад феромарганцю марки ФМн78, %)	
 			E11 = metalMass,				// Маса Металу
 			B4 = C_Proba,					// C (проба з печі)
@@ -87,6 +101,10 @@ namespace MetalCalculator
 		if (100 * (F17 * L4 / 100) / E11 + B4 < B9)
 		{
 			result = E11 * (B9 - (100 * (F17 * L4 / 100) / E11 + B4)) * 100 / L16 / N23;
+			if (result <= 0)
+			{
+				result = 0;
+			}
 		}
 		else
 		{
