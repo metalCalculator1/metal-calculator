@@ -119,12 +119,27 @@ namespace MetalCalculator
 		}
 
 		hm_alloy_select->Text = MetalManager::metalModelInstance->name;
-		historyData->DefaultView->RowFilter = "[Назва Металу] LIKE '" + MetalManager::metalModelInstance->name + "%'";
+		historyData->DefaultView->RowFilter = "[Марка Сплаву] LIKE '" + MetalManager::metalModelInstance->name + "%'";
 
 		MetalManager::ClearMetalModel();
 		currentPageIndex = 0;
 		LoadPage();
 	}
+
+	System::Void MainForm::hm_select_oven_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		int ovenNumber;
+		if (Int32::TryParse(hm_filter_field->Text, ovenNumber))
+		{
+			historyData->DefaultView->RowFilter = "[№ Печі] = " + ovenNumber;
+		}
+		else
+		{
+			MessageBox::Show("Введіть коректний номер печі.");
+		}
+		LoadPage();
+	}
+
 	System::Void MainForm::hm_metal_type_selector_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (!historyData) {
 			return;
@@ -141,7 +156,7 @@ namespace MetalCalculator
 			else {
 				text = "cast_iron";
 			}
-			historyData->DefaultView->RowFilter = "[Тип Металу] LIKE '" + text + "%'";
+			historyData->DefaultView->RowFilter = "[Сплав] LIKE '" + text + "%'";
 		}
 
 		currentPageIndex = 0;
@@ -228,7 +243,7 @@ namespace MetalCalculator
 			String::IsNullOrWhiteSpace(mm_proba_TB->Text) ||
 			String::IsNullOrWhiteSpace(mm_stanok_TB->Text))
 		{
-			MessageBox::Show("Заповніть поля: № Плавки, № Проби та № Станка", "Увага!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			MessageBox::Show("Заповніть поля: № Плавки, № Проби та № Печі", "Увага!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
 		}
 
@@ -367,9 +382,9 @@ namespace MetalCalculator
 		table->Columns->Add("ID", int::typeid);
 		table->Columns->Add("№ Плавки", String::typeid);
 		table->Columns->Add("№ Проби", String::typeid);
-		table->Columns->Add("№ Станка", String::typeid);
-		table->Columns->Add("Назва Металу", String::typeid);
-		table->Columns->Add("Тип Металу", String::typeid);
+		table->Columns->Add("№ Печі", String::typeid);
+		table->Columns->Add("Марка сплаву", String::typeid);
+		table->Columns->Add("Сплав", String::typeid);
 		table->Columns->Add("Вага", String::typeid);
 		table->Columns->Add("Необхідна к-сть феросплавів", String::typeid);
 		table->Columns->Add("Дата", String::typeid);
@@ -421,7 +436,9 @@ namespace MetalCalculator
 					}
 					else if (columnType == String::typeid)
 					{
-						String^ value = Marshal::PtrToStringAnsi((IntPtr)val);
+						
+						//String^ value = Marshal::PtrToStringAnsi((IntPtr)val);
+						String^ value = gcnew String(reinterpret_cast<char*>(val), 0, strlen(reinterpret_cast<char*>(val)), System::Text::Encoding::UTF8);
 						row[j] = value;
 					}
 					else if (columnType == Double::typeid)
