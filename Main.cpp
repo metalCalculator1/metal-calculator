@@ -13,7 +13,7 @@ using namespace System::Diagnostics;
 
 void main(array<String^>^ args)
 {
-	AllocConsole();
+	// AllocConsole();
 
 	if (!CredHandler::parseCreds()) {
 		MessageBox::Show("Неможливо зчитати приховані змінні", "Critical error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);

@@ -227,6 +227,9 @@ namespace MetalCalculator
 	// Main Menu HimSklad functions
 	void MainForm::FillGoalHimSklad()
 	{
+		if (HimSkladGoalDic == nullptr)
+			HimSkladGoalDic = GetHimSkladFromTablePanel(HimSklad_Goal_TablePanel);
+
 		HimSkladGoalDic["C"]->Text = goalHimSkladModel->c.ToString();
 		HimSkladGoalDic["Si"]->Text = goalHimSkladModel->si.ToString();
 		HimSkladGoalDic["Mn"]->Text = goalHimSkladModel->mn.ToString();
@@ -236,6 +239,7 @@ namespace MetalCalculator
 		HimSkladGoalDic["Cr"]->Text = goalHimSkladModel->cr.ToString();
 		HimSkladGoalDic["Ni"]->Text = goalHimSkladModel->ni.ToString();
 	}
+
 	void MainForm::CalculateNeededFerro()
 	{
 		// Check if any of the required TextBoxes are empty
@@ -276,6 +280,8 @@ namespace MetalCalculator
 		mm_vulgecevm_value_lbl->Text = String::Format("{0:F2}", Vuglecevm);
 
 		String^ resultString = FormatNeededFerro(mm_FC45_value_lbl->Text, mm_Mn95_value_lbl->Text, mm_FMn78_value_lbl->Text, mm_vulgecevm_value_lbl->Text);
+
+		UpdateTextBoxColorsBasedOnComparison();
 
 		int meltingID = Single::Parse(mm_meltingID_TB->Text);
 
@@ -319,12 +325,12 @@ namespace MetalCalculator
 
 		return HimSkladDic;
 	}
+	
 	System::Void MainForm::SetGoalHimSklad(MetalModel^ newMetal)
 	{
 		goalHimSkladModel = newMetal;
 		FillGoalHimSklad();
 	}
-
 
 	// History Menu Data
 	void MainForm::BindData(DataGridView^ gridView)
@@ -505,7 +511,6 @@ namespace MetalCalculator
 		AdjustFontSizeDynamicallyRecursive(this->mainPanel, isMaximizing);
 	}
 
-
 	void MainForm::StoreOriginalFontSizes(Control^ control)
 	{
 		for each (Control ^ childControl in control->Controls)
@@ -521,7 +526,7 @@ namespace MetalCalculator
 
 	void MainForm::AdjustFontSizeDynamicallyRecursive(Control^ control, bool isMaximizing)
 	{
-		float adjustmentFactor = isMaximizing ? 4.0f : 0.0f;
+		float adjustmentFactor = isMaximizing ? 8.0f : 0.0f;
 
 		for each (Control ^ childControl in control->Controls)
 		{

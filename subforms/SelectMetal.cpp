@@ -41,6 +41,7 @@ namespace MetalCalculator
 		{
 			mainForm->SetGoalHimSklad(metal);
 			mainForm->mm_alloySelect_btn->Text = metal->name;
+			mainForm->UpdateTextBoxColorsBasedOnComparison();
 			this->Close();
 		}
 		else if (updateForm)
