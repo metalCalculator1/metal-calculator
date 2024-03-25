@@ -259,39 +259,57 @@ namespace MetalCalculator
 
 		Calc->SetZasvoyenia();
 
-		// Globalization::CultureInfo::InvariantCulture might be needed.
+		float Si_Proba = 0.f;
+		float Mn_Proba = 0.f;
+		float C_Proba = 0.f;
 
-		float Si_Proba = Single::Parse(HimSkladProbaDic["Si"]->Text);
-		float Mn_Proba = Single::Parse(HimSkladProbaDic["Mn"]->Text);
-		float C_Proba = Single::Parse(HimSkladProbaDic["C"]->Text);
+		try
+		{
+			float Si_Proba = Single::Parse(HimSkladProbaDic["Si"]->Text);
+			float Mn_Proba = Single::Parse(HimSkladProbaDic["Mn"]->Text);
+			float C_Proba = Single::Parse(HimSkladProbaDic["C"]->Text);
 
-		float Si_Goal = goalHimSkladModel->si;
-		float Mn_Goal = goalHimSkladModel->mn;
-		float C_Goal = goalHimSkladModel->c;
+			float Si_Goal = goalHimSkladModel->si;
+			float Mn_Goal = goalHimSkladModel->mn;
+			float C_Goal = goalHimSkladModel->c;
 
-		float FC45 = Calc->CalculateFC95(metalMass, Si_Proba, Si_Goal);
-		float FMn78 = Calc->CalculateFMn78(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal);
-		float Mn95 = Calc->CalculateMn95(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal);
-		float Vuglecevm = Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal);
+			float FC45 = Calc->CalculateFC95(metalMass, Si_Proba, Si_Goal);
+			float FMn78 = Calc->CalculateFMn78(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal);
+			float Mn95 = Calc->CalculateMn95(metalMass, Mn_Proba, Mn_Goal, C_Proba, C_Goal);
+			float Vuglecevm = Calc->CalculateVuglecevm(metalMass, C_Proba, C_Goal);
 
-		mm_FC45_value_lbl->Text = String::Format("{0:F2}", FC45);
-		mm_FMn78_value_lbl->Text = String::Format("{0:F2}", FMn78);
-		mm_Mn95_value_lbl->Text = String::Format("{0:F2}", Mn95);
-		mm_vulgecevm_value_lbl->Text = String::Format("{0:F2}", Vuglecevm);
+			mm_FC45_value_lbl->Text = String::Format("{0:F2}", FC45);
+			mm_FMn78_value_lbl->Text = String::Format("{0:F2}", FMn78);
+			mm_Mn95_value_lbl->Text = String::Format("{0:F2}", Mn95);
+			mm_vulgecevm_value_lbl->Text = String::Format("{0:F2}", Vuglecevm);
 
-		String^ resultString = FormatNeededFerro(mm_FC45_value_lbl->Text, mm_Mn95_value_lbl->Text, mm_FMn78_value_lbl->Text, mm_vulgecevm_value_lbl->Text);
+			String^ resultString = FormatNeededFerro(mm_FC45_value_lbl->Text, mm_Mn95_value_lbl->Text, mm_FMn78_value_lbl->Text, mm_vulgecevm_value_lbl->Text);
 
-		UpdateTextBoxColorsBasedOnComparison();
+			UpdateTextBoxColorsBasedOnComparison();
 
-		int meltingID = Single::Parse(mm_meltingID_TB->Text);
+			int meltingID = Single::Parse(mm_meltingID_TB->Text);
 
-		// Assuming these TextBoxes are System::Windows::Forms::TextBox^
-		int meltingNumber = Int32::Parse(mm_meltingID_TB->Text);
-		String^ probaNumber = mm_proba_TB->Text; // Adjust based on actual TextBox for proba_number
-		int stanokNumber = Int32::Parse(mm_stanok_TB->Text); // Adjust based on actual TextBox for stanok_number
+			// Assuming these TextBoxes are System::Windows::Forms::TextBox^
+			int meltingNumber = Int32::Parse(mm_meltingID_TB->Text);
+			String^ probaNumber = mm_proba_TB->Text; // Adjust based on actual TextBox for proba_number
+			int stanokNumber = Int32::Parse(mm_stanok_TB->Text); // Adjust based on actual TextBox for stanok_number
 
-		// Then call your function with these parameters
-		InsertIntoDatabase(meltingNumber, goalHimSkladModel, probaNumber, stanokNumber, metalMass, resultString);
+			// Then call your function with these parameters
+			InsertIntoDatabase(meltingNumber, goalHimSkladModel, probaNumber, stanokNumber, metalMass, resultString);
+		}
+		catch (FormatException^ ex)
+		{
+			MessageBox::Show("Неправильний формат числа. Використовуйте кому (,) як десятковий роздільник.", "Помилка формату", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		catch (OverflowException^ ex)
+		{
+			MessageBox::Show("Введене число занадто велике або занадто мале.", "Переповнення", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		catch (Exception^ ex)
+		{
+			// Handle other exceptions if necessary
+			MessageBox::Show("Сталася невідома помилка: " + ex->Message, "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 
 	void MainForm::SelectElementsByName(String^ metalName)
